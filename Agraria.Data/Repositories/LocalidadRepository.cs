@@ -19,7 +19,7 @@ namespace Agraria.Data.Repositories
         public async Task<IEnumerable<Localidad>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var lista = new List<Localidad>();
-            const string sql = "SELECT id, descripcion FROM Localidades";
+            const string sql = "SELECT idLocalidad, NombreLocalidad FROM Localidad";
 
             try
             {
@@ -46,7 +46,7 @@ namespace Agraria.Data.Repositories
 
         public async Task<Localidad?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "SELECT id, descripcion FROM Localidades WHERE id = @id";
+            const string sql = "SELECT idLocalidad, NombreLocalidad FROM Localidad WHERE idLocalidad = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -73,7 +73,7 @@ namespace Agraria.Data.Repositories
         public async Task<int> CreateAsync(Localidad localidad, CancellationToken cancellationToken = default)
         {
             if (localidad == null) throw new ArgumentNullException(nameof(localidad));
-            const string sql = "INSERT INTO Localidades (descripcion) VALUES (@descripcion); SELECT CAST(SCOPE_IDENTITY() AS INT);";
+            const string sql = "INSERT INTO Localidad (NombreLocalidad) VALUES (@descripcion); SELECT CAST(SCOPE_IDENTITY() AS INT);";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -92,7 +92,7 @@ namespace Agraria.Data.Repositories
         public async Task<bool> UpdateAsync(Localidad localidad, CancellationToken cancellationToken = default)
         {
             if (localidad == null) throw new ArgumentNullException(nameof(localidad));
-            const string sql = "UPDATE Localidades SET descripcion = @descripcion WHERE id = @id";
+            const string sql = "UPDATE Localidad SET NombreLocalidad = @descripcion WHERE idLocalidad = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -111,7 +111,7 @@ namespace Agraria.Data.Repositories
 
         public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "DELETE FROM Localidades WHERE id = @id";
+            const string sql = "DELETE FROM Localidad WHERE idLocalidad = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
