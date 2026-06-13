@@ -15,7 +15,7 @@ namespace Agraria.Data
         public Conexion(IConfiguration configuration)
         {
             if (configuration == null) throw new ArgumentNullException(nameof(configuration));
-            _connectionString = configuration.GetConnectionString("InstiDb")
+            _connectionString = configuration.GetConnectionString("AgrariaDb")
                 ?? throw new InvalidOperationException("Falta la cadena de conexión 'InstiDb' en la configuración.");
             Conector = new SqlConnection(_connectionString);
         }
