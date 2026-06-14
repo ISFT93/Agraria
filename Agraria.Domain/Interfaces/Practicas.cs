@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Agraria.Domain.Interfaces
-{
+{//Torres Magali
     internal class Practicas
     {
     }
