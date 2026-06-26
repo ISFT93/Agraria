@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Agraria.Domain.Interfaces
 {//Torres Magali
-    internal class Practicas
+    public class Practicas : ILocalidad
     {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+
     }
 }
