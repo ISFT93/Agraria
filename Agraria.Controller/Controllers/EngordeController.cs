@@ -5,33 +5,34 @@ using System.Threading;
 using System.Threading.Tasks;
 using Agraria.Domain.Models;
 using Agraria.Domain.Interfaces;
+using Agraria.Application.Interfaces;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace Agraria.Controller.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class Controller : ControllerBase
+    public class EngordeController : ControllerBase
     {
-        private readonly IService _service;
+        private readonly IEngordeService _service;
 
-        public Controller(IService service)
+        public EngordeController(IEngordeService service)
         {
             _service = service;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Practicas>>> Get(CancellationToken cancellationToken)
+        public async Task<ActionResult<List<Engorde>>> Get(CancellationToken cancellationToken)
         {
             try
             {
-                var practicas = await _service.GetPracticas(cancellationToken);
-                return Ok(practicas);
+                var engorde = await _service.GetEngorde(cancellationToken);
+                return Ok(engorde);
             }
             catch (System.Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
-
     }
 }

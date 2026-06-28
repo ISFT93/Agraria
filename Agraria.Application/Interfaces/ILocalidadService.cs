@@ -10,9 +10,5 @@ namespace Agraria.Application
     {
         Task<List<Localidad>> GetLocalidades(CancellationToken cancellationToken = default);
     }
-    public interface IService
-    {
-        Task<List<Practicas>> GetPracticas(CancellationToken cancellationToken = default);
-    }
 }
 
