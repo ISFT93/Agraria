@@ -8,12 +8,12 @@ namespace Agraria.Domain.Interfaces
 {
     public interface IIndustria
     {
-        public int idRegistroIndustria { get; set; }
-        public int idIndustria { get; set; }
-        public int idProducto { get; set; }
-        public int cantidadProduccion { get; set; }
-        public DateTime FechaProduccion { get; set; }
-        public int idInsumos { get; set; }
-        public int CantidadInsumos { get; set; }
+         int idRegistroIndustria { get; set; }
+         int idIndustria { get; set; }
+         int idProducto { get; set; }
+        int cantidadProduccion { get; set; }
+        DateTime FechaProduccion { get; set; }
+        int idInsumos { get; set; }
+        int CantidadInsumos { get; set; }
     }
 }

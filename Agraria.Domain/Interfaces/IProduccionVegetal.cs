@@ -8,11 +8,11 @@ namespace Agraria.Domain.Interfaces
 {
     public interface IProduccionVegetal
     {
-        public int IdProduccion { get; set; }
-        public int CantidadPlantines { get; set; }
-        public DateTime FechaCultivo { get; set; }
-        public DateTime FechaCosecha { get; set; }
-        public int CantidadAtados { get; set; }
-        public bool Estado { get; set; }
+        int IdProduccion { get; set; }
+        int CantidadPlantines { get; set; }
+        DateTime FechaCultivo { get; set; }
+        DateTime FechaCosecha { get; set; }
+        int CantidadAtados { get; set; }
+        bool Estado { get; set; }
     }
 }
