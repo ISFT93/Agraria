@@ -1,0 +1,14 @@
+﻿using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using Agraria.Domain.Interfaces;
+using Agraria.Domain.Models;
+
+namespace Agraria.Application
+{
+    public interface IIndustriaService
+    {
+        Task<List<Industria>> GetIndustria(CancellationToken cancellationToken = default);
+
+    }
+}

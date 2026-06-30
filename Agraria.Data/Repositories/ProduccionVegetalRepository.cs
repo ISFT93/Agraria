@@ -19,7 +19,7 @@ namespace Agraria.Data.Repositories
         public async Task<IEnumerable<ProduccionVegetal>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var lista = new List<ProduccionVegetal>();
-            const string sql = "SELECT [IdProduccion] ,[CantidadPlantines],[FechaCosecha],[CantidadAtados] ,[Estado],[FechaCultivo] FROM [dbo].[ProduccionVegetal]\r\n";
+            const string sql = "SELECT [IdProduccion] ,[CantidadPlantines],[FechaCosecha],[CantidadAtados] ,[Estado],[FechaCultivo] FROM [dbo].[ProduccionVegetal]";
 
             try
             {
@@ -52,7 +52,7 @@ namespace Agraria.Data.Repositories
 
         public async Task<Agraria.Domain.Models.ProduccionVegetal?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "SELECT idLocalidad, NombreLocalidad FROM Localidad WHERE idLocalidad = @id";
+            const string sql = "SELECT IdProduccion, FROM ProduccionVegetal WHERE IdProduccion = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -135,7 +135,7 @@ namespace Agraria.Data.Repositories
 
         public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "DELETE FROM ProduccionVegetal WHERE idLocalidad = @id";
+            const string sql = "DELETE FROM ProduccionVegetal WHERE IdProduccion = @id";
             
             try
             {
