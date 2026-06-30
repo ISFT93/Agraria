@@ -7,19 +7,19 @@ using Agraria.Domain.Models;
 
 namespace Agraria.Data.Repositories
 {
-    public class TipoEntornoRepository : ITipoEntornoRepository
+    public class TipoAnimalRepository : ITipoAnimalRepository
     {
         private readonly Conexion _conexion;
 
-        public TipoEntornoRepository(Conexion conexion)
+        public TipoAnimalRepository(Conexion conexion)
         {
             _conexion = conexion ?? throw new ArgumentNullException(nameof(conexion));
         }
 
-        public async Task<IEnumerable<TipoEntorno>> GetAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<TipoAnimal>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var lista = new List<TipoEntorno>();
-            const string sql = "SELECT [IdTipoEntorno], [Nombre] FROM [dbo].[TipoEntorno]";
+            var lista = new List<TipoAnimal>();
+            const string sql = "SELECT [IdTipo], [Nombre] FROM [dbo].[TipoAnimal]";
 
             try
             {
@@ -29,9 +29,9 @@ namespace Agraria.Data.Repositories
                 using var reader = await cmd.ExecuteReaderAsync(cancellationToken);
                 while (await reader.ReadAsync(cancellationToken))
                 {
-                    lista.Add(new TipoEntorno
+                    lista.Add(new TipoAnimal
                     {
-                        IdTipoEntorno = reader.GetInt32(0),
+                        IdTipo = reader.GetInt32(0),
                         Nombre = reader.GetString(1)
                     });
                 }
@@ -44,9 +44,9 @@ namespace Agraria.Data.Repositories
             return lista;
         }
 
-        public async Task<TipoEntorno?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        public async Task<TipoAnimal?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "SELECT [IdTipoEntorno], [Nombre] FROM [dbo].[TipoEntorno] WHERE [IdTipoEntorno] = @id";
+            const string sql = "SELECT [IdTipo], [Nombre] FROM [dbo].[TipoAnimal] WHERE [IdTipo] = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -56,9 +56,9 @@ namespace Agraria.Data.Repositories
                 using var reader = await cmd.ExecuteReaderAsync(cancellationToken);
                 if (await reader.ReadAsync(cancellationToken))
                 {
-                    return new TipoEntorno
+                    return new TipoAnimal
                     {
-                        IdTipoEntorno = reader.GetInt32(0),
+                        IdTipo = reader.GetInt32(0),
                         Nombre = reader.GetString(1)
                     };
                 }
@@ -70,11 +70,11 @@ namespace Agraria.Data.Repositories
             }
         }
 
-        public async Task<int> CreateAsync(TipoEntorno tipoentorno, CancellationToken cancellationToken = default)
+        public async Task<int> CreateAsync(TipoAnimal tipoAnimal, CancellationToken cancellationToken = default)
         {
-            if (tipoentorno == null) throw new ArgumentNullException(nameof(tipoentorno));
+            if (tipoAnimal == null) throw new ArgumentNullException(nameof(tipoAnimal));
 
-            const string sql = @"INSERT INTO [dbo].[TipoEntorno] ([Nombre]) 
+            const string sql = @"INSERT INTO [dbo].[TipoAnimal] ([Nombre]) 
                                 VALUES (@Nombre); 
                                 SELECT CAST(SCOPE_IDENTITY() AS INT);";
             try
@@ -82,7 +82,7 @@ namespace Agraria.Data.Repositories
                 await _conexion.OpenAsync(cancellationToken);
                 using var cmd = _conexion.Conector.CreateCommand();
                 cmd.CommandText = sql;
-                cmd.Parameters.AddWithValue("@Nombre", tipoentorno.Nombre ?? string.Empty);
+                cmd.Parameters.AddWithValue("@Nombre", tipoAnimal.Nombre ?? string.Empty);
 
                 var result = await cmd.ExecuteScalarAsync(cancellationToken);
                 return Convert.ToInt32(result);
@@ -93,18 +93,18 @@ namespace Agraria.Data.Repositories
             }
         }
 
-        public async Task<bool> UpdateAsync(TipoEntorno tipoentorno, CancellationToken cancellationToken = default)
+        public async Task<bool> UpdateAsync(TipoAnimal tipoAnimal, CancellationToken cancellationToken = default)
         {
-            if (tipoentorno == null) throw new ArgumentNullException(nameof(tipoentorno));
+            if (tipoAnimal == null) throw new ArgumentNullException(nameof(tipoAnimal));
 
-            const string sql = "UPDATE [dbo].[TipoEntorno] SET [Nombre] = @Nombre WHERE [IdTipoEntorno] = @id";
+            const string sql = "UPDATE [dbo].[TipoAnimal] SET [Nombre] = @Nombre WHERE [IdTipo] = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
                 using var cmd = _conexion.Conector.CreateCommand();
                 cmd.CommandText = sql;
-                cmd.Parameters.AddWithValue("@Nombre", tipoentorno.Nombre ?? string.Empty);
-                cmd.Parameters.AddWithValue("@id", tipoentorno.IdTipoEntorno);
+                cmd.Parameters.AddWithValue("@Nombre", tipoAnimal.Nombre ?? string.Empty);
+                cmd.Parameters.AddWithValue("@id", tipoAnimal.IdTipo);
 
                 var rows = await cmd.ExecuteNonQueryAsync(cancellationToken);
                 return rows > 0;
@@ -117,7 +117,7 @@ namespace Agraria.Data.Repositories
 
         public async Task<bool> DeleteAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "DELETE FROM [dbo].[TipoEntorno] WHERE [IdTipoEntorno] = @id";
+            const string sql = "DELETE FROM [dbo].[TipoAnimal] WHERE [IdTipo] = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);

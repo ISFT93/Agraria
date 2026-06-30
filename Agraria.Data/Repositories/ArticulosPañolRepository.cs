@@ -20,7 +20,7 @@ namespace Agraria.Data.Repositories
         public async Task<IEnumerable<ArticulosPañol>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var lista = new List<ArticulosPañol>();
-            const string sql = "SELECT [IdArtPañol],[NombreProducto],[Cantidad],[IdUnidad],[FechaIngreso],[IdEntorno],[Responsable],[Estado] FROM [dbo].[ArticulosPañol]\r\n";
+            const string sql = "SELECT [IdArtPañol],[NombreProducto],[Cantidad],[IdUnidad],[FechaIngreso],[IdEntorno],[Responsable],[Estado] FROM [dbo].[ArticulosPañol]";
 
             try
             {
@@ -53,7 +53,8 @@ namespace Agraria.Data.Repositories
 
         public async Task<ArticulosPañol?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
         {
-            const string sql = "SELECT IdArtPañol, NombreProducto FROM ArticulosPañol WHERE IdArtPañol = @id";
+            // Corregido: Ahora se seleccionan todos los campos necesarios para mapear el objeto completo
+            const string sql = "SELECT [IdArtPañol],[NombreProducto],[Cantidad],[IdUnidad],[FechaIngreso],[IdEntorno],[Responsable],[Estado] FROM [dbo].[ArticulosPañol] WHERE IdArtPañol = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -86,7 +87,13 @@ namespace Agraria.Data.Repositories
         public async Task<int> CreateAsync(ArticulosPañol articulosPañol, CancellationToken cancellationToken = default)
         {
             if (articulosPañol == null) throw new ArgumentNullException(nameof(articulosPañol));
-            const string sql = "INSERT INTO [dbo].[ArticulosPañol] ([NombreProducto],[Cantidad],[IdUnidad],[FechaIngreso],[IdEntorno],[Responsable],[Estado]) VALUES(<NombreProducto, varchar(100),>,<Cantidad, int,>,<IdUnidad, int,>,<FechaIngreso, date,>,<IdEntorno, int,>,<Responsable, varchar(100),>,<Estado, bit,>)\r\n; SELECT CAST(SCOPE_IDENTITY() AS INT);";
+
+            // Corregido: Se reemplazaron las marcas de SSMS por parámetros SQL reales
+            const string sql = @"INSERT INTO [dbo].[ArticulosPañol] 
+                                ([NombreProducto],[Cantidad],[IdUnidad],[FechaIngreso],[IdEntorno],[Responsable],[Estado]) 
+                                VALUES 
+                                (@NombreProducto, @Cantidad, @IdUnidad, @FechaIngreso, @IdEntorno, @Responsable, @Estado); 
+                                SELECT CAST(SCOPE_IDENTITY() AS INT);";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -112,7 +119,17 @@ namespace Agraria.Data.Repositories
         public async Task<bool> UpdateAsync(ArticulosPañol articulosPañol, CancellationToken cancellationToken = default)
         {
             if (articulosPañol == null) throw new ArgumentNullException(nameof(articulosPañol));
-            const string sql = "UPDATE [dbo].[ArticulosPañol]  SET [NombreProducto] = <NombreProducto, varchar(100),> ,[Cantidad] = <Cantidad, int,>,[IdUnidad] = <IdUnidad, int,>,[FechaIngreso] = <FechaIngreso, date,>,[IdEntorno] = <IdEntorno, int,>,[Responsable] = <Responsable, varchar(100),>,[Estado] = <Estado, bit,> WHERE IdArtPañol = @id";
+
+            // Corregido: Se reemplazaron las marcas de SSMS por parámetros SQL reales
+            const string sql = @"UPDATE [dbo].[ArticulosPañol] SET 
+                                [NombreProducto] = @NombreProducto, 
+                                [Cantidad] = @Cantidad, 
+                                [IdUnidad] = @IdUnidad, 
+                                [FechaIngreso] = @FechaIngreso, 
+                                [IdEntorno] = @IdEntorno, 
+                                [Responsable] = @Responsable, 
+                                [Estado] = @Estado 
+                                WHERE IdArtPañol = @id";
             try
             {
                 await _conexion.OpenAsync(cancellationToken);
@@ -125,6 +142,10 @@ namespace Agraria.Data.Repositories
                 cmd.Parameters.AddWithValue("@IdEntorno", articulosPañol.IdEntorno);
                 cmd.Parameters.AddWithValue("@Responsable", articulosPañol.Responsable ?? string.Empty);
                 cmd.Parameters.AddWithValue("@Estado", articulosPañol.Estado);
+
+                // Corregido: Se añadió el parámetro identificador que faltaba para la cláusula WHERE
+                cmd.Parameters.AddWithValue("@id", articulosPañol.IdArtPañol);
+
                 var rows = await cmd.ExecuteNonQueryAsync(cancellationToken);
                 return rows > 0;
             }
