@@ -1,6 +1,7 @@
 using Agraria.Application;
 using Agraria.Data;
 using Agraria.Data.Repositories;
+using Agraria.Data.Repositories.Interfaces;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Text;
@@ -16,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddTransient<Agraria.Data.Conexion>();
 builder.Services.AddScoped<Agraria.Data.Repositories.ILocalidadRepository, Agraria.Data.Repositories.LocalidadRepository>();
 builder.Services.AddScoped<ILocalidadService, LocalidadService>();
+builder.Services.AddScoped<ICarneRepository, CarneRepository>(); 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {

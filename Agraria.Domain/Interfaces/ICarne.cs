@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Agraria.Domain.Interfaces;
 
-namespace Agraria.Domain.Models
+namespace Agraria.Domain.Interfaces
 {
-    // Matias Omar Molina
-    public class Carne : ICarne
+    public interface ICarne
     {
         public int IdCarne { get; set; }
         public string Nombre { get; set; }
