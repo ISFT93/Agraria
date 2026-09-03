@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Agraria.Domain.Interfaces;
+using Agraria.Domain.Models;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Agraria.Domain.Models;
 
 namespace Agraria.Data.Repositories
 {

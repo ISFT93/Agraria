@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Agraria.Domain.Interfaces;
 using Agraria.Domain.Models;
+
 
 namespace Agraria.Application
 {
-    public interface ILocalidadService
+    public interface IProduccionVegetalService
     {
-        Task<List<Localidad>> GetLocalidades(CancellationToken cancellationToken = default);
+        Task<List<ProduccionVegetal>> GetProduccionVegetal(CancellationToken cancellationToken = default);
+
     }
 }
-

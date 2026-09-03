@@ -6,9 +6,8 @@ using Agraria.Domain.Models;
 
 namespace Agraria.Application
 {
-    public interface ILocalidadService
+    public interface ITipoEntornoService
     {
-        Task<List<Localidad>> GetLocalidades(CancellationToken cancellationToken = default);
+        Task<List<TipoEntorno>> GetTipoEntorno(CancellationToken cancellationToken = default);
     }
 }
-
