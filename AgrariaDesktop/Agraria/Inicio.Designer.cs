@@ -42,8 +42,6 @@
             panelDesktopPane = new Panel();
             btnIniciar = new Button();
             btnCerrarSesion = new Button();
-            lblFecha = new Label();
-            lblHorario = new Label();
             panelMenu = new Panel();
             btnPañol = new Button();
             btnVenta = new Button();
@@ -79,8 +77,9 @@
             pbCerrarPrograma.Dock = DockStyle.Top;
             pbCerrarPrograma.ForeColor = Color.FromArgb(56, 124, 31);
             pbCerrarPrograma.Location = new Point(0, 0);
+            pbCerrarPrograma.Margin = new Padding(4, 5, 4, 5);
             pbCerrarPrograma.Name = "pbCerrarPrograma";
-            pbCerrarPrograma.Size = new Size(1920, 57);
+            pbCerrarPrograma.Size = new Size(2586, 95);
             pbCerrarPrograma.TabIndex = 2;
             pbCerrarPrograma.MouseDown += panelSuperior_MouseDown;
             // 
@@ -91,9 +90,10 @@
             lblUrgencia.BackColor = Color.Transparent;
             lblUrgencia.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUrgencia.ForeColor = Color.Red;
-            lblUrgencia.Location = new Point(1422, 14);
+            lblUrgencia.Location = new Point(2031, 23);
+            lblUrgencia.Margin = new Padding(4, 0, 4, 0);
             lblUrgencia.Name = "lblUrgencia";
-            lblUrgencia.Size = new Size(261, 29);
+            lblUrgencia.Size = new Size(376, 40);
             lblUrgencia.TabIndex = 17;
             lblUrgencia.Text = "Mensaje de Urgencia";
             lblUrgencia.Visible = false;
@@ -101,9 +101,10 @@
             // pbCerrarAgraria
             // 
             pbCerrarAgraria.Image = Properties.Resources.x;
-            pbCerrarAgraria.Location = new Point(1890, 3);
+            pbCerrarAgraria.Location = new Point(2700, 5);
+            pbCerrarAgraria.Margin = new Padding(4, 5, 4, 5);
             pbCerrarAgraria.Name = "pbCerrarAgraria";
-            pbCerrarAgraria.Size = new Size(30, 25);
+            pbCerrarAgraria.Size = new Size(43, 42);
             pbCerrarAgraria.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCerrarAgraria.TabIndex = 16;
             pbCerrarAgraria.TabStop = false;
@@ -114,9 +115,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Cursor = Cursors.Hand;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 7);
+            pictureBox1.Location = new Point(17, 12);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(66, 44);
+            pictureBox1.Size = new Size(94, 73);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
@@ -126,9 +128,10 @@
             pbAlerta.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             pbAlerta.BackColor = Color.Transparent;
             pbAlerta.Cursor = Cursors.Hand;
-            pbAlerta.Location = new Point(2039, 3);
+            pbAlerta.Location = new Point(2835, 5);
+            pbAlerta.Margin = new Padding(4, 5, 4, 5);
             pbAlerta.Name = "pbAlerta";
-            pbAlerta.Size = new Size(72, 7);
+            pbAlerta.Size = new Size(103, 12);
             pbAlerta.SizeMode = PictureBoxSizeMode.StretchImage;
             pbAlerta.TabIndex = 14;
             pbAlerta.TabStop = false;
@@ -140,9 +143,10 @@
             lblTitle.BackColor = Color.Transparent;
             lblTitle.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTitle.ForeColor = Color.Black;
-            lblTitle.Location = new Point(815, 14);
+            lblTitle.Location = new Point(1086, 23);
+            lblTitle.Margin = new Padding(4, 0, 4, 0);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(385, 29);
+            lblTitle.Size = new Size(563, 40);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Escuela Secundaria Agraria N°1";
             // 
@@ -151,9 +155,10 @@
             pbUrgencias.BackColor = Color.Transparent;
             pbUrgencias.Cursor = Cursors.Hand;
             pbUrgencias.Image = Properties.Resources.alerta;
-            pbUrgencias.Location = new Point(1364, 7);
+            pbUrgencias.Location = new Point(1949, 12);
+            pbUrgencias.Margin = new Padding(4, 5, 4, 5);
             pbUrgencias.Name = "pbUrgencias";
-            pbUrgencias.Size = new Size(52, 44);
+            pbUrgencias.Size = new Size(74, 73);
             pbUrgencias.SizeMode = PictureBoxSizeMode.StretchImage;
             pbUrgencias.TabIndex = 13;
             pbUrgencias.TabStop = false;
@@ -167,9 +172,10 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsuario.ForeColor = Color.Black;
-            lblUsuario.Location = new Point(171, 14);
+            lblUsuario.Location = new Point(244, 23);
+            lblUsuario.Margin = new Padding(4, 0, 4, 0);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(103, 29);
+            lblUsuario.Size = new Size(148, 40);
             lblUsuario.TabIndex = 5;
             lblUsuario.Text = "Usuario";
             lblUsuario.Visible = false;
@@ -182,9 +188,10 @@
             btnClose.BackgroundImageLayout = ImageLayout.Stretch;
             btnClose.FlatAppearance.BorderSize = 0;
             btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.Location = new Point(3236, 3);
+            btnClose.Location = new Point(4466, 5);
+            btnClose.Margin = new Padding(4, 5, 4, 5);
             btnClose.Name = "btnClose";
-            btnClose.Size = new Size(21, 23);
+            btnClose.Size = new Size(30, 38);
             btnClose.TabIndex = 4;
             btnClose.UseVisualStyleBackColor = false;
             // 
@@ -195,9 +202,10 @@
             bntMinimize.BackgroundImageLayout = ImageLayout.Stretch;
             bntMinimize.FlatAppearance.BorderSize = 0;
             bntMinimize.FlatStyle = FlatStyle.Flat;
-            bntMinimize.Location = new Point(3206, 3);
+            bntMinimize.Location = new Point(4423, 5);
+            bntMinimize.Margin = new Padding(4, 5, 4, 5);
             bntMinimize.Name = "bntMinimize";
-            bntMinimize.Size = new Size(24, 23);
+            bntMinimize.Size = new Size(34, 38);
             bntMinimize.TabIndex = 2;
             bntMinimize.UseVisualStyleBackColor = false;
             // 
@@ -205,12 +213,11 @@
             // 
             panelDesktopPane.Controls.Add(btnIniciar);
             panelDesktopPane.Controls.Add(btnCerrarSesion);
-            panelDesktopPane.Controls.Add(lblFecha);
-            panelDesktopPane.Controls.Add(lblHorario);
             panelDesktopPane.Dock = DockStyle.Top;
-            panelDesktopPane.Location = new Point(0, 57);
+            panelDesktopPane.Location = new Point(0, 95);
+            panelDesktopPane.Margin = new Padding(4, 5, 4, 5);
             panelDesktopPane.Name = "panelDesktopPane";
-            panelDesktopPane.Size = new Size(1920, 60);
+            panelDesktopPane.Size = new Size(2586, 100);
             panelDesktopPane.TabIndex = 5;
             // 
             // btnIniciar
@@ -226,9 +233,10 @@
             btnIniciar.Image = Properties.Resources.iniciar_sesion1;
             btnIniciar.ImageAlign = ContentAlignment.MiddleLeft;
             btnIniciar.Location = new Point(0, 0);
+            btnIniciar.Margin = new Padding(4, 5, 4, 5);
             btnIniciar.Name = "btnIniciar";
-            btnIniciar.Padding = new Padding(12, 0, 0, 0);
-            btnIniciar.Size = new Size(200, 60);
+            btnIniciar.Padding = new Padding(17, 0, 0, 0);
+            btnIniciar.Size = new Size(286, 100);
             btnIniciar.TabIndex = 21;
             btnIniciar.Tag = "Iniciar";
             btnIniciar.Text = "Iniciar Sesión";
@@ -248,35 +256,16 @@
             btnCerrarSesion.ForeColor = Color.Black;
             btnCerrarSesion.Image = Properties.Resources.cerrar;
             btnCerrarSesion.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarSesion.Location = new Point(1720, 0);
+            btnCerrarSesion.Location = new Point(2300, 0);
+            btnCerrarSesion.Margin = new Padding(4, 5, 4, 5);
             btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Padding = new Padding(12, 0, 0, 0);
-            btnCerrarSesion.Size = new Size(200, 60);
+            btnCerrarSesion.Padding = new Padding(17, 0, 0, 0);
+            btnCerrarSesion.Size = new Size(286, 100);
             btnCerrarSesion.TabIndex = 20;
             btnCerrarSesion.Tag = "Cerrar Sesión";
             btnCerrarSesion.Text = "Cerrar";
             btnCerrarSesion.UseVisualStyleBackColor = false;
             btnCerrarSesion.Click += btnCerrarSesion_Click;
-            // 
-            // lblFecha
-            // 
-            lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFecha.Location = new Point(1140, 16);
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(77, 25);
-            lblFecha.TabIndex = 1;
-            lblFecha.Text = "Fecha";
-            // 
-            // lblHorario
-            // 
-            lblHorario.AutoSize = true;
-            lblHorario.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHorario.Location = new Point(697, 16);
-            lblHorario.Name = "lblHorario";
-            lblHorario.Size = new Size(62, 25);
-            lblHorario.TabIndex = 0;
-            lblHorario.Text = "Hora";
             // 
             // panelMenu
             // 
@@ -292,9 +281,10 @@
             panelMenu.Controls.Add(btnUsuarioAlta);
             panelMenu.Dock = DockStyle.Top;
             panelMenu.ForeColor = Color.FromArgb(56, 124, 31);
-            panelMenu.Location = new Point(0, 117);
+            panelMenu.Location = new Point(0, 195);
+            panelMenu.Margin = new Padding(4, 5, 4, 5);
             panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(1920, 60);
+            panelMenu.Size = new Size(2586, 100);
             panelMenu.TabIndex = 7;
             // 
             // btnPañol
@@ -309,10 +299,11 @@
             btnPañol.ForeColor = Color.Black;
             btnPañol.Image = (Image)resources.GetObject("btnPañol.Image");
             btnPañol.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPañol.Location = new Point(1714, 0);
+            btnPañol.Location = new Point(2449, 0);
+            btnPañol.Margin = new Padding(4, 5, 4, 5);
             btnPañol.Name = "btnPañol";
-            btnPañol.Padding = new Padding(12, 0, 0, 0);
-            btnPañol.Size = new Size(206, 60);
+            btnPañol.Padding = new Padding(17, 0, 0, 0);
+            btnPañol.Size = new Size(294, 100);
             btnPañol.TabIndex = 19;
             btnPañol.Tag = "Editar ";
             btnPañol.Text = "Pañol";
@@ -331,10 +322,11 @@
             btnVenta.ForeColor = Color.Black;
             btnVenta.Image = Properties.Resources.metodo_de_pago1;
             btnVenta.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVenta.Location = new Point(1502, 0);
+            btnVenta.Location = new Point(2146, 0);
+            btnVenta.Margin = new Padding(4, 5, 4, 5);
             btnVenta.Name = "btnVenta";
-            btnVenta.Padding = new Padding(12, 0, 0, 0);
-            btnVenta.Size = new Size(212, 60);
+            btnVenta.Padding = new Padding(17, 0, 0, 0);
+            btnVenta.Size = new Size(303, 100);
             btnVenta.TabIndex = 18;
             btnVenta.Tag = "Editar ";
             btnVenta.Text = "Venta";
@@ -353,10 +345,11 @@
             btnInventario.ForeColor = Color.Black;
             btnInventario.Image = Properties.Resources.inventario;
             btnInventario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInventario.Location = new Point(1295, 0);
+            btnInventario.Location = new Point(1850, 0);
+            btnInventario.Margin = new Padding(4, 5, 4, 5);
             btnInventario.Name = "btnInventario";
-            btnInventario.Padding = new Padding(12, 0, 0, 0);
-            btnInventario.Size = new Size(207, 60);
+            btnInventario.Padding = new Padding(17, 0, 0, 0);
+            btnInventario.Size = new Size(296, 100);
             btnInventario.TabIndex = 16;
             btnInventario.Tag = "Bomberos";
             btnInventario.Text = "Inventario";
@@ -375,10 +368,11 @@
             btnIndustria.ForeColor = Color.Black;
             btnIndustria.Image = Properties.Resources.fabrica;
             btnIndustria.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIndustria.Location = new Point(1098, 0);
+            btnIndustria.Location = new Point(1569, 0);
+            btnIndustria.Margin = new Padding(4, 5, 4, 5);
             btnIndustria.Name = "btnIndustria";
-            btnIndustria.Padding = new Padding(12, 0, 0, 0);
-            btnIndustria.Size = new Size(197, 60);
+            btnIndustria.Padding = new Padding(17, 0, 0, 0);
+            btnIndustria.Size = new Size(281, 100);
             btnIndustria.TabIndex = 15;
             btnIndustria.Tag = "Emergencia";
             btnIndustria.Text = "Industria";
@@ -398,10 +392,11 @@
             btnProduccionAnimal.ForeColor = Color.Black;
             btnProduccionAnimal.Image = Properties.Resources.ganado;
             btnProduccionAnimal.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProduccionAnimal.Location = new Point(868, 0);
+            btnProduccionAnimal.Location = new Point(1240, 0);
+            btnProduccionAnimal.Margin = new Padding(4, 5, 4, 5);
             btnProduccionAnimal.Name = "btnProduccionAnimal";
-            btnProduccionAnimal.Padding = new Padding(12, 0, 0, 0);
-            btnProduccionAnimal.Size = new Size(230, 60);
+            btnProduccionAnimal.Padding = new Padding(17, 0, 0, 0);
+            btnProduccionAnimal.Size = new Size(329, 100);
             btnProduccionAnimal.TabIndex = 14;
             btnProduccionAnimal.Tag = "Alta Usuario";
             btnProduccionAnimal.Text = "Producción  Animal";
@@ -421,10 +416,11 @@
             btnProduccionVegetal.ForeColor = Color.Black;
             btnProduccionVegetal.Image = Properties.Resources.agricola;
             btnProduccionVegetal.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProduccionVegetal.Location = new Point(643, 0);
+            btnProduccionVegetal.Location = new Point(919, 0);
+            btnProduccionVegetal.Margin = new Padding(4, 5, 4, 5);
             btnProduccionVegetal.Name = "btnProduccionVegetal";
-            btnProduccionVegetal.Padding = new Padding(12, 0, 0, 0);
-            btnProduccionVegetal.Size = new Size(225, 60);
+            btnProduccionVegetal.Padding = new Padding(17, 0, 0, 0);
+            btnProduccionVegetal.Size = new Size(321, 100);
             btnProduccionVegetal.TabIndex = 12;
             btnProduccionVegetal.Tag = "Administración";
             btnProduccionVegetal.Text = "Producción  Vegetal";
@@ -444,10 +440,11 @@
             btnAdministracion.ForeColor = Color.Black;
             btnAdministracion.Image = Properties.Resources.investigacion1;
             btnAdministracion.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdministracion.Location = new Point(433, 0);
+            btnAdministracion.Location = new Point(619, 0);
+            btnAdministracion.Margin = new Padding(4, 5, 4, 5);
             btnAdministracion.Name = "btnAdministracion";
-            btnAdministracion.Padding = new Padding(12, 0, 0, 0);
-            btnAdministracion.Size = new Size(210, 60);
+            btnAdministracion.Padding = new Padding(17, 0, 0, 0);
+            btnAdministracion.Size = new Size(300, 100);
             btnAdministracion.TabIndex = 10;
             btnAdministracion.Tag = "";
             btnAdministracion.Text = "Administracion";
@@ -467,10 +464,11 @@
             btnEntornoFormativo.ForeColor = Color.Black;
             btnEntornoFormativo.Image = Properties.Resources.Areas1;
             btnEntornoFormativo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEntornoFormativo.Location = new Point(200, 0);
+            btnEntornoFormativo.Location = new Point(286, 0);
+            btnEntornoFormativo.Margin = new Padding(4, 5, 4, 5);
             btnEntornoFormativo.Name = "btnEntornoFormativo";
-            btnEntornoFormativo.Padding = new Padding(12, 0, 0, 0);
-            btnEntornoFormativo.Size = new Size(233, 60);
+            btnEntornoFormativo.Padding = new Padding(17, 0, 0, 0);
+            btnEntornoFormativo.Size = new Size(333, 100);
             btnEntornoFormativo.TabIndex = 9;
             btnEntornoFormativo.Tag = "Areas";
             btnEntornoFormativo.Text = "Entornos Formativos";
@@ -491,9 +489,10 @@
             btnUsuarioAlta.Image = Properties.Resources.administrador;
             btnUsuarioAlta.ImageAlign = ContentAlignment.MiddleLeft;
             btnUsuarioAlta.Location = new Point(0, 0);
+            btnUsuarioAlta.Margin = new Padding(4, 5, 4, 5);
             btnUsuarioAlta.Name = "btnUsuarioAlta";
-            btnUsuarioAlta.Padding = new Padding(12, 0, 0, 0);
-            btnUsuarioAlta.Size = new Size(200, 60);
+            btnUsuarioAlta.Padding = new Padding(17, 0, 0, 0);
+            btnUsuarioAlta.Size = new Size(286, 100);
             btnUsuarioAlta.TabIndex = 2;
             btnUsuarioAlta.Tag = "";
             btnUsuarioAlta.Text = "Alta de Usuario";
@@ -503,16 +502,17 @@
             // 
             // Inicio
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1920, 1078);
+            ClientSize = new Size(2586, 1626);
             Controls.Add(panelMenu);
             Controls.Add(panelDesktopPane);
             Controls.Add(pbCerrarPrograma);
             FormBorderStyle = FormBorderStyle.None;
             IsMdiContainer = true;
-            MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(1918, 1030);
+            Margin = new Padding(4, 5, 4, 5);
+            MaximumSize = new Size(2743, 1800);
+            MinimumSize = new Size(2558, 1598);
             Name = "Inicio";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
@@ -525,7 +525,6 @@
             ((System.ComponentModel.ISupportInitialize)pbAlerta).EndInit();
             ((System.ComponentModel.ISupportInitialize)pbUrgencias).EndInit();
             panelDesktopPane.ResumeLayout(false);
-            panelDesktopPane.PerformLayout();
             panelMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -542,8 +541,6 @@
         private Button btnIniciar;
         private Button btnCerrarSesion;
         private PictureBox pbUrgencias;
-        private Label lblFecha;
-        private Label lblHorario;
         private Panel panelMenu;
         private Button btnVenta;
         private Button btnInventario;

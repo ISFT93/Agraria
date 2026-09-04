@@ -46,11 +46,6 @@ namespace Agraria
         {
             InitializeComponent();
             random = new Random();
-            // Crear e inicializar el Timer para el horario
-            timer = new System.Windows.Forms.Timer();
-            timer.Interval = 1000; // 1 segundo
-            timer.Tick += Timer_Tick;
-            timer.Start();
             usuarioLogeado = usuario;
             esInvitado = false;
 
@@ -151,15 +146,6 @@ namespace Agraria
             {
                 lblUrgencia.Visible = true;
             }
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // Actualizar hora
-            lblHorario.Text = DateTime.Now.ToString("HH:mm:ss");
-
-            // Actualizar fecha
-            lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
