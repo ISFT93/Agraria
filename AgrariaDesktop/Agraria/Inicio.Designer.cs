@@ -28,534 +28,191 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
-            pbCerrarPrograma = new Panel();
-            lblUrgencia = new Label();
-            pbCerrarAgraria = new PictureBox();
-            pictureBox1 = new PictureBox();
-            pbAlerta = new PictureBox();
-            lblTitle = new Label();
-            pbUrgencias = new PictureBox();
-            lblUsuario = new Label();
-            btnClose = new Button();
-            bntMinimize = new Button();
-            panelDesktopPane = new Panel();
-            btnIniciar = new Button();
-            btnCerrarSesion = new Button();
-            lblFecha = new Label();
-            lblHorario = new Label();
-            panelMenu = new Panel();
-            btnPañol = new Button();
-            btnVenta = new Button();
-            btnInventario = new Button();
-            btnIndustria = new Button();
-            btnProduccionAnimal = new Button();
-            btnProduccionVegetal = new Button();
-            btnAdministracion = new Button();
-            btnEntornoFormativo = new Button();
-            btnUsuarioAlta = new Button();
-            pbCerrarPrograma.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbCerrarAgraria).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbAlerta).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pbUrgencias).BeginInit();
-            panelDesktopPane.SuspendLayout();
-            panelMenu.SuspendLayout();
+            menuStrip1 = new MenuStrip();
+            archivoToolStripMenuItem = new ToolStripMenuItem();
+            iniciarSesionToolStripMenuItem = new ToolStripMenuItem();
+            cerrarSesionToolStripMenuItem = new ToolStripMenuItem();
+            editarToolStripMenuItem = new ToolStripMenuItem();
+            altaDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
+            administracionToolStripMenuItem = new ToolStripMenuItem();
+            entornosFormativosToolStripMenuItem = new ToolStripMenuItem();
+            verToolStripMenuItem = new ToolStripMenuItem();
+            produccionVegetalToolStripMenuItem = new ToolStripMenuItem();
+            produccionAnimalToolStripMenuItem = new ToolStripMenuItem();
+            industriaToolStripMenuItem = new ToolStripMenuItem();
+            pañolToolStripMenuItem = new ToolStripMenuItem();
+            herramientasToolStripMenuItem = new ToolStripMenuItem();
+            inventarioToolStripMenuItem = new ToolStripMenuItem();
+            ventasToolStripMenuItem = new ToolStripMenuItem();
+            ayudaToolStripMenuItem = new ToolStripMenuItem();
+            manualDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // pbCerrarPrograma
+            // menuStrip1
             // 
-            pbCerrarPrograma.BackColor = Color.FromArgb(56, 124, 31);
-            pbCerrarPrograma.BackgroundImage = (Image)resources.GetObject("pbCerrarPrograma.BackgroundImage");
-            pbCerrarPrograma.Controls.Add(lblUrgencia);
-            pbCerrarPrograma.Controls.Add(pbCerrarAgraria);
-            pbCerrarPrograma.Controls.Add(pictureBox1);
-            pbCerrarPrograma.Controls.Add(pbAlerta);
-            pbCerrarPrograma.Controls.Add(lblTitle);
-            pbCerrarPrograma.Controls.Add(pbUrgencias);
-            pbCerrarPrograma.Controls.Add(lblUsuario);
-            pbCerrarPrograma.Controls.Add(btnClose);
-            pbCerrarPrograma.Controls.Add(bntMinimize);
-            pbCerrarPrograma.Dock = DockStyle.Top;
-            pbCerrarPrograma.ForeColor = Color.FromArgb(56, 124, 31);
-            pbCerrarPrograma.Location = new Point(0, 0);
-            pbCerrarPrograma.Name = "pbCerrarPrograma";
-            pbCerrarPrograma.Size = new Size(1920, 57);
-            pbCerrarPrograma.TabIndex = 2;
-            pbCerrarPrograma.MouseDown += panelSuperior_MouseDown;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, editarToolStripMenuItem, verToolStripMenuItem, herramientasToolStripMenuItem, ayudaToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(1904, 24);
+            menuStrip1.TabIndex = 9;
+            menuStrip1.Text = "menuStrip1";
             // 
-            // lblUrgencia
+            // archivoToolStripMenuItem
             // 
-            lblUrgencia.Anchor = AnchorStyles.Left;
-            lblUrgencia.AutoSize = true;
-            lblUrgencia.BackColor = Color.Transparent;
-            lblUrgencia.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUrgencia.ForeColor = Color.Red;
-            lblUrgencia.Location = new Point(1422, 14);
-            lblUrgencia.Name = "lblUrgencia";
-            lblUrgencia.Size = new Size(261, 29);
-            lblUrgencia.TabIndex = 17;
-            lblUrgencia.Text = "Mensaje de Urgencia";
-            lblUrgencia.Visible = false;
+            archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iniciarSesionToolStripMenuItem, cerrarSesionToolStripMenuItem });
+            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            archivoToolStripMenuItem.Size = new Size(60, 20);
+            archivoToolStripMenuItem.Text = "Archivo";
             // 
-            // pbCerrarAgraria
+            // iniciarSesionToolStripMenuItem
             // 
-            pbCerrarAgraria.Image = Properties.Resources.x;
-            pbCerrarAgraria.Location = new Point(1890, 3);
-            pbCerrarAgraria.Name = "pbCerrarAgraria";
-            pbCerrarAgraria.Size = new Size(30, 25);
-            pbCerrarAgraria.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbCerrarAgraria.TabIndex = 16;
-            pbCerrarAgraria.TabStop = false;
-            pbCerrarAgraria.Click += pbCerrarAgraria_Click;
+            iniciarSesionToolStripMenuItem.Name = "iniciarSesionToolStripMenuItem";
+            iniciarSesionToolStripMenuItem.Size = new Size(143, 22);
+            iniciarSesionToolStripMenuItem.Text = "Iniciar Sesion";
+            iniciarSesionToolStripMenuItem.Click += btnIniciar_Click;
             // 
-            // pictureBox1
+            // cerrarSesionToolStripMenuItem
             // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Cursor = Cursors.Hand;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(12, 7);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(66, 44);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 15;
-            pictureBox1.TabStop = false;
+            cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
+            cerrarSesionToolStripMenuItem.Size = new Size(143, 22);
+            cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
+            cerrarSesionToolStripMenuItem.Click += btnCerrarSesion_Click;
             // 
-            // pbAlerta
+            // editarToolStripMenuItem
             // 
-            pbAlerta.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            pbAlerta.BackColor = Color.Transparent;
-            pbAlerta.Cursor = Cursors.Hand;
-            pbAlerta.Location = new Point(2039, 3);
-            pbAlerta.Name = "pbAlerta";
-            pbAlerta.Size = new Size(72, 7);
-            pbAlerta.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbAlerta.TabIndex = 14;
-            pbAlerta.TabStop = false;
+            editarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { altaDeUsuarioToolStripMenuItem, administracionToolStripMenuItem, entornosFormativosToolStripMenuItem });
+            editarToolStripMenuItem.Name = "editarToolStripMenuItem";
+            editarToolStripMenuItem.Size = new Size(49, 20);
+            editarToolStripMenuItem.Text = "Editar";
             // 
-            // lblTitle
+            // altaDeUsuarioToolStripMenuItem
             // 
-            lblTitle.Anchor = AnchorStyles.None;
-            lblTitle.AutoSize = true;
-            lblTitle.BackColor = Color.Transparent;
-            lblTitle.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitle.ForeColor = Color.Black;
-            lblTitle.Location = new Point(815, 14);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(385, 29);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "Escuela Secundaria Agraria N°1";
+            altaDeUsuarioToolStripMenuItem.Name = "altaDeUsuarioToolStripMenuItem";
+            altaDeUsuarioToolStripMenuItem.Size = new Size(183, 22);
+            altaDeUsuarioToolStripMenuItem.Text = "Alta de Usuario";
+            altaDeUsuarioToolStripMenuItem.Click += btnUsuarioAlta_Click;
             // 
-            // pbUrgencias
+            // administracionToolStripMenuItem
             // 
-            pbUrgencias.BackColor = Color.Transparent;
-            pbUrgencias.Cursor = Cursors.Hand;
-            pbUrgencias.Image = Properties.Resources.alerta;
-            pbUrgencias.Location = new Point(1364, 7);
-            pbUrgencias.Name = "pbUrgencias";
-            pbUrgencias.Size = new Size(52, 44);
-            pbUrgencias.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbUrgencias.TabIndex = 13;
-            pbUrgencias.TabStop = false;
-            pbUrgencias.Visible = false;
-            pbUrgencias.Click += pbUrgencias_Click;
+            administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
+            administracionToolStripMenuItem.Size = new Size(183, 22);
+            administracionToolStripMenuItem.Text = "Administracion";
+            administracionToolStripMenuItem.Click += btnAdministracion_Click;
             // 
-            // lblUsuario
+            // entornosFormativosToolStripMenuItem
             // 
-            lblUsuario.Anchor = AnchorStyles.Left;
-            lblUsuario.AutoSize = true;
-            lblUsuario.BackColor = Color.Transparent;
-            lblUsuario.Font = new Font("Microsoft Sans Serif", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsuario.ForeColor = Color.Black;
-            lblUsuario.Location = new Point(171, 14);
-            lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(103, 29);
-            lblUsuario.TabIndex = 5;
-            lblUsuario.Text = "Usuario";
-            lblUsuario.Visible = false;
-            lblUsuario.Click += lblUsuario_Click;
+            entornosFormativosToolStripMenuItem.Name = "entornosFormativosToolStripMenuItem";
+            entornosFormativosToolStripMenuItem.Size = new Size(183, 22);
+            entornosFormativosToolStripMenuItem.Text = "Entornos Formativos";
+            entornosFormativosToolStripMenuItem.Click += btnEntornoFormativo_Click;
             // 
-            // btnClose
+            // verToolStripMenuItem
             // 
-            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnClose.BackColor = Color.Transparent;
-            btnClose.BackgroundImageLayout = ImageLayout.Stretch;
-            btnClose.FlatAppearance.BorderSize = 0;
-            btnClose.FlatStyle = FlatStyle.Flat;
-            btnClose.Location = new Point(3236, 3);
-            btnClose.Name = "btnClose";
-            btnClose.Size = new Size(21, 23);
-            btnClose.TabIndex = 4;
-            btnClose.UseVisualStyleBackColor = false;
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, pañolToolStripMenuItem });
+            verToolStripMenuItem.Name = "verToolStripMenuItem";
+            verToolStripMenuItem.Size = new Size(35, 20);
+            verToolStripMenuItem.Text = "Ver";
             // 
-            // bntMinimize
+            // produccionVegetalToolStripMenuItem
             // 
-            bntMinimize.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bntMinimize.BackColor = Color.Transparent;
-            bntMinimize.BackgroundImageLayout = ImageLayout.Stretch;
-            bntMinimize.FlatAppearance.BorderSize = 0;
-            bntMinimize.FlatStyle = FlatStyle.Flat;
-            bntMinimize.Location = new Point(3206, 3);
-            bntMinimize.Name = "bntMinimize";
-            bntMinimize.Size = new Size(24, 23);
-            bntMinimize.TabIndex = 2;
-            bntMinimize.UseVisualStyleBackColor = false;
+            produccionVegetalToolStripMenuItem.Name = "produccionVegetalToolStripMenuItem";
+            produccionVegetalToolStripMenuItem.Size = new Size(176, 22);
+            produccionVegetalToolStripMenuItem.Text = "Produccion Vegetal";
+            produccionVegetalToolStripMenuItem.Click += btnProduccionVegetal_Click;
             // 
-            // panelDesktopPane
+            // produccionAnimalToolStripMenuItem
             // 
-            panelDesktopPane.Controls.Add(btnIniciar);
-            panelDesktopPane.Controls.Add(btnCerrarSesion);
-            panelDesktopPane.Controls.Add(lblFecha);
-            panelDesktopPane.Controls.Add(lblHorario);
-            panelDesktopPane.Dock = DockStyle.Top;
-            panelDesktopPane.Location = new Point(0, 57);
-            panelDesktopPane.Name = "panelDesktopPane";
-            panelDesktopPane.Size = new Size(1920, 60);
-            panelDesktopPane.TabIndex = 5;
+            produccionAnimalToolStripMenuItem.Name = "produccionAnimalToolStripMenuItem";
+            produccionAnimalToolStripMenuItem.Size = new Size(176, 22);
+            produccionAnimalToolStripMenuItem.Text = "Produccion Animal";
+            produccionAnimalToolStripMenuItem.Click += btnProduccionAnimal_Click;
             // 
-            // btnIniciar
+            // industriaToolStripMenuItem
             // 
-            btnIniciar.BackColor = Color.FromArgb(137, 195, 32);
-            btnIniciar.BackgroundImage = (Image)resources.GetObject("btnIniciar.BackgroundImage");
-            btnIniciar.Dock = DockStyle.Left;
-            btnIniciar.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnIniciar.FlatAppearance.BorderSize = 4;
-            btnIniciar.FlatStyle = FlatStyle.Flat;
-            btnIniciar.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnIniciar.ForeColor = Color.Black;
-            btnIniciar.Image = Properties.Resources.iniciar_sesion1;
-            btnIniciar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIniciar.Location = new Point(0, 0);
-            btnIniciar.Name = "btnIniciar";
-            btnIniciar.Padding = new Padding(12, 0, 0, 0);
-            btnIniciar.Size = new Size(200, 60);
-            btnIniciar.TabIndex = 21;
-            btnIniciar.Tag = "Iniciar";
-            btnIniciar.Text = "Iniciar Sesión";
-            btnIniciar.TextAlign = ContentAlignment.MiddleRight;
-            btnIniciar.UseVisualStyleBackColor = false;
-            btnIniciar.Click += btnIniciar_Click;
+            industriaToolStripMenuItem.Name = "industriaToolStripMenuItem";
+            industriaToolStripMenuItem.Size = new Size(176, 22);
+            industriaToolStripMenuItem.Text = "Industria";
+            industriaToolStripMenuItem.Click += btnIndustria_Click;
             // 
-            // btnCerrarSesion
+            // pañolToolStripMenuItem
             // 
-            btnCerrarSesion.BackColor = Color.FromArgb(137, 195, 32);
-            btnCerrarSesion.BackgroundImage = (Image)resources.GetObject("btnCerrarSesion.BackgroundImage");
-            btnCerrarSesion.Dock = DockStyle.Right;
-            btnCerrarSesion.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnCerrarSesion.FlatAppearance.BorderSize = 4;
-            btnCerrarSesion.FlatStyle = FlatStyle.Flat;
-            btnCerrarSesion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnCerrarSesion.ForeColor = Color.Black;
-            btnCerrarSesion.Image = Properties.Resources.cerrar;
-            btnCerrarSesion.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCerrarSesion.Location = new Point(1720, 0);
-            btnCerrarSesion.Name = "btnCerrarSesion";
-            btnCerrarSesion.Padding = new Padding(12, 0, 0, 0);
-            btnCerrarSesion.Size = new Size(200, 60);
-            btnCerrarSesion.TabIndex = 20;
-            btnCerrarSesion.Tag = "Cerrar Sesión";
-            btnCerrarSesion.Text = "Cerrar";
-            btnCerrarSesion.UseVisualStyleBackColor = false;
-            btnCerrarSesion.Click += btnCerrarSesion_Click;
+            pañolToolStripMenuItem.Name = "pañolToolStripMenuItem";
+            pañolToolStripMenuItem.Size = new Size(176, 22);
+            pañolToolStripMenuItem.Text = "Pañol";
+            pañolToolStripMenuItem.Click += btnPañol_Click;
             // 
-            // lblFecha
+            // herramientasToolStripMenuItem
             // 
-            lblFecha.AutoSize = true;
-            lblFecha.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFecha.Location = new Point(1140, 16);
-            lblFecha.Name = "lblFecha";
-            lblFecha.Size = new Size(77, 25);
-            lblFecha.TabIndex = 1;
-            lblFecha.Text = "Fecha";
+            herramientasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { inventarioToolStripMenuItem, ventasToolStripMenuItem });
+            herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
+            herramientasToolStripMenuItem.Size = new Size(90, 20);
+            herramientasToolStripMenuItem.Text = "Herramientas";
             // 
-            // lblHorario
+            // inventarioToolStripMenuItem
             // 
-            lblHorario.AutoSize = true;
-            lblHorario.Font = new Font("Microsoft Sans Serif", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHorario.Location = new Point(697, 16);
-            lblHorario.Name = "lblHorario";
-            lblHorario.Size = new Size(62, 25);
-            lblHorario.TabIndex = 0;
-            lblHorario.Text = "Hora";
+            inventarioToolStripMenuItem.Name = "inventarioToolStripMenuItem";
+            inventarioToolStripMenuItem.Size = new Size(180, 22);
+            inventarioToolStripMenuItem.Text = "Inventario";
+            inventarioToolStripMenuItem.Click += btnInventario_Click;
             // 
-            // panelMenu
+            // ventasToolStripMenuItem
             // 
-            panelMenu.BackColor = Color.FromArgb(56, 124, 31);
-            panelMenu.Controls.Add(btnPañol);
-            panelMenu.Controls.Add(btnVenta);
-            panelMenu.Controls.Add(btnInventario);
-            panelMenu.Controls.Add(btnIndustria);
-            panelMenu.Controls.Add(btnProduccionAnimal);
-            panelMenu.Controls.Add(btnProduccionVegetal);
-            panelMenu.Controls.Add(btnAdministracion);
-            panelMenu.Controls.Add(btnEntornoFormativo);
-            panelMenu.Controls.Add(btnUsuarioAlta);
-            panelMenu.Dock = DockStyle.Top;
-            panelMenu.ForeColor = Color.FromArgb(56, 124, 31);
-            panelMenu.Location = new Point(0, 117);
-            panelMenu.Name = "panelMenu";
-            panelMenu.Size = new Size(1920, 60);
-            panelMenu.TabIndex = 7;
+            ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
+            ventasToolStripMenuItem.Size = new Size(180, 22);
+            ventasToolStripMenuItem.Text = "Ventas";
+            ventasToolStripMenuItem.Click += btnVenta_Click;
             // 
-            // btnPañol
+            // ayudaToolStripMenuItem
             // 
-            btnPañol.BackColor = Color.FromArgb(137, 195, 32);
-            btnPañol.BackgroundImage = (Image)resources.GetObject("btnPañol.BackgroundImage");
-            btnPañol.Dock = DockStyle.Left;
-            btnPañol.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnPañol.FlatAppearance.BorderSize = 4;
-            btnPañol.FlatStyle = FlatStyle.Flat;
-            btnPañol.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnPañol.ForeColor = Color.Black;
-            btnPañol.Image = (Image)resources.GetObject("btnPañol.Image");
-            btnPañol.ImageAlign = ContentAlignment.MiddleLeft;
-            btnPañol.Location = new Point(1714, 0);
-            btnPañol.Name = "btnPañol";
-            btnPañol.Padding = new Padding(12, 0, 0, 0);
-            btnPañol.Size = new Size(206, 60);
-            btnPañol.TabIndex = 19;
-            btnPañol.Tag = "Editar ";
-            btnPañol.Text = "Pañol";
-            btnPañol.UseVisualStyleBackColor = false;
-            btnPañol.Click += btnPañol_Click;
+            ayudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { manualDeUsuarioToolStripMenuItem });
+            ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            ayudaToolStripMenuItem.Size = new Size(53, 20);
+            ayudaToolStripMenuItem.Text = "Ayuda";
             // 
-            // btnVenta
+            // manualDeUsuarioToolStripMenuItem
             // 
-            btnVenta.BackColor = Color.FromArgb(137, 195, 32);
-            btnVenta.BackgroundImage = (Image)resources.GetObject("btnVenta.BackgroundImage");
-            btnVenta.Dock = DockStyle.Left;
-            btnVenta.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnVenta.FlatAppearance.BorderSize = 4;
-            btnVenta.FlatStyle = FlatStyle.Flat;
-            btnVenta.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnVenta.ForeColor = Color.Black;
-            btnVenta.Image = Properties.Resources.metodo_de_pago1;
-            btnVenta.ImageAlign = ContentAlignment.MiddleLeft;
-            btnVenta.Location = new Point(1502, 0);
-            btnVenta.Name = "btnVenta";
-            btnVenta.Padding = new Padding(12, 0, 0, 0);
-            btnVenta.Size = new Size(212, 60);
-            btnVenta.TabIndex = 18;
-            btnVenta.Tag = "Editar ";
-            btnVenta.Text = "Venta";
-            btnVenta.UseVisualStyleBackColor = false;
-            btnVenta.Click += btnVenta_Click;
-            // 
-            // btnInventario
-            // 
-            btnInventario.BackColor = Color.FromArgb(137, 195, 32);
-            btnInventario.BackgroundImage = (Image)resources.GetObject("btnInventario.BackgroundImage");
-            btnInventario.Dock = DockStyle.Left;
-            btnInventario.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnInventario.FlatAppearance.BorderSize = 4;
-            btnInventario.FlatStyle = FlatStyle.Flat;
-            btnInventario.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnInventario.ForeColor = Color.Black;
-            btnInventario.Image = Properties.Resources.inventario;
-            btnInventario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInventario.Location = new Point(1295, 0);
-            btnInventario.Name = "btnInventario";
-            btnInventario.Padding = new Padding(12, 0, 0, 0);
-            btnInventario.Size = new Size(207, 60);
-            btnInventario.TabIndex = 16;
-            btnInventario.Tag = "Bomberos";
-            btnInventario.Text = "Inventario";
-            btnInventario.UseVisualStyleBackColor = false;
-            btnInventario.Click += btnInventario_Click;
-            // 
-            // btnIndustria
-            // 
-            btnIndustria.BackColor = Color.FromArgb(137, 195, 32);
-            btnIndustria.BackgroundImage = (Image)resources.GetObject("btnIndustria.BackgroundImage");
-            btnIndustria.Dock = DockStyle.Left;
-            btnIndustria.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnIndustria.FlatAppearance.BorderSize = 4;
-            btnIndustria.FlatStyle = FlatStyle.Flat;
-            btnIndustria.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnIndustria.ForeColor = Color.Black;
-            btnIndustria.Image = Properties.Resources.fabrica;
-            btnIndustria.ImageAlign = ContentAlignment.MiddleLeft;
-            btnIndustria.Location = new Point(1098, 0);
-            btnIndustria.Name = "btnIndustria";
-            btnIndustria.Padding = new Padding(12, 0, 0, 0);
-            btnIndustria.Size = new Size(197, 60);
-            btnIndustria.TabIndex = 15;
-            btnIndustria.Tag = "Emergencia";
-            btnIndustria.Text = "Industria";
-            btnIndustria.UseMnemonic = false;
-            btnIndustria.UseVisualStyleBackColor = false;
-            btnIndustria.Click += btnIndustria_Click;
-            // 
-            // btnProduccionAnimal
-            // 
-            btnProduccionAnimal.BackColor = Color.FromArgb(137, 195, 32);
-            btnProduccionAnimal.BackgroundImage = (Image)resources.GetObject("btnProduccionAnimal.BackgroundImage");
-            btnProduccionAnimal.Dock = DockStyle.Left;
-            btnProduccionAnimal.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnProduccionAnimal.FlatAppearance.BorderSize = 4;
-            btnProduccionAnimal.FlatStyle = FlatStyle.Flat;
-            btnProduccionAnimal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnProduccionAnimal.ForeColor = Color.Black;
-            btnProduccionAnimal.Image = Properties.Resources.ganado;
-            btnProduccionAnimal.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProduccionAnimal.Location = new Point(868, 0);
-            btnProduccionAnimal.Name = "btnProduccionAnimal";
-            btnProduccionAnimal.Padding = new Padding(12, 0, 0, 0);
-            btnProduccionAnimal.Size = new Size(230, 60);
-            btnProduccionAnimal.TabIndex = 14;
-            btnProduccionAnimal.Tag = "Alta Usuario";
-            btnProduccionAnimal.Text = "Producción  Animal";
-            btnProduccionAnimal.TextAlign = ContentAlignment.MiddleRight;
-            btnProduccionAnimal.UseVisualStyleBackColor = false;
-            btnProduccionAnimal.Click += btnProduccionAnimal_Click;
-            // 
-            // btnProduccionVegetal
-            // 
-            btnProduccionVegetal.BackColor = Color.FromArgb(137, 195, 32);
-            btnProduccionVegetal.BackgroundImage = (Image)resources.GetObject("btnProduccionVegetal.BackgroundImage");
-            btnProduccionVegetal.Dock = DockStyle.Left;
-            btnProduccionVegetal.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnProduccionVegetal.FlatAppearance.BorderSize = 4;
-            btnProduccionVegetal.FlatStyle = FlatStyle.Flat;
-            btnProduccionVegetal.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnProduccionVegetal.ForeColor = Color.Black;
-            btnProduccionVegetal.Image = Properties.Resources.agricola;
-            btnProduccionVegetal.ImageAlign = ContentAlignment.MiddleLeft;
-            btnProduccionVegetal.Location = new Point(643, 0);
-            btnProduccionVegetal.Name = "btnProduccionVegetal";
-            btnProduccionVegetal.Padding = new Padding(12, 0, 0, 0);
-            btnProduccionVegetal.Size = new Size(225, 60);
-            btnProduccionVegetal.TabIndex = 12;
-            btnProduccionVegetal.Tag = "Administración";
-            btnProduccionVegetal.Text = "Producción  Vegetal";
-            btnProduccionVegetal.TextAlign = ContentAlignment.MiddleRight;
-            btnProduccionVegetal.UseVisualStyleBackColor = false;
-            btnProduccionVegetal.Click += btnProduccionVegetal_Click;
-            // 
-            // btnAdministracion
-            // 
-            btnAdministracion.BackColor = Color.FromArgb(137, 195, 32);
-            btnAdministracion.BackgroundImage = (Image)resources.GetObject("btnAdministracion.BackgroundImage");
-            btnAdministracion.Dock = DockStyle.Left;
-            btnAdministracion.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnAdministracion.FlatAppearance.BorderSize = 4;
-            btnAdministracion.FlatStyle = FlatStyle.Flat;
-            btnAdministracion.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnAdministracion.ForeColor = Color.Black;
-            btnAdministracion.Image = Properties.Resources.investigacion1;
-            btnAdministracion.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAdministracion.Location = new Point(433, 0);
-            btnAdministracion.Name = "btnAdministracion";
-            btnAdministracion.Padding = new Padding(12, 0, 0, 0);
-            btnAdministracion.Size = new Size(210, 60);
-            btnAdministracion.TabIndex = 10;
-            btnAdministracion.Tag = "";
-            btnAdministracion.Text = "Administracion";
-            btnAdministracion.TextAlign = ContentAlignment.MiddleRight;
-            btnAdministracion.UseVisualStyleBackColor = false;
-            btnAdministracion.Click += btnAdministracion_Click;
-            // 
-            // btnEntornoFormativo
-            // 
-            btnEntornoFormativo.BackColor = Color.FromArgb(137, 195, 32);
-            btnEntornoFormativo.BackgroundImage = (Image)resources.GetObject("btnEntornoFormativo.BackgroundImage");
-            btnEntornoFormativo.Dock = DockStyle.Left;
-            btnEntornoFormativo.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnEntornoFormativo.FlatAppearance.BorderSize = 4;
-            btnEntornoFormativo.FlatStyle = FlatStyle.Flat;
-            btnEntornoFormativo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnEntornoFormativo.ForeColor = Color.Black;
-            btnEntornoFormativo.Image = Properties.Resources.Areas1;
-            btnEntornoFormativo.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEntornoFormativo.Location = new Point(200, 0);
-            btnEntornoFormativo.Name = "btnEntornoFormativo";
-            btnEntornoFormativo.Padding = new Padding(12, 0, 0, 0);
-            btnEntornoFormativo.Size = new Size(233, 60);
-            btnEntornoFormativo.TabIndex = 9;
-            btnEntornoFormativo.Tag = "Areas";
-            btnEntornoFormativo.Text = "Entornos Formativos";
-            btnEntornoFormativo.TextAlign = ContentAlignment.MiddleRight;
-            btnEntornoFormativo.UseVisualStyleBackColor = false;
-            btnEntornoFormativo.Click += btnEntornoFormativo_Click;
-            // 
-            // btnUsuarioAlta
-            // 
-            btnUsuarioAlta.BackColor = Color.FromArgb(137, 195, 32);
-            btnUsuarioAlta.BackgroundImage = (Image)resources.GetObject("btnUsuarioAlta.BackgroundImage");
-            btnUsuarioAlta.Dock = DockStyle.Left;
-            btnUsuarioAlta.FlatAppearance.BorderColor = Color.FromArgb(137, 195, 32);
-            btnUsuarioAlta.FlatAppearance.BorderSize = 4;
-            btnUsuarioAlta.FlatStyle = FlatStyle.Flat;
-            btnUsuarioAlta.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            btnUsuarioAlta.ForeColor = Color.Black;
-            btnUsuarioAlta.Image = Properties.Resources.administrador;
-            btnUsuarioAlta.ImageAlign = ContentAlignment.MiddleLeft;
-            btnUsuarioAlta.Location = new Point(0, 0);
-            btnUsuarioAlta.Name = "btnUsuarioAlta";
-            btnUsuarioAlta.Padding = new Padding(12, 0, 0, 0);
-            btnUsuarioAlta.Size = new Size(200, 60);
-            btnUsuarioAlta.TabIndex = 2;
-            btnUsuarioAlta.Tag = "";
-            btnUsuarioAlta.Text = "Alta de Usuario";
-            btnUsuarioAlta.TextAlign = ContentAlignment.MiddleRight;
-            btnUsuarioAlta.UseVisualStyleBackColor = false;
-            btnUsuarioAlta.Click += btnUsuarioAlta_Click;
+            manualDeUsuarioToolStripMenuItem.Name = "manualDeUsuarioToolStripMenuItem";
+            manualDeUsuarioToolStripMenuItem.Size = new Size(173, 22);
+            manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
             // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1920, 1078);
-            Controls.Add(panelMenu);
-            Controls.Add(panelDesktopPane);
-            Controls.Add(pbCerrarPrograma);
-            FormBorderStyle = FormBorderStyle.None;
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(menuStrip1);
             IsMdiContainer = true;
-            MaximumSize = new Size(1920, 1080);
-            MinimumSize = new Size(1918, 1030);
             Name = "Inicio";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
-            Text = "Inicio";
+            Text = "Escuela Agraria";
             Load += Inicio_Load;
-            pbCerrarPrograma.ResumeLayout(false);
-            pbCerrarPrograma.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pbCerrarAgraria).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbAlerta).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pbUrgencias).EndInit();
-            panelDesktopPane.ResumeLayout(false);
-            panelDesktopPane.PerformLayout();
-            panelMenu.ResumeLayout(false);
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private Panel pbCerrarPrograma;
-        private PictureBox pbAlerta;
-        private Label lblTitle;
-        private Label lblUsuario;
-        private Button btnClose;
-        private Button bntMinimize;
-        private Panel panelDesktopPane;
-        private Button btnIniciar;
-        private Button btnCerrarSesion;
-        private PictureBox pbUrgencias;
-        private Label lblFecha;
-        private Label lblHorario;
-        private Panel panelMenu;
-        private Button btnVenta;
-        private Button btnInventario;
-        private Button btnIndustria;
-        private Button btnProduccionAnimal;
-        private Button btnProduccionVegetal;
-        private Button btnAdministracion;
-        private Button btnEntornoFormativo;
-        private Button btnUsuarioAlta;
-        private PictureBox pictureBox1;
-        private PictureBox pbCerrarAgraria;
-        private Label lblUrgencia;
-        private Button btnPañol;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem archivoToolStripMenuItem;
+        private ToolStripMenuItem editarToolStripMenuItem;
+        private ToolStripMenuItem verToolStripMenuItem;
+        private ToolStripMenuItem herramientasToolStripMenuItem;
+        private ToolStripMenuItem ayudaToolStripMenuItem;
+        private ToolStripMenuItem iniciarSesionToolStripMenuItem;
+        private ToolStripMenuItem cerrarSesionToolStripMenuItem;
+        private ToolStripMenuItem altaDeUsuarioToolStripMenuItem;
+        private ToolStripMenuItem administracionToolStripMenuItem;
+        private ToolStripMenuItem produccionVegetalToolStripMenuItem;
+        private ToolStripMenuItem produccionAnimalToolStripMenuItem;
+        private ToolStripMenuItem industriaToolStripMenuItem;
+        private ToolStripMenuItem pañolToolStripMenuItem;
+        private ToolStripMenuItem inventarioToolStripMenuItem;
+        private ToolStripMenuItem ventasToolStripMenuItem;
+        private ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
+        private ToolStripMenuItem entornosFormativosToolStripMenuItem;
     }
 }

@@ -46,11 +46,6 @@ namespace Agraria
         {
             InitializeComponent();
             random = new Random();
-            // Crear e inicializar el Timer para el horario
-            timer = new System.Windows.Forms.Timer();
-            timer.Interval = 1000; // 1 segundo
-            timer.Tick += Timer_Tick;
-            timer.Start();
             usuarioLogeado = usuario;
             esInvitado = false;
 
@@ -83,10 +78,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+         //   if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+         //   {
+        //        lblUrgencia.Visible = true;
+        //    }
 
 
         }
@@ -126,10 +121,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+          //  if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+          //  {
+         //      lblUrgencia.Visible = true;
+         //   }
         }
 
         private void btnVenta_Click(object sender, EventArgs e)
@@ -147,19 +142,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            // Actualizar hora
-            lblHorario.Text = DateTime.Now.ToString("HH:mm:ss");
-
-            // Actualizar fecha
-            lblFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+          //  if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+         //   {
+          //      lblUrgencia.Visible = true;
+          //  }
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -186,10 +172,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             //  Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+          //  if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+          //  {
+          //      lblUrgencia.Visible = true;
+         //   }
         }
 
         private void btnProduccionVegetal_Click(object sender, EventArgs e)
@@ -207,24 +193,24 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+         //   if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+         //   {
+         //       lblUrgencia.Visible = true;
+          //  }
         }
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-            lblUsuario.Visible = true;
+       //     lblUsuario.Visible = true;
 
             if (usuarioLogeado != null)
             {
-                lblUsuario.Text = "Bienvenido/a, " + usuarioLogeado.NombreUsuario;
+        //        lblUsuario.Text = "Bienvenido/a, " + usuarioLogeado.NombreUsuario;
                 AplicarPermisos();
             }
             else
             {
-                lblUsuario.Text = "Bienvenido/a, Invitado";
+        //        lblUsuario.Text = "Bienvenido/a, Invitado";
                 ActivarModoInvitado();
             }
         }
@@ -246,10 +232,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+      //      if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+         //   {
+       //         lblUrgencia.Visible = true;
+       //     }
         }
 
         private void btnInventario_Click(object sender, EventArgs e)
@@ -267,10 +253,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+        //    if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+        //    {
+         //       lblUrgencia.Visible = true;
+         //   }
         }
         private void btnAdministracion_Click(object sender, EventArgs e)
         {
@@ -287,10 +273,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+        //    if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+        //    {
+        //        lblUrgencia.Visible = true;
+         //   }
         }
 
 
@@ -303,7 +289,7 @@ namespace Agraria
             {
                 MessageBox.Show("No hay mensajes de urgencia pendientes para hoy.",
                     "Urgencias", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                pbUrgencias.Visible = false;
+          //      pbUrgencias.Visible = false;
                 return;
             }
 
@@ -316,31 +302,31 @@ namespace Agraria
 
         private void AplicarPermisos()
         {
-            btnEntornoFormativo.Enabled = usuarioLogeado.PuedeEntornoFormativo;
-            btnUsuarioAlta.Enabled = usuarioLogeado.PuedeAltaUsuario;
-            btnVenta.Enabled = usuarioLogeado.PuedeVenta;
-            btnInventario.Enabled = usuarioLogeado.PuedeInventario;
-            btnIndustria.Enabled = usuarioLogeado.PuedeIndustria;
-            btnProduccionAnimal.Enabled = usuarioLogeado.PuedeProduccionAnimal;
-            btnProduccionVegetal.Enabled = usuarioLogeado.PuedeProduccionVegetal;
-            btnAdministracion.Enabled = usuarioLogeado.PuedeAdministracion;
+            entornosFormativosToolStripMenuItem.Enabled = usuarioLogeado.PuedeEntornoFormativo;
+            altaDeUsuarioToolStripMenuItem.Enabled = usuarioLogeado.PuedeAltaUsuario;
+            ventasToolStripMenuItem.Enabled = usuarioLogeado.PuedeVenta;
+            inventarioToolStripMenuItem.Enabled = usuarioLogeado.PuedeInventario;
+            industriaToolStripMenuItem.Enabled = usuarioLogeado.PuedeIndustria;
+            produccionAnimalToolStripMenuItem.Enabled = usuarioLogeado.PuedeProduccionAnimal;
+            produccionVegetalToolStripMenuItem.Enabled = usuarioLogeado.PuedeProduccionVegetal;
+            administracionToolStripMenuItem.Enabled = usuarioLogeado.PuedeAdministracion;
         }
 
         private void ActivarModoInvitado()
         {
             // ✅ Deja los botones visibles pero los formularios internos deshabilitados
             // Ejemplo de comportamiento:
-            btnEntornoFormativo.Enabled = true;
-            btnUsuarioAlta.Enabled = true;
-            btnVenta.Enabled = true;
-            btnInventario.Enabled = true;
-            btnIndustria.Enabled = true;
-            btnProduccionAnimal.Enabled = true;
-            btnProduccionVegetal.Enabled = true;
-            btnAdministracion.Enabled = true;
+            entornosFormativosToolStripMenuItem.Enabled = true;
+            altaDeUsuarioToolStripMenuItem.Enabled = true;
+            ventasToolStripMenuItem.Enabled = true;
+            inventarioToolStripMenuItem.Enabled = true;
+            industriaToolStripMenuItem.Enabled = true;
+            produccionAnimalToolStripMenuItem.Enabled = true;
+            produccionVegetalToolStripMenuItem.Enabled = true;
+            administracionToolStripMenuItem.Enabled = true;
 
             // Deshabilitar acciones internas: formularios, botones dentro, etc.
-            lblUsuario.Text = "Modo Invitado: solo visualización";
+        //    lblUsuario.Text = "Modo Invitado: solo visualización";
 
             // Si usás PictureBox, paneles o formularios hijos:
             // puedes ocultar los botones de guardar, modificar, eliminar, etc.
@@ -370,10 +356,10 @@ namespace Agraria
             activeForm = cargaForm;
 
             // ✅ Esto se mantiene igual
-            if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-            {
-                lblUrgencia.Visible = true;
-            }
+        //    if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
+       //     {
+        //        lblUrgencia.Visible = true;
+         //   }
         }
 
         private void lblUsuario_Click(object sender, EventArgs e)
