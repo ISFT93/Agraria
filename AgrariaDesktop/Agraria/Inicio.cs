@@ -76,14 +76,6 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-         //   if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-         //   {
-        //        lblUrgencia.Visible = true;
-        //    }
-
-
         }
 
         private void CerrarTodosLosFormularios()
@@ -102,8 +94,6 @@ namespace Agraria
         private void pbCerrarAgraria_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
-
         }
 
         private void btnEntornoFormativo_Click(object sender, EventArgs e)
@@ -119,12 +109,6 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-          //  if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-          //  {
-         //      lblUrgencia.Visible = true;
-         //   }
         }
 
         private void btnVenta_Click(object sender, EventArgs e)
@@ -140,12 +124,6 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-          //  if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-         //   {
-          //      lblUrgencia.Visible = true;
-          //  }
         }
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
@@ -155,7 +133,6 @@ namespace Agraria
             login.Show();
         }
 
-
         private void btnProduccionAnimal_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
@@ -163,19 +140,12 @@ namespace Agraria
             // Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.ProduccionAnimal(usuarioLogeado, esInvitado);
 
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            //  Esto se mantiene igual
-          //  if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-          //  {
-          //      lblUrgencia.Visible = true;
-         //   }
         }
 
         private void btnProduccionVegetal_Click(object sender, EventArgs e)
@@ -191,31 +161,19 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-         //   if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-         //   {
-         //       lblUrgencia.Visible = true;
-          //  }
         }
 
         private void Inicio_Load(object sender, EventArgs e)
         {
-       //     lblUsuario.Visible = true;
-
             if (usuarioLogeado != null)
             {
-        //        lblUsuario.Text = "Bienvenido/a, " + usuarioLogeado.NombreUsuario;
                 AplicarPermisos();
             }
             else
             {
-        //        lblUsuario.Text = "Bienvenido/a, Invitado";
                 ActivarModoInvitado();
             }
         }
-
-
 
         private void btnIndustria_Click(object sender, EventArgs e)
         {
@@ -230,12 +188,6 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-      //      if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-         //   {
-       //         lblUrgencia.Visible = true;
-       //     }
         }
 
         private void btnInventario_Click(object sender, EventArgs e)
@@ -251,13 +203,8 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-        //    if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-        //    {
-         //       lblUrgencia.Visible = true;
-         //   }
         }
+
         private void btnAdministracion_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
@@ -271,14 +218,7 @@ namespace Agraria
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-        //    if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-        //    {
-        //        lblUrgencia.Visible = true;
-         //   }
         }
-
 
         private void pbUrgencias_Click(object sender, EventArgs e)
         {
@@ -289,16 +229,12 @@ namespace Agraria
             {
                 MessageBox.Show("No hay mensajes de urgencia pendientes para hoy.",
                     "Urgencias", MessageBoxButtons.OK, MessageBoxIcon.Information);
-          //      pbUrgencias.Visible = false;
                 return;
             }
 
             string texto = string.Join("\n\n", mensajes);
             MessageBox.Show(texto, "🚨 Urgencias del día 🚨", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
-
-
-
 
         private void AplicarPermisos()
         {
@@ -314,8 +250,6 @@ namespace Agraria
 
         private void ActivarModoInvitado()
         {
-            // ✅ Deja los botones visibles pero los formularios internos deshabilitados
-            // Ejemplo de comportamiento:
             entornosFormativosToolStripMenuItem.Enabled = true;
             altaDeUsuarioToolStripMenuItem.Enabled = true;
             ventasToolStripMenuItem.Enabled = true;
@@ -324,12 +258,6 @@ namespace Agraria
             produccionAnimalToolStripMenuItem.Enabled = true;
             produccionVegetalToolStripMenuItem.Enabled = true;
             administracionToolStripMenuItem.Enabled = true;
-
-            // Deshabilitar acciones internas: formularios, botones dentro, etc.
-        //    lblUsuario.Text = "Modo Invitado: solo visualización";
-
-            // Si usás PictureBox, paneles o formularios hijos:
-            // puedes ocultar los botones de guardar, modificar, eliminar, etc.
         }
 
         private void panelSuperior_MouseDown(object sender, MouseEventArgs e)
@@ -345,26 +273,19 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
-            var cargaForm = new Formularios.Pañol(esInvitado);
+            // Pasamos el usuario actual
+            var cargaForm = new Formularios.FormArticulosLista(usuarioLogeado);
 
-            cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
+            // Quitamos MdiParent y Dock.Fill para que respete sus 900x550
+            cargaForm.StartPosition = FormStartPosition.CenterScreen;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
-
-            // ✅ Esto se mantiene igual
-        //    if (pbUrgencias.Visible = urgenciaBLL.HayMensajes())
-       //     {
-        //        lblUrgencia.Visible = true;
-         //   }
         }
 
         private void lblUsuario_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

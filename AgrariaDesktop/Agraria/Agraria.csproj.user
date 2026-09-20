@@ -16,6 +16,12 @@
     <Compile Update="Formularios\CambiarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\FormArticulosDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\FormArticulosLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\Industria.cs">
       <SubType>Form</SubType>
     </Compile>
