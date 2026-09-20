@@ -183,7 +183,7 @@ namespace Agraria
             CerrarTodosLosFormularios();
 
             // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
-            var cargaForm = new Formularios.ProduccionVegetal(usuarioLogeado, esInvitado);
+            var cargaForm = new Formularios.ListarVegetales(usuarioLogeado, esInvitado);
 
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
