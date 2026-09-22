@@ -32,8 +32,6 @@ namespace Agraria.Formularios
 
         }
 
-
-
         private void ProduccionAnimal_Load(object sender, EventArgs e)
         {
 
