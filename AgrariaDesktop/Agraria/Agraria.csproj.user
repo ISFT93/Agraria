@@ -13,6 +13,12 @@
     <Compile Update="Formularios\AbmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\AbmVegetales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\ListarVegetales.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\CambiarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
