@@ -287,5 +287,21 @@ namespace Agraria
         private void lblUsuario_Click(object sender, EventArgs e)
         {
         }
+
+        private void entornoAnimalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CerrarTodosLosFormularios();
+
+            // Instancia el formulario pasando el estado de invitado/permisos
+            var cargaForm = new Formularios.FormAnimal(esInvitado);
+
+            // Centrar en pantalla respetando sus dimensiones propias
+            cargaForm.StartPosition = FormStartPosition.CenterScreen;
+            cargaForm.Show();
+
+            // Registro de formularios activos
+            formulariosAbiertos.Add(cargaForm);
+            activeForm = cargaForm;
+        }
     }
 }

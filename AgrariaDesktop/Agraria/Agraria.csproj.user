@@ -7,6 +7,9 @@
     <Compile Update="Formularios\AbmAdministracion.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\AbmAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\AbmEntornoFormativo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -20,6 +23,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\CambiarContraseña.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\FormAnimal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\FormArticulosDetalle.cs">

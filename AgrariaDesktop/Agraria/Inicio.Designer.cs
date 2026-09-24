@@ -41,6 +41,7 @@
             produccionAnimalToolStripMenuItem = new ToolStripMenuItem();
             industriaToolStripMenuItem = new ToolStripMenuItem();
             pañolToolStripMenuItem = new ToolStripMenuItem();
+            entornoAnimalToolStripMenuItem = new ToolStripMenuItem();
             herramientasToolStripMenuItem = new ToolStripMenuItem();
             inventarioToolStripMenuItem = new ToolStripMenuItem();
             ventasToolStripMenuItem = new ToolStripMenuItem();
@@ -111,7 +112,7 @@
             // 
             // verToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, pañolToolStripMenuItem });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, pañolToolStripMenuItem, entornoAnimalToolStripMenuItem });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(44, 24);
             verToolStripMenuItem.Text = "Ver";
@@ -143,6 +144,13 @@
             pañolToolStripMenuItem.Size = new Size(220, 26);
             pañolToolStripMenuItem.Text = "Pañol";
             pañolToolStripMenuItem.Click += btnPañol_Click;
+            // 
+            // entornoAnimalToolStripMenuItem
+            // 
+            entornoAnimalToolStripMenuItem.Name = "entornoAnimalToolStripMenuItem";
+            entornoAnimalToolStripMenuItem.Size = new Size(176, 22);
+            entornoAnimalToolStripMenuItem.Text = "Entorno Animal";
+            entornoAnimalToolStripMenuItem.Click += entornoAnimalToolStripMenuItem_Click;
             // 
             // herramientasToolStripMenuItem
             // 
@@ -217,5 +225,7 @@
         private ToolStripMenuItem ventasToolStripMenuItem;
         private ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private ToolStripMenuItem entornosFormativosToolStripMenuItem;
+        private ToolStripMenuItem entornoAnimalToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }
