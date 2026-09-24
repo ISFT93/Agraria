@@ -16,10 +16,22 @@
     <Compile Update="Formularios\AbmUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\AbmVegetales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\ListarVegetales.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\CambiarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\FormAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\FormArticulosDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\FormArticulosLista.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Industria.cs">

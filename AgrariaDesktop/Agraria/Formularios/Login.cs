@@ -46,7 +46,7 @@ namespace Agraria.Formularios
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            /*
             try
             {
                 var usuarioBLL = new AbmUsuarioBLL();
@@ -71,7 +71,7 @@ namespace Agraria.Formularios
                 MessageBox.Show("Error al verificar usuario administrador inicial: " + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            */
         }
 
         private void pbCerrar_Click(object sender, EventArgs e)

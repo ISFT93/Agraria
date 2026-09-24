@@ -40,7 +40,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Recursos\Articulos.html">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Recursos\ArticulosPañol.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
