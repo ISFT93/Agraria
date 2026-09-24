@@ -1,0 +1,230 @@
+﻿namespace Agraria.Formularios
+{
+    partial class FormArticulosDetalle
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            lblNombre = new Label();
+            txtNombre = new TextBox();
+            lblMarca = new Label();
+            cbmMarca = new ComboBox();
+            lblcategoria = new Label();
+            cmbcategoria = new ComboBox();
+            label1 = new Label();
+            dypFechaAlta = new DateTimePicker();
+            rjBAceptar = new Tienda.RJButton();
+            rjBCancelar = new Tienda.RJButton();
+            txtcodigoArticulo = new TextBox();
+            lblNumArticulo = new Label();
+            SuspendLayout();
+            // 
+            // lblNombre
+            // 
+            lblNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            lblNombre.ForeColor = Color.White;
+            lblNombre.Location = new Point(-5, 268);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(256, 29);
+            lblNombre.TabIndex = 22;
+            lblNombre.Text = "NOMBRE";
+            // 
+            // txtNombre
+            // 
+            txtNombre.BackColor = SystemColors.Window;
+            txtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtNombre.ForeColor = SystemColors.WindowText;
+            txtNombre.Location = new Point(1, 320);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(380, 34);
+            txtNombre.TabIndex = 1;
+            // 
+            // lblMarca
+            // 
+            lblMarca.AutoSize = true;
+            lblMarca.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            lblMarca.ForeColor = Color.White;
+            lblMarca.Location = new Point(1, 412);
+            lblMarca.Name = "lblMarca";
+            lblMarca.Size = new Size(102, 29);
+            lblMarca.TabIndex = 2;
+            lblMarca.Text = "MARCA";
+            // 
+            // cbmMarca
+            // 
+            cbmMarca.BackColor = SystemColors.Window;
+            cbmMarca.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cbmMarca.ForeColor = SystemColors.WindowText;
+            cbmMarca.FormattingEnabled = true;
+            cbmMarca.Location = new Point(1, 456);
+            cbmMarca.Name = "cbmMarca";
+            cbmMarca.Size = new Size(250, 37);
+            cbmMarca.TabIndex = 3;
+            // 
+            // lblcategoria
+            // 
+            lblcategoria.AutoSize = true;
+            lblcategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            lblcategoria.ForeColor = Color.White;
+            lblcategoria.Location = new Point(-5, 718);
+            lblcategoria.Name = "lblcategoria";
+            lblcategoria.Size = new Size(198, 29);
+            lblcategoria.TabIndex = 4;
+            lblcategoria.Text = "CATEOGORIAS";
+            // 
+            // cmbcategoria
+            // 
+            cmbcategoria.BackColor = SystemColors.Window;
+            cmbcategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbcategoria.ForeColor = SystemColors.WindowText;
+            cmbcategoria.FormattingEnabled = true;
+            cmbcategoria.Location = new Point(-5, 773);
+            cmbcategoria.Name = "cmbcategoria";
+            cmbcategoria.Size = new Size(250, 37);
+            cmbcategoria.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(-5, 569);
+            label1.Name = "label1";
+            label1.Size = new Size(224, 29);
+            label1.TabIndex = 12;
+            label1.Text = "FECHA DE ALTA :";
+            label1.Click += label1_Click;
+            // 
+            // dypFechaAlta
+            // 
+            dypFechaAlta.CalendarFont = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dypFechaAlta.Location = new Point(1, 618);
+            dypFechaAlta.Name = "dypFechaAlta";
+            dypFechaAlta.Size = new Size(180, 27);
+            dypFechaAlta.TabIndex = 13;
+            // 
+            // rjBAceptar
+            // 
+            rjBAceptar.BackColor = Color.White;
+            rjBAceptar.FlatAppearance.BorderSize = 0;
+            rjBAceptar.FlatStyle = FlatStyle.Flat;
+            rjBAceptar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            rjBAceptar.ForeColor = Color.Green;
+            rjBAceptar.Location = new Point(313, 857);
+            rjBAceptar.Margin = new Padding(3, 4, 3, 4);
+            rjBAceptar.Name = "rjBAceptar";
+            rjBAceptar.Size = new Size(153, 53);
+            rjBAceptar.TabIndex = 14;
+            rjBAceptar.Text = "Aceptar";
+            rjBAceptar.UseVisualStyleBackColor = false;
+            rjBAceptar.Click += rjBAceptar_Click;
+            // 
+            // rjBCancelar
+            // 
+            rjBCancelar.BackColor = Color.White;
+            rjBCancelar.FlatAppearance.BorderSize = 0;
+            rjBCancelar.FlatStyle = FlatStyle.Flat;
+            rjBCancelar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            rjBCancelar.ForeColor = Color.Green;
+            rjBCancelar.Location = new Point(493, 857);
+            rjBCancelar.Margin = new Padding(3, 4, 3, 4);
+            rjBCancelar.Name = "rjBCancelar";
+            rjBCancelar.Size = new Size(153, 53);
+            rjBCancelar.TabIndex = 15;
+            rjBCancelar.Text = "Cancelar";
+            rjBCancelar.UseVisualStyleBackColor = false;
+            rjBCancelar.Click += rjBCancelar_Click;
+            // 
+            // txtcodigoArticulo
+            // 
+            txtcodigoArticulo.BackColor = SystemColors.Window;
+            txtcodigoArticulo.Enabled = false;
+            txtcodigoArticulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtcodigoArticulo.ForeColor = SystemColors.WindowText;
+            txtcodigoArticulo.Location = new Point(1, 152);
+            txtcodigoArticulo.Name = "txtcodigoArticulo";
+            txtcodigoArticulo.ReadOnly = true;
+            txtcodigoArticulo.Size = new Size(120, 34);
+            txtcodigoArticulo.TabIndex = 17;
+            // 
+            // lblNumArticulo
+            // 
+            lblNumArticulo.FlatStyle = FlatStyle.Flat;
+            lblNumArticulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            lblNumArticulo.ForeColor = Color.White;
+            lblNumArticulo.Location = new Point(1, 105);
+            lblNumArticulo.Name = "lblNumArticulo";
+            lblNumArticulo.Size = new Size(256, 29);
+            lblNumArticulo.TabIndex = 22;
+            lblNumArticulo.Text = "NÚMERO";
+            // 
+            // FormArticulosDetalle
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(141, 181, 146);
+            ClientSize = new Size(658, 923);
+            Controls.Add(txtcodigoArticulo);
+            Controls.Add(lblNumArticulo);
+            Controls.Add(rjBCancelar);
+            Controls.Add(rjBAceptar);
+            Controls.Add(dypFechaAlta);
+            Controls.Add(label1);
+            Controls.Add(cmbcategoria);
+            Controls.Add(lblcategoria);
+            Controls.Add(cbmMarca);
+            Controls.Add(lblMarca);
+            Controls.Add(txtNombre);
+            Controls.Add(lblNombre);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormArticulosDetalle";
+            Text = "Detalle de Artículo";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Label lblNombre;
+        private TextBox txtNombre;
+        private Label lblMarca;
+        private ComboBox cbmMarca;
+        private Label lblcategoria;
+       
+        private Label label4;
+        private TextBox textBox2;
+        private Button button1;
+        private ComboBox cmbcategoria;
+        private Label label1;
+        private DateTimePicker dypFechaAlta;
+        private Tienda.RJButton rjBAceptar;
+        private Tienda.RJButton rjBCancelar;
+        private TextBox txtcodigoArticulo;
+        private Label lblNumArticulo;
+    }
+}

@@ -27,8 +27,10 @@
             font-size: 12px;
         }
 
+        /* Color verde corporativo acorde a tu DataGridView */
         th {
-            background-color: #f2f2f2;
+            background-color: #3CB371;
+            color: white;
         }
     </style>
 </head>
@@ -37,12 +39,7 @@
     <table>
         <thead>
             <tr>
-                <th>Nombre Producto</th>
-                <th>Cantidad</th>
-                <th>Precio</th>
-                <th>Fecha Ingreso</th>
-                <th>Responsable</th>
-                <th>Estado</th>
+                @CABECERAS
             </tr>
         </thead>
         <tbody>
