@@ -29,6 +29,9 @@ namespace Agraria
         UrgenciaBLL urgenciaBLL = new UrgenciaBLL();
         private bool esInvitado = false;
 
+        // Evita mostrar el login más de una vez
+        private bool loginPresentado = false;
+
         //habilitar movimiento del formulario
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
@@ -48,13 +51,58 @@ namespace Agraria
             random = new Random();
             usuarioLogeado = usuario;
             esInvitado = false;
-
         }
+
         public Inicio(bool modoInvitado)
         {
             InitializeComponent();
             esInvitado = modoInvitado;
             usuarioLogeado = null;
+        }
+
+        // Se ejecuta cuando el form ya está mostrado; aquí abrimos el Login centrado sobre Inicio
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            if (!loginPresentado && usuarioLogeado == null)
+            {
+                loginPresentado = true;
+                MostrarLoginModal();
+            }
+        }
+
+        private void MostrarLoginModal()
+        {
+            using (var login = new Formularios.Login())
+            {
+                login.StartPosition = FormStartPosition.CenterParent;
+                var result = login.ShowDialog(this);
+
+                if (result == DialogResult.OK)
+                {
+                    if (login.EsInvitado)
+                    {
+                        esInvitado = true;
+                        usuarioLogeado = null;
+                        ActivarModoInvitado();
+
+                        MessageBox.Show("Entraste en modo invitado.\nPodés navegar pero no modificar datos.",
+                            "Modo Invitado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (login.UsuarioAutenticado != null)
+                    {
+                        usuarioLogeado = login.UsuarioAutenticado;
+                        esInvitado = false;
+                        AplicarPermisos();
+                    }
+                }
+                else
+                {
+                    // Si cierra sin autenticarse, salir (puedes cambiar este comportamiento)
+                    Application.Exit();
+                }
+            }
         }
 
         private void btnIniciar_Click(object sender, EventArgs e)
@@ -67,9 +115,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.AbmUsuario(esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -100,9 +146,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.AbmEntornoFormativo(esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -115,9 +159,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.RegistroVenta(esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -137,9 +179,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.ProduccionAnimal(usuarioLogeado, esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -152,11 +192,9 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.ListarVegetales(usuarioLogeado, esInvitado);
-
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
+            //cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
@@ -179,9 +217,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.Industria(esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -194,9 +230,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.Inventario(esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -209,9 +243,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // ✅ Pasamos el parámetro esInvitado al mismo formulario MDI
             var cargaForm = new Formularios.AbmAdministracion(esInvitado);
-
             cargaForm.MdiParent = this;
             cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
@@ -273,10 +305,7 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // Pasamos el usuario actual
             var cargaForm = new Formularios.FormArticulosLista(usuarioLogeado);
-
-            // Quitamos MdiParent y Dock.Fill para que respete sus 900x550
             cargaForm.StartPosition = FormStartPosition.CenterScreen;
             cargaForm.Show();
 
@@ -292,14 +321,10 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            // Instancia el formulario pasando el estado de invitado/permisos
             var cargaForm = new Formularios.FormAnimal(esInvitado);
-
-            // Centrar en pantalla respetando sus dimensiones propias
             cargaForm.StartPosition = FormStartPosition.CenterScreen;
             cargaForm.Show();
 
-            // Registro de formularios activos
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
         }

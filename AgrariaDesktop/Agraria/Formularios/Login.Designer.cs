@@ -40,10 +40,10 @@
             lblContraseña = new Label();
             pictureBox1 = new PictureBox();
             pbCerrar = new PictureBox();
-            btnIngresar = new Tienda.RJButton();
             lblOlvidarContraseña = new Label();
             lblInvitado = new Label();
             errorProvider1 = new ErrorProvider(components);
+            btnIngresar = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
@@ -132,7 +132,7 @@
             lblContraseña.BackColor = Color.Transparent;
             lblContraseña.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblContraseña.ForeColor = Color.Black;
-            lblContraseña.Location = new Point(216, 129);
+            lblContraseña.Location = new Point(208, 129);
             lblContraseña.Margin = new Padding(2, 0, 2, 0);
             lblContraseña.Name = "lblContraseña";
             lblContraseña.Size = new Size(153, 29);
@@ -164,22 +164,6 @@
             pbCerrar.TabIndex = 9;
             pbCerrar.TabStop = false;
             pbCerrar.Click += pbCerrar_Click;
-            // 
-            // btnIngresar
-            // 
-            btnIngresar.BackColor = Color.White;
-            btnIngresar.FlatAppearance.BorderSize = 0;
-            btnIngresar.FlatStyle = FlatStyle.Flat;
-            btnIngresar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnIngresar.ForeColor = Color.FromArgb(56, 124, 31);
-            btnIngresar.Location = new Point(414, 181);
-            btnIngresar.Margin = new Padding(3, 4, 3, 4);
-            btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(112, 43);
-            btnIngresar.TabIndex = 10;
-            btnIngresar.Text = "Ingresar";
-            btnIngresar.UseVisualStyleBackColor = false;
-            btnIngresar.Click += btnAceptarLogin_Click;
             // 
             // lblOlvidarContraseña
             // 
@@ -213,6 +197,17 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // btnIngresar
+            // 
+            btnIngresar.BackgroundImage = (Image)resources.GetObject("btnIngresar.BackgroundImage");
+            btnIngresar.BackgroundImageLayout = ImageLayout.Stretch;
+            btnIngresar.Location = new Point(369, 173);
+            btnIngresar.Name = "btnIngresar";
+            btnIngresar.Size = new Size(124, 43);
+            btnIngresar.TabIndex = 13;
+            btnIngresar.UseVisualStyleBackColor = true;
+            btnIngresar.Click += btnAceptarLogin_Click;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -220,9 +215,9 @@
             BackColor = Color.FromArgb(56, 124, 31);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new Size(545, 272);
+            Controls.Add(btnIngresar);
             Controls.Add(lblInvitado);
             Controls.Add(lblOlvidarContraseña);
-            Controls.Add(btnIngresar);
             Controls.Add(pbCerrar);
             Controls.Add(pictureBox1);
             Controls.Add(lblContraseña);
@@ -261,9 +256,9 @@
         private System.Windows.Forms.Label lblContraseña;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pbCerrar;
-        private Tienda.RJButton btnIngresar;
         private Label lblOlvidarContraseña;
         private Label lblInvitado;
         private ErrorProvider errorProvider1;
+        private Button btnIngresar;
     }
 }
