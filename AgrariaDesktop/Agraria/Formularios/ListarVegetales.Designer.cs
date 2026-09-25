@@ -56,15 +56,15 @@
             panel1.Controls.Add(btnImprimir);
             panel1.Controls.Add(btnSalir);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(762, 121);
+            panel1.Location = new Point(822, 152);
             panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(120, 382);
+            panel1.Size = new Size(150, 351);
             panel1.TabIndex = 0;
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(21, 19);
+            btnNuevo.Location = new Point(42, 19);
             btnNuevo.Margin = new Padding(3, 4, 3, 4);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(86, 31);
@@ -75,7 +75,7 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(21, 58);
+            btnModificar.Location = new Point(42, 58);
             btnModificar.Margin = new Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(86, 31);
@@ -86,7 +86,7 @@
             // 
             // btnImprimir
             // 
-            btnImprimir.Location = new Point(21, 97);
+            btnImprimir.Location = new Point(42, 97);
             btnImprimir.Margin = new Padding(3, 4, 3, 4);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(86, 31);
@@ -97,7 +97,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(21, 347);
+            btnSalir.Location = new Point(42, 307);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(86, 31);
@@ -117,13 +117,13 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(2, 3, 2, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(882, 121);
+            panel2.Size = new Size(972, 152);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(671, 84);
+            btnBuscar.Location = new Point(864, 101);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(86, 31);
@@ -168,7 +168,7 @@
             // txtBuscar
             // 
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(126, 77);
+            txtBuscar.Location = new Point(122, 77);
             txtBuscar.Margin = new Padding(2, 3, 2, 3);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
@@ -178,11 +178,11 @@
             // panel3
             // 
             panel3.Controls.Add(dtgvListarVegetales);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 121);
+            panel3.Dock = DockStyle.Left;
+            panel3.Location = new Point(0, 152);
             panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(762, 382);
+            panel3.Size = new Size(830, 351);
             panel3.TabIndex = 2;
             // 
             // dtgvListarVegetales
@@ -213,7 +213,7 @@
             dtgvListarVegetales.ReadOnly = true;
             dtgvListarVegetales.RowHeadersWidth = 62;
             dtgvListarVegetales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvListarVegetales.Size = new Size(762, 382);
+            dtgvListarVegetales.Size = new Size(830, 351);
             dtgvListarVegetales.TabIndex = 0;
             // 
             // ListarVegetales
@@ -221,7 +221,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(882, 503);
+            ClientSize = new Size(972, 503);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);

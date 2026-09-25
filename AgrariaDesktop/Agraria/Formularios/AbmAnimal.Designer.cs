@@ -44,8 +44,8 @@
             CbTipoAnimal = new ComboBox();
             TxtCodigo = new TextBox();
             label1 = new Label();
-            BtnCancelar = new Tienda.RJButton();
-            BtnAceptar = new Tienda.RJButton();
+            BtnAceptar = new Button();
+            BtnCancelar = new Button();
             SuspendLayout();
             // 
             // LblSexo
@@ -216,44 +216,32 @@
             label1.TabIndex = 28;
             label1.Text = "Código:";
             // 
-            // BtnCancelar
-            // 
-            BtnCancelar.BackColor = Color.White;
-            BtnCancelar.FlatAppearance.BorderSize = 0;
-            BtnCancelar.FlatStyle = FlatStyle.Flat;
-            BtnCancelar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            BtnCancelar.ForeColor = Color.Green;
-            BtnCancelar.Location = new Point(524, 823);
-            BtnCancelar.Margin = new Padding(3, 4, 3, 4);
-            BtnCancelar.Name = "BtnCancelar";
-            BtnCancelar.Size = new Size(171, 53);
-            BtnCancelar.TabIndex = 31;
-            BtnCancelar.Text = "Cancelar";
-            BtnCancelar.UseVisualStyleBackColor = false;
-            BtnCancelar.Click += BtnCancelar_Click_1;
-            // 
             // BtnAceptar
             // 
-            BtnAceptar.BackColor = Color.White;
-            BtnAceptar.FlatAppearance.BorderSize = 0;
-            BtnAceptar.FlatStyle = FlatStyle.Flat;
-            BtnAceptar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            BtnAceptar.ForeColor = Color.Green;
-            BtnAceptar.Location = new Point(524, 762);
-            BtnAceptar.Margin = new Padding(3, 4, 3, 4);
+            BtnAceptar.Location = new Point(583, 702);
             BtnAceptar.Name = "BtnAceptar";
-            BtnAceptar.Size = new Size(171, 53);
-            BtnAceptar.TabIndex = 30;
-            BtnAceptar.Text = "Aceptar";
-            BtnAceptar.UseVisualStyleBackColor = false;
+            BtnAceptar.Size = new Size(94, 29);
+            BtnAceptar.TabIndex = 32;
+            BtnAceptar.Text = "&Aceptar";
+            BtnAceptar.UseVisualStyleBackColor = true;
             BtnAceptar.Click += BtnAceptar_Click;
+            // 
+            // BtnCancelar
+            // 
+            BtnCancelar.Location = new Point(583, 737);
+            BtnCancelar.Name = "BtnCancelar";
+            BtnCancelar.Size = new Size(94, 29);
+            BtnCancelar.TabIndex = 32;
+            BtnCancelar.Text = "&Cancelar";
+            BtnCancelar.UseVisualStyleBackColor = true;
+            BtnCancelar.Click += BtnCancelar_Click_1;
             // 
             // AbmAnimal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(720, 907);
+            ClientSize = new Size(720, 780);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
             Controls.Add(TxtCodigo);
@@ -300,7 +288,7 @@
         private ComboBox CbTipoAnimal;
         private TextBox TxtCodigo;
         private Label label1;
-        private Tienda.RJButton BtnCancelar;
-        private Tienda.RJButton BtnAceptar;
+        private Button BtnAceptar;
+        private Button BtnCancelar;
     }
 }

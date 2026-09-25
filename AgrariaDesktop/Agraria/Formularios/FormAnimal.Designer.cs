@@ -42,12 +42,13 @@
             label9 = new Label();
             panel2 = new Panel();
             panel3 = new Panel();
+            BtnImprimir = new Button();
+            BtnModificar = new Button();
+            BtnSalir = new Button();
             BtnNuevo = new Button();
-            BtnSalir = new Tienda.RJButton();
-            BtnImprimir = new Tienda.RJButton();
-            BtnModificar = new Tienda.RJButton();
             DtgAnimal = new DataGridView();
             panel1.SuspendLayout();
+            panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DtgAnimal).BeginInit();
             SuspendLayout();
@@ -70,11 +71,11 @@
             // 
             // BtnBuscar
             // 
-            BtnBuscar.Location = new Point(796, 76);
+            BtnBuscar.Location = new Point(837, 93);
             BtnBuscar.Name = "BtnBuscar";
-            BtnBuscar.Size = new Size(140, 46);
+            BtnBuscar.Size = new Size(123, 42);
             BtnBuscar.TabIndex = 37;
-            BtnBuscar.Text = "Buscar";
+            BtnBuscar.Text = "&Buscar";
             BtnBuscar.UseVisualStyleBackColor = true;
             BtnBuscar.Click += BtnBuscar_Click;
             // 
@@ -137,20 +138,20 @@
             // 
             // panel2
             // 
-            panel2.AutoSize = true;
+            panel2.Controls.Add(DtgAnimal);
             panel2.Dock = DockStyle.Left;
             panel2.Location = new Point(0, 152);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(0, 354);
+            panel2.Size = new Size(830, 354);
             panel2.TabIndex = 23;
             // 
             // panel3
             // 
-            panel3.Controls.Add(BtnNuevo);
-            panel3.Controls.Add(BtnSalir);
             panel3.Controls.Add(BtnImprimir);
             panel3.Controls.Add(BtnModificar);
+            panel3.Controls.Add(BtnSalir);
+            panel3.Controls.Add(BtnNuevo);
             panel3.Dock = DockStyle.Right;
             panel3.Location = new Point(822, 152);
             panel3.Margin = new Padding(3, 4, 3, 4);
@@ -158,63 +159,45 @@
             panel3.Size = new Size(150, 354);
             panel3.TabIndex = 24;
             // 
-            // BtnNuevo
-            // 
-            BtnNuevo.Location = new Point(5, 29);
-            BtnNuevo.Name = "BtnNuevo";
-            BtnNuevo.Size = new Size(142, 39);
-            BtnNuevo.TabIndex = 46;
-            BtnNuevo.Text = "Nuevo";
-            BtnNuevo.UseVisualStyleBackColor = true;
-            BtnNuevo.Click += BtnNuevo_Click_1;
-            // 
-            // BtnSalir
-            // 
-            BtnSalir.BackColor = Color.White;
-            BtnSalir.FlatAppearance.BorderSize = 0;
-            BtnSalir.FlatStyle = FlatStyle.Flat;
-            BtnSalir.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            BtnSalir.ForeColor = Color.Green;
-            BtnSalir.Location = new Point(3, 245);
-            BtnSalir.Margin = new Padding(3, 4, 3, 4);
-            BtnSalir.Name = "BtnSalir";
-            BtnSalir.Size = new Size(135, 53);
-            BtnSalir.TabIndex = 42;
-            BtnSalir.Text = "Salir";
-            BtnSalir.UseVisualStyleBackColor = false;
-            BtnSalir.Click += BtnSalir_Click_1;
-            // 
             // BtnImprimir
             // 
-            BtnImprimir.BackColor = Color.White;
-            BtnImprimir.FlatAppearance.BorderSize = 0;
-            BtnImprimir.FlatStyle = FlatStyle.Flat;
-            BtnImprimir.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            BtnImprimir.ForeColor = Color.Green;
-            BtnImprimir.Location = new Point(15, 184);
-            BtnImprimir.Margin = new Padding(3, 4, 3, 4);
+            BtnImprimir.Location = new Point(15, 97);
             BtnImprimir.Name = "BtnImprimir";
-            BtnImprimir.Size = new Size(123, 53);
-            BtnImprimir.TabIndex = 43;
-            BtnImprimir.Text = "Imprimir";
-            BtnImprimir.UseVisualStyleBackColor = false;
+            BtnImprimir.Size = new Size(123, 39);
+            BtnImprimir.TabIndex = 46;
+            BtnImprimir.Text = "Im&primir";
+            BtnImprimir.UseVisualStyleBackColor = true;
             BtnImprimir.Click += BtnImprimir_Click_1;
             // 
             // BtnModificar
             // 
-            BtnModificar.BackColor = Color.White;
-            BtnModificar.FlatAppearance.BorderSize = 0;
-            BtnModificar.FlatStyle = FlatStyle.Flat;
-            BtnModificar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            BtnModificar.ForeColor = Color.Green;
-            BtnModificar.Location = new Point(5, 114);
-            BtnModificar.Margin = new Padding(3, 4, 3, 4);
+            BtnModificar.Location = new Point(15, 52);
             BtnModificar.Name = "BtnModificar";
-            BtnModificar.Size = new Size(135, 53);
-            BtnModificar.TabIndex = 44;
-            BtnModificar.Text = "Modificar";
-            BtnModificar.UseVisualStyleBackColor = false;
+            BtnModificar.Size = new Size(123, 39);
+            BtnModificar.TabIndex = 46;
+            BtnModificar.Text = "&Modificar";
+            BtnModificar.UseVisualStyleBackColor = true;
             BtnModificar.Click += BtnModificar_Click_1;
+            // 
+            // BtnSalir
+            // 
+            BtnSalir.Location = new Point(15, 303);
+            BtnSalir.Name = "BtnSalir";
+            BtnSalir.Size = new Size(125, 39);
+            BtnSalir.TabIndex = 46;
+            BtnSalir.Text = "&Salir";
+            BtnSalir.UseVisualStyleBackColor = true;
+            BtnSalir.Click += BtnSalir_Click_1;
+            // 
+            // BtnNuevo
+            // 
+            BtnNuevo.Location = new Point(15, 7);
+            BtnNuevo.Name = "BtnNuevo";
+            BtnNuevo.Size = new Size(125, 39);
+            BtnNuevo.TabIndex = 46;
+            BtnNuevo.Text = "&Nuevo";
+            BtnNuevo.UseVisualStyleBackColor = true;
+            BtnNuevo.Click += BtnNuevo_Click_1;
             // 
             // DtgAnimal
             // 
@@ -241,14 +224,14 @@
             DtgAnimal.DefaultCellStyle = dataGridViewCellStyle2;
             DtgAnimal.Dock = DockStyle.Fill;
             DtgAnimal.EnableHeadersVisualStyles = false;
-            DtgAnimal.Location = new Point(0, 152);
+            DtgAnimal.Location = new Point(0, 0);
             DtgAnimal.Margin = new Padding(3, 4, 3, 4);
             DtgAnimal.Name = "DtgAnimal";
             DtgAnimal.ReadOnly = true;
             DtgAnimal.RowHeadersWidth = 51;
             DtgAnimal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DtgAnimal.Size = new Size(822, 354);
-            DtgAnimal.TabIndex = 25;
+            DtgAnimal.Size = new Size(830, 354);
+            DtgAnimal.TabIndex = 26;
             // 
             // FormAnimal
             // 
@@ -256,20 +239,19 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
             ClientSize = new Size(972, 506);
-            Controls.Add(DtgAnimal);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormAnimal";
-            Text = "FormAnimal";
+            Text = "Reino Animal";
             Load += FormAnimal_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            panel2.ResumeLayout(false);
             panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DtgAnimal).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -283,11 +265,11 @@
         private Label label9;
         private Panel panel2;
         private Panel panel3;
-        private Tienda.RJButton BtnSalir;
-        private Tienda.RJButton BtnImprimir;
-        private Tienda.RJButton BtnModificar;
         private Button BtnBuscar;
         private Button BtnNuevo;
+        private Button BtnImprimir;
+        private Button BtnModificar;
+        private Button BtnSalir;
         private DataGridView DtgAnimal;
     }
 }
