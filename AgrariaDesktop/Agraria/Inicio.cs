@@ -321,7 +321,7 @@ namespace Agraria
             CerrarTodosLosFormularios();
 
             var cargaForm = new Formularios.FormAnimal(esInvitado);
-            cargaForm.StartPosition = FormStartPosition.CenterScreen;
+            cargaForm.MdiParent = this;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
