@@ -71,14 +71,14 @@
             // iniciarSesionToolStripMenuItem
             // 
             iniciarSesionToolStripMenuItem.Name = "iniciarSesionToolStripMenuItem";
-            iniciarSesionToolStripMenuItem.Size = new Size(179, 26);
+            iniciarSesionToolStripMenuItem.Size = new Size(224, 26);
             iniciarSesionToolStripMenuItem.Text = "Iniciar Sesion";
             iniciarSesionToolStripMenuItem.Click += btnIniciar_Click;
             // 
             // cerrarSesionToolStripMenuItem
             // 
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            cerrarSesionToolStripMenuItem.Size = new Size(179, 26);
+            cerrarSesionToolStripMenuItem.Size = new Size(224, 26);
             cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             cerrarSesionToolStripMenuItem.Click += btnCerrarSesion_Click;
             // 
@@ -112,7 +112,7 @@
             // 
             // verToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, pañolToolStripMenuItem, entornoAnimalToolStripMenuItem });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pañolToolStripMenuItem, entornoAnimalToolStripMenuItem, produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(44, 24);
             verToolStripMenuItem.Text = "Ver";
@@ -120,36 +120,38 @@
             // produccionVegetalToolStripMenuItem
             // 
             produccionVegetalToolStripMenuItem.Name = "produccionVegetalToolStripMenuItem";
-            produccionVegetalToolStripMenuItem.Size = new Size(220, 26);
-            produccionVegetalToolStripMenuItem.Text = "Produccion Vegetal";
+            produccionVegetalToolStripMenuItem.Size = new Size(217, 26);
+            produccionVegetalToolStripMenuItem.Text = "Vegetales";
             produccionVegetalToolStripMenuItem.Click += btnProduccionVegetal_Click;
             // 
             // produccionAnimalToolStripMenuItem
             // 
+            produccionAnimalToolStripMenuItem.Enabled = false;
             produccionAnimalToolStripMenuItem.Name = "produccionAnimalToolStripMenuItem";
-            produccionAnimalToolStripMenuItem.Size = new Size(220, 26);
+            produccionAnimalToolStripMenuItem.Size = new Size(217, 26);
             produccionAnimalToolStripMenuItem.Text = "Produccion Animal";
             produccionAnimalToolStripMenuItem.Click += btnProduccionAnimal_Click;
             // 
             // industriaToolStripMenuItem
             // 
+            industriaToolStripMenuItem.Enabled = false;
             industriaToolStripMenuItem.Name = "industriaToolStripMenuItem";
-            industriaToolStripMenuItem.Size = new Size(220, 26);
+            industriaToolStripMenuItem.Size = new Size(217, 26);
             industriaToolStripMenuItem.Text = "Industria";
             industriaToolStripMenuItem.Click += btnIndustria_Click;
             // 
             // pañolToolStripMenuItem
             // 
             pañolToolStripMenuItem.Name = "pañolToolStripMenuItem";
-            pañolToolStripMenuItem.Size = new Size(220, 26);
-            pañolToolStripMenuItem.Text = "Pañol";
+            pañolToolStripMenuItem.Size = new Size(217, 26);
+            pañolToolStripMenuItem.Text = "Artículos";
             pañolToolStripMenuItem.Click += btnPañol_Click;
             // 
             // entornoAnimalToolStripMenuItem
             // 
             entornoAnimalToolStripMenuItem.Name = "entornoAnimalToolStripMenuItem";
-            entornoAnimalToolStripMenuItem.Size = new Size(176, 22);
-            entornoAnimalToolStripMenuItem.Text = "Entorno Animal";
+            entornoAnimalToolStripMenuItem.Size = new Size(217, 26);
+            entornoAnimalToolStripMenuItem.Text = "Animales";
             entornoAnimalToolStripMenuItem.Click += entornoAnimalToolStripMenuItem_Click;
             // 
             // herramientasToolStripMenuItem

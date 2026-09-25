@@ -181,7 +181,6 @@ namespace Agraria
 
             var cargaForm = new Formularios.ProduccionAnimal(usuarioLogeado, esInvitado);
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
@@ -306,7 +305,7 @@ namespace Agraria
             CerrarTodosLosFormularios();
 
             var cargaForm = new Formularios.FormArticulosLista(usuarioLogeado);
-            cargaForm.StartPosition = FormStartPosition.CenterScreen;
+            cargaForm.MdiParent = this;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
