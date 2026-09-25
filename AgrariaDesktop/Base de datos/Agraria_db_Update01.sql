@@ -153,6 +153,6 @@ INSERT INTO tipo_cultivo (nombre) VALUES ('Hortícola'), ('Extensivo'), ('Frutí
 INSERT INTO ciclo_vida (nombre) VALUES ('Anual'), ('Bianual'), ('Perenne');
 INSERT INTO metodo_siembra (nombre) VALUES ('Siembra directa'), ('Almácigo y trasplante'), ('Hidroponía');
 INSERT INTO estado_fenologico (nombre) VALUES ('Germinación'), ('Vegetativo'), ('Floración'), ('Fructificación'), ('Cosecha');
-
+INSERT INTO categoria (nombre) VALUES ('engorde'), ('pañol'), ('insumos'), ('otros');
 
 
