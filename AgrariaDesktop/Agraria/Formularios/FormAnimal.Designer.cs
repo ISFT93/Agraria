@@ -41,16 +41,16 @@
             LblBuscar = new Label();
             label9 = new Label();
             panel2 = new Panel();
+            DtgAnimal = new DataGridView();
             panel3 = new Panel();
             BtnImprimir = new Button();
             BtnModificar = new Button();
             BtnSalir = new Button();
             BtnNuevo = new Button();
-            DtgAnimal = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DtgAnimal).BeginInit();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -71,9 +71,9 @@
             // 
             // BtnBuscar
             // 
-            BtnBuscar.Location = new Point(837, 93);
+            BtnBuscar.Location = new Point(857, 96);
             BtnBuscar.Name = "BtnBuscar";
-            BtnBuscar.Size = new Size(123, 42);
+            BtnBuscar.Size = new Size(86, 31);
             BtnBuscar.TabIndex = 37;
             BtnBuscar.Text = "&Buscar";
             BtnBuscar.UseVisualStyleBackColor = true;
@@ -146,59 +146,6 @@
             panel2.Size = new Size(830, 354);
             panel2.TabIndex = 23;
             // 
-            // panel3
-            // 
-            panel3.Controls.Add(BtnImprimir);
-            panel3.Controls.Add(BtnModificar);
-            panel3.Controls.Add(BtnSalir);
-            panel3.Controls.Add(BtnNuevo);
-            panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(822, 152);
-            panel3.Margin = new Padding(3, 4, 3, 4);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(150, 354);
-            panel3.TabIndex = 24;
-            // 
-            // BtnImprimir
-            // 
-            BtnImprimir.Location = new Point(15, 97);
-            BtnImprimir.Name = "BtnImprimir";
-            BtnImprimir.Size = new Size(123, 39);
-            BtnImprimir.TabIndex = 46;
-            BtnImprimir.Text = "Im&primir";
-            BtnImprimir.UseVisualStyleBackColor = true;
-            BtnImprimir.Click += BtnImprimir_Click_1;
-            // 
-            // BtnModificar
-            // 
-            BtnModificar.Location = new Point(15, 52);
-            BtnModificar.Name = "BtnModificar";
-            BtnModificar.Size = new Size(123, 39);
-            BtnModificar.TabIndex = 46;
-            BtnModificar.Text = "&Modificar";
-            BtnModificar.UseVisualStyleBackColor = true;
-            BtnModificar.Click += BtnModificar_Click_1;
-            // 
-            // BtnSalir
-            // 
-            BtnSalir.Location = new Point(15, 303);
-            BtnSalir.Name = "BtnSalir";
-            BtnSalir.Size = new Size(125, 39);
-            BtnSalir.TabIndex = 46;
-            BtnSalir.Text = "&Salir";
-            BtnSalir.UseVisualStyleBackColor = true;
-            BtnSalir.Click += BtnSalir_Click_1;
-            // 
-            // BtnNuevo
-            // 
-            BtnNuevo.Location = new Point(15, 7);
-            BtnNuevo.Name = "BtnNuevo";
-            BtnNuevo.Size = new Size(125, 39);
-            BtnNuevo.TabIndex = 46;
-            BtnNuevo.Text = "&Nuevo";
-            BtnNuevo.UseVisualStyleBackColor = true;
-            BtnNuevo.Click += BtnNuevo_Click_1;
-            // 
             // DtgAnimal
             // 
             DtgAnimal.AllowUserToAddRows = false;
@@ -233,6 +180,59 @@
             DtgAnimal.Size = new Size(830, 354);
             DtgAnimal.TabIndex = 26;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(BtnImprimir);
+            panel3.Controls.Add(BtnModificar);
+            panel3.Controls.Add(BtnSalir);
+            panel3.Controls.Add(BtnNuevo);
+            panel3.Dock = DockStyle.Right;
+            panel3.Location = new Point(822, 152);
+            panel3.Margin = new Padding(3, 4, 3, 4);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(150, 354);
+            panel3.TabIndex = 24;
+            // 
+            // BtnImprimir
+            // 
+            BtnImprimir.Location = new Point(35, 81);
+            BtnImprimir.Name = "BtnImprimir";
+            BtnImprimir.Size = new Size(86, 31);
+            BtnImprimir.TabIndex = 46;
+            BtnImprimir.Text = "Im&primir";
+            BtnImprimir.UseVisualStyleBackColor = true;
+            BtnImprimir.Click += BtnImprimir_Click_1;
+            // 
+            // BtnModificar
+            // 
+            BtnModificar.Location = new Point(35, 44);
+            BtnModificar.Name = "BtnModificar";
+            BtnModificar.Size = new Size(86, 31);
+            BtnModificar.TabIndex = 46;
+            BtnModificar.Text = "&Modificar";
+            BtnModificar.UseVisualStyleBackColor = true;
+            BtnModificar.Click += BtnModificar_Click_1;
+            // 
+            // BtnSalir
+            // 
+            BtnSalir.Location = new Point(35, 311);
+            BtnSalir.Name = "BtnSalir";
+            BtnSalir.Size = new Size(86, 31);
+            BtnSalir.TabIndex = 46;
+            BtnSalir.Text = "&Salir";
+            BtnSalir.UseVisualStyleBackColor = true;
+            BtnSalir.Click += BtnSalir_Click_1;
+            // 
+            // BtnNuevo
+            // 
+            BtnNuevo.Location = new Point(35, 7);
+            BtnNuevo.Name = "BtnNuevo";
+            BtnNuevo.Size = new Size(86, 31);
+            BtnNuevo.TabIndex = 46;
+            BtnNuevo.Text = "&Nuevo";
+            BtnNuevo.UseVisualStyleBackColor = true;
+            BtnNuevo.Click += BtnNuevo_Click_1;
+            // 
             // FormAnimal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -249,8 +249,8 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
-            panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DtgAnimal).EndInit();
+            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 

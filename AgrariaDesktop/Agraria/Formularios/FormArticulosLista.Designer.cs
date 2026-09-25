@@ -86,9 +86,9 @@
             btnSalir.Location = new Point(32, 303);
             btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(89, 35);
+            btnSalir.Size = new Size(86, 31);
             btnSalir.TabIndex = 28;
-            btnSalir.Text = "Salir";
+            btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += rjBSalir_Click;
             // 
@@ -99,7 +99,7 @@
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(86, 31);
             btnImprimir.TabIndex = 27;
-            btnImprimir.Text = "Imprimir";
+            btnImprimir.Text = "Im&primir";
             btnImprimir.UseVisualStyleBackColor = true;
             btnImprimir.Click += rjImprimir_Click;
             // 
@@ -110,7 +110,7 @@
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(86, 31);
             btnModificar.TabIndex = 26;
-            btnModificar.Text = "Modificar";
+            btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += rjModificar_Click;
             // 
@@ -121,7 +121,7 @@
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(86, 31);
             btnNuevo.TabIndex = 24;
-            btnNuevo.Text = "Nuevo";
+            btnNuevo.Text = "&Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += rjBNuevo_Click;
             // 
@@ -143,12 +143,12 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(763, 93);
+            btnBuscar.Location = new Point(856, 97);
             btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(86, 31);
             btnBuscar.TabIndex = 24;
-            btnBuscar.Text = "Buscar";
+            btnBuscar.Text = "&Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += rjBBuscar_Click;
             // 

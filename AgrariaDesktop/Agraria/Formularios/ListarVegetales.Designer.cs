@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnNuevo = new Button();
             btnModificar = new Button();
@@ -69,7 +69,7 @@
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(86, 31);
             btnNuevo.TabIndex = 19;
-            btnNuevo.Text = "Nuevo";
+            btnNuevo.Text = "&Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
             // 
@@ -80,7 +80,7 @@
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(86, 31);
             btnModificar.TabIndex = 20;
-            btnModificar.Text = "Modificar";
+            btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
             // 
@@ -91,7 +91,7 @@
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(86, 31);
             btnImprimir.TabIndex = 21;
-            btnImprimir.Text = "Imprimir";
+            btnImprimir.Text = "Im&primir";
             btnImprimir.UseVisualStyleBackColor = true;
             btnImprimir.Click += btnImprimir_Click;
             // 
@@ -102,7 +102,7 @@
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(86, 31);
             btnSalir.TabIndex = 22;
-            btnSalir.Text = "Salir";
+            btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
@@ -128,7 +128,7 @@
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(86, 31);
             btnBuscar.TabIndex = 20;
-            btnBuscar.Text = "Buscar";
+            btnBuscar.Text = "&Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
             // 
@@ -188,23 +188,23 @@
             // dtgvListarVegetales
             // 
             dtgvListarVegetales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgvListarVegetales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.MediumSeaGreen;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgvListarVegetales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvListarVegetales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgvListarVegetales.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Window;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtgvListarVegetales.DefaultCellStyle = dataGridViewCellStyle4;
             dtgvListarVegetales.Dock = DockStyle.Fill;
             dtgvListarVegetales.EnableHeadersVisualStyles = false;
             dtgvListarVegetales.Location = new Point(0, 0);

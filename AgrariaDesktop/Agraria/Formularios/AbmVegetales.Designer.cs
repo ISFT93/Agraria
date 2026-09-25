@@ -98,7 +98,7 @@
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(86, 31);
             btnCancelar.TabIndex = 30;
-            btnCancelar.Text = "Cancelar";
+            btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += cmbCancelar_Click;
             // 
@@ -109,7 +109,7 @@
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(86, 31);
             btnAceptar.TabIndex = 29;
-            btnAceptar.Text = "Aceptar";
+            btnAceptar.Text = "&Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += cmbAceptar_Click;
             // 
