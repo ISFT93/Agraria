@@ -49,7 +49,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -79,7 +79,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -121,7 +121,7 @@ namespace Agraria.Datos.DAL
                 }
                 finally
                 {
-                    ConexionBD.CierraBD();
+                     ;
                 }
             }
 
@@ -140,7 +140,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 

@@ -14,7 +14,8 @@ namespace Agraria.Datos.DAL
     {
         public void Insertar(long idVegetal, string nombreComun, string nombreCientifico, string variedadHibrido, int? idTipoCultivo, int? idCicloVida, string periodoSiembra, int? idMetodoSiembra, int? idEstadoFenologico, string requerimientoHidrico)
         {
-            using (SqlConnection cn = ConexionBD.ObtenerConexion())
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
                 using (SqlCommand cmd = new SqlCommand("sp_insert_vegetal", cn))
                 {
@@ -37,7 +38,8 @@ namespace Agraria.Datos.DAL
 
         public void Actualizar(long idVegetal, string nombreComun, string nombreCientifico, string variedadHibrido, int? idTipoCultivo, int? idCicloVida, string periodoSiembra, int? idMetodoSiembra, int? idEstadoFenologico, string requerimientoHidrico)
         {
-            using (SqlConnection cn = ConexionBD.ObtenerConexion())
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
                 using (SqlCommand cmd = new SqlCommand("sp_update_vegetal", cn))
                 {
@@ -61,7 +63,8 @@ namespace Agraria.Datos.DAL
         public DataTable ObtenerPorId(long idVegetal)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection cn = ConexionBD.ObtenerConexion())
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
                 using (SqlCommand cmd = new SqlCommand("sp_select_vegetal_por_id", cn))
                 {
@@ -79,7 +82,8 @@ namespace Agraria.Datos.DAL
         public DataTable ObtenerCombo(string tabla)
         {
             DataTable dt = new DataTable();
-            using (SqlConnection cn = ConexionBD.ObtenerConexion())
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
                 using (SqlCommand cmd = new SqlCommand("sp_select_combo", cn))
                 {
@@ -97,7 +101,8 @@ namespace Agraria.Datos.DAL
         public DataTable ObtenerRequerimientoHidrico()
         {
             DataTable dt = new DataTable();
-            using (SqlConnection cn = ConexionBD.ObtenerConexion())
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
                 using (SqlCommand cmd = new SqlCommand("sp_select_requerimiento_hidrico", cn))
                 {
@@ -133,7 +138,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
             return ultimoId;
         }

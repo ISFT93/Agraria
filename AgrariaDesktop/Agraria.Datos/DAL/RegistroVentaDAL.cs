@@ -49,7 +49,7 @@ ORDER BY p.Nombre";
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -173,7 +173,7 @@ VALUES (@nro, @fec, @idp, @nomp, @precio, @cant)";
                 }
                 finally
                 {
-                    ConexionBD.CierraBD();
+                     ;
                 }
             }
         }
@@ -215,7 +215,7 @@ ORDER BY IdRegistro DESC";
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -253,7 +253,7 @@ ORDER BY IdDetalle";
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
     }

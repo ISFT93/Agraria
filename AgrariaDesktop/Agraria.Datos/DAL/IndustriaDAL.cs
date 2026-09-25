@@ -44,7 +44,7 @@ namespace Agraria.Datos.DAL
                     cmdUpd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static List<IndustriaDTO> ObtenerRegistrosIndustria()
@@ -79,7 +79,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 

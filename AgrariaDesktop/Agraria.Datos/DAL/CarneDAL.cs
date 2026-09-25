@@ -16,7 +16,7 @@ namespace Agraria.Datos.DAL
             using var cmd = new SqlCommand(sql, ConexionBD.ConexionSQL);
             cmd.Parameters.AddWithValue("@n", numero);
             int count = (int)cmd.ExecuteScalar();
-            ConexionBD.CierraBD();
+             ;
             return count > 0;
         }
 
@@ -27,7 +27,7 @@ namespace Agraria.Datos.DAL
             using var cmd = new SqlCommand(sql, ConexionBD.ConexionSQL);
             cmd.Parameters.AddWithValue("@n", numero);
             int count = (int)cmd.ExecuteScalar();
-            ConexionBD.CierraBD();
+             ;
             return count > 0;
         }
 
@@ -43,7 +43,7 @@ namespace Agraria.Datos.DAL
             cmd.Parameters.AddWithValue("@f", fecha);
             cmd.Parameters.AddWithValue("@s", sexo);
             cmd.ExecuteNonQuery();
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static void EnviarAnimalIndustria(string nombre, int idBox, string numero, DateTime fechaEgreso, int cantidad, string responsable)
@@ -107,7 +107,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -139,7 +139,7 @@ namespace Agraria.Datos.DAL
                     Estado = Convert.ToBoolean(dr["Estado"])
                 });
             }
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
 
@@ -155,7 +155,7 @@ namespace Agraria.Datos.DAL
             using var dr = cmd.ExecuteReader();
             while (dr.Read())
                 lista.Add(new CarneDTO { NumeroAnimal = dr["NumeroAnimal"].ToString() });
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
 
@@ -169,7 +169,7 @@ namespace Agraria.Datos.DAL
             using var dr = cmd.ExecuteReader();
             while (dr.Read())
                 lista.Add(new CarneDTO { NumeroAnimal = dr["NumeroAnimal"].ToString() });
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
 
@@ -202,7 +202,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
 
             return (hembras, machos);
 
@@ -252,7 +252,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -273,7 +273,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@n", nombrePagina);
                 cmd.Parameters.AddWithValue("@num", numeroAnimal);
                 int c = Convert.ToInt32(cmd.ExecuteScalar());
-                ConexionBD.CierraBD();
+                 ;
                 return c > 0;
             }
         }
@@ -292,7 +292,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@f", fechaEgreso);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
 
@@ -312,7 +312,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@numero", numero);
 
                 int count = Convert.ToInt32(cmd.ExecuteScalar());
-                ConexionBD.CierraBD();
+                 ;
                 return count > 0;
             }
         }
@@ -344,7 +344,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -378,7 +378,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -418,7 +418,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return (activos, (decimal)enviadosIndustria);
@@ -465,7 +465,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;

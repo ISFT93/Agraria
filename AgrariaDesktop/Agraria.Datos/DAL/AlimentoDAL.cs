@@ -26,7 +26,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@Estado", alimento.Estado);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static void Modificar(Alimento alimento)
@@ -50,7 +50,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@Estado", alimento.Estado);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static List<Alimento> Listar(string filtro = "")
@@ -86,7 +86,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
     }

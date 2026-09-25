@@ -46,7 +46,7 @@ public class AbmUsuarioDAL
             });
         }
 
-        ConexionBD.CierraBD();
+         ;
         return usuarios;
     }
 
@@ -83,7 +83,7 @@ public class AbmUsuarioDAL
         }
         finally
         {
-            ConexionBD.CierraBD();
+             ;
         }
     }
 
@@ -128,7 +128,7 @@ public class AbmUsuarioDAL
         }
         finally
         {
-            ConexionBD.CierraBD();
+             ;
         }
     }
 
@@ -170,7 +170,7 @@ public class AbmUsuarioDAL
         cmd.Parameters.AddWithValue("@Estado", estado);
         cmd.Parameters.AddWithValue("@Id", id);
         cmd.ExecuteNonQuery();
-        ConexionBD.CierraBD();
+         ;
     }
 
     public List<AbmUsuarioDTO> BuscarUsuarioPorNombreODni(string textoBusqueda)
@@ -216,7 +216,7 @@ public class AbmUsuarioDAL
             });
         }
 
-        ConexionBD.CierraBD();
+         ;
         return usuarios;
     }
 
@@ -235,7 +235,7 @@ public class AbmUsuarioDAL
                 NombrePartido = lector.GetString(1)
             });
         }
-        ConexionBD.CierraBD();
+         ;
         return lista;
     }
 
@@ -259,7 +259,7 @@ public class AbmUsuarioDAL
                 IdPartido = lector.GetInt32(3)
             });
         }
-        ConexionBD.CierraBD();
+         ;
         return lista;
     }
     public List<LocalidadDTO> CargarLocalidadesPorPartido(int idPartido)
@@ -287,7 +287,7 @@ public class AbmUsuarioDAL
             });
         }
 
-        ConexionBD.CierraBD();
+         ;
         return lista;
     }
 
@@ -307,7 +307,7 @@ public class AbmUsuarioDAL
                 TextoPregunta = lector.GetString(1)
             });
         }
-        ConexionBD.CierraBD();
+         ;
         return lista;
     }
 
@@ -335,7 +335,7 @@ public class AbmUsuarioDAL
         cmd.Parameters.AddWithValue("@Pañol", pañol);
         cmd.ExecuteNonQuery();
 
-        ConexionBD.CierraBD();
+         ;
     }
 
 
@@ -383,7 +383,7 @@ public class AbmUsuarioDAL
         }
         finally
         {
-            ConexionBD.CierraBD();
+             ;
         }
     }
 
@@ -411,7 +411,7 @@ public class AbmUsuarioDAL
             permisos.PuedePañol = reader.GetBoolean(reader.GetOrdinal("PuedePañol")); // ✅ nuevo
         }
 
-        ConexionBD.CierraBD();
+         ;
         return permisos;
     }
 
@@ -422,7 +422,7 @@ public class AbmUsuarioDAL
         string query = "SELECT COUNT(*) FROM AbmUsuario";
         SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
         int cantidad = (int)cmd.ExecuteScalar();
-        ConexionBD.CierraBD();
+         ;
         return cantidad > 0;
     }
 
@@ -520,7 +520,7 @@ public class AbmUsuarioDAL
         cmdPermisos.Parameters.AddWithValue("@IdUsuario", nuevoId);
         cmdPermisos.ExecuteNonQuery();
 
-        ConexionBD.CierraBD();
+         ;
     }
 
     public void UpsertPermisos(int idUsuario,
@@ -572,7 +572,7 @@ END";
         }
         finally
         {
-            ConexionBD.CierraBD();
+             ;
         }
     }
 

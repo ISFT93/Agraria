@@ -25,7 +25,7 @@ VALUES (@n, @c, @f, 0, 0)";
                 cmd.Parameters.AddWithValue("@f", fecha);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static void InsertHuevos(string nombre, int huevos, DateTime fecha)
@@ -42,7 +42,7 @@ VALUES (@n, 0, NULL, @h, @f, 0)";
                 cmd.Parameters.AddWithValue("@f", fecha);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static void InsertRetiroAves(string nombre, int retiradas, DateTime fecha)
@@ -59,7 +59,7 @@ VALUES (@n, 0, NULL, 0, @r, @f)";
                 cmd.Parameters.AddWithValue("@f", fecha);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static List<AvesDTO> ListarPorNombre(string nombre)
@@ -99,7 +99,7 @@ ORDER BY Id DESC";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -130,7 +130,7 @@ WHERE Nombre = @n AND Estado = 1";
                 }
                 return (0, 0);
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
         public static void EnviarHuevosAIndustria(string nombreProducto, int cantidad, DateTime fecha, int idTipoEntorno, string responsable, int idTipoMedida = 2)
         {
@@ -226,7 +226,7 @@ WHERE Nombre = @n AND Estado = 1";
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static int ObtenerTotalHuevosActivos(string nombre)
@@ -245,7 +245,7 @@ WHERE Nombre = @n AND Estado = 1";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -278,7 +278,7 @@ WHERE Nombre = @n AND Estado = 1";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -317,7 +317,7 @@ WHERE Nombre = @n AND Estado = 1";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return (totalAves, totalHuevos);

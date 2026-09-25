@@ -27,7 +27,7 @@ namespace Agraria.Datos.DAL
                 }
             }
 
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
     }

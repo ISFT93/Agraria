@@ -35,7 +35,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -51,7 +51,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarPartido(int idPartido, string nombrePartido)
@@ -67,7 +67,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== LOCALIDADES ========
@@ -93,7 +93,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -111,7 +111,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarLocalidad(int idLocalidad, string nombreLocalidad, int idPartido, int codigoPostal = 0)
@@ -129,7 +129,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== TIPO ENTORNO ========
@@ -153,7 +153,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -169,7 +169,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarTipoEntorno(int id, string nombre)
@@ -185,7 +185,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== TIPO MEDIDA ========
@@ -209,7 +209,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -225,7 +225,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarTipoMedida(int id, string nombre)
@@ -241,7 +241,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== PRODUCTOS ========
@@ -266,7 +266,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -284,7 +284,7 @@ namespace Agraria.Datos.DAL
                     return Convert.ToDecimal(o);
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public string ObtenerDescripcionPorNombre(string nombreProducto)
@@ -302,7 +302,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -323,7 +323,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarProducto(int idProducto, string nombre, string descripcion, decimal precioUnitario)
@@ -341,7 +341,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         private int ObtenerSiguienteIdProducto()
@@ -377,7 +377,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static void ModificarProveedor(Proveedor proveedor)
@@ -401,7 +401,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static List<Proveedor> ListarProveedores()
@@ -426,7 +426,7 @@ namespace Agraria.Datos.DAL
                 }
             }
 
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
     }
