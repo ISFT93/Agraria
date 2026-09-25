@@ -1,6 +1,6 @@
 ﻿namespace Agraria.Formularios
 {
-    partial class FormAnimal
+    partial class ListaAnimales
     {
         /// <summary>
         /// Required designer variable.
@@ -139,11 +139,11 @@
             // panel2
             // 
             panel2.Controls.Add(DtgAnimal);
-            panel2.Dock = DockStyle.Left;
+            panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 152);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(830, 354);
+            panel2.Size = new Size(972, 354);
             panel2.TabIndex = 23;
             // 
             // DtgAnimal
@@ -177,7 +177,7 @@
             DtgAnimal.ReadOnly = true;
             DtgAnimal.RowHeadersWidth = 51;
             DtgAnimal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DtgAnimal.Size = new Size(830, 354);
+            DtgAnimal.Size = new Size(972, 354);
             DtgAnimal.TabIndex = 26;
             // 
             // panel3

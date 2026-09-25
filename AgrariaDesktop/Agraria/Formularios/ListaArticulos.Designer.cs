@@ -1,6 +1,6 @@
 ﻿namespace Agraria.Formularios
 {
-    partial class FormArticulosLista
+    partial class ListaArticulos
     {
         /// <summary>
         /// Required designer variable.

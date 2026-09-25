@@ -97,7 +97,7 @@
             btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(86, 31);
-            btnCancelar.TabIndex = 30;
+            btnCancelar.TabIndex = 15;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += cmbCancelar_Click;
@@ -108,7 +108,7 @@
             btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(86, 31);
-            btnAceptar.TabIndex = 29;
+            btnAceptar.TabIndex = 14;
             btnAceptar.Text = "&Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
             btnAceptar.Click += cmbAceptar_Click;
@@ -121,7 +121,7 @@
             chkVerano.Location = new Point(447, 401);
             chkVerano.Name = "chkVerano";
             chkVerano.Size = new Size(118, 33);
-            chkVerano.TabIndex = 28;
+            chkVerano.TabIndex = 8;
             chkVerano.Text = "Verano";
             chkVerano.UseVisualStyleBackColor = true;
             // 
@@ -133,7 +133,7 @@
             chkPrimavera.Location = new Point(288, 401);
             chkPrimavera.Name = "chkPrimavera";
             chkPrimavera.Size = new Size(153, 33);
-            chkPrimavera.TabIndex = 27;
+            chkPrimavera.TabIndex = 7;
             chkPrimavera.Text = "Primavera";
             chkPrimavera.UseVisualStyleBackColor = true;
             // 
@@ -145,7 +145,7 @@
             chkInvierno.Location = new Point(160, 401);
             chkInvierno.Name = "chkInvierno";
             chkInvierno.Size = new Size(128, 33);
-            chkInvierno.TabIndex = 26;
+            chkInvierno.TabIndex = 6;
             chkInvierno.Text = "Invierno";
             chkInvierno.UseVisualStyleBackColor = true;
             // 
@@ -157,7 +157,7 @@
             chkOtoño.Location = new Point(56, 401);
             chkOtoño.Name = "chkOtoño";
             chkOtoño.Size = new Size(106, 33);
-            chkOtoño.TabIndex = 25;
+            chkOtoño.TabIndex = 5;
             chkOtoño.Text = "Otoño";
             chkOtoño.UseVisualStyleBackColor = true;
             // 
@@ -334,7 +334,7 @@
             txtVariedadHibrido.MaxLength = 40;
             txtVariedadHibrido.Name = "txtVariedadHibrido";
             txtVariedadHibrido.Size = new Size(484, 34);
-            txtVariedadHibrido.TabIndex = 7;
+            txtVariedadHibrido.TabIndex = 4;
             // 
             // txtNombreCientifico
             // 
@@ -344,7 +344,7 @@
             txtNombreCientifico.MaxLength = 40;
             txtNombreCientifico.Name = "txtNombreCientifico";
             txtNombreCientifico.Size = new Size(484, 34);
-            txtNombreCientifico.TabIndex = 6;
+            txtNombreCientifico.TabIndex = 3;
             // 
             // txtNombreComun
             // 
@@ -354,7 +354,7 @@
             txtNombreComun.MaxLength = 40;
             txtNombreComun.Name = "txtNombreComun";
             txtNombreComun.Size = new Size(484, 34);
-            txtNombreComun.TabIndex = 5;
+            txtNombreComun.TabIndex = 2;
             // 
             // txtCodigoVegetal
             // 
@@ -363,7 +363,7 @@
             txtCodigoVegetal.Margin = new Padding(2, 3, 2, 3);
             txtCodigoVegetal.Name = "txtCodigoVegetal";
             txtCodigoVegetal.Size = new Size(169, 34);
-            txtCodigoVegetal.TabIndex = 4;
+            txtCodigoVegetal.TabIndex = 1;
             // 
             // AbmVegetales
             // 

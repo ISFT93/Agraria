@@ -26,6 +26,7 @@ namespace Agraria.Formularios
             _usuarioActual = usuarioLogeado; // <--- ¡Faltaba asignar esta variable aquí!
             CargarCombos();
             txtCodigoVegetal.Enabled = false;
+            txtNombreComun.Focus();
         }
 
         // Constructor para MODIFICAR
@@ -119,7 +120,7 @@ namespace Agraria.Formularios
                 bool esModificacion = (idVegetalEditar != null);
 
                 if (!esModificacion)
-                {    
+                {
                     int idUsuarioLogueado = _usuarioActual.Id;
                     idVegetalFinal = bll.GenerarIdBloque(idUsuarioLogueado);
                 }

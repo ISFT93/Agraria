@@ -1,6 +1,6 @@
 ﻿namespace Agraria.Formularios
 {
-    partial class FormArticulosDetalle
+    partial class AbmArticulos
     {
         /// <summary>
         /// Required designer variable.
@@ -60,7 +60,7 @@
             txtNombre.Location = new Point(22, 154);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(380, 34);
-            txtNombre.TabIndex = 1;
+            txtNombre.TabIndex = 2;
             // 
             // lblMarca
             // 
@@ -104,7 +104,7 @@
             cmbcategoria.Location = new Point(28, 402);
             cmbcategoria.Name = "cmbcategoria";
             cmbcategoria.Size = new Size(250, 37);
-            cmbcategoria.TabIndex = 11;
+            cmbcategoria.TabIndex = 5;
             // 
             // label1
             // 
@@ -123,7 +123,7 @@
             dypFechaAlta.Location = new Point(28, 328);
             dypFechaAlta.Name = "dypFechaAlta";
             dypFechaAlta.Size = new Size(180, 27);
-            dypFechaAlta.TabIndex = 13;
+            dypFechaAlta.TabIndex = 4;
             // 
             // txtcodigoArticulo
             // 
@@ -135,7 +135,7 @@
             txtcodigoArticulo.Name = "txtcodigoArticulo";
             txtcodigoArticulo.ReadOnly = true;
             txtcodigoArticulo.Size = new Size(120, 34);
-            txtcodigoArticulo.TabIndex = 17;
+            txtcodigoArticulo.TabIndex = 1;
             // 
             // lblNumArticulo
             // 
@@ -153,7 +153,7 @@
             rjBAceptar.Location = new Point(527, 517);
             rjBAceptar.Name = "rjBAceptar";
             rjBAceptar.Size = new Size(94, 29);
-            rjBAceptar.TabIndex = 23;
+            rjBAceptar.TabIndex = 6;
             rjBAceptar.Text = "&Aceptar";
             rjBAceptar.UseVisualStyleBackColor = true;
             rjBAceptar.Click += rjBAceptar_Click;
@@ -163,7 +163,7 @@
             rjBCancelar.Location = new Point(527, 565);
             rjBCancelar.Name = "rjBCancelar";
             rjBCancelar.Size = new Size(94, 29);
-            rjBCancelar.TabIndex = 23;
+            rjBCancelar.TabIndex = 7;
             rjBCancelar.Text = "&Cancelar";
             rjBCancelar.UseVisualStyleBackColor = true;
             rjBCancelar.Click += rjBCancelar_Click;
@@ -191,6 +191,7 @@
             MinimizeBox = false;
             Name = "FormArticulosDetalle";
             Text = "Detalle de Artículo";
+            Load += FormArticulosDetalle_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }

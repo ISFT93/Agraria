@@ -9,27 +9,27 @@ using Agraria.Datos.DTO;
 
 namespace Agraria.Formularios
 {
-    public partial class FormAnimal : Form
+    public partial class ListaAnimales : Form
     {
         private AbmAnimalDAL animalDAL = new AbmAnimalDAL();
         private bool esInvitado;
         private int idUsuarioSesion = 1;
         private List<AnimalDTO> listaAnimales = new List<AnimalDTO>();
 
-        public FormAnimal(bool esInvitado)
+        public ListaAnimales(bool esInvitado)
         {
             InitializeComponent();
             this.esInvitado = esInvitado;
         }
 
-        public FormAnimal(bool esInvitado, int idUsuario)
+        public ListaAnimales(bool esInvitado, int idUsuario)
         {
             InitializeComponent();
             this.esInvitado = esInvitado;
             this.idUsuarioSesion = idUsuario;
         }
 
-        public FormAnimal()
+        public ListaAnimales()
         {
             InitializeComponent();
             this.esInvitado = false;
