@@ -120,7 +120,7 @@ namespace Agraria.Formularios
                 bool esModificacion = (idVegetalEditar != null);
 
                 if (!esModificacion)
-                {
+                {    
                     int idUsuarioLogueado = _usuarioActual.Id;
                     idVegetalFinal = bll.GenerarIdBloque(idUsuarioLogueado);
                 }
