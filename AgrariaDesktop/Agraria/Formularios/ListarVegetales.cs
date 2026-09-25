@@ -140,7 +140,7 @@ namespace Agraria.Formularios
                 DataTable dt = abmBll.CargarCombo("tipo_cultivo");
 
                 DataRow row = dt.NewRow();
-                row["id_tipo_cultivo"] = 0; 
+                row["id_tipo_cultivo"] = 0;
                 row["nombre"] = "Todos";
                 dt.Rows.InsertAt(row, 0);
 
@@ -238,5 +238,9 @@ namespace Agraria.Formularios
             }
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

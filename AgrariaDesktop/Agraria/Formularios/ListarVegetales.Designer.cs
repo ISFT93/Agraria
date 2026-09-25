@@ -56,17 +56,18 @@
             panel1.Controls.Add(btnImprimir);
             panel1.Controls.Add(btnSalir);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(667, 91);
-            panel1.Margin = new Padding(2);
+            panel1.Location = new Point(762, 121);
+            panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(105, 286);
+            panel1.Size = new Size(120, 382);
             panel1.TabIndex = 0;
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(18, 14);
+            btnNuevo.Location = new Point(21, 19);
+            btnNuevo.Margin = new Padding(3, 4, 3, 4);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(75, 23);
+            btnNuevo.Size = new Size(86, 31);
             btnNuevo.TabIndex = 19;
             btnNuevo.Text = "Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
@@ -74,9 +75,10 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(18, 96);
+            btnModificar.Location = new Point(21, 58);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(75, 23);
+            btnModificar.Size = new Size(86, 31);
             btnModificar.TabIndex = 20;
             btnModificar.Text = "Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -84,9 +86,10 @@
             // 
             // btnImprimir
             // 
-            btnImprimir.Location = new Point(18, 178);
+            btnImprimir.Location = new Point(21, 97);
+            btnImprimir.Margin = new Padding(3, 4, 3, 4);
             btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new Size(75, 23);
+            btnImprimir.Size = new Size(86, 31);
             btnImprimir.TabIndex = 21;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = true;
@@ -94,9 +97,10 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(18, 260);
+            btnSalir.Location = new Point(21, 347);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(86, 31);
             btnSalir.TabIndex = 22;
             btnSalir.Text = "Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -111,16 +115,18 @@
             panel2.Controls.Add(txtBuscar);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(2);
+            panel2.Margin = new Padding(2, 3, 2, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(772, 91);
+            panel2.Size = new Size(882, 121);
             panel2.TabIndex = 1;
+            panel2.Paint += panel2_Paint;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(587, 63);
+            btnBuscar.Location = new Point(671, 84);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.Size = new Size(86, 31);
             btnBuscar.TabIndex = 20;
             btnBuscar.Text = "Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -131,10 +137,9 @@
             cmbFiltrarPor.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFiltrarPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(3, 24);
-            cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
+            cmbFiltrarPor.Location = new Point(207, 34);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
-            cmbFiltrarPor.Size = new Size(177, 32);
+            cmbFiltrarPor.Size = new Size(202, 37);
             cmbFiltrarPor.TabIndex = 18;
             cmbFiltrarPor.SelectedIndexChanged += cmbFiltrarPor_SelectedIndexChanged;
             // 
@@ -143,41 +148,41 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(0, 0);
+            label1.Location = new Point(3, 34);
             label1.Name = "label1";
-            label1.Size = new Size(253, 24);
+            label1.Size = new Size(198, 29);
             label1.TabIndex = 17;
-            label1.Text = "Filtrar por Tipo de Cultivo:";
+            label1.Text = "Tipo de Cultivo:";
             // 
             // laaa
             // 
             laaa.AutoSize = true;
             laaa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             laaa.ForeColor = Color.White;
-            laaa.Location = new Point(3, 63);
+            laaa.Location = new Point(3, 84);
             laaa.Name = "laaa";
-            laaa.Size = new Size(91, 24);
+            laaa.Size = new Size(114, 29);
             laaa.TabIndex = 16;
             laaa.Text = "Nombre:";
             // 
             // txtBuscar
             // 
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(110, 58);
-            txtBuscar.Margin = new Padding(2);
+            txtBuscar.Location = new Point(126, 77);
+            txtBuscar.Margin = new Padding(2, 3, 2, 3);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(399, 29);
+            txtBuscar.Size = new Size(455, 34);
             txtBuscar.TabIndex = 2;
             // 
             // panel3
             // 
             panel3.Controls.Add(dtgvListarVegetales);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 91);
-            panel3.Margin = new Padding(2);
+            panel3.Location = new Point(0, 121);
+            panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(667, 286);
+            panel3.Size = new Size(762, 382);
             panel3.TabIndex = 2;
             // 
             // dtgvListarVegetales
@@ -203,24 +208,24 @@
             dtgvListarVegetales.Dock = DockStyle.Fill;
             dtgvListarVegetales.EnableHeadersVisualStyles = false;
             dtgvListarVegetales.Location = new Point(0, 0);
-            dtgvListarVegetales.Margin = new Padding(2);
+            dtgvListarVegetales.Margin = new Padding(2, 3, 2, 3);
             dtgvListarVegetales.Name = "dtgvListarVegetales";
             dtgvListarVegetales.ReadOnly = true;
             dtgvListarVegetales.RowHeadersWidth = 62;
             dtgvListarVegetales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvListarVegetales.Size = new Size(667, 286);
+            dtgvListarVegetales.Size = new Size(762, 382);
             dtgvListarVegetales.TabIndex = 0;
             // 
             // ListarVegetales
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(772, 377);
+            ClientSize = new Size(882, 503);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "ListarVegetales";
             Text = "ListarVegetales";
             Load += ListarVegetales_Load;
