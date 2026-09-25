@@ -23,7 +23,7 @@ namespace Agraria.Formularios
         private void FormArticulosLista_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+           // this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Cargamos el combo de categorías y la grilla al iniciar
