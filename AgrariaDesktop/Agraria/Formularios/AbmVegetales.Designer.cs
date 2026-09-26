@@ -57,9 +57,9 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(799, 434);
+            btnCancelar.Location = new Point(799, 421);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.Size = new Size(75, 29);
             btnCancelar.TabIndex = 0;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;

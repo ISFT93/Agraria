@@ -8,28 +8,23 @@ using Agraria.Negocio.BLL;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmAnimal : Form
+    public partial class AbmAnimales : Form
     {
         private AbmAnimalDAL AbmanimalDAL = new AbmAnimalDAL();
         private AbmAnimalBLL abmAnimalBLL = new AbmAnimalBLL();
         private AnimalDTO animalEdicion = null;
         private int _idUsuarioActual = 1; // ID de usuario logueado en sesión
 
-        // Constructor para registros NUEVOS
-        public AbmAnimal()
-        {
-            InitializeComponent();
-        }
-
-        // Constructor para registros NUEVOS especificando el usuario
-        public AbmAnimal(int idUsuarioLogueado)
+    
+    
+        public AbmAnimales(int idUsuarioLogueado)
         {
             InitializeComponent();
             this._idUsuarioActual = idUsuarioLogueado;
         }
 
         // Constructor para MODIFICAR un registro existente
-        public AbmAnimal(AnimalDTO animalParaEditar)
+        public AbmAnimales(AnimalDTO animalParaEditar)
         {
             InitializeComponent();
             this.animalEdicion = animalParaEditar;
@@ -37,7 +32,7 @@ namespace Agraria.Formularios
 
         private void AbmAnimal_Load(object sender, EventArgs e)
         {
-            // Carga datos de los combos y bloquearles la escritura libre
+            // Carga datos de los combos y bloquea la escritura libre
             CargarCombos();
 
             // Bloquea la caja del código para que no sea editable
@@ -66,6 +61,7 @@ namespace Agraria.Formularios
                 // Alta: Genera el código de bloque único
                 long proximoId = abmAnimalBLL.GenerarIdBloque(_idUsuarioActual);
                 TxtCodigo.Text = proximoId.ToString();
+                TxtCodigo.Focus();
             }
         }
 
@@ -175,6 +171,8 @@ namespace Agraria.Formularios
                     e.Cancel = true;
                 }
             }
-        }        
+        }
+
+  
     }
 }

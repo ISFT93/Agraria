@@ -218,7 +218,7 @@ namespace Agraria.Formularios
 
         private void BtnNuevo_Click_1(object sender, EventArgs e)
         {
-            using (AbmAnimal formRegistro = new AbmAnimal(idUsuarioSesion))
+            using (AbmAnimales formRegistro = new AbmAnimales(idUsuarioSesion))
             {
                 if (formRegistro.ShowDialog() == DialogResult.OK)
                 {
@@ -233,7 +233,7 @@ namespace Agraria.Formularios
             {
                 AnimalDTO seleccionado = (AnimalDTO)DtgAnimal.CurrentRow.DataBoundItem;
 
-                using (AbmAnimal formEditar = new AbmAnimal(seleccionado))
+                using (AbmAnimales formEditar = new AbmAnimales(seleccionado))
                 {
                     if (formEditar.ShowDialog() == DialogResult.OK)
                     {

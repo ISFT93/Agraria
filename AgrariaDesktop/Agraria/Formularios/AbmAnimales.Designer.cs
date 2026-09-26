@@ -1,6 +1,6 @@
 ﻿namespace Agraria.Formularios
 {
-    partial class AbmAnimal
+    partial class AbmAnimales
     {
         /// <summary>
         /// Required designer variable.
@@ -53,195 +53,192 @@
             LblSexo.AutoSize = true;
             LblSexo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblSexo.ForeColor = Color.White;
-            LblSexo.Location = new Point(23, 614);
+            LblSexo.Location = new Point(202, 241);
             LblSexo.Name = "LblSexo";
-            LblSexo.Size = new Size(79, 29);
+            LblSexo.Size = new Size(58, 24);
             LblSexo.TabIndex = 20;
-            LblSexo.Text = "Sexo:";
+            LblSexo.Text = "Sexo";
             // 
             // LblFechaNacimiento
             // 
             LblFechaNacimiento.AutoSize = true;
             LblFechaNacimiento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblFechaNacimiento.ForeColor = Color.White;
-            LblFechaNacimiento.Location = new Point(23, 533);
+            LblFechaNacimiento.Location = new Point(20, 241);
             LblFechaNacimiento.Name = "LblFechaNacimiento";
-            LblFechaNacimiento.Size = new Size(231, 29);
+            LblFechaNacimiento.Size = new Size(180, 24);
             LblFechaNacimiento.TabIndex = 19;
-            LblFechaNacimiento.Text = "Fecha Nacimiento:";
+            LblFechaNacimiento.Text = "Fecha Nacimiento";
             // 
             // LblSubrubro
             // 
             LblSubrubro.AutoSize = true;
             LblSubrubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblSubrubro.ForeColor = Color.White;
-            LblSubrubro.Location = new Point(23, 446);
+            LblSubrubro.Location = new Point(376, 241);
             LblSubrubro.Name = "LblSubrubro";
-            LblSubrubro.Size = new Size(128, 29);
+            LblSubrubro.Size = new Size(97, 24);
             LblSubrubro.TabIndex = 18;
-            LblSubrubro.Text = "Subrubro:";
+            LblSubrubro.Text = "Subrubro";
             // 
             // LblRubro
             // 
             LblRubro.AutoSize = true;
             LblRubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblRubro.ForeColor = Color.White;
-            LblRubro.Location = new Point(23, 361);
+            LblRubro.Location = new Point(376, 172);
             LblRubro.Name = "LblRubro";
-            LblRubro.Size = new Size(91, 29);
+            LblRubro.Size = new Size(67, 24);
             LblRubro.TabIndex = 17;
-            LblRubro.Text = "Rubro:";
+            LblRubro.Text = "Rubro";
             // 
             // LblTipoAnimal
             // 
             LblTipoAnimal.AutoSize = true;
             LblTipoAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblTipoAnimal.ForeColor = Color.White;
-            LblTipoAnimal.Location = new Point(23, 280);
+            LblTipoAnimal.Location = new Point(376, 112);
             LblTipoAnimal.Name = "LblTipoAnimal";
-            LblTipoAnimal.Size = new Size(197, 29);
+            LblTipoAnimal.Size = new Size(152, 24);
             LblTipoAnimal.TabIndex = 16;
-            LblTipoAnimal.Text = "Tipo de Animal:";
+            LblTipoAnimal.Text = "Tipo de Animal";
             // 
             // LblNombreCientifico
             // 
             LblNombreCientifico.AutoSize = true;
             LblNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblNombreCientifico.ForeColor = Color.White;
-            LblNombreCientifico.Location = new Point(23, 198);
+            LblNombreCientifico.Location = new Point(20, 174);
             LblNombreCientifico.Name = "LblNombreCientifico";
-            LblNombreCientifico.Size = new Size(231, 29);
+            LblNombreCientifico.Size = new Size(177, 24);
             LblNombreCientifico.TabIndex = 15;
-            LblNombreCientifico.Text = "Nombre Científico:";
+            LblNombreCientifico.Text = "Nombre Científico";
             // 
             // LblNombreComun
             // 
             LblNombreComun.AutoSize = true;
             LblNombreComun.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblNombreComun.ForeColor = Color.White;
-            LblNombreComun.Location = new Point(23, 115);
+            LblNombreComun.Location = new Point(20, 112);
             LblNombreComun.Name = "LblNombreComun";
-            LblNombreComun.Size = new Size(203, 29);
+            LblNombreComun.Size = new Size(158, 24);
             LblNombreComun.TabIndex = 14;
-            LblNombreComun.Text = "Nombre Común:";
+            LblNombreComun.Text = "Nombre Común";
             // 
             // CbSexo
             // 
             CbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
             CbSexo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbSexo.FormattingEnabled = true;
-            CbSexo.Location = new Point(23, 646);
-            CbSexo.Margin = new Padding(3, 4, 3, 4);
+            CbSexo.Location = new Point(202, 267);
             CbSexo.Name = "CbSexo";
-            CbSexo.Size = new Size(117, 37);
-            CbSexo.TabIndex = 27;
+            CbSexo.Size = new Size(131, 32);
+            CbSexo.TabIndex = 8;
             // 
             // txtNombreComun
             // 
             txtNombreComun.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreComun.Location = new Point(23, 148);
-            txtNombreComun.Margin = new Padding(3, 4, 3, 4);
+            txtNombreComun.Location = new Point(20, 137);
             txtNombreComun.Name = "txtNombreComun";
-            txtNombreComun.Size = new Size(261, 34);
-            txtNombreComun.TabIndex = 26;
+            txtNombreComun.Size = new Size(300, 29);
+            txtNombreComun.TabIndex = 2;
             // 
             // txtNombreCientifico
             // 
             txtNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreCientifico.Location = new Point(23, 231);
-            txtNombreCientifico.Margin = new Padding(3, 4, 3, 4);
+            txtNombreCientifico.Location = new Point(20, 199);
             txtNombreCientifico.Name = "txtNombreCientifico";
-            txtNombreCientifico.Size = new Size(261, 34);
-            txtNombreCientifico.TabIndex = 25;
+            txtNombreCientifico.Size = new Size(300, 29);
+            txtNombreCientifico.TabIndex = 3;
             // 
             // dtpFechaNacimiento
             // 
+            dtpFechaNacimiento.CustomFormat = "dd/MM/yyy";
             dtpFechaNacimiento.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpFechaNacimiento.Location = new Point(23, 566);
-            dtpFechaNacimiento.Margin = new Padding(3, 4, 3, 4);
+            dtpFechaNacimiento.Format = DateTimePickerFormat.Custom;
+            dtpFechaNacimiento.Location = new Point(20, 265);
             dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            dtpFechaNacimiento.Size = new Size(342, 30);
-            dtpFechaNacimiento.TabIndex = 24;
+            dtpFechaNacimiento.Size = new Size(118, 26);
+            dtpFechaNacimiento.TabIndex = 7;
             // 
             // CbSubrubro
             // 
             CbSubrubro.DropDownStyle = ComboBoxStyle.DropDownList;
             CbSubrubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbSubrubro.FormattingEnabled = true;
-            CbSubrubro.Location = new Point(23, 479);
-            CbSubrubro.Margin = new Padding(3, 4, 3, 4);
+            CbSubrubro.Location = new Point(376, 267);
             CbSubrubro.Name = "CbSubrubro";
-            CbSubrubro.Size = new Size(180, 37);
-            CbSubrubro.TabIndex = 23;
+            CbSubrubro.Size = new Size(188, 32);
+            CbSubrubro.TabIndex = 6;
             // 
             // CbRubro
             // 
             CbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
             CbRubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbRubro.FormattingEnabled = true;
-            CbRubro.Location = new Point(23, 394);
-            CbRubro.Margin = new Padding(3, 4, 3, 4);
+            CbRubro.Location = new Point(376, 198);
             CbRubro.Name = "CbRubro";
-            CbRubro.Size = new Size(180, 37);
-            CbRubro.TabIndex = 22;
+            CbRubro.Size = new Size(188, 32);
+            CbRubro.TabIndex = 5;
             // 
             // CbTipoAnimal
             // 
+            CbTipoAnimal.BackColor = SystemColors.Window;
             CbTipoAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
             CbTipoAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbTipoAnimal.FormattingEnabled = true;
-            CbTipoAnimal.Location = new Point(23, 313);
-            CbTipoAnimal.Margin = new Padding(3, 4, 3, 4);
+            CbTipoAnimal.Location = new Point(376, 138);
             CbTipoAnimal.Name = "CbTipoAnimal";
-            CbTipoAnimal.Size = new Size(180, 37);
-            CbTipoAnimal.TabIndex = 21;
+            CbTipoAnimal.Size = new Size(188, 32);
+            CbTipoAnimal.TabIndex = 4;
             // 
             // TxtCodigo
             // 
             TxtCodigo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            TxtCodigo.Location = new Point(23, 66);
-            TxtCodigo.Margin = new Padding(3, 4, 3, 4);
+            TxtCodigo.Location = new Point(20, 50);
             TxtCodigo.Name = "TxtCodigo";
-            TxtCodigo.Size = new Size(261, 34);
-            TxtCodigo.TabIndex = 29;
+            TxtCodigo.Size = new Size(183, 29);
+            TxtCodigo.TabIndex = 1;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(23, 33);
+            label1.Location = new Point(20, 25);
             label1.Name = "label1";
-            label1.Size = new Size(105, 29);
+            label1.Size = new Size(77, 24);
             label1.TabIndex = 28;
-            label1.Text = "Código:";
+            label1.Text = "Código";
             // 
             // BtnAceptar
             // 
-            BtnAceptar.Location = new Point(583, 702);
+            BtnAceptar.Location = new Point(674, 294);
+            BtnAceptar.Margin = new Padding(3, 2, 3, 2);
             BtnAceptar.Name = "BtnAceptar";
-            BtnAceptar.Size = new Size(94, 29);
-            BtnAceptar.TabIndex = 32;
+            BtnAceptar.Size = new Size(82, 22);
+            BtnAceptar.TabIndex = 9;
             BtnAceptar.Text = "&Aceptar";
             BtnAceptar.UseVisualStyleBackColor = true;
             BtnAceptar.Click += BtnAceptar_Click;
             // 
             // BtnCancelar
             // 
-            BtnCancelar.Location = new Point(583, 737);
+            BtnCancelar.Location = new Point(674, 321);
+            BtnCancelar.Margin = new Padding(3, 2, 3, 2);
             BtnCancelar.Name = "BtnCancelar";
-            BtnCancelar.Size = new Size(94, 29);
-            BtnCancelar.TabIndex = 32;
+            BtnCancelar.Size = new Size(82, 22);
+            BtnCancelar.TabIndex = 10;
             BtnCancelar.Text = "&Cancelar";
             BtnCancelar.UseVisualStyleBackColor = true;
             BtnCancelar.Click += BtnCancelar_Click_1;
             // 
-            // AbmAnimal
+            // AbmAnimales
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(720, 780);
+            ClientSize = new Size(800, 375);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
             Controls.Add(TxtCodigo);
@@ -260,9 +257,8 @@
             Controls.Add(LblTipoAnimal);
             Controls.Add(LblNombreCientifico);
             Controls.Add(LblNombreComun);
-            FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "AbmAnimal";
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Name = "AbmAnimales";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AbmAnimal";
             Load += AbmAnimal_Load;
