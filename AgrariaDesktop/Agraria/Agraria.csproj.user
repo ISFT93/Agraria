@@ -25,13 +25,13 @@
     <Compile Update="Formularios\CambiarContraseña.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\FormAnimal.cs">
+    <Compile Update="Formularios\ListaAnimales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\FormArticulosDetalle.cs">
+    <Compile Update="Formularios\AbmArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\FormArticulosLista.cs">
+    <Compile Update="Formularios\ListaArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\Industria.cs">

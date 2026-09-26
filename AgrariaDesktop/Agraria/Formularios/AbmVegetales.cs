@@ -26,6 +26,7 @@ namespace Agraria.Formularios
             _usuarioActual = usuarioLogeado; // <--- ¡Faltaba asignar esta variable aquí!
             CargarCombos();
             txtCodigoVegetal.Enabled = false;
+            txtNombreComun.Focus();
         }
 
         // Constructor para MODIFICAR

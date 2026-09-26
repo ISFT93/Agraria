@@ -4,14 +4,14 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class FormArticulosLista : Form
+    public partial class ListaArticulos : Form
     {
         // Instancia de la BLL para conectar con la lógica del negocio
         private Agraria.BLL.ArticulosBLL articulosBLL = new Agraria.BLL.ArticulosBLL();
         private object _usuarioActual; // Objeto de sesión del usuario logueado
 
         // Constructor que recibe el usuario logueado (opcional para pruebas individuales)
-        public FormArticulosLista(object usuarioLogeado = null)
+        public ListaArticulos(object usuarioLogeado = null)
         {
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
@@ -99,7 +99,7 @@ namespace Agraria.Formularios
         private void rjBNuevo_Click(object sender, EventArgs e)
         {
             // Creamos el formulario de detalle pasándole el usuario actual para la lógica de bloques
-            FormArticulosDetalle formDetalle = new FormArticulosDetalle(_usuarioActual);
+            AbmArticulos formDetalle = new AbmArticulos(_usuarioActual);
             formDetalle.idArticuloActual = null; // Es null para indicar alta nueva
 
             if (formDetalle.ShowDialog() == DialogResult.OK)
@@ -116,7 +116,7 @@ namespace Agraria.Formularios
                 long idSeleccionado = Convert.ToInt64(dgvArticulos.SelectedRows[0].Cells["id_articulo"].Value);
 
                 // Creamos el formulario de detalle pasándole el usuario actual y el ID para modificar
-                FormArticulosDetalle formDetalle = new FormArticulosDetalle(_usuarioActual);
+                AbmArticulos formDetalle = new AbmArticulos(_usuarioActual);
                 formDetalle.idArticuloActual = idSeleccionado;
 
                 if (formDetalle.ShowDialog() == DialogResult.OK)
