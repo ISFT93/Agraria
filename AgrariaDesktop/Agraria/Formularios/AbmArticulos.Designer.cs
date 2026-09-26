@@ -120,9 +120,11 @@
             // dypFechaAlta
             // 
             dypFechaAlta.CalendarFont = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dypFechaAlta.CustomFormat = "dd/MM/yyyy";
+            dypFechaAlta.Format = DateTimePickerFormat.Short;
             dypFechaAlta.Location = new Point(28, 328);
             dypFechaAlta.Name = "dypFechaAlta";
-            dypFechaAlta.Size = new Size(180, 27);
+            dypFechaAlta.Size = new Size(127, 27);
             dypFechaAlta.TabIndex = 4;
             // 
             // txtcodigoArticulo
@@ -150,7 +152,7 @@
             // 
             // rjBAceptar
             // 
-            rjBAceptar.Location = new Point(527, 517);
+            rjBAceptar.Location = new Point(527, 451);
             rjBAceptar.Name = "rjBAceptar";
             rjBAceptar.Size = new Size(94, 29);
             rjBAceptar.TabIndex = 6;
@@ -160,7 +162,7 @@
             // 
             // rjBCancelar
             // 
-            rjBCancelar.Location = new Point(527, 565);
+            rjBCancelar.Location = new Point(527, 498);
             rjBCancelar.Name = "rjBCancelar";
             rjBCancelar.Size = new Size(94, 29);
             rjBCancelar.TabIndex = 7;
@@ -168,12 +170,12 @@
             rjBCancelar.UseVisualStyleBackColor = true;
             rjBCancelar.Click += rjBCancelar_Click;
             // 
-            // FormArticulosDetalle
+            // AbmArticulos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(658, 626);
+            ClientSize = new Size(637, 539);
             Controls.Add(rjBCancelar);
             Controls.Add(rjBAceptar);
             Controls.Add(txtcodigoArticulo);
@@ -189,7 +191,7 @@
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormArticulosDetalle";
+            Name = "AbmArticulos";
             Text = "Detalle de Artículo";
             Load += FormArticulosDetalle_Load_1;
             ResumeLayout(false);
