@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class ListarVegetales : Form
+    public partial class ListarStock : Form
     {
 
 
@@ -24,7 +24,7 @@ namespace Agraria.Formularios
         private readonly bool _esInvitado;
         private VegetalBLL vegetalBLL = new VegetalBLL();
         private AbmVegetalesBLL abmBll = new AbmVegetalesBLL();
-        public ListarVegetales(UsuarioLoginDTO usuarioLogeado, bool esInvitado)
+        public ListarStock(UsuarioLoginDTO usuarioLogeado, bool esInvitado)
         {
             InitializeComponent();
             _usuarioLogeado = usuarioLogeado;
@@ -33,7 +33,7 @@ namespace Agraria.Formularios
 
 
 
-        private void ListarVegetales_Load(object sender, EventArgs e)
+        private void ListarStock_Load(object sender, EventArgs e)
         {
             CargarComboFiltro();
             CargarVegetales();
@@ -52,29 +52,29 @@ namespace Agraria.Formularios
                 {
                     string tipoSeleccionado = cmbFiltrarPor.Text;
                     dt.DefaultView.RowFilter = $"tipo_cultivo = '{tipoSeleccionado}'";
-                    dtgvListarVegetales.DataSource = dt.DefaultView;
+                    dtgvListarStock.DataSource = dt.DefaultView;
                 }
                 else
                 {
-                    dtgvListarVegetales.DataSource = dt;
+                    dtgvListarStock.DataSource = dt;
                 }
 
-                if (dtgvListarVegetales.Columns["id_vegetal"] != null)
+                if (dtgvListarStock.Columns["id_vegetal"] != null)
                 {
-                    dtgvListarVegetales.Columns["id_vegetal"].Visible = true;
-                    dtgvListarVegetales.Columns["id_vegetal"].HeaderText = "Código";
-                    dtgvListarVegetales.Columns["id_vegetal"].DisplayIndex = 0;
+                    dtgvListarStock.Columns["id_vegetal"].Visible = true;
+                    dtgvListarStock.Columns["id_vegetal"].HeaderText = "Código";
+                    dtgvListarStock.Columns["id_vegetal"].DisplayIndex = 0;
                 }
 
-                if (dtgvListarVegetales.Columns["nombre_comun"] != null) dtgvListarVegetales.Columns["nombre_comun"].HeaderText = "Nombre Común";
-                if (dtgvListarVegetales.Columns["nombre_cientifico"] != null) dtgvListarVegetales.Columns["nombre_cientifico"].HeaderText = "Nombre Científico";
-                if (dtgvListarVegetales.Columns["variedad_hibrido"] != null) dtgvListarVegetales.Columns["variedad_hibrido"].HeaderText = "Variedad / Híbrido";
-                if (dtgvListarVegetales.Columns["tipo_cultivo"] != null) dtgvListarVegetales.Columns["tipo_cultivo"].HeaderText = "Tipo de Cultivo";
-                if (dtgvListarVegetales.Columns["ciclo_vida"] != null) dtgvListarVegetales.Columns["ciclo_vida"].HeaderText = "Ciclo de Vida";
-                if (dtgvListarVegetales.Columns["periodosiembra"] != null) dtgvListarVegetales.Columns["periodosiembra"].HeaderText = "Período de Siembra";
-                if (dtgvListarVegetales.Columns["metodo_siembra"] != null) dtgvListarVegetales.Columns["metodo_siembra"].HeaderText = "Método de Siembra";
-                if (dtgvListarVegetales.Columns["estado_fenologico"] != null) dtgvListarVegetales.Columns["estado_fenologico"].HeaderText = "Estado Fenológico";
-                if (dtgvListarVegetales.Columns["requerimiento_hidrico"] != null) dtgvListarVegetales.Columns["requerimiento_hidrico"].HeaderText = "Req. Hídrico";
+                if (dtgvListarStock.Columns["nombre_comun"] != null) dtgvListarStock.Columns["nombre_comun"].HeaderText = "Nombre Común";
+                if (dtgvListarStock.Columns["nombre_cientifico"] != null) dtgvListarStock.Columns["nombre_cientifico"].HeaderText = "Nombre Científico";
+                if (dtgvListarStock.Columns["variedad_hibrido"] != null) dtgvListarStock.Columns["variedad_hibrido"].HeaderText = "Variedad / Híbrido";
+                if (dtgvListarStock.Columns["tipo_cultivo"] != null) dtgvListarStock.Columns["tipo_cultivo"].HeaderText = "Tipo de Cultivo";
+                if (dtgvListarStock.Columns["ciclo_vida"] != null) dtgvListarStock.Columns["ciclo_vida"].HeaderText = "Ciclo de Vida";
+                if (dtgvListarStock.Columns["periodosiembra"] != null) dtgvListarStock.Columns["periodosiembra"].HeaderText = "Período de Siembra";
+                if (dtgvListarStock.Columns["metodo_siembra"] != null) dtgvListarStock.Columns["metodo_siembra"].HeaderText = "Método de Siembra";
+                if (dtgvListarStock.Columns["estado_fenologico"] != null) dtgvListarStock.Columns["estado_fenologico"].HeaderText = "Estado Fenológico";
+                if (dtgvListarStock.Columns["requerimiento_hidrico"] != null) dtgvListarStock.Columns["requerimiento_hidrico"].HeaderText = "Req. Hídrico";
             }
             catch (Exception ex)
             {
@@ -91,7 +91,7 @@ namespace Agraria.Formularios
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             AbmVegetales frm = new AbmVegetales(_usuarioLogeado); // <--- Le pasamos el usuario real
-            frm.Text = "Nuevo Vegetal";
+            frm.Text = "Nuevo Stock";
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 CargarVegetales();
@@ -100,11 +100,11 @@ namespace Agraria.Formularios
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dtgvListarVegetales.SelectedRows.Count > 0)
+            if (dtgvListarStock.SelectedRows.Count > 0)
             {
-                long idVegetal = Convert.ToInt64(dtgvListarVegetales.SelectedRows[0].Cells["id_vegetal"].Value);
+                long idVegetal = Convert.ToInt64(dtgvListarStock.SelectedRows[0].Cells["id_vegetal"].Value);
                 AbmVegetales frm = new AbmVegetales(idVegetal, _usuarioLogeado); // <--- Le pasamos el ID y el usuario
-                frm.Text = "Modificar Vegetal";
+                frm.Text = "Modificar Stock";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     CargarVegetales();
@@ -164,7 +164,7 @@ namespace Agraria.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            if (dtgvListarVegetales.Rows.Count == 0)
+            if (dtgvListarStock.Rows.Count == 0)
             {
                 MessageBox.Show("No hay datos en la grilla para imprimir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -183,7 +183,7 @@ namespace Agraria.Formularios
 
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
                     string cabeceras = string.Empty;
-                    foreach (DataGridViewColumn col in dtgvListarVegetales.Columns)
+                    foreach (DataGridViewColumn col in dtgvListarStock.Columns)
                     {
                         if (col.Visible) // Solo imprime las que el usuario está viendo
                         {
@@ -192,12 +192,12 @@ namespace Agraria.Formularios
                     }
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CABECERAS", cabeceras);
                     string filas = string.Empty;
-                    foreach (DataGridViewRow row in dtgvListarVegetales.Rows)
+                    foreach (DataGridViewRow row in dtgvListarStock.Rows)
                     {
                         if (row.IsNewRow) continue;
 
                         filas += "<tr>";
-                        foreach (DataGridViewColumn col in dtgvListarVegetales.Columns)
+                        foreach (DataGridViewColumn col in dtgvListarStock.Columns)
                         {
                             if (col.Visible) // Solo extrae el dato si la columna es visible
                             {

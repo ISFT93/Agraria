@@ -327,5 +327,18 @@ namespace Agraria
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
         }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CerrarTodosLosFormularios();
+
+            var cargaForm = new Formularios.ListarStock(usuarioLogeado, esInvitado);
+            cargaForm.MdiParent = this;
+            //cargaForm.Dock = DockStyle.Fill;
+            cargaForm.Show();
+
+            formulariosAbiertos.Add(cargaForm);
+            activeForm = cargaForm;
+        }
     }
 }
