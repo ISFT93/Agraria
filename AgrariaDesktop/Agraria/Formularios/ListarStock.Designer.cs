@@ -57,7 +57,7 @@
             panel1.Controls.Add(btnSalir);
             panel1.Dock = DockStyle.Right;
             panel1.Location = new Point(719, 114);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(131, 263);
             panel1.TabIndex = 0;
@@ -67,7 +67,7 @@
             btnNuevo.Location = new Point(37, 14);
             btnNuevo.Name = "btnNuevo";
             btnNuevo.Size = new Size(75, 23);
-            btnNuevo.TabIndex = 19;
+            btnNuevo.TabIndex = 4;
             btnNuevo.Text = "&Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
             btnNuevo.Click += btnNuevo_Click;
@@ -77,7 +77,7 @@
             btnModificar.Location = new Point(37, 44);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(75, 23);
-            btnModificar.TabIndex = 20;
+            btnModificar.TabIndex = 5;
             btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
@@ -87,7 +87,7 @@
             btnImprimir.Location = new Point(37, 73);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(75, 23);
-            btnImprimir.TabIndex = 21;
+            btnImprimir.TabIndex = 6;
             btnImprimir.Text = "Im&primir";
             btnImprimir.UseVisualStyleBackColor = true;
             btnImprimir.Click += btnImprimir_Click;
@@ -97,7 +97,7 @@
             btnSalir.Location = new Point(37, 230);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
-            btnSalir.TabIndex = 22;
+            btnSalir.TabIndex = 7;
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
@@ -111,18 +111,17 @@
             panel2.Controls.Add(txtBuscar);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(850, 114);
             panel2.TabIndex = 1;
-            panel2.Paint += panel2_Paint;
             // 
             // btnBuscar
             // 
             btnBuscar.Location = new Point(756, 76);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
-            btnBuscar.TabIndex = 20;
+            btnBuscar.TabIndex = 3;
             btnBuscar.Text = "&Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
@@ -132,11 +131,11 @@
             cmbFiltrarPor.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFiltrarPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(181, 26);
+            cmbFiltrarPor.Location = new Point(186, 23);
             cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
             cmbFiltrarPor.Size = new Size(177, 32);
-            cmbFiltrarPor.TabIndex = 18;
+            cmbFiltrarPor.TabIndex = 1;
             cmbFiltrarPor.SelectedIndexChanged += cmbFiltrarPor_SelectedIndexChanged;
             // 
             // label1
@@ -146,9 +145,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(3, 26);
             label1.Name = "label1";
-            label1.Size = new Size(151, 24);
+            label1.Size = new Size(177, 24);
             label1.TabIndex = 17;
-            label1.Text = "Tipo de Cultivo";
+            label1.Text = "Tipo de Elemento";
             // 
             // laaa
             // 
@@ -164,8 +163,8 @@
             // txtBuscar
             // 
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(107, 58);
-            txtBuscar.Margin = new Padding(2, 2, 2, 2);
+            txtBuscar.Location = new Point(93, 58);
+            txtBuscar.Margin = new Padding(2);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
             txtBuscar.Size = new Size(399, 29);
@@ -176,7 +175,7 @@
             panel3.Controls.Add(dtgvListarStock);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 114);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
             panel3.Size = new Size(719, 263);
             panel3.TabIndex = 2;
@@ -204,7 +203,7 @@
             dtgvListarStock.Dock = DockStyle.Fill;
             dtgvListarStock.EnableHeadersVisualStyles = false;
             dtgvListarStock.Location = new Point(0, 0);
-            dtgvListarStock.Margin = new Padding(2, 2, 2, 2);
+            dtgvListarStock.Margin = new Padding(2);
             dtgvListarStock.Name = "dtgvListarStock";
             dtgvListarStock.ReadOnly = true;
             dtgvListarStock.RowHeadersWidth = 62;
@@ -221,9 +220,9 @@
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "ListarStock";
-            Text = "ListarStock";
+            Text = "Lista de Stock";
             Load += ListarStock_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);

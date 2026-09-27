@@ -45,8 +45,8 @@ namespace Agraria.Datos
                 string query = "SELECT ISNULL(MAX(id_articulo), 0) FROM articulos WHERE id_articulo >= @min AND id_articulo < @max";
                 using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
                 {
-                    cmd.Parameters.AddWithValue("@min", (idUsuario * 100000) + 20000);
-                    cmd.Parameters.AddWithValue("@max", (idUsuario * 100000) + 30000);
+                    cmd.Parameters.AddWithValue("@min", (idUsuario * 100000) + 3000000);
+                    cmd.Parameters.AddWithValue("@max", (idUsuario * 100000) + 4000000);
 
                     object resultado = cmd.ExecuteScalar();
                     if (resultado != null && resultado != DBNull.Value)

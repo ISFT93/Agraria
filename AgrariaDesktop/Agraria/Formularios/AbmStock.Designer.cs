@@ -34,7 +34,7 @@
             chkPrimavera = new CheckBox();
             chkInvierno = new CheckBox();
             chkOtoño = new CheckBox();
-            label10 = new Label();
+            Precio = new Label();
             label9 = new Label();
             label8 = new Label();
             label7 = new Label();
@@ -44,48 +44,60 @@
             label3 = new Label();
             label1 = new Label();
             laaa = new Label();
-            cmbRequerimientosHidrico = new ComboBox();
-            cmbEstadoFenologico = new ComboBox();
-            cmbMetodoSiembra = new ComboBox();
-            cmbCicloVida = new ComboBox();
-            cmbTipoCultivo = new ComboBox();
-            txtVariedadHibrido = new TextBox();
-            txtNombreCientifico = new TextBox();
+            cmbActivo = new ComboBox();
+            cmbEsProductor = new ComboBox();
+            cmbVendible = new ComboBox();
+            cmbProveedor = new ComboBox();
+            txtCantidad = new TextBox();
+            txtNombre = new TextBox();
             txtCodigoBloque = new TextBox();
             txtCodigoStock = new TextBox();
             cmbTipoElemento = new ComboBox();
+            label2 = new Label();
+            dtpFechaAlta = new DateTimePicker();
+            dtpFechaBaja = new DateTimePicker();
+            label11 = new Label();
+            label12 = new Label();
+            txtNroAnimal = new TextBox();
+            txtEstadoSalud = new TextBox();
+            label10 = new Label();
+            label13 = new Label();
+            txtMotivoMovimiento = new TextBox();
+            label14 = new Label();
+            numPrecio = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
             SuspendLayout();
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(799, 421);
+            btnCancelar.Location = new Point(975, 281);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 29);
-            btnCancelar.TabIndex = 0;
+            btnCancelar.TabIndex = 21;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += cmbCancelar_Click;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(799, 386);
+            btnAceptar.Location = new Point(975, 246);
             btnAceptar.Name = "btnAceptar";
             btnAceptar.Size = new Size(75, 29);
-            btnAceptar.TabIndex = 1;
+            btnAceptar.TabIndex = 20;
             btnAceptar.Text = "&Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
-            btnAceptar.Click += cmbAceptar_Click;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // chkVerano
             // 
             chkVerano.AutoSize = true;
             chkVerano.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             chkVerano.ForeColor = Color.White;
-            chkVerano.Location = new Point(404, 413);
+            chkVerano.Location = new Point(893, 167);
             chkVerano.Margin = new Padding(3, 2, 3, 2);
             chkVerano.Name = "chkVerano";
             chkVerano.Size = new Size(97, 28);
-            chkVerano.TabIndex = 28;
+            chkVerano.TabIndex = 18;
             chkVerano.Text = "Verano";
             chkVerano.UseVisualStyleBackColor = true;
             // 
@@ -94,11 +106,11 @@
             chkPrimavera.AutoSize = true;
             chkPrimavera.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             chkPrimavera.ForeColor = Color.White;
-            chkPrimavera.Location = new Point(265, 413);
+            chkPrimavera.Location = new Point(754, 167);
             chkPrimavera.Margin = new Padding(3, 2, 3, 2);
             chkPrimavera.Name = "chkPrimavera";
             chkPrimavera.Size = new Size(122, 28);
-            chkPrimavera.TabIndex = 27;
+            chkPrimavera.TabIndex = 17;
             chkPrimavera.Text = "Primavera";
             chkPrimavera.UseVisualStyleBackColor = true;
             // 
@@ -107,11 +119,11 @@
             chkInvierno.AutoSize = true;
             chkInvierno.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             chkInvierno.ForeColor = Color.White;
-            chkInvierno.Location = new Point(153, 413);
+            chkInvierno.Location = new Point(642, 167);
             chkInvierno.Margin = new Padding(3, 2, 3, 2);
             chkInvierno.Name = "chkInvierno";
             chkInvierno.Size = new Size(104, 28);
-            chkInvierno.TabIndex = 26;
+            chkInvierno.TabIndex = 16;
             chkInvierno.Text = "Invierno";
             chkInvierno.UseVisualStyleBackColor = true;
             // 
@@ -120,97 +132,97 @@
             chkOtoño.AutoSize = true;
             chkOtoño.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             chkOtoño.ForeColor = Color.White;
-            chkOtoño.Location = new Point(62, 413);
+            chkOtoño.Location = new Point(551, 167);
             chkOtoño.Margin = new Padding(3, 2, 3, 2);
             chkOtoño.Name = "chkOtoño";
             chkOtoño.Size = new Size(86, 28);
-            chkOtoño.TabIndex = 25;
+            chkOtoño.TabIndex = 15;
             chkOtoño.Text = "Otoño";
             chkOtoño.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // Precio
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(531, 235);
-            label10.Name = "label10";
-            label10.Size = new Size(217, 24);
-            label10.TabIndex = 24;
-            label10.Text = "Requerimiento hídrico";
+            Precio.AutoSize = true;
+            Precio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            Precio.ForeColor = Color.White;
+            Precio.Location = new Point(592, 74);
+            Precio.Name = "Precio";
+            Precio.Size = new Size(70, 24);
+            Precio.TabIndex = 24;
+            Precio.Text = "Precio";
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(531, 167);
+            label9.Location = new Point(365, 74);
             label9.Name = "label9";
-            label9.Size = new Size(178, 24);
+            label9.Size = new Size(115, 24);
             label9.TabIndex = 23;
-            label9.Text = "Estado fenológico";
+            label9.Text = "Fecha Baja";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(531, 100);
+            label8.Location = new Point(370, 8);
             label8.Name = "label8";
-            label8.Size = new Size(190, 24);
+            label8.Size = new Size(110, 24);
             label8.TabIndex = 22;
-            label8.Text = "Método de siembra";
+            label8.Text = "Fecha Alta";
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(531, 302);
+            label7.Location = new Point(727, 74);
             label7.Name = "label7";
-            label7.Size = new Size(131, 24);
+            label7.Size = new Size(67, 24);
             label7.TabIndex = 21;
-            label7.Text = "Ciclo de vida";
+            label7.Text = "Activo";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(32, 302);
+            label6.Location = new Point(8, 137);
             label6.Name = "label6";
-            label6.Size = new Size(148, 24);
+            label6.Size = new Size(114, 24);
             label6.TabIndex = 20;
-            label6.Text = "Tipo de cultivo";
+            label6.Text = "Nro Animal";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(32, 386);
+            label5.Location = new Point(8, 210);
             label5.Name = "label5";
-            label5.Size = new Size(206, 24);
+            label5.Size = new Size(184, 24);
             label5.TabIndex = 19;
-            label5.Text = "Períodos de Siembra";
+            label5.Text = "Motivo Movimiento";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(32, 230);
+            label4.Location = new Point(592, 8);
             label4.Name = "label4";
-            label4.Size = new Size(165, 24);
+            label4.Size = new Size(92, 24);
             label4.TabIndex = 18;
-            label4.Text = "Variedad híbrido";
+            label4.Text = "Cantidad";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(31, 143);
+            label3.Location = new Point(173, 8);
             label3.Name = "label3";
             label3.Size = new Size(177, 24);
             label3.TabIndex = 17;
@@ -221,7 +233,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(31, 74);
+            label1.Location = new Point(8, 74);
             label1.Name = "label1";
             label1.Size = new Size(149, 24);
             label1.TabIndex = 16;
@@ -232,120 +244,251 @@
             laaa.AutoSize = true;
             laaa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             laaa.ForeColor = Color.White;
-            laaa.Location = new Point(32, 8);
+            laaa.Location = new Point(8, 8);
             laaa.Name = "laaa";
             laaa.Size = new Size(77, 24);
             laaa.TabIndex = 15;
             laaa.Text = "Código";
             // 
-            // cmbRequerimientosHidrico
+            // cmbActivo
             // 
-            cmbRequerimientosHidrico.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbRequerimientosHidrico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbRequerimientosHidrico.FormattingEnabled = true;
-            cmbRequerimientosHidrico.Location = new Point(531, 259);
-            cmbRequerimientosHidrico.Margin = new Padding(2);
-            cmbRequerimientosHidrico.Name = "cmbRequerimientosHidrico";
-            cmbRequerimientosHidrico.Size = new Size(204, 32);
-            cmbRequerimientosHidrico.TabIndex = 13;
+            cmbActivo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbActivo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbActivo.FormattingEnabled = true;
+            cmbActivo.Location = new Point(727, 103);
+            cmbActivo.Margin = new Padding(2);
+            cmbActivo.Name = "cmbActivo";
+            cmbActivo.Size = new Size(78, 32);
+            cmbActivo.TabIndex = 10;
             // 
-            // cmbEstadoFenologico
+            // cmbEsProductor
             // 
-            cmbEstadoFenologico.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbEstadoFenologico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbEstadoFenologico.FormattingEnabled = true;
-            cmbEstadoFenologico.Location = new Point(531, 191);
-            cmbEstadoFenologico.Margin = new Padding(2);
-            cmbEstadoFenologico.Name = "cmbEstadoFenologico";
-            cmbEstadoFenologico.Size = new Size(204, 32);
-            cmbEstadoFenologico.TabIndex = 12;
+            cmbEsProductor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbEsProductor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbEsProductor.FormattingEnabled = true;
+            cmbEsProductor.Location = new Point(370, 163);
+            cmbEsProductor.Margin = new Padding(2);
+            cmbEsProductor.Name = "cmbEsProductor";
+            cmbEsProductor.Size = new Size(130, 32);
+            cmbEsProductor.TabIndex = 14;
             // 
-            // cmbMetodoSiembra
+            // cmbVendible
             // 
-            cmbMetodoSiembra.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbMetodoSiembra.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbMetodoSiembra.FormattingEnabled = true;
-            cmbMetodoSiembra.Location = new Point(531, 123);
-            cmbMetodoSiembra.Margin = new Padding(2);
-            cmbMetodoSiembra.Name = "cmbMetodoSiembra";
-            cmbMetodoSiembra.Size = new Size(265, 32);
-            cmbMetodoSiembra.TabIndex = 11;
+            cmbVendible.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbVendible.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbVendible.FormattingEnabled = true;
+            cmbVendible.Location = new Point(816, 104);
+            cmbVendible.Margin = new Padding(2);
+            cmbVendible.Name = "cmbVendible";
+            cmbVendible.Size = new Size(75, 32);
+            cmbVendible.TabIndex = 11;
             // 
-            // cmbCicloVida
+            // cmbProveedor
             // 
-            cmbCicloVida.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCicloVida.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbCicloVida.FormattingEnabled = true;
-            cmbCicloVida.Location = new Point(531, 325);
-            cmbCicloVida.Margin = new Padding(2);
-            cmbCicloVida.Name = "cmbCicloVida";
-            cmbCicloVida.Size = new Size(148, 32);
-            cmbCicloVida.TabIndex = 10;
+            cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProveedor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbProveedor.FormattingEnabled = true;
+            cmbProveedor.Location = new Point(727, 35);
+            cmbProveedor.Margin = new Padding(2);
+            cmbProveedor.Name = "cmbProveedor";
+            cmbProveedor.Size = new Size(323, 32);
+            cmbProveedor.TabIndex = 9;
             // 
-            // cmbTipoCultivo
+            // txtCantidad
             // 
-            cmbTipoCultivo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipoCultivo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbTipoCultivo.FormattingEnabled = true;
-            cmbTipoCultivo.Location = new Point(32, 328);
-            cmbTipoCultivo.Margin = new Padding(2);
-            cmbTipoCultivo.Name = "cmbTipoCultivo";
-            cmbTipoCultivo.Size = new Size(148, 32);
-            cmbTipoCultivo.TabIndex = 9;
+            txtCantidad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtCantidad.Location = new Point(592, 36);
+            txtCantidad.Margin = new Padding(2);
+            txtCantidad.MaxLength = 10;
+            txtCantidad.Name = "txtCantidad";
+            txtCantidad.Size = new Size(116, 29);
+            txtCantidad.TabIndex = 7;
             // 
-            // txtVariedadHibrido
+            // txtNombre
             // 
-            txtVariedadHibrido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtVariedadHibrido.Location = new Point(32, 254);
-            txtVariedadHibrido.Margin = new Padding(2);
-            txtVariedadHibrido.MaxLength = 40;
-            txtVariedadHibrido.Name = "txtVariedadHibrido";
-            txtVariedadHibrido.Size = new Size(424, 29);
-            txtVariedadHibrido.TabIndex = 7;
-            // 
-            // txtNombreCientifico
-            // 
-            txtNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreCientifico.Location = new Point(32, 189);
-            txtNombreCientifico.Margin = new Padding(2);
-            txtNombreCientifico.MaxLength = 40;
-            txtNombreCientifico.Name = "txtNombreCientifico";
-            txtNombreCientifico.Size = new Size(424, 29);
-            txtNombreCientifico.TabIndex = 6;
+            txtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtNombre.Location = new Point(173, 102);
+            txtNombre.Margin = new Padding(2);
+            txtNombre.MaxLength = 20;
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(177, 29);
+            txtNombre.TabIndex = 4;
             // 
             // txtCodigoBloque
             // 
             txtCodigoBloque.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCodigoBloque.Location = new Point(31, 100);
+            txtCodigoBloque.Location = new Point(10, 100);
             txtCodigoBloque.Margin = new Padding(2);
-            txtCodigoBloque.MaxLength = 40;
+            txtCodigoBloque.MaxLength = 10;
             txtCodigoBloque.Name = "txtCodigoBloque";
             txtCodigoBloque.Size = new Size(149, 29);
-            txtCodigoBloque.TabIndex = 5;
+            txtCodigoBloque.TabIndex = 2;
             // 
             // txtCodigoStock
             // 
             txtCodigoStock.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCodigoStock.Location = new Point(32, 32);
+            txtCodigoStock.Location = new Point(11, 37);
             txtCodigoStock.Margin = new Padding(2);
+            txtCodigoStock.MaxLength = 10;
             txtCodigoStock.Name = "txtCodigoStock";
             txtCodigoStock.Size = new Size(148, 29);
-            txtCodigoStock.TabIndex = 4;
+            txtCodigoStock.TabIndex = 1;
             // 
             // cmbTipoElemento
             // 
+            cmbTipoElemento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoElemento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoElemento.FormattingEnabled = true;
-            cmbTipoElemento.Location = new Point(31, 171);
+            cmbTipoElemento.Location = new Point(173, 36);
             cmbTipoElemento.Name = "cmbTipoElemento";
-            cmbTipoElemento.Size = new Size(177, 23);
-            cmbTipoElemento.TabIndex = 29;
+            cmbTipoElemento.Size = new Size(177, 32);
+            cmbTipoElemento.TabIndex = 3;
+            cmbTipoElemento.SelectedIndexChanged += cmbTipoElemento_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(551, 137);
+            label2.Name = "label2";
+            label2.Size = new Size(57, 24);
+            label2.TabIndex = 30;
+            label2.Text = "Ciclo";
+            // 
+            // dtpFechaAlta
+            // 
+            dtpFechaAlta.CustomFormat = "dd/MM/yyyy";
+            dtpFechaAlta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dtpFechaAlta.Format = DateTimePickerFormat.Short;
+            dtpFechaAlta.Location = new Point(370, 36);
+            dtpFechaAlta.Name = "dtpFechaAlta";
+            dtpFechaAlta.Size = new Size(200, 29);
+            dtpFechaAlta.TabIndex = 5;
+            // 
+            // dtpFechaBaja
+            // 
+            dtpFechaBaja.CustomFormat = "dd/MM/yyyy";
+            dtpFechaBaja.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dtpFechaBaja.Format = DateTimePickerFormat.Short;
+            dtpFechaBaja.Location = new Point(370, 101);
+            dtpFechaBaja.Name = "dtpFechaBaja";
+            dtpFechaBaja.Size = new Size(200, 29);
+            dtpFechaBaja.TabIndex = 6;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(173, 137);
+            label11.Name = "label11";
+            label11.Size = new Size(163, 24);
+            label11.TabIndex = 33;
+            label11.Text = "Estado de Salud";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(365, 137);
+            label12.Name = "label12";
+            label12.Size = new Size(130, 24);
+            label12.TabIndex = 34;
+            label12.Text = "Es productor";
+            // 
+            // txtNroAnimal
+            // 
+            txtNroAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtNroAnimal.Location = new Point(10, 167);
+            txtNroAnimal.Margin = new Padding(2);
+            txtNroAnimal.MaxLength = 10;
+            txtNroAnimal.Name = "txtNroAnimal";
+            txtNroAnimal.Size = new Size(151, 29);
+            txtNroAnimal.TabIndex = 12;
+            // 
+            // txtEstadoSalud
+            // 
+            txtEstadoSalud.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtEstadoSalud.Location = new Point(173, 167);
+            txtEstadoSalud.Margin = new Padding(2);
+            txtEstadoSalud.MaxLength = 20;
+            txtEstadoSalud.Name = "txtEstadoSalud";
+            txtEstadoSalud.Size = new Size(177, 29);
+            txtEstadoSalud.TabIndex = 13;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(727, 8);
+            label10.Name = "label10";
+            label10.Size = new Size(107, 24);
+            label10.TabIndex = 38;
+            label10.Text = "Proveedor";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(816, 74);
+            label13.Name = "label13";
+            label13.Size = new Size(94, 24);
+            label13.TabIndex = 39;
+            label13.Text = "Vendible";
+            // 
+            // txtMotivoMovimiento
+            // 
+            txtMotivoMovimiento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtMotivoMovimiento.Location = new Point(8, 246);
+            txtMotivoMovimiento.MaxLength = 100;
+            txtMotivoMovimiento.Multiline = true;
+            txtMotivoMovimiento.Name = "txtMotivoMovimiento";
+            txtMotivoMovimiento.Size = new Size(786, 63);
+            txtMotivoMovimiento.TabIndex = 19;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(173, 74);
+            label14.Name = "label14";
+            label14.Size = new Size(85, 24);
+            label14.TabIndex = 41;
+            label14.Text = "Nombre";
+            // 
+            // numPrecio
+            // 
+            numPrecio.DecimalPlaces = 2;
+            numPrecio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            numPrecio.Location = new Point(592, 100);
+            numPrecio.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
+            numPrecio.Name = "numPrecio";
+            numPrecio.Size = new Size(120, 29);
+            numPrecio.TabIndex = 8;
             // 
             // AbmStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(884, 461);
+            ClientSize = new Size(1061, 315);
+            Controls.Add(numPrecio);
+            Controls.Add(label14);
+            Controls.Add(txtMotivoMovimiento);
+            Controls.Add(label13);
+            Controls.Add(label10);
+            Controls.Add(txtEstadoSalud);
+            Controls.Add(txtNroAnimal);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(dtpFechaBaja);
+            Controls.Add(dtpFechaAlta);
+            Controls.Add(label2);
             Controls.Add(cmbTipoElemento);
             Controls.Add(chkVerano);
             Controls.Add(btnCancelar);
@@ -353,23 +496,22 @@
             Controls.Add(chkInvierno);
             Controls.Add(btnAceptar);
             Controls.Add(chkOtoño);
-            Controls.Add(txtNombreCientifico);
-            Controls.Add(label10);
+            Controls.Add(txtNombre);
+            Controls.Add(Precio);
             Controls.Add(txtCodigoStock);
             Controls.Add(label9);
             Controls.Add(txtCodigoBloque);
             Controls.Add(label8);
-            Controls.Add(txtVariedadHibrido);
+            Controls.Add(txtCantidad);
             Controls.Add(label7);
-            Controls.Add(cmbTipoCultivo);
+            Controls.Add(cmbProveedor);
             Controls.Add(label6);
-            Controls.Add(cmbCicloVida);
+            Controls.Add(cmbVendible);
             Controls.Add(label5);
-            Controls.Add(cmbMetodoSiembra);
             Controls.Add(label4);
-            Controls.Add(cmbEstadoFenologico);
+            Controls.Add(cmbEsProductor);
             Controls.Add(label3);
-            Controls.Add(cmbRequerimientosHidrico);
+            Controls.Add(cmbActivo);
             Controls.Add(label1);
             Controls.Add(laaa);
             FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -377,22 +519,22 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AbmStock";
-            Text = "AbmVegetales";
+            Text = "Stock";
+            ((System.ComponentModel.ISupportInitialize)numPrecio).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private ComboBox cmbRequerimientosHidrico;
-        private ComboBox cmbEstadoFenologico;
-        private ComboBox cmbMetodoSiembra;
-        private ComboBox cmbCicloVida;
-        private ComboBox cmbTipoCultivo;
-        private TextBox txtVariedadHibrido;
-        private TextBox txtNombreCientifico;
+        private ComboBox cmbActivo;
+        private ComboBox cmbEsProductor;
+        private ComboBox cmbVendible;
+        private ComboBox cmbProveedor;
+        private TextBox txtCantidad;
+        private TextBox txtNombre;
         private TextBox txtCodigoBloque;
         private TextBox txtCodigoStock;
-        private Label label10;
+        private Label Precio;
         private Label label9;
         private Label label8;
         private Label label7;
@@ -409,5 +551,17 @@
         private Button btnCancelar;
         private Button btnAceptar;
         private ComboBox cmbTipoElemento;
+        private Label label2;
+        private DateTimePicker dtpFechaAlta;
+        private DateTimePicker dtpFechaBaja;
+        private Label label11;
+        private Label label12;
+        private TextBox txtNroAnimal;
+        private TextBox txtEstadoSalud;
+        private Label label10;
+        private Label label13;
+        private TextBox txtMotivoMovimiento;
+        private Label label14;
+        private NumericUpDown numPrecio;
     }
 }

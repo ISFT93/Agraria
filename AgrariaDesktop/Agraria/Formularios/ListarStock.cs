@@ -1,29 +1,17 @@
-﻿using Agraria.Datos.DAL;
-using Agraria.Datos.DTO;
-using Agraria.Datos.Entidades;
+﻿using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
-using Agraria.UserControls;
 using System;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
     public partial class ListarStock : Form
     {
-
-
         private readonly UsuarioLoginDTO _usuarioLogeado;
         private readonly bool _esInvitado;
-        private VegetalBLL vegetalBLL = new VegetalBLL();
-        private AbmVegetalesBLL abmBll = new AbmVegetalesBLL();
+        private ListarStockBLL bll = new ListarStockBLL();
+
         public ListarStock(UsuarioLoginDTO usuarioLogeado, bool esInvitado)
         {
             InitializeComponent();
@@ -31,70 +19,91 @@ namespace Agraria.Formularios
             _esInvitado = esInvitado;
         }
 
-
-
         private void ListarStock_Load(object sender, EventArgs e)
         {
-            CargarComboFiltro();
-            CargarVegetales();
-
+            cmbFiltrarPor.Items.AddRange(new object[] { "Todos", "Animal", "Vegetal", "Articulo" });
+            cmbFiltrarPor.SelectedIndex = 0;
+            CargarStock();
         }
 
-
-
-        private void CargarVegetales(string filtro = "")
+        private void CargarStock(string filtro = "")
         {
             try
             {
-                DataTable dt = vegetalBLL.ObtenerVegetales(filtro);
-
-                if (cmbFiltrarPor.SelectedIndex > 0)
+                string tipo = cmbFiltrarPor.Text;
+                if (tipo == "Todos") tipo = "";
+                DataTable dt = bll.Listar(tipo, filtro);
+                if (!string.IsNullOrEmpty(filtro))
                 {
-                    string tipoSeleccionado = cmbFiltrarPor.Text;
-                    dt.DefaultView.RowFilter = $"tipo_cultivo = '{tipoSeleccionado}'";
+                    dt.DefaultView.RowFilter = $"nombre LIKE '%{filtro}%'";
                     dtgvListarStock.DataSource = dt.DefaultView;
                 }
                 else
                 {
                     dtgvListarStock.DataSource = dt;
                 }
-
-                if (dtgvListarStock.Columns["id_vegetal"] != null)
+                if (dtgvListarStock.Columns["id_stock"] != null) dtgvListarStock.Columns["id_stock"].Visible = false;
+                if (dtgvListarStock.Columns["id_proveedor"] != null) dtgvListarStock.Columns["id_proveedor"].Visible = false;
+                if (dtgvListarStock.Columns["NombreProveedor"] != null) dtgvListarStock.Columns["NombreProveedor"].HeaderText = "Proveedor";
+                if (dtgvListarStock.Columns["id_elemento"] != null) dtgvListarStock.Columns["id_elemento"].HeaderText = "Código Bloque";
+                if (dtgvListarStock.Columns["tipo_elemento"] != null) dtgvListarStock.Columns["tipo_elemento"].HeaderText = "Tipo de Elemento";
+                if (dtgvListarStock.Columns["Nombre"] != null) dtgvListarStock.Columns["Nombre"].HeaderText = "Nombre";
+                if (dtgvListarStock.Columns["ciclo"] != null) dtgvListarStock.Columns["ciclo"].HeaderText = "Ciclo (Sumatoria)";
+                if (dtgvListarStock.Columns["fecha_alta"] != null) dtgvListarStock.Columns["fecha_alta"].HeaderText = "Fecha de Alta";
+                if (dtgvListarStock.Columns["fecha_baja"] != null) dtgvListarStock.Columns["fecha_baja"].HeaderText = "Fecha de Baja";
+                if (dtgvListarStock.Columns["cantidad"] != null) dtgvListarStock.Columns["cantidad"].HeaderText = "Cantidad";
+                if (dtgvListarStock.Columns["nro_animal"] != null) dtgvListarStock.Columns["nro_animal"].HeaderText = "Nro. Animal";
+                if (dtgvListarStock.Columns["estado_salud"] != null) dtgvListarStock.Columns["estado_salud"].HeaderText = "Estado de Salud";
+                if (dtgvListarStock.Columns["es_productor"] != null) dtgvListarStock.Columns["es_productor"].HeaderText = "Es Productor";
+                if (dtgvListarStock.Columns["precio"] != null) dtgvListarStock.Columns["precio"].HeaderText = "Precio";
+                if (dtgvListarStock.Columns["activo"] != null) dtgvListarStock.Columns["activo"].HeaderText = "Activo";
+                if (dtgvListarStock.Columns["vendible"] != null) dtgvListarStock.Columns["vendible"].HeaderText = "Vendible";
+                if (dtgvListarStock.Columns["motivo_movimiento"] != null) dtgvListarStock.Columns["motivo_movimiento"].HeaderText = "Motivo de Movimiento";
+                if (dtgvListarStock.Columns["precio"] != null)
                 {
-                    dtgvListarStock.Columns["id_vegetal"].Visible = true;
-                    dtgvListarStock.Columns["id_vegetal"].HeaderText = "Código";
-                    dtgvListarStock.Columns["id_vegetal"].DisplayIndex = 0;
+                    dtgvListarStock.Columns["precio"].HeaderText = "Precio";
+                    dtgvListarStock.Columns["precio"].DefaultCellStyle.Format = "N2";
                 }
-
-                if (dtgvListarStock.Columns["nombre_comun"] != null) dtgvListarStock.Columns["nombre_comun"].HeaderText = "Nombre Común";
-                if (dtgvListarStock.Columns["nombre_cientifico"] != null) dtgvListarStock.Columns["nombre_cientifico"].HeaderText = "Nombre Científico";
-                if (dtgvListarStock.Columns["variedad_hibrido"] != null) dtgvListarStock.Columns["variedad_hibrido"].HeaderText = "Variedad / Híbrido";
-                if (dtgvListarStock.Columns["tipo_cultivo"] != null) dtgvListarStock.Columns["tipo_cultivo"].HeaderText = "Tipo de Cultivo";
-                if (dtgvListarStock.Columns["ciclo_vida"] != null) dtgvListarStock.Columns["ciclo_vida"].HeaderText = "Ciclo de Vida";
-                if (dtgvListarStock.Columns["periodosiembra"] != null) dtgvListarStock.Columns["periodosiembra"].HeaderText = "Período de Siembra";
-                if (dtgvListarStock.Columns["metodo_siembra"] != null) dtgvListarStock.Columns["metodo_siembra"].HeaderText = "Método de Siembra";
-                if (dtgvListarStock.Columns["estado_fenologico"] != null) dtgvListarStock.Columns["estado_fenologico"].HeaderText = "Estado Fenológico";
-                if (dtgvListarStock.Columns["requerimiento_hidrico"] != null) dtgvListarStock.Columns["requerimiento_hidrico"].HeaderText = "Req. Hídrico";
+                dtgvListarStock.EnableHeadersVisualStyles = false;
+                dtgvListarStock.ColumnHeadersDefaultCellStyle.BackColor = Color.MediumSeaGreen;
+                dtgvListarStock.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                dtgvListarStock.ColumnHeadersDefaultCellStyle.Font = new Font(dtgvListarStock.Font, FontStyle.Bold);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los vegetales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error al cargar el stock: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            CargarVegetales(txtBuscar.Text.Trim());
+            string filtro = txtBuscar.Text.Trim();
+
+            // Verificamos si el origen de datos es un DataTable o un DataView
+            if (dtgvListarStock.DataSource is DataView dv)
+            {
+                // Aplica el filtro si hay texto, o lo limpia (muestra todo) si está vacío
+                dv.RowFilter = string.IsNullOrEmpty(filtro) ? "" : $"Nombre LIKE '%{filtro}%'";
+            }
+            else if (dtgvListarStock.DataSource is DataTable dt)
+            {
+                dt.DefaultView.RowFilter = string.IsNullOrEmpty(filtro) ? "" : $"Nombre LIKE '%{filtro}%'";
+                dtgvListarStock.DataSource = dt.DefaultView;
+            }
         }
 
+        private void cmbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarStock();
+        }
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            AbmVegetales frm = new AbmVegetales(_usuarioLogeado); // <--- Le pasamos el usuario real
+            AbmStock frm = new AbmStock(_usuarioLogeado);
             frm.Text = "Nuevo Stock";
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                CargarVegetales();
+                CargarStock();
             }
         }
 
@@ -102,68 +111,28 @@ namespace Agraria.Formularios
         {
             if (dtgvListarStock.SelectedRows.Count > 0)
             {
-                long idVegetal = Convert.ToInt64(dtgvListarStock.SelectedRows[0].Cells["id_vegetal"].Value);
-                AbmVegetales frm = new AbmVegetales(idVegetal, _usuarioLogeado); // <--- Le pasamos el ID y el usuario
+                long idStock = Convert.ToInt64(dtgvListarStock.SelectedRows[0].Cells["id_stock"].Value);
+                AbmStock frm = new AbmStock(idStock, _usuarioLogeado);
                 frm.Text = "Modificar Stock";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    CargarVegetales();
+                    CargarStock();
                 }
             }
             else
             {
-                MessageBox.Show("Por favor seleccione un vegetal de la grilla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un registro de la grilla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        /* Para probar una busqueda automatica
-        private void txtBuscar_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnBuscar_Click(sender, e);
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-        }
-        */
-
-        private void CargarComboFiltro()
-        {
-            try
-            {
-                DataTable dt = abmBll.CargarCombo("tipo_cultivo");
-
-                DataRow row = dt.NewRow();
-                row["id_tipo_cultivo"] = 0;
-                row["nombre"] = "Todos";
-                dt.Rows.InsertAt(row, 0);
-
-                cmbFiltrarPor.DataSource = dt;
-                cmbFiltrarPor.DisplayMember = "nombre";
-                cmbFiltrarPor.ValueMember = "id_tipo_cultivo";
-                cmbFiltrarPor.SelectedIndex = 0;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error al cargar el filtro: " + ex.Message);
-            }
-        }
-
-        private void cmbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargarVegetales(txtBuscar.Text.Trim());
-        }
-
         private void btnImprimir_Click(object sender, EventArgs e)
         {
+            // 1. Validar que la grilla no esté vacía
             if (dtgvListarStock.Rows.Count == 0)
             {
                 MessageBox.Show("No hay datos en la grilla para imprimir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -173,24 +142,30 @@ namespace Agraria.Formularios
             try
             {
                 SaveFileDialog savefile = new SaveFileDialog();
-                savefile.FileName = $"ReporteVegetales_{DateTime.Now:ddMMyyyy_HHmmss}.pdf";
+                savefile.FileName = $"ReporteStock_{DateTime.Now:ddMMyyyy_HHmmss}.pdf";
                 savefile.Filter = "PDF files (*.pdf)|*.pdf";
 
                 if (savefile.ShowDialog() == DialogResult.OK)
                 {
-                    string rutaPlantilla = Path.Combine(Application.StartupPath, "Recursos", "Vegetales.html");
+                    // 2. Leer la plantilla HTML de Stock
+                    string rutaPlantilla = Path.Combine(Application.StartupPath, "Recursos", "ListarStock.html");
                     string PaginaHTML_Texto = File.ReadAllText(rutaPlantilla);
 
+                    // 3. Reemplazar Fecha
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FECHA", DateTime.Now.ToString("dd/MM/yyyy"));
+
+                    // 4. Generar Cabeceras dinámicas según columnas visibles
                     string cabeceras = string.Empty;
                     foreach (DataGridViewColumn col in dtgvListarStock.Columns)
                     {
-                        if (col.Visible) // Solo imprime las que el usuario está viendo
+                        if (col.Visible)
                         {
                             cabeceras += $"<th>{col.HeaderText}</th>";
                         }
                     }
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@CABECERAS", cabeceras);
+
+                    // 5. Generar Filas dinámicas según datos visibles
                     string filas = string.Empty;
                     foreach (DataGridViewRow row in dtgvListarStock.Rows)
                     {
@@ -199,21 +174,40 @@ namespace Agraria.Formularios
                         filas += "<tr>";
                         foreach (DataGridViewColumn col in dtgvListarStock.Columns)
                         {
-                            if (col.Visible) // Solo extrae el dato si la columna es visible
+                            if (col.Visible)
                             {
-                                string valorCelda = row.Cells[col.Name].Value != null ? row.Cells[col.Name].Value.ToString() : "-";
+                                string valorCelda = "-";
+                                if (row.Cells[col.Name].Value != null)
+                                {
+                                    // Si la celda es de tipo booleano (True/False)
+                                    if (row.Cells[col.Name].Value is bool valorBooleano)
+                                    {
+                                        valorCelda = valorBooleano ? "Sí" : "No";
+                                    }
+                                    // Para cualquier otro tipo de dato (números, fechas, textos)
+                                    else
+                                    {
+                                        valorCelda = row.Cells[col.Name].Value.ToString();
+                                    }
+                                }
                                 filas += $"<td>{valorCelda}</td>";
                             }
                         }
                         filas += "</tr>";
                     }
                     PaginaHTML_Texto = PaginaHTML_Texto.Replace("@FILAS", filas);
+
+                    // 6. Configurar y guardar el documento PDF
                     using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
                     {
+                        // Hoja A4 Rotada (Apaisada) para dar lugar a las columnas de Stock
                         iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 25, 25, 25, 25);
                         iTextSharp.text.pdf.PdfWriter writer = iTextSharp.text.pdf.PdfWriter.GetInstance(pdfDoc, stream);
                         pdfDoc.Open();
+
                         pdfDoc.Add(new iTextSharp.text.Phrase(""));
+
+                        // Cargar el Logo de Recursos
                         if (Properties.Resources.agr != null)
                         {
                             iTextSharp.text.Image img = iTextSharp.text.Image.GetInstance(Properties.Resources.agr, System.Drawing.Imaging.ImageFormat.Png);
@@ -222,6 +216,8 @@ namespace Agraria.Formularios
                             img.SetAbsolutePosition(pdfDoc.LeftMargin, pdfDoc.PageSize.Height - 85);
                             pdfDoc.Add(img);
                         }
+
+                        // Parsear el HTML a PDF
                         using (StringReader sr = new StringReader(PaginaHTML_Texto))
                         {
                             iTextSharp.tool.xml.XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
@@ -238,11 +234,6 @@ namespace Agraria.Formularios
             {
                 MessageBox.Show("Error al generar reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

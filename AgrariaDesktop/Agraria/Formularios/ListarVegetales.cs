@@ -39,9 +39,6 @@ namespace Agraria.Formularios
             CargarVegetales();
 
         }
-
-
-
         private void CargarVegetales(string filtro = "")
         {
             try
@@ -86,8 +83,6 @@ namespace Agraria.Formularios
         {
             CargarVegetales(txtBuscar.Text.Trim());
         }
-
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             AbmVegetales frm = new AbmVegetales(_usuarioLogeado); // <--- Le pasamos el usuario real
@@ -115,26 +110,10 @@ namespace Agraria.Formularios
                 MessageBox.Show("Por favor seleccione un vegetal de la grilla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        /* Para probar una busqueda automatica
-        private void txtBuscar_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnBuscar_Click(sender, e);
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-        }
-        */
-
         private void CargarComboFiltro()
         {
             try

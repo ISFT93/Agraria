@@ -34,10 +34,10 @@ namespace Agraria.BLL
         {
             long ultimoId = ArticulosDAL.ObtenerUltimoIdPorUsuario(idUsuario);
 
-            // Si el usuario no tiene registros todavía, arranca en la base 20001 con su prefijo
+            // Si el usuario no tiene registros todavía, arranca en la base 30000001 con su prefijo
             if (ultimoId == 0)
             {
-                string primerIdStr = $"{idUsuario}20001";
+                string primerIdStr = $"{idUsuario}3000001";
                 return Convert.ToInt64(primerIdStr);
             }
 
