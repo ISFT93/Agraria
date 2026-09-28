@@ -4,7 +4,7 @@
 -- ==========================================
 
 -- 1. SP: Insertar Vegetal
-CREATE PROCEDURE sp_insert_vegetal
+CREATE OR ALTER PROCEDURE sp_insert_vegetal
     @id_vegetal BIGINT,
     @nombre_comun VARCHAR(100),
     @nombre_cientifico VARCHAR(150),
@@ -45,7 +45,7 @@ END;
 GO
 
 -- 2. SP: Actualizar Vegetal
-CREATE PROCEDURE sp_update_vegetal
+CREATE OR ALTER PROCEDURE sp_update_vegetal
     @id_vegetal BIGINT,
     @nombre_comun VARCHAR(100),
     @nombre_cientifico VARCHAR(150),
@@ -72,10 +72,8 @@ BEGIN
 END;
 GO
 
-
---- sp Select
-
-CREATE PROCEDURE sp_select_vegetal
+-- 3. SP: Seleccionar Vegetal (Grilla)
+CREATE OR ALTER PROCEDURE sp_select_vegetal
     @filtro VARCHAR(100) = ''
 AS
 BEGIN
@@ -99,8 +97,8 @@ BEGIN
 END;
 GO
 
--- SP para ObtenerPorId
-CREATE PROCEDURE sp_select_vegetal_por_id
+-- 4. SP: Obtener Vegetal Por ID
+CREATE OR ALTER PROCEDURE sp_select_vegetal_por_id
     @id BIGINT
 AS
 BEGIN
@@ -108,8 +106,8 @@ BEGIN
 END;
 GO
 
--- SP para ObtenerCombo (Usa SQL dinámico seguro para el nombre de la tabla)
-CREATE PROCEDURE sp_select_combo
+-- 5. SP: Obtener Combo Dinámico
+CREATE OR ALTER PROCEDURE sp_select_combo
     @tabla NVARCHAR(100)
 AS
 BEGIN
@@ -119,16 +117,16 @@ BEGIN
 END;
 GO
 
--- SP para ObtenerRequerimientoHidrico
-CREATE PROCEDURE sp_select_requerimiento_hidrico
+-- 6. SP: Obtener Requerimiento Hídrico Fijo
+CREATE OR ALTER PROCEDURE sp_select_requerimiento_hidrico
 AS
 BEGIN
     SELECT 'Alto' AS nombre UNION SELECT 'Medio' UNION SELECT 'Bajo';
 END;
 GO
 
--- SP para ObtenerUltimoIdPorUsuario
-CREATE PROCEDURE sp_select_ultimo_id_vegetal
+-- 7. SP: Obtener Último ID por Usuario
+CREATE OR ALTER PROCEDURE sp_select_ultimo_id_vegetal
     @min BIGINT,
     @max BIGINT
 AS
