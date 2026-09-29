@@ -192,6 +192,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AbmArticulos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Detalle de Artículo";
             Load += FormArticulosDetalle_Load_1;
             ResumeLayout(false);
