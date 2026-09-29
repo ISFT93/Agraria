@@ -138,6 +138,7 @@
             txtcodigoArticulo.ReadOnly = true;
             txtcodigoArticulo.Size = new Size(120, 34);
             txtcodigoArticulo.TabIndex = 1;
+            txtcodigoArticulo.TextChanged += txtcodigoArticulo_TextChanged;
             // 
             // lblNumArticulo
             // 

@@ -17,7 +17,7 @@ namespace Agraria.Formularios
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
 
-           }
+        }
 
 
         private void rjBAceptar_Click(object sender, EventArgs e)
@@ -128,6 +128,11 @@ namespace Agraria.Formularios
                 MessageBox.Show("Error al cargar los datos iniciales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             txtNombre.Focus();
+
+        }
+
+        private void txtcodigoArticulo_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
