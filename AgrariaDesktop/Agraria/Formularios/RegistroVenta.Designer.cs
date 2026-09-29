@@ -202,6 +202,7 @@ namespace Agraria.Formularios
             // dtpFechaCompra
             // 
             dtpFechaCompra.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            dtpFechaCompra.Format = DateTimePickerFormat.Short;
             dtpFechaCompra.Location = new Point(125, 105);
             dtpFechaCompra.Name = "dtpFechaCompra";
             dtpFechaCompra.Size = new Size(130, 21);
@@ -504,7 +505,7 @@ namespace Agraria.Formularios
             txtBuscarNombre.Location = new Point(275, 22);
             txtBuscarNombre.MaxLength = 20;
             txtBuscarNombre.Name = "txtBuscarNombre";
-            txtBuscarNombre.Size = new Size(150, 23);
+            txtBuscarNombre.Size = new Size(130, 23);
             txtBuscarNombre.TabIndex = 11;
             txtBuscarNombre.Click += txtBuscarNombre_TextChanged;
             txtBuscarNombre.TextChanged += txtBuscarNombre_TextChanged;
@@ -555,6 +556,7 @@ namespace Agraria.Formularios
             // dtpHasta
             // 
             dtpHasta.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            dtpHasta.Format = DateTimePickerFormat.Short;
             dtpHasta.Location = new Point(225, 50);
             dtpHasta.Name = "dtpHasta";
             dtpHasta.Size = new Size(170, 21);
@@ -564,6 +566,7 @@ namespace Agraria.Formularios
             // dtpDesde
             // 
             dtpDesde.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
+            dtpDesde.Format = DateTimePickerFormat.Short;
             dtpDesde.Location = new Point(15, 50);
             dtpDesde.Name = "dtpDesde";
             dtpDesde.Size = new Size(170, 21);
@@ -687,8 +690,6 @@ namespace Agraria.Formularios
 
         #endregion
 
-
-
         private DateTimePicker dateTimePicker3;
         private DateTimePicker dateTimePicker2;
         private GroupBox groupBox2;
@@ -740,4 +741,3 @@ namespace Agraria.Formularios
         private ErrorProvider errorProvider1;
     }
 }
-    
