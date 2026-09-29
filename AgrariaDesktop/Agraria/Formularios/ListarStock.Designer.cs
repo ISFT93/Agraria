@@ -1,6 +1,6 @@
 ﻿namespace Agraria.Formularios
 {
-    partial class ListarVegetales
+    partial class ListarStock
     {
         /// <summary>
         /// Required designer variable.
@@ -42,11 +42,11 @@
             laaa = new Label();
             txtBuscar = new TextBox();
             panel3 = new Panel();
-            dtgvListarVegetales = new DataGridView();
+            dtgvListarStock = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgvListarVegetales).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvListarStock).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -115,7 +115,6 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(850, 114);
             panel2.TabIndex = 1;
-            panel2.Paint += panel2_Paint;
             // 
             // btnBuscar
             // 
@@ -132,7 +131,7 @@
             cmbFiltrarPor.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFiltrarPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(162, 23);
+            cmbFiltrarPor.Location = new Point(186, 23);
             cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
             cmbFiltrarPor.Size = new Size(177, 32);
@@ -144,18 +143,18 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(5, 26);
+            label1.Location = new Point(3, 26);
             label1.Name = "label1";
-            label1.Size = new Size(151, 24);
+            label1.Size = new Size(177, 24);
             label1.TabIndex = 17;
-            label1.Text = "Tipo de Cultivo";
+            label1.Text = "Tipo de Elemento";
             // 
             // laaa
             // 
             laaa.AutoSize = true;
             laaa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             laaa.ForeColor = Color.White;
-            laaa.Location = new Point(5, 67);
+            laaa.Location = new Point(3, 63);
             laaa.Name = "laaa";
             laaa.Size = new Size(85, 24);
             laaa.TabIndex = 16;
@@ -164,7 +163,7 @@
             // txtBuscar
             // 
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(109, 62);
+            txtBuscar.Location = new Point(93, 58);
             txtBuscar.Margin = new Padding(2);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
@@ -173,7 +172,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(dtgvListarVegetales);
+            panel3.Controls.Add(dtgvListarStock);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 114);
             panel3.Margin = new Padding(2);
@@ -181,9 +180,9 @@
             panel3.Size = new Size(719, 263);
             panel3.TabIndex = 2;
             // 
-            // dtgvListarVegetales
+            // dtgvListarStock
             // 
-            dtgvListarVegetales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgvListarStock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
@@ -191,8 +190,8 @@
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgvListarVegetales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtgvListarVegetales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvListarStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgvListarStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
@@ -200,19 +199,19 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgvListarVegetales.DefaultCellStyle = dataGridViewCellStyle2;
-            dtgvListarVegetales.Dock = DockStyle.Fill;
-            dtgvListarVegetales.EnableHeadersVisualStyles = false;
-            dtgvListarVegetales.Location = new Point(0, 0);
-            dtgvListarVegetales.Margin = new Padding(2);
-            dtgvListarVegetales.Name = "dtgvListarVegetales";
-            dtgvListarVegetales.ReadOnly = true;
-            dtgvListarVegetales.RowHeadersWidth = 62;
-            dtgvListarVegetales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvListarVegetales.Size = new Size(719, 263);
-            dtgvListarVegetales.TabIndex = 0;
+            dtgvListarStock.DefaultCellStyle = dataGridViewCellStyle2;
+            dtgvListarStock.Dock = DockStyle.Fill;
+            dtgvListarStock.EnableHeadersVisualStyles = false;
+            dtgvListarStock.Location = new Point(0, 0);
+            dtgvListarStock.Margin = new Padding(2);
+            dtgvListarStock.Name = "dtgvListarStock";
+            dtgvListarStock.ReadOnly = true;
+            dtgvListarStock.RowHeadersWidth = 62;
+            dtgvListarStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvListarStock.Size = new Size(719, 263);
+            dtgvListarStock.TabIndex = 0;
             // 
-            // ListarVegetales
+            // ListarStock
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -222,14 +221,14 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Margin = new Padding(2);
-            Name = "ListarVegetales";
-            Text = "ListarVegetales";
-            Load += ListarVegetales_Load;
+            Name = "ListarStock";
+            Text = "Lista de Stock";
+            Load += ListarStock_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgvListarVegetales).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvListarStock).EndInit();
             ResumeLayout(false);
         }
 
@@ -238,7 +237,7 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private DataGridView dtgvListarVegetales;
+        private DataGridView dtgvListarStock;
         private TextBox txtBuscar;
         private Label laaa;
         private ComboBox cmbFiltrarPor;

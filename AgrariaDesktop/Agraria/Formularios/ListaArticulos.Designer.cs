@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             txtBuscar = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -52,9 +52,10 @@
             // 
             txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(150, 95);
+            txtBuscar.Location = new Point(96, 67);
+            txtBuscar.Margin = new Padding(3, 2, 3, 2);
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(414, 34);
+            txtBuscar.Size = new Size(362, 29);
             txtBuscar.TabIndex = 1;
             txtBuscar.TextChanged += textBox1_TextChanged;
             // 
@@ -62,9 +63,10 @@
             // 
             panel1.AutoSize = true;
             panel1.Dock = DockStyle.Left;
-            panel1.Location = new Point(0, 152);
+            panel1.Location = new Point(0, 114);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(0, 351);
+            panel1.Size = new Size(0, 263);
             panel1.TabIndex = 7;
             // 
             // panel2
@@ -75,18 +77,18 @@
             panel2.Controls.Add(btnModificar);
             panel2.Controls.Add(btnNuevo);
             panel2.Dock = DockStyle.Right;
-            panel2.Location = new Point(822, 152);
+            panel2.Location = new Point(719, 114);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(150, 351);
+            panel2.Size = new Size(131, 263);
             panel2.TabIndex = 8;
             panel2.Paint += panel2_Paint;
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(32, 303);
-            btnSalir.Margin = new Padding(3, 4, 3, 4);
+            btnSalir.Location = new Point(28, 227);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(86, 31);
+            btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 28;
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -94,10 +96,9 @@
             // 
             // btnImprimir
             // 
-            btnImprimir.Location = new Point(32, 119);
-            btnImprimir.Margin = new Padding(3, 4, 3, 4);
+            btnImprimir.Location = new Point(31, 68);
             btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new Size(86, 31);
+            btnImprimir.Size = new Size(75, 23);
             btnImprimir.TabIndex = 27;
             btnImprimir.Text = "Im&primir";
             btnImprimir.UseVisualStyleBackColor = true;
@@ -105,10 +106,9 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(32, 80);
-            btnModificar.Margin = new Padding(3, 4, 3, 4);
+            btnModificar.Location = new Point(31, 39);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(86, 31);
+            btnModificar.Size = new Size(75, 23);
             btnModificar.TabIndex = 26;
             btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -116,10 +116,9 @@
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(32, 41);
-            btnNuevo.Margin = new Padding(3, 4, 3, 4);
+            btnNuevo.Location = new Point(31, 10);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(86, 31);
+            btnNuevo.Size = new Size(75, 23);
             btnNuevo.TabIndex = 24;
             btnNuevo.Text = "&Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
@@ -136,17 +135,17 @@
             panel3.Controls.Add(txtBuscar);
             panel3.Dock = DockStyle.Top;
             panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(1);
-            panel3.Size = new Size(972, 152);
+            panel3.Size = new Size(850, 114);
             panel3.TabIndex = 9;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(856, 97);
-            btnBuscar.Margin = new Padding(3, 4, 3, 4);
+            btnBuscar.Location = new Point(749, 73);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(86, 31);
+            btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 24;
             btnBuscar.Text = "&Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -157,9 +156,9 @@
             lblNombre.AutoSize = true;
             lblNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(-1, 95);
+            lblNombre.Location = new Point(5, 67);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(107, 29);
+            lblNombre.Size = new Size(85, 24);
             lblNombre.TabIndex = 5;
             lblNombre.Text = "Nombre";
             // 
@@ -168,59 +167,63 @@
             lblCategorias.AutoSize = true;
             lblCategorias.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblCategorias.ForeColor = Color.White;
-            lblCategorias.Location = new Point(4, 57);
+            lblCategorias.Location = new Point(5, 32);
             lblCategorias.Name = "lblCategorias";
-            lblCategorias.Size = new Size(140, 29);
+            lblCategorias.Size = new Size(109, 24);
             lblCategorias.TabIndex = 4;
             lblCategorias.Text = "Categorias";
             // 
             // cmbFiltroCategoria
             // 
+            cmbFiltroCategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbFiltroCategoria.FormattingEnabled = true;
-            cmbFiltroCategoria.Location = new Point(150, 61);
+            cmbFiltroCategoria.Location = new Point(120, 24);
+            cmbFiltroCategoria.Margin = new Padding(3, 2, 3, 2);
             cmbFiltroCategoria.Name = "cmbFiltroCategoria";
-            cmbFiltroCategoria.Size = new Size(159, 28);
+            cmbFiltroCategoria.Size = new Size(140, 32);
             cmbFiltroCategoria.TabIndex = 3;
             // 
             // dgvArticulos
             // 
             dgvArticulos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = Color.MediumSeaGreen;
+            dataGridViewCellStyle7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dgvArticulos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dgvArticulos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvArticulos.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dgvArticulos.DefaultCellStyle = dataGridViewCellStyle8;
             dgvArticulos.Dock = DockStyle.Fill;
             dgvArticulos.EnableHeadersVisualStyles = false;
-            dgvArticulos.Location = new Point(0, 152);
+            dgvArticulos.Location = new Point(0, 114);
+            dgvArticulos.Margin = new Padding(3, 2, 3, 2);
             dgvArticulos.Name = "dgvArticulos";
             dgvArticulos.ReadOnly = true;
             dgvArticulos.RowHeadersWidth = 51;
             dgvArticulos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvArticulos.Size = new Size(822, 351);
+            dgvArticulos.Size = new Size(719, 263);
             dgvArticulos.TabIndex = 10;
             // 
             // ListaArticulos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(972, 503);
+            ClientSize = new Size(850, 377);
             Controls.Add(dgvArticulos);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(panel3);
+            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "ListaArticulos";

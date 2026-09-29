@@ -98,8 +98,8 @@ namespace Agraria.Datos.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    long minId = Convert.ToInt64(baseUsuario.ToString() + "130000");
-                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "2000000");
+                    long minId = Convert.ToInt64(baseUsuario.ToString() + "2000000");
+                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "3000000");
 
                     cmd.Parameters.AddWithValue("@min", minId);
                     cmd.Parameters.AddWithValue("@max", maxId);
