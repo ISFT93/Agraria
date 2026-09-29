@@ -205,12 +205,20 @@ namespace Agraria
             if (usuarioLogeado != null)
             {
                 AplicarPermisos();
+
             }
             else
             {
                 ActivarModoInvitado();
             }
+            var cargaForm = new Formularios.Dashboard();
+            cargaForm.MdiParent = this;
+            cargaForm.MaximizeBox = true;
+            cargaForm.Dock = DockStyle.Fill;
+            cargaForm.Show();
         }
+
+
 
         private void btnIndustria_Click(object sender, EventArgs e)
         {
