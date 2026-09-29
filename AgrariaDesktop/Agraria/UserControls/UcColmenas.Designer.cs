@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcColmenas));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             gbRegistroMiel = new GroupBox();
             lblFechaMiel = new Label();
             dtpFechaColmena = new DateTimePicker();
@@ -71,9 +74,9 @@
             gbRegistroMiel.Controls.Add(btnGuardarColmena);
             gbRegistroMiel.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             gbRegistroMiel.ForeColor = Color.White;
-            gbRegistroMiel.Location = new Point(15, 3);
+            gbRegistroMiel.Location = new Point(3, 3);
             gbRegistroMiel.Name = "gbRegistroMiel";
-            gbRegistroMiel.Size = new Size(932, 115);
+            gbRegistroMiel.Size = new Size(426, 111);
             gbRegistroMiel.TabIndex = 80;
             gbRegistroMiel.TabStop = false;
             gbRegistroMiel.Text = "Agregar Colmena";
@@ -83,7 +86,7 @@
             lblFechaMiel.AutoSize = true;
             lblFechaMiel.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblFechaMiel.ForeColor = Color.White;
-            lblFechaMiel.Location = new Point(100, 36);
+            lblFechaMiel.Location = new Point(18, 36);
             lblFechaMiel.Name = "lblFechaMiel";
             lblFechaMiel.Size = new Size(75, 24);
             lblFechaMiel.TabIndex = 76;
@@ -92,9 +95,10 @@
             // dtpFechaColmena
             // 
             dtpFechaColmena.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaColmena.Location = new Point(181, 31);
+            dtpFechaColmena.Format = DateTimePickerFormat.Short;
+            dtpFechaColmena.Location = new Point(94, 29);
             dtpFechaColmena.Name = "dtpFechaColmena";
-            dtpFechaColmena.Size = new Size(414, 29);
+            dtpFechaColmena.Size = new Size(147, 29);
             dtpFechaColmena.TabIndex = 77;
             // 
             // label15
@@ -102,19 +106,19 @@
             label15.AutoSize = true;
             label15.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label15.ForeColor = Color.White;
-            label15.Location = new Point(18, 71);
+            label15.Location = new Point(49, 73);
             label15.Name = "label15";
-            label15.Size = new Size(157, 24);
+            label15.Size = new Size(44, 24);
             label15.TabIndex = 59;
-            label15.Text = "N° de Colmena:";
+            label15.Text = "N° :";
             // 
             // txtColmena
             // 
             txtColmena.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtColmena.Location = new Point(181, 70);
+            txtColmena.Location = new Point(94, 68);
             txtColmena.MaxLength = 7;
             txtColmena.Name = "txtColmena";
-            txtColmena.Size = new Size(414, 29);
+            txtColmena.Size = new Size(147, 29);
             txtColmena.TabIndex = 61;
             txtColmena.KeyDown += CopiaryPegar_KeyDown;
             txtColmena.KeyPress += SoloNumeros_KeyPress;
@@ -128,7 +132,7 @@
             btnGuardarColmena.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardarColmena.Image = (Image)resources.GetObject("btnGuardarColmena.Image");
             btnGuardarColmena.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarColmena.Location = new Point(727, 54);
+            btnGuardarColmena.Location = new Point(256, 56);
             btnGuardarColmena.Name = "btnGuardarColmena";
             btnGuardarColmena.Size = new Size(161, 41);
             btnGuardarColmena.TabIndex = 62;
@@ -145,7 +149,7 @@
             btnImprimir.ForeColor = Color.FromArgb(56, 124, 31);
             btnImprimir.Image = Properties.Resources.imprimir;
             btnImprimir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnImprimir.Location = new Point(727, 19);
+            btnImprimir.Location = new Point(272, 22);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(161, 41);
             btnImprimir.TabIndex = 76;
@@ -162,9 +166,9 @@
             groupBox1.Controls.Add(btnCantidadMiel);
             groupBox1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(15, 124);
+            groupBox1.Location = new Point(3, 120);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(932, 115);
+            groupBox1.Size = new Size(426, 115);
             groupBox1.TabIndex = 81;
             groupBox1.TabStop = false;
             groupBox1.Text = "Registro de Miel";
@@ -174,7 +178,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(100, 36);
+            label1.Location = new Point(31, 36);
             label1.Name = "label1";
             label1.Size = new Size(75, 24);
             label1.TabIndex = 76;
@@ -183,9 +187,10 @@
             // dtpFechaCosechaMiel
             // 
             dtpFechaCosechaMiel.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaCosechaMiel.Location = new Point(181, 31);
+            dtpFechaCosechaMiel.Format = DateTimePickerFormat.Short;
+            dtpFechaCosechaMiel.Location = new Point(112, 28);
             dtpFechaCosechaMiel.Name = "dtpFechaCosechaMiel";
-            dtpFechaCosechaMiel.Size = new Size(414, 29);
+            dtpFechaCosechaMiel.Size = new Size(147, 29);
             dtpFechaCosechaMiel.TabIndex = 77;
             // 
             // label2
@@ -195,17 +200,17 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(2, 71);
             label2.Name = "label2";
-            label2.Size = new Size(173, 24);
+            label2.Size = new Size(104, 24);
             label2.TabIndex = 59;
-            label2.Text = "Cantidad de Miel:";
+            label2.Text = "Cantidad :";
             // 
             // txtCantidadMiel
             // 
             txtCantidadMiel.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCantidadMiel.Location = new Point(181, 71);
+            txtCantidadMiel.Location = new Point(112, 68);
             txtCantidadMiel.MaxLength = 7;
             txtCantidadMiel.Name = "txtCantidadMiel";
-            txtCantidadMiel.Size = new Size(414, 29);
+            txtCantidadMiel.Size = new Size(147, 29);
             txtCantidadMiel.TabIndex = 61;
             txtCantidadMiel.KeyDown += CopiaryPegar_KeyDown;
             txtCantidadMiel.KeyPress += SoloNumeros_KeyPress;
@@ -219,7 +224,7 @@
             btnCantidadMiel.ForeColor = Color.FromArgb(56, 124, 31);
             btnCantidadMiel.Image = (Image)resources.GetObject("btnCantidadMiel.Image");
             btnCantidadMiel.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCantidadMiel.Location = new Point(727, 54);
+            btnCantidadMiel.Location = new Point(265, 56);
             btnCantidadMiel.Name = "btnCantidadMiel";
             btnCantidadMiel.Size = new Size(161, 41);
             btnCantidadMiel.TabIndex = 62;
@@ -236,9 +241,9 @@
             groupBox2.Controls.Add(btnQuitarColmena);
             groupBox2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(15, 245);
+            groupBox2.Location = new Point(435, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(932, 115);
+            groupBox2.Size = new Size(455, 111);
             groupBox2.TabIndex = 82;
             groupBox2.TabStop = false;
             groupBox2.Text = "Retirar Colmenas";
@@ -248,7 +253,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(100, 36);
+            label3.Location = new Point(20, 36);
             label3.Name = "label3";
             label3.Size = new Size(75, 24);
             label3.TabIndex = 76;
@@ -257,9 +262,10 @@
             // dtpFechaRetiroColmena
             // 
             dtpFechaRetiroColmena.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaRetiroColmena.Location = new Point(181, 28);
+            dtpFechaRetiroColmena.Format = DateTimePickerFormat.Short;
+            dtpFechaRetiroColmena.Location = new Point(101, 28);
             dtpFechaRetiroColmena.Name = "dtpFechaRetiroColmena";
-            dtpFechaRetiroColmena.Size = new Size(414, 29);
+            dtpFechaRetiroColmena.Size = new Size(147, 29);
             dtpFechaRetiroColmena.TabIndex = 77;
             // 
             // label4
@@ -267,19 +273,19 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(18, 71);
+            label4.Location = new Point(17, 71);
             label4.Name = "label4";
-            label4.Size = new Size(161, 24);
+            label4.Size = new Size(78, 24);
             label4.TabIndex = 59;
-            label4.Text = "Quitar Colmena:";
+            label4.Text = "Quitar :";
             // 
             // txtRetiroColmena
             // 
             txtRetiroColmena.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtRetiroColmena.Location = new Point(181, 70);
+            txtRetiroColmena.Location = new Point(101, 70);
             txtRetiroColmena.MaxLength = 7;
             txtRetiroColmena.Name = "txtRetiroColmena";
-            txtRetiroColmena.Size = new Size(414, 29);
+            txtRetiroColmena.Size = new Size(147, 29);
             txtRetiroColmena.TabIndex = 61;
             txtRetiroColmena.KeyDown += CopiaryPegar_KeyDown;
             txtRetiroColmena.KeyPress += SoloNumeros_KeyPress;
@@ -293,7 +299,7 @@
             btnQuitarColmena.ForeColor = Color.FromArgb(56, 124, 31);
             btnQuitarColmena.Image = (Image)resources.GetObject("btnQuitarColmena.Image");
             btnQuitarColmena.ImageAlign = ContentAlignment.MiddleLeft;
-            btnQuitarColmena.Location = new Point(727, 54);
+            btnQuitarColmena.Location = new Point(288, 56);
             btnQuitarColmena.Name = "btnQuitarColmena";
             btnQuitarColmena.Size = new Size(161, 41);
             btnQuitarColmena.TabIndex = 62;
@@ -311,9 +317,9 @@
             groupBox3.Controls.Add(btnEnviarIndustria);
             groupBox3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(15, 366);
+            groupBox3.Location = new Point(435, 120);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(932, 115);
+            groupBox3.Size = new Size(455, 115);
             groupBox3.TabIndex = 83;
             groupBox3.TabStop = false;
             groupBox3.Text = "Enviar Miel a Industria:";
@@ -323,9 +329,9 @@
             // 
             cmbEnviarIndustria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbEnviarIndustria.FormattingEnabled = true;
-            cmbEnviarIndustria.Location = new Point(181, 71);
+            cmbEnviarIndustria.Location = new Point(110, 69);
             cmbEnviarIndustria.Name = "cmbEnviarIndustria";
-            cmbEnviarIndustria.Size = new Size(414, 32);
+            cmbEnviarIndustria.Size = new Size(147, 32);
             cmbEnviarIndustria.TabIndex = 78;
             cmbEnviarIndustria.KeyDown += CopiaryPegar_KeyDown;
             cmbEnviarIndustria.KeyPress += SoloNumeros_KeyPress;
@@ -335,7 +341,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(100, 36);
+            label5.Location = new Point(17, 33);
             label5.Name = "label5";
             label5.Size = new Size(75, 24);
             label5.TabIndex = 76;
@@ -344,9 +350,10 @@
             // dtpFechaEnvioIndustria
             // 
             dtpFechaEnvioIndustria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaEnvioIndustria.Location = new Point(181, 28);
+            dtpFechaEnvioIndustria.Format = DateTimePickerFormat.Short;
+            dtpFechaEnvioIndustria.Location = new Point(110, 26);
             dtpFechaEnvioIndustria.Name = "dtpFechaEnvioIndustria";
-            dtpFechaEnvioIndustria.Size = new Size(414, 29);
+            dtpFechaEnvioIndustria.Size = new Size(147, 29);
             dtpFechaEnvioIndustria.TabIndex = 77;
             // 
             // label6
@@ -356,9 +363,9 @@
             label6.ForeColor = Color.White;
             label6.Location = new Point(6, 71);
             label6.Name = "label6";
-            label6.Size = new Size(173, 24);
+            label6.Size = new Size(104, 24);
             label6.TabIndex = 59;
-            label6.Text = "Cantidad de Miel:";
+            label6.Text = "Cantidad :";
             // 
             // btnEnviarIndustria
             // 
@@ -369,7 +376,7 @@
             btnEnviarIndustria.ForeColor = Color.FromArgb(56, 124, 31);
             btnEnviarIndustria.Image = Properties.Resources.fabrica;
             btnEnviarIndustria.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEnviarIndustria.Location = new Point(727, 63);
+            btnEnviarIndustria.Location = new Point(272, 66);
             btnEnviarIndustria.Name = "btnEnviarIndustria";
             btnEnviarIndustria.Size = new Size(161, 41);
             btnEnviarIndustria.TabIndex = 62;
@@ -379,12 +386,36 @@
             // 
             // dtgDatosMiel
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgDatosMiel.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgDatosMiel.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgDatosMiel.DefaultCellStyle = dataGridViewCellStyle2;
             dtgDatosMiel.Dock = DockStyle.Bottom;
-            dtgDatosMiel.Location = new Point(0, 487);
+            dtgDatosMiel.Location = new Point(0, 258);
             dtgDatosMiel.Name = "dtgDatosMiel";
             dtgDatosMiel.ReadOnly = true;
-            dtgDatosMiel.Size = new Size(999, 222);
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgDatosMiel.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dtgDatosMiel.Size = new Size(950, 242);
             dtgDatosMiel.TabIndex = 84;
             // 
             // UcColmenas
@@ -398,7 +429,7 @@
             Controls.Add(groupBox1);
             Controls.Add(gbRegistroMiel);
             Name = "UcColmenas";
-            Size = new Size(999, 709);
+            Size = new Size(950, 500);
             gbRegistroMiel.ResumeLayout(false);
             gbRegistroMiel.PerformLayout();
             groupBox1.ResumeLayout(false);

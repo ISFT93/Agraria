@@ -80,16 +80,17 @@
             // dtpFechaIngresoPollosEngorde
             // 
             dtpFechaIngresoPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaIngresoPollosEngorde.Location = new Point(237, 69);
+            dtpFechaIngresoPollosEngorde.Format = DateTimePickerFormat.Short;
+            dtpFechaIngresoPollosEngorde.Location = new Point(196, 63);
             dtpFechaIngresoPollosEngorde.Name = "dtpFechaIngresoPollosEngorde";
-            dtpFechaIngresoPollosEngorde.Size = new Size(219, 29);
-            dtpFechaIngresoPollosEngorde.TabIndex = 89;
+            dtpFechaIngresoPollosEngorde.Size = new Size(141, 29);
+            dtpFechaIngresoPollosEngorde.TabIndex = 10;
             // 
             // dtgRegistroPollos
             // 
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
@@ -98,26 +99,26 @@
             dtgRegistroPollos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = Color.White;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dtgRegistroPollos.DefaultCellStyle = dataGridViewCellStyle2;
             dtgRegistroPollos.Dock = DockStyle.Bottom;
-            dtgRegistroPollos.Location = new Point(0, 470);
+            dtgRegistroPollos.Location = new Point(0, 350);
             dtgRegistroPollos.Name = "dtgRegistroPollos";
             dtgRegistroPollos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dtgRegistroPollos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dtgRegistroPollos.Size = new Size(999, 239);
-            dtgRegistroPollos.TabIndex = 88;
+            dtgRegistroPollos.Size = new Size(950, 150);
+            dtgRegistroPollos.TabIndex = 0;
             // 
             // gbEnviarPolloIndustria
             // 
@@ -132,7 +133,7 @@
             gbEnviarPolloIndustria.ForeColor = Color.White;
             gbEnviarPolloIndustria.Location = new Point(6, 219);
             gbEnviarPolloIndustria.Name = "gbEnviarPolloIndustria";
-            gbEnviarPolloIndustria.Size = new Size(456, 200);
+            gbEnviarPolloIndustria.Size = new Size(560, 122);
             gbEnviarPolloIndustria.TabIndex = 87;
             gbEnviarPolloIndustria.TabStop = false;
             gbEnviarPolloIndustria.Text = "Enviar Pollos a Industria";
@@ -140,10 +141,11 @@
             // dtpFechaEgresoPollosEngorde
             // 
             dtpFechaEgresoPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaEgresoPollosEngorde.Location = new Point(201, 72);
+            dtpFechaEgresoPollosEngorde.Format = DateTimePickerFormat.Short;
+            dtpFechaEgresoPollosEngorde.Location = new Point(182, 72);
             dtpFechaEgresoPollosEngorde.Name = "dtpFechaEgresoPollosEngorde";
-            dtpFechaEgresoPollosEngorde.Size = new Size(200, 29);
-            dtpFechaEgresoPollosEngorde.TabIndex = 77;
+            dtpFechaEgresoPollosEngorde.Size = new Size(142, 29);
+            dtpFechaEgresoPollosEngorde.TabIndex = 6;
             // 
             // btnEnviarPolloEngordeIndustria
             // 
@@ -154,10 +156,10 @@
             btnEnviarPolloEngordeIndustria.ForeColor = Color.FromArgb(56, 124, 31);
             btnEnviarPolloEngordeIndustria.Image = Properties.Resources.fabrica;
             btnEnviarPolloEngordeIndustria.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEnviarPolloEngordeIndustria.Location = new Point(284, 148);
+            btnEnviarPolloEngordeIndustria.Location = new Point(393, 72);
             btnEnviarPolloEngordeIndustria.Name = "btnEnviarPolloEngordeIndustria";
             btnEnviarPolloEngordeIndustria.Size = new Size(161, 41);
-            btnEnviarPolloEngordeIndustria.TabIndex = 76;
+            btnEnviarPolloEngordeIndustria.TabIndex = 8;
             btnEnviarPolloEngordeIndustria.Text = "Enviar";
             btnEnviarPolloEngordeIndustria.UseVisualStyleBackColor = false;
             btnEnviarPolloEngordeIndustria.Click += btnEnviarPolloEngordeIndustria_Click;
@@ -167,7 +169,7 @@
             lblFechaEgresoPollosEngorde.AutoSize = true;
             lblFechaEgresoPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblFechaEgresoPollosEngorde.ForeColor = Color.White;
-            lblFechaEgresoPollosEngorde.Location = new Point(34, 72);
+            lblFechaEgresoPollosEngorde.Location = new Point(15, 72);
             lblFechaEgresoPollosEngorde.Name = "lblFechaEgresoPollosEngorde";
             lblFechaEgresoPollosEngorde.Size = new Size(164, 24);
             lblFechaEgresoPollosEngorde.TabIndex = 74;
@@ -178,17 +180,17 @@
             cmbPolloEnvio.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPolloEnvio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbPolloEnvio.FormattingEnabled = true;
-            cmbPolloEnvio.Location = new Point(201, 30);
+            cmbPolloEnvio.Location = new Point(160, 29);
             cmbPolloEnvio.Name = "cmbPolloEnvio";
-            cmbPolloEnvio.Size = new Size(200, 32);
-            cmbPolloEnvio.TabIndex = 73;
+            cmbPolloEnvio.Size = new Size(142, 32);
+            cmbPolloEnvio.TabIndex = 5;
             // 
             // lblCantidadPollosEngorde2
             // 
             lblCantidadPollosEngorde2.AutoSize = true;
             lblCantidadPollosEngorde2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblCantidadPollosEngorde2.ForeColor = Color.White;
-            lblCantidadPollosEngorde2.Location = new Point(97, 115);
+            lblCantidadPollosEngorde2.Location = new Point(308, 32);
             lblCantidadPollosEngorde2.Name = "lblCantidadPollosEngorde2";
             lblCantidadPollosEngorde2.Size = new Size(98, 24);
             lblCantidadPollosEngorde2.TabIndex = 72;
@@ -199,7 +201,7 @@
             lblBoxPolloEngorde2.AutoSize = true;
             lblBoxPolloEngorde2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblBoxPolloEngorde2.ForeColor = Color.White;
-            lblBoxPolloEngorde2.Location = new Point(143, 33);
+            lblBoxPolloEngorde2.Location = new Point(102, 32);
             lblBoxPolloEngorde2.Name = "lblBoxPolloEngorde2";
             lblBoxPolloEngorde2.Size = new Size(52, 24);
             lblBoxPolloEngorde2.TabIndex = 71;
@@ -208,11 +210,11 @@
             // txtCantidadPollosEngorde2
             // 
             txtCantidadPollosEngorde2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCantidadPollosEngorde2.Location = new Point(201, 111);
+            txtCantidadPollosEngorde2.Location = new Point(412, 28);
             txtCantidadPollosEngorde2.MaxLength = 7;
             txtCantidadPollosEngorde2.Name = "txtCantidadPollosEngorde2";
-            txtCantidadPollosEngorde2.Size = new Size(200, 29);
-            txtCantidadPollosEngorde2.TabIndex = 70;
+            txtCantidadPollosEngorde2.Size = new Size(142, 29);
+            txtCantidadPollosEngorde2.TabIndex = 7;
             txtCantidadPollosEngorde2.KeyDown += CopiaryPegar_KeyDown;
             txtCantidadPollosEngorde2.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -221,7 +223,7 @@
             lblFechaIngresoPollosEngorde.AutoSize = true;
             lblFechaIngresoPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblFechaIngresoPollosEngorde.ForeColor = Color.White;
-            lblFechaIngresoPollosEngorde.Location = new Point(80, 72);
+            lblFechaIngresoPollosEngorde.Location = new Point(39, 66);
             lblFechaIngresoPollosEngorde.Name = "lblFechaIngresoPollosEngorde";
             lblFechaIngresoPollosEngorde.Size = new Size(151, 24);
             lblFechaIngresoPollosEngorde.TabIndex = 86;
@@ -232,7 +234,7 @@
             lblEdadPollo.AutoSize = true;
             lblEdadPollo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblEdadPollo.ForeColor = Color.White;
-            lblEdadPollo.Location = new Point(66, 165);
+            lblEdadPollo.Location = new Point(25, 102);
             lblEdadPollo.Name = "lblEdadPollo";
             lblEdadPollo.Size = new Size(165, 24);
             lblEdadPollo.TabIndex = 85;
@@ -243,10 +245,10 @@
             cmbTipoAlimento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoAlimento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoAlimento.FormattingEnabled = true;
-            cmbTipoAlimento.Location = new Point(237, 253);
+            cmbTipoAlimento.Location = new Point(196, 133);
             cmbTipoAlimento.Name = "cmbTipoAlimento";
-            cmbTipoAlimento.Size = new Size(219, 32);
-            cmbTipoAlimento.TabIndex = 83;
+            cmbTipoAlimento.Size = new Size(141, 32);
+            cmbTipoAlimento.TabIndex = 14;
             // 
             // btnGuardarRegistro
             // 
@@ -257,10 +259,10 @@
             btnGuardarRegistro.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardarRegistro.Image = (Image)resources.GetObject("btnGuardarRegistro.Image");
             btnGuardarRegistro.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarRegistro.Location = new Point(316, 359);
+            btnGuardarRegistro.Location = new Point(419, 159);
             btnGuardarRegistro.Name = "btnGuardarRegistro";
             btnGuardarRegistro.Size = new Size(161, 41);
-            btnGuardarRegistro.TabIndex = 84;
+            btnGuardarRegistro.TabIndex = 16;
             btnGuardarRegistro.Text = "Guardar";
             btnGuardarRegistro.UseVisualStyleBackColor = false;
             btnGuardarRegistro.Click += btnGuardarRegistro_Click;
@@ -270,7 +272,7 @@
             lblAlimentoKlDia.AutoSize = true;
             lblAlimentoKlDia.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblAlimentoKlDia.ForeColor = Color.White;
-            lblAlimentoKlDia.Location = new Point(54, 307);
+            lblAlimentoKlDia.Location = new Point(13, 176);
             lblAlimentoKlDia.Name = "lblAlimentoKlDia";
             lblAlimentoKlDia.Size = new Size(177, 24);
             lblAlimentoKlDia.TabIndex = 82;
@@ -281,30 +283,30 @@
             cmbPolloActualizar.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPolloActualizar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbPolloActualizar.FormattingEnabled = true;
-            cmbPolloActualizar.Location = new Point(237, 20);
+            cmbPolloActualizar.Location = new Point(196, 25);
             cmbPolloActualizar.Name = "cmbPolloActualizar";
-            cmbPolloActualizar.Size = new Size(219, 32);
-            cmbPolloActualizar.TabIndex = 81;
+            cmbPolloActualizar.Size = new Size(141, 32);
+            cmbPolloActualizar.TabIndex = 9;
             // 
             // txtEdadPollo
             // 
             txtEdadPollo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtEdadPollo.Location = new Point(237, 161);
+            txtEdadPollo.Location = new Point(196, 98);
             txtEdadPollo.MaxLength = 5;
             txtEdadPollo.Name = "txtEdadPollo";
-            txtEdadPollo.Size = new Size(219, 29);
-            txtEdadPollo.TabIndex = 79;
+            txtEdadPollo.Size = new Size(141, 29);
+            txtEdadPollo.TabIndex = 12;
             txtEdadPollo.KeyDown += CopiaryPegar_KeyDown;
             txtEdadPollo.KeyPress += SoloNumerosYComa_KeyPress;
             // 
             // txtPesoPollo
             // 
             txtPesoPollo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtPesoPollo.Location = new Point(237, 207);
+            txtPesoPollo.Location = new Point(439, 61);
             txtPesoPollo.MaxLength = 10;
             txtPesoPollo.Name = "txtPesoPollo";
-            txtPesoPollo.Size = new Size(219, 29);
-            txtPesoPollo.TabIndex = 80;
+            txtPesoPollo.Size = new Size(141, 29);
+            txtPesoPollo.TabIndex = 13;
             txtPesoPollo.KeyDown += CopiaryPegar_KeyDown;
             txtPesoPollo.KeyPress += SoloNumerosYComa_KeyPress;
             // 
@@ -313,7 +315,7 @@
             lblPesoPollo.AutoSize = true;
             lblPesoPollo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblPesoPollo.ForeColor = Color.White;
-            lblPesoPollo.Location = new Point(168, 213);
+            lblPesoPollo.Location = new Point(370, 67);
             lblPesoPollo.Name = "lblPesoPollo";
             lblPesoPollo.Size = new Size(63, 24);
             lblPesoPollo.TabIndex = 78;
@@ -324,7 +326,7 @@
             lblCantidadPollosEngorde.AutoSize = true;
             lblCantidadPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblCantidadPollosEngorde.ForeColor = Color.White;
-            lblCantidadPollosEngorde.Location = new Point(133, 113);
+            lblCantidadPollosEngorde.Location = new Point(338, 26);
             lblCantidadPollosEngorde.Name = "lblCantidadPollosEngorde";
             lblCantidadPollosEngorde.Size = new Size(98, 24);
             lblCantidadPollosEngorde.TabIndex = 76;
@@ -335,7 +337,7 @@
             lblBoxPolloEngorde.AutoSize = true;
             lblBoxPolloEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblBoxPolloEngorde.ForeColor = Color.White;
-            lblBoxPolloEngorde.Location = new Point(179, 23);
+            lblBoxPolloEngorde.Location = new Point(138, 28);
             lblBoxPolloEngorde.Name = "lblBoxPolloEngorde";
             lblBoxPolloEngorde.Size = new Size(52, 24);
             lblBoxPolloEngorde.TabIndex = 75;
@@ -346,7 +348,7 @@
             lblTipoAlimento.AutoSize = true;
             lblTipoAlimento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblTipoAlimento.ForeColor = Color.White;
-            lblTipoAlimento.Location = new Point(85, 255);
+            lblTipoAlimento.Location = new Point(44, 135);
             lblTipoAlimento.Name = "lblTipoAlimento";
             lblTipoAlimento.Size = new Size(146, 24);
             lblTipoAlimento.TabIndex = 77;
@@ -355,22 +357,22 @@
             // txtCantidadPollosEngorde
             // 
             txtCantidadPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCantidadPollosEngorde.Location = new Point(237, 115);
+            txtCantidadPollosEngorde.Location = new Point(442, 28);
             txtCantidadPollosEngorde.MaxLength = 7;
             txtCantidadPollosEngorde.Name = "txtCantidadPollosEngorde";
-            txtCantidadPollosEngorde.Size = new Size(219, 29);
-            txtCantidadPollosEngorde.TabIndex = 73;
+            txtCantidadPollosEngorde.Size = new Size(141, 29);
+            txtCantidadPollosEngorde.TabIndex = 11;
             txtCantidadPollosEngorde.KeyDown += CopiaryPegar_KeyDown;
             txtCantidadPollosEngorde.KeyPress += SoloNumeros_KeyPress;
             // 
             // txtAlimentoKlDia
             // 
             txtAlimentoKlDia.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtAlimentoKlDia.Location = new Point(237, 302);
+            txtAlimentoKlDia.Location = new Point(196, 171);
             txtAlimentoKlDia.MaxLength = 10;
             txtAlimentoKlDia.Name = "txtAlimentoKlDia";
-            txtAlimentoKlDia.Size = new Size(219, 29);
-            txtAlimentoKlDia.TabIndex = 74;
+            txtAlimentoKlDia.Size = new Size(141, 29);
+            txtAlimentoKlDia.TabIndex = 15;
             txtAlimentoKlDia.KeyDown += CopiaryPegar_KeyDown;
             txtAlimentoKlDia.KeyPress += SoloNumerosYComa_KeyPress;
             // 
@@ -383,10 +385,10 @@
             btnImprimir.ForeColor = Color.FromArgb(56, 124, 31);
             btnImprimir.Image = Properties.Resources.imprimir;
             btnImprimir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnImprimir.Location = new Point(808, 425);
+            btnImprimir.Location = new Point(777, 266);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(161, 41);
-            btnImprimir.TabIndex = 90;
+            btnImprimir.TabIndex = 18;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = false;
             btnImprimir.Click += btnImprimir_Click;
@@ -404,7 +406,7 @@
             groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(6, 13);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(456, 200);
+            groupBox1.Size = new Size(355, 189);
             groupBox1.TabIndex = 91;
             groupBox1.TabStop = false;
             groupBox1.Text = "Cargar los Box";
@@ -412,10 +414,11 @@
             // dtpFechaCarga
             // 
             dtpFechaCarga.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dtpFechaCarga.Format = DateTimePickerFormat.Short;
             dtpFechaCarga.Location = new Point(201, 67);
             dtpFechaCarga.Name = "dtpFechaCarga";
-            dtpFechaCarga.Size = new Size(200, 29);
-            dtpFechaCarga.TabIndex = 77;
+            dtpFechaCarga.Size = new Size(142, 29);
+            dtpFechaCarga.TabIndex = 2;
             // 
             // btnGuardarPollos
             // 
@@ -426,10 +429,10 @@
             btnGuardarPollos.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardarPollos.Image = (Image)resources.GetObject("btnGuardarPollos.Image");
             btnGuardarPollos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarPollos.Location = new Point(286, 148);
+            btnGuardarPollos.Location = new Point(182, 141);
             btnGuardarPollos.Name = "btnGuardarPollos";
             btnGuardarPollos.Size = new Size(161, 41);
-            btnGuardarPollos.TabIndex = 76;
+            btnGuardarPollos.TabIndex = 4;
             btnGuardarPollos.Text = "Enviar";
             btnGuardarPollos.UseVisualStyleBackColor = false;
             btnGuardarPollos.Click += btnGuardarPollos_Click;
@@ -452,8 +455,8 @@
             cmbBoxCarga.FormattingEnabled = true;
             cmbBoxCarga.Location = new Point(201, 25);
             cmbBoxCarga.Name = "cmbBoxCarga";
-            cmbBoxCarga.Size = new Size(200, 32);
-            cmbBoxCarga.TabIndex = 73;
+            cmbBoxCarga.Size = new Size(142, 32);
+            cmbBoxCarga.TabIndex = 1;
             // 
             // label2
             // 
@@ -483,8 +486,8 @@
             txtCargabox.Location = new Point(201, 106);
             txtCargabox.MaxLength = 7;
             txtCargabox.Name = "txtCargabox";
-            txtCargabox.Size = new Size(200, 29);
-            txtCargabox.TabIndex = 70;
+            txtCargabox.Size = new Size(142, 29);
+            txtCargabox.TabIndex = 3;
             txtCargabox.KeyDown += CopiaryPegar_KeyDown;
             txtCargabox.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -507,9 +510,9 @@
             groupBox2.Controls.Add(txtPesoPollo);
             groupBox2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(492, 13);
+            groupBox2.Location = new Point(367, 13);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(492, 406);
+            groupBox2.Size = new Size(580, 212);
             groupBox2.TabIndex = 92;
             groupBox2.TabStop = false;
             groupBox2.Text = "Actualizar Registros";
@@ -519,7 +522,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(393, 438);
+            label4.Location = new Point(593, 236);
             label4.Name = "label4";
             label4.Size = new Size(159, 24);
             label4.TabIndex = 93;
@@ -528,11 +531,11 @@
             // txtBuscarPorGrilla
             // 
             txtBuscarPorGrilla.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscarPorGrilla.Location = new Point(558, 435);
+            txtBuscarPorGrilla.Location = new Point(758, 231);
             txtBuscarPorGrilla.MaxLength = 10;
             txtBuscarPorGrilla.Name = "txtBuscarPorGrilla";
-            txtBuscarPorGrilla.Size = new Size(219, 29);
-            txtBuscarPorGrilla.TabIndex = 94;
+            txtBuscarPorGrilla.Size = new Size(180, 29);
+            txtBuscarPorGrilla.TabIndex = 17;
             txtBuscarPorGrilla.KeyDown += CopiaryPegar_KeyDown;
             txtBuscarPorGrilla.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -553,7 +556,7 @@
             Controls.Add(dtgRegistroPollos);
             Controls.Add(gbEnviarPolloIndustria);
             Name = "UcEngorde";
-            Size = new Size(999, 709);
+            Size = new Size(950, 500);
             Load += UcEngorde_Load;
             ((System.ComponentModel.ISupportInitialize)dtgRegistroPollos).EndInit();
             gbEnviarPolloIndustria.ResumeLayout(false);

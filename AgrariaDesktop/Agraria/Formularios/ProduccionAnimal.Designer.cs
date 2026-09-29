@@ -33,7 +33,6 @@
             btnAgregarPagina2 = new Tienda.RJButton();
             btnQuitarPagina2 = new Tienda.RJButton();
             tbcDatosAnimales = new TabControl();
-            PanelAnimales = new Panel();
             groupBox7.SuspendLayout();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -42,11 +41,12 @@
             // 
             groupBox7.Controls.Add(groupBox1);
             groupBox7.Controls.Add(tbcDatosAnimales);
+            groupBox7.Dock = DockStyle.Fill;
             groupBox7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             groupBox7.ForeColor = Color.White;
-            groupBox7.Location = new Point(854, 2);
+            groupBox7.Location = new Point(0, 0);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(1020, 859);
+            groupBox7.Size = new Size(984, 729);
             groupBox7.TabIndex = 30;
             groupBox7.TabStop = false;
             groupBox7.Text = "Agregar Registros de Datos Animales";
@@ -55,13 +55,14 @@
             // 
             groupBox1.Controls.Add(btnAgregarPagina2);
             groupBox1.Controls.Add(btnQuitarPagina2);
+            groupBox1.Dock = DockStyle.Bottom;
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(6, 781);
+            groupBox1.Location = new Point(3, 652);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(988, 74);
+            groupBox1.Size = new Size(978, 74);
             groupBox1.TabIndex = 69;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Botones exclusivos para Agregar o Quitar paginas :";
+            groupBox1.Text = "Agregar o Quitar paginas :";
             // 
             // btnAgregarPagina2
             // 
@@ -72,7 +73,7 @@
             btnAgregarPagina2.ForeColor = Color.FromArgb(56, 124, 31);
             btnAgregarPagina2.Image = Properties.Resources.entrada;
             btnAgregarPagina2.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregarPagina2.Location = new Point(182, 26);
+            btnAgregarPagina2.Location = new Point(6, 26);
             btnAgregarPagina2.Name = "btnAgregarPagina2";
             btnAgregarPagina2.Size = new Size(173, 40);
             btnAgregarPagina2.TabIndex = 28;
@@ -89,7 +90,7 @@
             btnQuitarPagina2.ForeColor = Color.FromArgb(56, 124, 31);
             btnQuitarPagina2.Image = Properties.Resources.salida;
             btnQuitarPagina2.ImageAlign = ContentAlignment.MiddleLeft;
-            btnQuitarPagina2.Location = new Point(611, 26);
+            btnQuitarPagina2.Location = new Point(202, 28);
             btnQuitarPagina2.Name = "btnQuitarPagina2";
             btnQuitarPagina2.Size = new Size(173, 40);
             btnQuitarPagina2.TabIndex = 29;
@@ -103,26 +104,16 @@
             tbcDatosAnimales.Location = new Point(6, 28);
             tbcDatosAnimales.Name = "tbcDatosAnimales";
             tbcDatosAnimales.SelectedIndex = 0;
-            tbcDatosAnimales.Size = new Size(1006, 747);
+            tbcDatosAnimales.Size = new Size(975, 628);
             tbcDatosAnimales.TabIndex = 0;
-            // 
-            // PanelAnimales
-            // 
-            PanelAnimales.AutoScroll = true;
-            PanelAnimales.Location = new Point(3, 2);
-            PanelAnimales.Name = "PanelAnimales";
-            PanelAnimales.Size = new Size(845, 847);
-            PanelAnimales.TabIndex = 31;
             // 
             // ProduccionAnimal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(1884, 861);
-            Controls.Add(PanelAnimales);
+            ClientSize = new Size(984, 729);
             Controls.Add(groupBox7);
-            FormBorderStyle = FormBorderStyle.None;
             Name = "ProduccionAnimal";
             Text = "ProduccionAnimal";
             Load += ProduccionAnimal_Load;
@@ -133,7 +124,6 @@
 
         #endregion
         private GroupBox groupBox7;
-        private Panel PanelAnimales;
         private TabControl tbcDatosAnimales;
         private GroupBox groupBox1;
         private Tienda.RJButton btnAgregarPagina2;

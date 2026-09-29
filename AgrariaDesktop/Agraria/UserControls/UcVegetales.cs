@@ -361,5 +361,10 @@ namespace Agraria.UserControls
             Validaciones.SoloNumeros(e);
 
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

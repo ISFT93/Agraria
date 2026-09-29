@@ -30,7 +30,13 @@ namespace Agraria.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcLeche));
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             tabControl1 = new TabControl();
             tabPage7 = new TabPage();
             groupBox2 = new GroupBox();
@@ -116,11 +122,12 @@ namespace Agraria.UserControls
             tabControl1.Controls.Add(tabPage7);
             tabControl1.Controls.Add(tabPage8);
             tabControl1.Cursor = Cursors.Hand;
+            tabControl1.Dock = DockStyle.Fill;
             tabControl1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            tabControl1.Location = new Point(3, 3);
+            tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(998, 706);
+            tabControl1.Size = new Size(900, 550);
             tabControl1.TabIndex = 1;
             // 
             // tabPage7
@@ -137,7 +144,7 @@ namespace Agraria.UserControls
             tabPage7.Location = new Point(4, 33);
             tabPage7.Name = "tabPage7";
             tabPage7.Padding = new Padding(3);
-            tabPage7.Size = new Size(990, 669);
+            tabPage7.Size = new Size(892, 513);
             tabPage7.TabIndex = 0;
             tabPage7.Text = "Registro de Producción de Leche";
             // 
@@ -150,9 +157,9 @@ namespace Agraria.UserControls
             groupBox2.Controls.Add(label5);
             groupBox2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(510, 211);
+            groupBox2.Location = new Point(504, 153);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(477, 228);
+            groupBox2.Size = new Size(382, 147);
             groupBox2.TabIndex = 99;
             groupBox2.TabStop = false;
             groupBox2.Text = "Retirar animal Fallecido:";
@@ -161,25 +168,26 @@ namespace Agraria.UserControls
             // 
             cmbRetiroAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbRetiroAnimal.FormattingEnabled = true;
-            cmbRetiroAnimal.Location = new Point(179, 79);
+            cmbRetiroAnimal.Location = new Point(156, 29);
             cmbRetiroAnimal.Name = "cmbRetiroAnimal";
-            cmbRetiroAnimal.Size = new Size(189, 32);
-            cmbRetiroAnimal.TabIndex = 83;
+            cmbRetiroAnimal.Size = new Size(130, 32);
+            cmbRetiroAnimal.TabIndex = 13;
             // 
             // dtpFechaRetiro
             // 
             dtpFechaRetiro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaRetiro.Location = new Point(177, 124);
+            dtpFechaRetiro.Format = DateTimePickerFormat.Short;
+            dtpFechaRetiro.Location = new Point(156, 67);
             dtpFechaRetiro.Name = "dtpFechaRetiro";
-            dtpFechaRetiro.Size = new Size(191, 29);
-            dtpFechaRetiro.TabIndex = 81;
+            dtpFechaRetiro.Size = new Size(132, 29);
+            dtpFechaRetiro.TabIndex = 14;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(20, 128);
+            label3.Location = new Point(12, 67);
             label3.Name = "label3";
             label3.Size = new Size(136, 24);
             label3.TabIndex = 80;
@@ -194,10 +202,10 @@ namespace Agraria.UserControls
             btnRetiroAnimal.ForeColor = Color.FromArgb(56, 124, 31);
             btnRetiroAnimal.Image = Properties.Resources.leche;
             btnRetiroAnimal.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRetiroAnimal.Location = new Point(313, 176);
+            btnRetiroAnimal.Location = new Point(215, 102);
             btnRetiroAnimal.Name = "btnRetiroAnimal";
             btnRetiroAnimal.Size = new Size(161, 41);
-            btnRetiroAnimal.TabIndex = 38;
+            btnRetiroAnimal.TabIndex = 15;
             btnRetiroAnimal.Text = "Guardar";
             btnRetiroAnimal.UseVisualStyleBackColor = false;
             btnRetiroAnimal.Click += btnRetiroAnimal_Click;
@@ -207,7 +215,7 @@ namespace Agraria.UserControls
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(33, 79);
+            label5.Location = new Point(10, 29);
             label5.Name = "label5";
             label5.Size = new Size(138, 24);
             label5.TabIndex = 19;
@@ -224,9 +232,9 @@ namespace Agraria.UserControls
             groupBox1.Controls.Add(lblLitroLeche);
             groupBox1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(18, 209);
+            groupBox1.Location = new Point(12, 159);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(477, 230);
+            groupBox1.Size = new Size(483, 141);
             groupBox1.TabIndex = 98;
             groupBox1.TabStop = false;
             groupBox1.Text = "Fecha de Ordeñe";
@@ -235,25 +243,26 @@ namespace Agraria.UserControls
             // 
             cmbAnimalOrdeñe.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbAnimalOrdeñe.FormattingEnabled = true;
-            cmbAnimalOrdeñe.Location = new Point(169, 49);
+            cmbAnimalOrdeñe.Location = new Point(168, 28);
             cmbAnimalOrdeñe.Name = "cmbAnimalOrdeñe";
-            cmbAnimalOrdeñe.Size = new Size(189, 32);
-            cmbAnimalOrdeñe.TabIndex = 82;
+            cmbAnimalOrdeñe.Size = new Size(135, 32);
+            cmbAnimalOrdeñe.TabIndex = 6;
             // 
             // dtpFechaOrdeñe
             // 
             dtpFechaOrdeñe.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaOrdeñe.Location = new Point(168, 97);
+            dtpFechaOrdeñe.Format = DateTimePickerFormat.Short;
+            dtpFechaOrdeñe.Location = new Point(168, 66);
             dtpFechaOrdeñe.Name = "dtpFechaOrdeñe";
-            dtpFechaOrdeñe.Size = new Size(191, 29);
-            dtpFechaOrdeñe.TabIndex = 81;
+            dtpFechaOrdeñe.Size = new Size(137, 29);
+            dtpFechaOrdeñe.TabIndex = 7;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(11, 101);
+            label1.Location = new Point(11, 70);
             label1.Name = "label1";
             label1.Size = new Size(152, 24);
             label1.TabIndex = 80;
@@ -268,10 +277,10 @@ namespace Agraria.UserControls
             btnGuardarLeche.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardarLeche.Image = Properties.Resources.leche;
             btnGuardarLeche.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarLeche.Location = new Point(305, 178);
+            btnGuardarLeche.Location = new Point(311, 89);
             btnGuardarLeche.Name = "btnGuardarLeche";
             btnGuardarLeche.Size = new Size(161, 41);
-            btnGuardarLeche.TabIndex = 38;
+            btnGuardarLeche.TabIndex = 9;
             btnGuardarLeche.Text = "Guardar";
             btnGuardarLeche.UseVisualStyleBackColor = false;
             btnGuardarLeche.Click += btnGuardarLeche_Click;
@@ -281,7 +290,7 @@ namespace Agraria.UserControls
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(24, 52);
+            label2.Location = new Point(23, 31);
             label2.Name = "label2";
             label2.Size = new Size(138, 24);
             label2.TabIndex = 19;
@@ -290,11 +299,11 @@ namespace Agraria.UserControls
             // txtLitroLeche
             // 
             txtLitroLeche.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtLitroLeche.Location = new Point(169, 143);
+            txtLitroLeche.Location = new Point(168, 101);
             txtLitroLeche.MaxLength = 7;
             txtLitroLeche.Name = "txtLitroLeche";
-            txtLitroLeche.Size = new Size(190, 29);
-            txtLitroLeche.TabIndex = 75;
+            txtLitroLeche.Size = new Size(136, 29);
+            txtLitroLeche.TabIndex = 8;
             txtLitroLeche.KeyDown += CopiaryPegar_KeyDown;
             txtLitroLeche.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -303,7 +312,7 @@ namespace Agraria.UserControls
             lblLitroLeche.AutoSize = true;
             lblLitroLeche.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblLitroLeche.ForeColor = Color.White;
-            lblLitroLeche.Location = new Point(13, 144);
+            lblLitroLeche.Location = new Point(12, 102);
             lblLitroLeche.Name = "lblLitroLeche";
             lblLitroLeche.Size = new Size(150, 24);
             lblLitroLeche.TabIndex = 74;
@@ -318,10 +327,10 @@ namespace Agraria.UserControls
             btnImprimir.ForeColor = Color.FromArgb(56, 124, 31);
             btnImprimir.Image = Properties.Resources.imprimir;
             btnImprimir.ImageAlign = ContentAlignment.MiddleLeft;
-            btnImprimir.Location = new Point(823, 445);
+            btnImprimir.Location = new Point(683, 304);
             btnImprimir.Name = "btnImprimir";
             btnImprimir.Size = new Size(161, 41);
-            btnImprimir.TabIndex = 97;
+            btnImprimir.TabIndex = 17;
             btnImprimir.Text = "Imprimir";
             btnImprimir.UseVisualStyleBackColor = false;
             btnImprimir.Click += btnImprimir_Click;
@@ -329,11 +338,11 @@ namespace Agraria.UserControls
             // txtBuscarRegistroProduccion
             // 
             txtBuscarRegistroProduccion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscarRegistroProduccion.Location = new Point(615, 457);
+            txtBuscarRegistroProduccion.Location = new Point(222, 316);
             txtBuscarRegistroProduccion.MaxLength = 7;
             txtBuscarRegistroProduccion.Name = "txtBuscarRegistroProduccion";
             txtBuscarRegistroProduccion.Size = new Size(190, 29);
-            txtBuscarRegistroProduccion.TabIndex = 96;
+            txtBuscarRegistroProduccion.TabIndex = 16;
             txtBuscarRegistroProduccion.TextChanged += txtBuscarRegistroProduccion_TextChanged;
             txtBuscarRegistroProduccion.KeyDown += CopiaryPegar_KeyDown;
             txtBuscarRegistroProduccion.KeyPress += SoloNumeros_KeyPress;
@@ -343,7 +352,7 @@ namespace Agraria.UserControls
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(414, 463);
+            label10.Location = new Point(18, 321);
             label10.Name = "label10";
             label10.Size = new Size(198, 24);
             label10.TabIndex = 95;
@@ -352,13 +361,38 @@ namespace Agraria.UserControls
             // dtgRegistrosProduccion
             // 
             dtgRegistrosProduccion.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgRegistrosProduccion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgRegistrosProduccion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgRegistrosProduccion.Location = new Point(9, 492);
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgRegistrosProduccion.DefaultCellStyle = dataGridViewCellStyle2;
+            dtgRegistrosProduccion.Dock = DockStyle.Bottom;
+            dtgRegistrosProduccion.Location = new Point(3, 351);
             dtgRegistrosProduccion.Name = "dtgRegistrosProduccion";
             dtgRegistrosProduccion.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgRegistrosProduccion.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgRegistrosProduccion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgRegistrosProduccion.Size = new Size(975, 180);
-            dtgRegistrosProduccion.TabIndex = 92;
+            dtgRegistrosProduccion.Size = new Size(886, 159);
+            dtgRegistrosProduccion.TabIndex = 0;
             dtgRegistrosProduccion.CellContentClick += dtgRegistrosProduccion_CellContentClick;
             // 
             // gbRegistroProductoras
@@ -374,7 +408,7 @@ namespace Agraria.UserControls
             gbRegistroProductoras.ForeColor = Color.White;
             gbRegistroProductoras.Location = new Point(18, 13);
             gbRegistroProductoras.Name = "gbRegistroProductoras";
-            gbRegistroProductoras.Size = new Size(477, 181);
+            gbRegistroProductoras.Size = new Size(477, 140);
             gbRegistroProductoras.TabIndex = 87;
             gbRegistroProductoras.TabStop = false;
             gbRegistroProductoras.Text = "Registro de Animales";
@@ -382,17 +416,18 @@ namespace Agraria.UserControls
             // dtpIngresoAnimal
             // 
             dtpIngresoAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpIngresoAnimal.Location = new Point(168, 97);
+            dtpIngresoAnimal.Format = DateTimePickerFormat.Short;
+            dtpIngresoAnimal.Location = new Point(167, 70);
             dtpIngresoAnimal.Name = "dtpIngresoAnimal";
-            dtpIngresoAnimal.Size = new Size(191, 29);
-            dtpIngresoAnimal.TabIndex = 81;
+            dtpIngresoAnimal.Size = new Size(137, 29);
+            dtpIngresoAnimal.TabIndex = 2;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(11, 101);
+            label4.Location = new Point(10, 74);
             label4.Name = "label4";
             label4.Size = new Size(151, 24);
             label4.TabIndex = 80;
@@ -401,10 +436,10 @@ namespace Agraria.UserControls
             // rbMacho
             // 
             rbMacho.AutoSize = true;
-            rbMacho.Location = new Point(369, 97);
+            rbMacho.Location = new Point(355, 59);
             rbMacho.Name = "rbMacho";
             rbMacho.Size = new Size(91, 28);
-            rbMacho.TabIndex = 79;
+            rbMacho.TabIndex = 4;
             rbMacho.TabStop = true;
             rbMacho.Text = "Macho";
             rbMacho.UseVisualStyleBackColor = true;
@@ -412,10 +447,10 @@ namespace Agraria.UserControls
             // rbHembra
             // 
             rbHembra.AutoSize = true;
-            rbHembra.Location = new Point(369, 47);
+            rbHembra.Location = new Point(355, 25);
             rbHembra.Name = "rbHembra";
             rbHembra.Size = new Size(102, 28);
-            rbHembra.TabIndex = 78;
+            rbHembra.TabIndex = 3;
             rbHembra.TabStop = true;
             rbHembra.Text = "Hembra";
             rbHembra.UseVisualStyleBackColor = true;
@@ -429,10 +464,10 @@ namespace Agraria.UserControls
             btnGuardarAnimal.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardarAnimal.Image = (Image)resources.GetObject("btnGuardarAnimal.Image");
             btnGuardarAnimal.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarAnimal.Location = new Point(310, 132);
+            btnGuardarAnimal.Location = new Point(310, 93);
             btnGuardarAnimal.Name = "btnGuardarAnimal";
             btnGuardarAnimal.Size = new Size(161, 41);
-            btnGuardarAnimal.TabIndex = 38;
+            btnGuardarAnimal.TabIndex = 5;
             btnGuardarAnimal.Text = "Guardar";
             btnGuardarAnimal.UseVisualStyleBackColor = false;
             btnGuardarAnimal.Click += btnGuardarAnimal_Click;
@@ -442,7 +477,7 @@ namespace Agraria.UserControls
             lblNumeroCaravana.AutoSize = true;
             lblNumeroCaravana.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblNumeroCaravana.ForeColor = Color.White;
-            lblNumeroCaravana.Location = new Point(24, 52);
+            lblNumeroCaravana.Location = new Point(24, 40);
             lblNumeroCaravana.Name = "lblNumeroCaravana";
             lblNumeroCaravana.Size = new Size(138, 24);
             lblNumeroCaravana.TabIndex = 19;
@@ -451,11 +486,11 @@ namespace Agraria.UserControls
             // txtNumeroAnimal
             // 
             txtNumeroAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNumeroAnimal.Location = new Point(168, 47);
+            txtNumeroAnimal.Location = new Point(167, 37);
             txtNumeroAnimal.MaxLength = 7;
             txtNumeroAnimal.Name = "txtNumeroAnimal";
-            txtNumeroAnimal.Size = new Size(190, 29);
-            txtNumeroAnimal.TabIndex = 36;
+            txtNumeroAnimal.Size = new Size(136, 29);
+            txtNumeroAnimal.TabIndex = 1;
             txtNumeroAnimal.KeyDown += CopiaryPegar_KeyDown;
             txtNumeroAnimal.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -468,9 +503,9 @@ namespace Agraria.UserControls
             gbEnviarIndustria.Controls.Add(lblLitroLeche2);
             gbEnviarIndustria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             gbEnviarIndustria.ForeColor = Color.White;
-            gbEnviarIndustria.Location = new Point(520, 13);
+            gbEnviarIndustria.Location = new Point(495, 13);
             gbEnviarIndustria.Name = "gbEnviarIndustria";
-            gbEnviarIndustria.Size = new Size(441, 181);
+            gbEnviarIndustria.Size = new Size(384, 134);
             gbEnviarIndustria.TabIndex = 85;
             gbEnviarIndustria.TabStop = false;
             gbEnviarIndustria.Text = "Enviar Leche a Industria";
@@ -479,18 +514,20 @@ namespace Agraria.UserControls
             // 
             cmbLitroLecheEnviado.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbLitroLecheEnviado.FormattingEnabled = true;
-            cmbLitroLecheEnviado.Location = new Point(195, 93);
+            cmbLitroLecheEnviado.Location = new Point(306, 34);
             cmbLitroLecheEnviado.Name = "cmbLitroLecheEnviado";
-            cmbLitroLecheEnviado.Size = new Size(193, 32);
-            cmbLitroLecheEnviado.TabIndex = 76;
+            cmbLitroLecheEnviado.Size = new Size(72, 32);
+            cmbLitroLecheEnviado.TabIndex = 11;
+            cmbLitroLecheEnviado.SelectedIndexChanged += cmbLitroLecheEnviado_SelectedIndexChanged;
             // 
             // dtpFechaEnviado
             // 
             dtpFechaEnviado.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaEnviado.Location = new Point(195, 40);
+            dtpFechaEnviado.Format = DateTimePickerFormat.Short;
+            dtpFechaEnviado.Location = new Point(98, 40);
             dtpFechaEnviado.Name = "dtpFechaEnviado";
-            dtpFechaEnviado.Size = new Size(193, 29);
-            dtpFechaEnviado.TabIndex = 75;
+            dtpFechaEnviado.Size = new Size(128, 29);
+            dtpFechaEnviado.TabIndex = 10;
             // 
             // btnEnviarLeche
             // 
@@ -501,10 +538,10 @@ namespace Agraria.UserControls
             btnEnviarLeche.ForeColor = Color.FromArgb(56, 124, 31);
             btnEnviarLeche.Image = Properties.Resources.fabrica;
             btnEnviarLeche.ImageAlign = ContentAlignment.MiddleLeft;
-            btnEnviarLeche.Location = new Point(274, 132);
+            btnEnviarLeche.Location = new Point(217, 75);
             btnEnviarLeche.Name = "btnEnviarLeche";
             btnEnviarLeche.Size = new Size(161, 41);
-            btnEnviarLeche.TabIndex = 72;
+            btnEnviarLeche.TabIndex = 12;
             btnEnviarLeche.Text = "Enviar";
             btnEnviarLeche.UseVisualStyleBackColor = false;
             btnEnviarLeche.Click += btnEnviarLeche_Click;
@@ -514,22 +551,22 @@ namespace Agraria.UserControls
             lblLecheEnvasado2.AutoSize = true;
             lblLecheEnvasado2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblLecheEnvasado2.ForeColor = Color.White;
-            lblLecheEnvasado2.Location = new Point(22, 45);
+            lblLecheEnvasado2.Location = new Point(11, 44);
             lblLecheEnvasado2.Name = "lblLecheEnvasado2";
-            lblLecheEnvasado2.Size = new Size(173, 24);
+            lblLecheEnvasado2.Size = new Size(81, 24);
             lblLecheEnvasado2.TabIndex = 74;
-            lblLecheEnvasado2.Text = "Fecha Envasado:";
+            lblLecheEnvasado2.Text = "Fecha :";
             // 
             // lblLitroLeche2
             // 
             lblLitroLeche2.AutoSize = true;
             lblLitroLeche2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblLitroLeche2.ForeColor = Color.White;
-            lblLitroLeche2.Location = new Point(35, 96);
+            lblLitroLeche2.Location = new Point(232, 44);
             lblLitroLeche2.Name = "lblLitroLeche2";
-            lblLitroLeche2.Size = new Size(160, 24);
+            lblLitroLeche2.Size = new Size(72, 24);
             lblLitroLeche2.TabIndex = 72;
-            lblLitroLeche2.Text = "Litros de Leche:";
+            lblLitroLeche2.Text = "Litros :";
             // 
             // tabPage8
             // 
@@ -543,7 +580,7 @@ namespace Agraria.UserControls
             tabPage8.Location = new Point(4, 33);
             tabPage8.Name = "tabPage8";
             tabPage8.Padding = new Padding(3);
-            tabPage8.Size = new Size(990, 669);
+            tabPage8.Size = new Size(892, 513);
             tabPage8.TabIndex = 1;
             tabPage8.Text = "Registro de Fertilidad y Nacimientos";
             // 
@@ -556,10 +593,10 @@ namespace Agraria.UserControls
             btnImprimirNacimientos.ForeColor = Color.FromArgb(56, 124, 31);
             btnImprimirNacimientos.Image = Properties.Resources.imprimir;
             btnImprimirNacimientos.ImageAlign = ContentAlignment.MiddleLeft;
-            btnImprimirNacimientos.Location = new Point(829, 363);
+            btnImprimirNacimientos.Location = new Point(690, 316);
             btnImprimirNacimientos.Name = "btnImprimirNacimientos";
             btnImprimirNacimientos.Size = new Size(161, 41);
-            btnImprimirNacimientos.TabIndex = 94;
+            btnImprimirNacimientos.TabIndex = 16;
             btnImprimirNacimientos.Text = "Imprimir";
             btnImprimirNacimientos.UseVisualStyleBackColor = false;
             btnImprimirNacimientos.Click += btnImprimirNacimiento_Click;
@@ -567,11 +604,11 @@ namespace Agraria.UserControls
             // txtBuscarRegistroNacimiento
             // 
             txtBuscarRegistroNacimiento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscarRegistroNacimiento.Location = new Point(633, 374);
+            txtBuscarRegistroNacimiento.Location = new Point(661, 281);
             txtBuscarRegistroNacimiento.MaxLength = 7;
             txtBuscarRegistroNacimiento.Name = "txtBuscarRegistroNacimiento";
             txtBuscarRegistroNacimiento.Size = new Size(190, 29);
-            txtBuscarRegistroNacimiento.TabIndex = 93;
+            txtBuscarRegistroNacimiento.TabIndex = 15;
             txtBuscarRegistroNacimiento.TextChanged += txtBuscarRegistroNacimiento_TextChanged;
             txtBuscarRegistroNacimiento.KeyDown += CopiaryPegar_KeyDown;
             txtBuscarRegistroNacimiento.KeyPress += SoloNumeros_KeyPress;
@@ -581,7 +618,7 @@ namespace Agraria.UserControls
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(432, 380);
+            label7.Location = new Point(460, 287);
             label7.Name = "label7";
             label7.Size = new Size(198, 24);
             label7.TabIndex = 92;
@@ -590,13 +627,38 @@ namespace Agraria.UserControls
             // dtgNacimientos
             // 
             dtgNacimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgNacimientos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgNacimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgNacimientos.Location = new Point(6, 418);
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dtgNacimientos.DefaultCellStyle = dataGridViewCellStyle5;
+            dtgNacimientos.Dock = DockStyle.Bottom;
+            dtgNacimientos.Location = new Point(3, 366);
             dtgNacimientos.Name = "dtgNacimientos";
             dtgNacimientos.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgNacimientos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgNacimientos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgNacimientos.Size = new Size(978, 255);
-            dtgNacimientos.TabIndex = 91;
+            dtgNacimientos.Size = new Size(886, 144);
+            dtgNacimientos.TabIndex = 0;
             // 
             // gbRegistroNacimiento
             // 
@@ -616,7 +678,7 @@ namespace Agraria.UserControls
             gbRegistroNacimiento.Controls.Add(lblNumeroMadre2);
             gbRegistroNacimiento.Controls.Add(lblFechaParto);
             gbRegistroNacimiento.ForeColor = Color.White;
-            gbRegistroNacimiento.Location = new Point(510, 6);
+            gbRegistroNacimiento.Location = new Point(3, 6);
             gbRegistroNacimiento.Name = "gbRegistroNacimiento";
             gbRegistroNacimiento.Size = new Size(439, 351);
             gbRegistroNacimiento.TabIndex = 90;
@@ -630,8 +692,8 @@ namespace Agraria.UserControls
             cmbTipo2.FormattingEnabled = true;
             cmbTipo2.Location = new Point(199, 111);
             cmbTipo2.Name = "cmbTipo2";
-            cmbTipo2.Size = new Size(190, 32);
-            cmbTipo2.TabIndex = 105;
+            cmbTipo2.Size = new Size(126, 32);
+            cmbTipo2.TabIndex = 3;
             // 
             // label6
             // 
@@ -650,8 +712,8 @@ namespace Agraria.UserControls
             cmbPadreNacimiento.FormattingEnabled = true;
             cmbPadreNacimiento.Location = new Point(200, 72);
             cmbPadreNacimiento.Name = "cmbPadreNacimiento";
-            cmbPadreNacimiento.Size = new Size(190, 32);
-            cmbPadreNacimiento.TabIndex = 103;
+            cmbPadreNacimiento.Size = new Size(126, 32);
+            cmbPadreNacimiento.TabIndex = 2;
             // 
             // cmbMadreNacimiento
             // 
@@ -659,16 +721,16 @@ namespace Agraria.UserControls
             cmbMadreNacimiento.FormattingEnabled = true;
             cmbMadreNacimiento.Location = new Point(200, 33);
             cmbMadreNacimiento.Name = "cmbMadreNacimiento";
-            cmbMadreNacimiento.Size = new Size(190, 32);
-            cmbMadreNacimiento.TabIndex = 102;
+            cmbMadreNacimiento.Size = new Size(126, 32);
+            cmbMadreNacimiento.TabIndex = 1;
             // 
             // txtCantidadMachos
             // 
             txtCantidadMachos.Location = new Point(199, 258);
             txtCantidadMachos.MaxLength = 7;
             txtCantidadMachos.Name = "txtCantidadMachos";
-            txtCantidadMachos.Size = new Size(191, 29);
-            txtCantidadMachos.TabIndex = 101;
+            txtCantidadMachos.Size = new Size(127, 29);
+            txtCantidadMachos.TabIndex = 7;
             txtCantidadMachos.KeyDown += CopiaryPegar_KeyDown;
             txtCantidadMachos.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -677,8 +739,8 @@ namespace Agraria.UserControls
             txtCantidadHembras.Location = new Point(199, 222);
             txtCantidadHembras.MaxLength = 7;
             txtCantidadHembras.Name = "txtCantidadHembras";
-            txtCantidadHembras.Size = new Size(191, 29);
-            txtCantidadHembras.TabIndex = 100;
+            txtCantidadHembras.Size = new Size(127, 29);
+            txtCantidadHembras.TabIndex = 6;
             txtCantidadHembras.KeyDown += CopiaryPegar_KeyDown;
             txtCantidadHembras.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -687,8 +749,8 @@ namespace Agraria.UserControls
             txtTotalNacidos.Location = new Point(199, 186);
             txtTotalNacidos.MaxLength = 7;
             txtTotalNacidos.Name = "txtTotalNacidos";
-            txtTotalNacidos.Size = new Size(191, 29);
-            txtTotalNacidos.TabIndex = 99;
+            txtTotalNacidos.Size = new Size(127, 29);
+            txtTotalNacidos.TabIndex = 5;
             txtTotalNacidos.KeyDown += CopiaryPegar_KeyDown;
             txtTotalNacidos.KeyPress += SoloNumeros_KeyPress;
             // 
@@ -739,10 +801,11 @@ namespace Agraria.UserControls
             // dtpFechaParto
             // 
             dtpFechaParto.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dtpFechaParto.Format = DateTimePickerFormat.Short;
             dtpFechaParto.Location = new Point(199, 150);
             dtpFechaParto.Name = "dtpFechaParto";
-            dtpFechaParto.Size = new Size(191, 29);
-            dtpFechaParto.TabIndex = 78;
+            dtpFechaParto.Size = new Size(127, 29);
+            dtpFechaParto.TabIndex = 4;
             // 
             // btnRegistroNacimiento
             // 
@@ -756,7 +819,7 @@ namespace Agraria.UserControls
             btnRegistroNacimiento.Location = new Point(272, 304);
             btnRegistroNacimiento.Name = "btnRegistroNacimiento";
             btnRegistroNacimiento.Size = new Size(161, 41);
-            btnRegistroNacimiento.TabIndex = 38;
+            btnRegistroNacimiento.TabIndex = 8;
             btnRegistroNacimiento.Text = "Guardar";
             btnRegistroNacimiento.UseVisualStyleBackColor = false;
             btnRegistroNacimiento.Click += btnRegistroNacimiento_Click;
@@ -797,9 +860,9 @@ namespace Agraria.UserControls
             gbRegistroMonta.Controls.Add(lblPosibleParto);
             gbRegistroMonta.Controls.Add(lblFechaMonta);
             gbRegistroMonta.ForeColor = Color.White;
-            gbRegistroMonta.Location = new Point(27, 6);
+            gbRegistroMonta.Location = new Point(460, 24);
             gbRegistroMonta.Name = "gbRegistroMonta";
-            gbRegistroMonta.Size = new Size(449, 351);
+            gbRegistroMonta.Size = new Size(391, 251);
             gbRegistroMonta.TabIndex = 89;
             gbRegistroMonta.TabStop = false;
             gbRegistroMonta.Text = "Registro de Monta";
@@ -808,10 +871,10 @@ namespace Agraria.UserControls
             // 
             cmbNumeroPadre.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbNumeroPadre.FormattingEnabled = true;
-            cmbNumeroPadre.Location = new Point(200, 70);
+            cmbNumeroPadre.Location = new Point(200, 61);
             cmbNumeroPadre.Name = "cmbNumeroPadre";
-            cmbNumeroPadre.Size = new Size(190, 32);
-            cmbNumeroPadre.TabIndex = 88;
+            cmbNumeroPadre.Size = new Size(127, 32);
+            cmbNumeroPadre.TabIndex = 10;
             // 
             // cmbNumeroMadre
             // 
@@ -819,15 +882,15 @@ namespace Agraria.UserControls
             cmbNumeroMadre.FormattingEnabled = true;
             cmbNumeroMadre.Location = new Point(200, 23);
             cmbNumeroMadre.Name = "cmbNumeroMadre";
-            cmbNumeroMadre.Size = new Size(190, 32);
-            cmbNumeroMadre.TabIndex = 87;
+            cmbNumeroMadre.Size = new Size(127, 32);
+            cmbNumeroMadre.TabIndex = 9;
             // 
             // lblNumeroPadreOvino
             // 
             lblNumeroPadreOvino.AutoSize = true;
             lblNumeroPadreOvino.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblNumeroPadreOvino.ForeColor = Color.White;
-            lblNumeroPadreOvino.Location = new Point(38, 76);
+            lblNumeroPadreOvino.Location = new Point(38, 64);
             lblNumeroPadreOvino.Name = "lblNumeroPadreOvino";
             lblNumeroPadreOvino.Size = new Size(151, 24);
             lblNumeroPadreOvino.TabIndex = 86;
@@ -838,17 +901,17 @@ namespace Agraria.UserControls
             cmbTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipo.FormattingEnabled = true;
-            cmbTipo.Location = new Point(200, 196);
+            cmbTipo.Location = new Point(200, 169);
             cmbTipo.Name = "cmbTipo";
-            cmbTipo.Size = new Size(190, 32);
-            cmbTipo.TabIndex = 83;
+            cmbTipo.Size = new Size(127, 32);
+            cmbTipo.TabIndex = 13;
             // 
             // lblTipo
             // 
             lblTipo.AutoSize = true;
             lblTipo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblTipo.ForeColor = Color.White;
-            lblTipo.Location = new Point(131, 204);
+            lblTipo.Location = new Point(131, 172);
             lblTipo.Name = "lblTipo";
             lblTipo.Size = new Size(58, 24);
             lblTipo.TabIndex = 82;
@@ -857,18 +920,20 @@ namespace Agraria.UserControls
             // dtpPosibleParto
             // 
             dtpPosibleParto.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpPosibleParto.Location = new Point(200, 161);
+            dtpPosibleParto.Format = DateTimePickerFormat.Short;
+            dtpPosibleParto.Location = new Point(200, 134);
             dtpPosibleParto.Name = "dtpPosibleParto";
-            dtpPosibleParto.Size = new Size(190, 29);
-            dtpPosibleParto.TabIndex = 79;
+            dtpPosibleParto.Size = new Size(127, 29);
+            dtpPosibleParto.TabIndex = 12;
             // 
             // dtpFechaMonta
             // 
             dtpFechaMonta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaMonta.Location = new Point(200, 117);
+            dtpFechaMonta.Format = DateTimePickerFormat.Short;
+            dtpFechaMonta.Location = new Point(200, 99);
             dtpFechaMonta.Name = "dtpFechaMonta";
-            dtpFechaMonta.Size = new Size(190, 29);
-            dtpFechaMonta.TabIndex = 78;
+            dtpFechaMonta.Size = new Size(127, 29);
+            dtpFechaMonta.TabIndex = 11;
             // 
             // btnGuardarRegistroMontaOvina
             // 
@@ -879,10 +944,10 @@ namespace Agraria.UserControls
             btnGuardarRegistroMontaOvina.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardarRegistroMontaOvina.Image = Properties.Resources.leche;
             btnGuardarRegistroMontaOvina.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardarRegistroMontaOvina.Location = new Point(282, 304);
+            btnGuardarRegistroMontaOvina.Location = new Point(229, 206);
             btnGuardarRegistroMontaOvina.Name = "btnGuardarRegistroMontaOvina";
             btnGuardarRegistroMontaOvina.Size = new Size(161, 41);
-            btnGuardarRegistroMontaOvina.TabIndex = 38;
+            btnGuardarRegistroMontaOvina.TabIndex = 14;
             btnGuardarRegistroMontaOvina.Text = "Guardar";
             btnGuardarRegistroMontaOvina.UseVisualStyleBackColor = false;
             btnGuardarRegistroMontaOvina.Click += btnGuardarRegistroMontaOvina_Click;
@@ -903,7 +968,7 @@ namespace Agraria.UserControls
             lblPosibleParto.AutoSize = true;
             lblPosibleParto.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblPosibleParto.ForeColor = Color.White;
-            lblPosibleParto.Location = new Point(50, 166);
+            lblPosibleParto.Location = new Point(50, 139);
             lblPosibleParto.Name = "lblPosibleParto";
             lblPosibleParto.Size = new Size(139, 24);
             lblPosibleParto.TabIndex = 74;
@@ -914,7 +979,7 @@ namespace Agraria.UserControls
             lblFechaMonta.AutoSize = true;
             lblFechaMonta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblFechaMonta.ForeColor = Color.White;
-            lblFechaMonta.Location = new Point(21, 121);
+            lblFechaMonta.Location = new Point(26, 99);
             lblFechaMonta.Name = "lblFechaMonta";
             lblFechaMonta.Size = new Size(168, 24);
             lblFechaMonta.TabIndex = 72;
@@ -927,7 +992,7 @@ namespace Agraria.UserControls
             BackColor = Color.FromArgb(141, 181, 146);
             Controls.Add(tabControl1);
             Name = "UcLeche";
-            Size = new Size(999, 709);
+            Size = new Size(900, 550);
             tabControl1.ResumeLayout(false);
             tabPage7.ResumeLayout(false);
             tabPage7.PerformLayout();
