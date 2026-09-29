@@ -8,7 +8,7 @@ namespace Agraria.Datos
     public class ArticulosDAL
     {
         // Ajustá esta cadena de conexión si es necesario
-       // private static string cadenaConexion = "Server=NOELIA_FLEITAS\\SQLEXPRESS;Database=Agraria;Trusted_Connection=True;";
+        // private static string cadenaConexion = "Server=NOELIA_FLEITAS\\SQLEXPRESS;Database=Agraria;Trusted_Connection=True;";
 
         // 1. Listar Artículos con Filtros (Categoría y Nombre)
         public static DataTable ObtenerArticulosFiltrados(int? idCategoria, string nombre)
@@ -21,41 +21,40 @@ namespace Agraria.Datos
                "WHERE (@id_categoria IS NULL OR a.id_categoria = @id_categoria) " +
                "AND (@nombre IS NULL OR a.nombre LIKE '%' + @nombre + '%')";
             using (var cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
+            {
+                cmd.Parameters.AddWithValue("@id_categoria", (object)idCategoria ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@nombre", string.IsNullOrEmpty(nombre) ? (object)DBNull.Value : nombre);
 
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
-                    cmd.Parameters.AddWithValue("@id_categoria", (object)idCategoria ?? DBNull.Value);
-                    cmd.Parameters.AddWithValue("@nombre", string.IsNullOrEmpty(nombre) ? (object)DBNull.Value : nombre);
-
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        return dt;
-                    }
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
                 }
-            
+            }
         }
 
-        // 2. Obtener el último ID por usuario para el Código por Bloques (Módulo Artículos - Base 20000)
+        // 2. Obtener el próximo ID por usuario para el Código por Bloques (Base 20000 larga)
         public static long ObtenerUltimoIdPorUsuario(long idUsuario)
         {
-            long ultimoId = 0;
-            ConexionBD.ConectarBD();
-                // Rango ajustado para la base 20000 del módulo de Artículos por usuario
-                string query = "SELECT ISNULL(MAX(id_articulo), 0) FROM articulos WHERE id_articulo >= @min AND id_articulo < @max";
-                using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
-                {
-                    cmd.Parameters.AddWithValue("@min", (idUsuario * 100000) + 3000000);
-                    cmd.Parameters.AddWithValue("@max", (idUsuario * 100000) + 4000000);
+            long baseUsuario = (idUsuario * 100000) + 20000; // Ej: Usuario 2 -> 220000
+            long cantRegistrosUsuario = 0;
 
-                    object resultado = cmd.ExecuteScalar();
-                    if (resultado != null && resultado != DBNull.Value)
-                    {
-                        ultimoId = Convert.ToInt64(resultado);
-                    }
+            ConexionBD.ConectarBD();
+            string query = "SELECT COUNT(*) FROM articulos WHERE id_articulo >= @min AND id_articulo < @max";
+            using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
+            {
+                cmd.Parameters.AddWithValue("@min", idUsuario * 100000);
+                cmd.Parameters.AddWithValue("@max", (idUsuario + 1) * 100000);
+
+                object resultado = cmd.ExecuteScalar();
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    cantRegistrosUsuario = Convert.ToInt64(resultado);
                 }
-            
-            return ultimoId;
+            }
+
+            return baseUsuario + cantRegistrosUsuario;
         }
 
         // 3. Insertar Artículo
@@ -63,15 +62,15 @@ namespace Agraria.Datos
         {
             ConexionBD.ConectarBD();
             using (SqlCommand cmd = new SqlCommand("sp_insert_articulo", ConexionBD.ConexionSQL))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_articulo", id);
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
-                    cmd.Parameters.AddWithValue("@id_marca", idMarca);
-                    cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
-                    cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
-                    cmd.ExecuteNonQuery();
-                }
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_articulo", id);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@id_marca", idMarca);
+                cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         // 4. Modificar Artículo
@@ -79,32 +78,30 @@ namespace Agraria.Datos
         {
             ConexionBD.ConectarBD();
             using (SqlCommand cmd = new SqlCommand("sp_update_articulo", ConexionBD.ConexionSQL))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_articulo", id);
-                    cmd.Parameters.AddWithValue("@nombre", nombre);
-                    cmd.Parameters.AddWithValue("@id_marca", idMarca);
-                    cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
-                    cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
-                    cmd.ExecuteNonQuery();
-                }
-         }
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_articulo", id);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@id_marca", idMarca);
+                cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                cmd.ExecuteNonQuery();
+            }
+        }
 
         // 5. Obtener Marcas para ComboBox
         public static DataTable ObtenerMarcas()
         {
             ConexionBD.ConectarBD();
-
-                using (SqlCommand cmd = new SqlCommand("SELECT id_marca, nombre FROM marca", ConexionBD.ConexionSQL))
+            using (SqlCommand cmd = new SqlCommand("SELECT id_marca, nombre FROM marca", ConexionBD.ConexionSQL))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        return dt;
-                    }
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
                 }
-            
+            }
         }
 
         // 6. Obtener Categorías para ComboBox
@@ -112,15 +109,14 @@ namespace Agraria.Datos
         {
             ConexionBD.ConectarBD();
             using (SqlCommand cmd = new SqlCommand("SELECT id_categoria, nombre FROM categoria", ConexionBD.ConexionSQL))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        return dt;
-                    }
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
                 }
             }
-        
         }
+    }
 }

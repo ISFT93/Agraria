@@ -29,20 +29,11 @@ namespace Agraria.BLL
             return ArticulosDAL.ObtenerMarcas();
         }
 
-        // 3. Generación del Código por Bloques ([IdUsuario] + Base 20000 + Correlativo)
+        // 3. Generación del Código por Bloques
         public long ObtenerSiguienteId(int idUsuario)
         {
-            long ultimoId = ArticulosDAL.ObtenerUltimoIdPorUsuario(idUsuario);
-
-            // Si el usuario no tiene registros todavía, arranca en la base 30000001 con su prefijo
-            if (ultimoId == 0)
-            {
-                string primerIdStr = $"{idUsuario}3000001";
-                return Convert.ToInt64(primerIdStr);
-            }
-
-            // Si ya tiene registros, incrementa en 1 manteniendo intacto el bloque
-            return ultimoId + 1;
+            // Retorna directamente el ID calculado por la DAL (Bloque + Base 20000 + Cantidad de registros)
+            return ArticulosDAL.ObtenerUltimoIdPorUsuario(idUsuario);
         }
 
         // 4. Insertar
