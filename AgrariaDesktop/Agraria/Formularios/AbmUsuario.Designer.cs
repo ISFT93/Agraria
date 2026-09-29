@@ -32,25 +32,29 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AbmUsuario));
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            PanelDatos = new Panel();
-            groupBox4 = new GroupBox();
-            btnDarDeAltaUsuario = new Tienda.RJButton();
-            btnDarDeBajaUsuario = new Tienda.RJButton();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            panel2 = new Panel();
             groupBox3 = new GroupBox();
             btnAgregarUsuario = new Tienda.RJButton();
             btnModificarUsuario = new Tienda.RJButton();
-            pbExitAbmUsuario = new PictureBox();
+            groupBox1 = new GroupBox();
+            label1 = new Label();
+            txtBuscarApellido = new TextBox();
+            groupBox4 = new GroupBox();
+            btnDarDeAltaUsuario = new Tienda.RJButton();
+            btnDarDeBajaUsuario = new Tienda.RJButton();
             groupBox2 = new GroupBox();
+            txtRespuestaSeguridad = new TextBox();
+            label14 = new Label();
             chkPañol = new CheckBox();
             chkVenta = new CheckBox();
             chkInventario = new CheckBox();
             chkIndustria = new CheckBox();
+            cmbPreguntaSeguridad = new ComboBox();
+            label13 = new Label();
             chkProduccionAnimal = new CheckBox();
             chkProduccionVegetal = new CheckBox();
-            label14 = new Label();
-            cmbPreguntaSeguridad = new ComboBox();
-            txtRespuestaSeguridad = new TextBox();
-            label13 = new Label();
             txtID = new TextBox();
             lblID = new Label();
             chkAdministracion = new CheckBox();
@@ -79,82 +83,31 @@
             txtDireccion = new TextBox();
             txtApellido = new TextBox();
             txtDocumento = new TextBox();
-            groupBox1 = new GroupBox();
-            label1 = new Label();
-            txtBuscarApellido = new TextBox();
             dtgAbmUsuario = new DataGridView();
             errorProvider1 = new ErrorProvider(components);
-            PanelDatos.SuspendLayout();
-            groupBox4.SuspendLayout();
+            panel3 = new Panel();
+            panel1 = new Panel();
+            panel2.SuspendLayout();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pbExitAbmUsuario).BeginInit();
-            groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgAbmUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
+            panel3.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
-            // PanelDatos
+            // panel2
             // 
-            PanelDatos.BackColor = Color.FromArgb(141, 181, 146);
-            PanelDatos.Controls.Add(groupBox4);
-            PanelDatos.Controls.Add(groupBox3);
-            PanelDatos.Controls.Add(pbExitAbmUsuario);
-            PanelDatos.Controls.Add(groupBox2);
-            PanelDatos.Controls.Add(groupBox1);
-            PanelDatos.Dock = DockStyle.Top;
-            PanelDatos.Location = new Point(0, 0);
-            PanelDatos.Name = "PanelDatos";
-            PanelDatos.Size = new Size(1884, 408);
-            PanelDatos.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            groupBox4.BackColor = Color.Transparent;
-            groupBox4.Controls.Add(btnDarDeAltaUsuario);
-            groupBox4.Controls.Add(btnDarDeBajaUsuario);
-            groupBox4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox4.ForeColor = Color.White;
-            groupBox4.Location = new Point(1093, 323);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(779, 75);
-            groupBox4.TabIndex = 23;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Dar de Alta o Baja a Usuarios Existentes";
-            // 
-            // btnDarDeAltaUsuario
-            // 
-            btnDarDeAltaUsuario.BackColor = Color.White;
-            btnDarDeAltaUsuario.FlatAppearance.BorderSize = 0;
-            btnDarDeAltaUsuario.FlatStyle = FlatStyle.Flat;
-            btnDarDeAltaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnDarDeAltaUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnDarDeAltaUsuario.Image = (Image)resources.GetObject("btnDarDeAltaUsuario.Image");
-            btnDarDeAltaUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDarDeAltaUsuario.Location = new Point(79, 25);
-            btnDarDeAltaUsuario.Name = "btnDarDeAltaUsuario";
-            btnDarDeAltaUsuario.Size = new Size(150, 40);
-            btnDarDeAltaUsuario.TabIndex = 0;
-            btnDarDeAltaUsuario.Text = "Alta";
-            btnDarDeAltaUsuario.UseVisualStyleBackColor = false;
-            btnDarDeAltaUsuario.Click += btnAltaUsuario_Click;
-            // 
-            // btnDarDeBajaUsuario
-            // 
-            btnDarDeBajaUsuario.BackColor = Color.White;
-            btnDarDeBajaUsuario.FlatAppearance.BorderSize = 0;
-            btnDarDeBajaUsuario.FlatStyle = FlatStyle.Flat;
-            btnDarDeBajaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnDarDeBajaUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnDarDeBajaUsuario.Image = (Image)resources.GetObject("btnDarDeBajaUsuario.Image");
-            btnDarDeBajaUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDarDeBajaUsuario.Location = new Point(597, 25);
-            btnDarDeBajaUsuario.Name = "btnDarDeBajaUsuario";
-            btnDarDeBajaUsuario.Size = new Size(150, 40);
-            btnDarDeBajaUsuario.TabIndex = 7;
-            btnDarDeBajaUsuario.Text = "Baja";
-            btnDarDeBajaUsuario.UseVisualStyleBackColor = false;
-            btnDarDeBajaUsuario.Click += btnBajaUsuario_Click;
+            panel2.Controls.Add(groupBox3);
+            panel2.Controls.Add(groupBox1);
+            panel2.Controls.Add(groupBox4);
+            panel2.Dock = DockStyle.Top;
+            panel2.Location = new Point(0, 334);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1000, 88);
+            panel2.TabIndex = 25;
             // 
             // groupBox3
             // 
@@ -163,9 +116,9 @@
             groupBox3.Controls.Add(btnModificarUsuario);
             groupBox3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(297, 323);
+            groupBox3.Location = new Point(5, 10);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(790, 75);
+            groupBox3.Size = new Size(332, 75);
             groupBox3.TabIndex = 22;
             groupBox3.TabStop = false;
             groupBox3.Text = "Agregar o Modificar Usuario";
@@ -179,7 +132,7 @@
             btnAgregarUsuario.ForeColor = Color.FromArgb(56, 124, 31);
             btnAgregarUsuario.Image = (Image)resources.GetObject("btnAgregarUsuario.Image");
             btnAgregarUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregarUsuario.Location = new Point(116, 28);
+            btnAgregarUsuario.Location = new Point(16, 28);
             btnAgregarUsuario.Name = "btnAgregarUsuario";
             btnAgregarUsuario.Size = new Size(150, 40);
             btnAgregarUsuario.TabIndex = 5;
@@ -196,7 +149,7 @@
             btnModificarUsuario.ForeColor = Color.FromArgb(56, 124, 31);
             btnModificarUsuario.Image = (Image)resources.GetObject("btnModificarUsuario.Image");
             btnModificarUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModificarUsuario.Location = new Point(590, 28);
+            btnModificarUsuario.Location = new Point(172, 29);
             btnModificarUsuario.Name = "btnModificarUsuario";
             btnModificarUsuario.Size = new Size(150, 40);
             btnModificarUsuario.TabIndex = 6;
@@ -204,30 +157,102 @@
             btnModificarUsuario.UseVisualStyleBackColor = false;
             btnModificarUsuario.Click += btnModificarUsuario_Click;
             // 
-            // pbExitAbmUsuario
+            // groupBox1
             // 
-            pbExitAbmUsuario.Image = Properties.Resources.x;
-            pbExitAbmUsuario.Location = new Point(1852, 3);
-            pbExitAbmUsuario.Name = "pbExitAbmUsuario";
-            pbExitAbmUsuario.Size = new Size(29, 28);
-            pbExitAbmUsuario.SizeMode = PictureBoxSizeMode.StretchImage;
-            pbExitAbmUsuario.TabIndex = 23;
-            pbExitAbmUsuario.TabStop = false;
-            pbExitAbmUsuario.Click += pbExitAbmUsuarios_Click;
+            groupBox1.BackColor = Color.FromArgb(141, 181, 146);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(txtBuscarApellido);
+            groupBox1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox1.ForeColor = Color.White;
+            groupBox1.Location = new Point(699, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(249, 73);
+            groupBox1.TabIndex = 21;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Buscar :";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(26, 28);
+            label1.Name = "label1";
+            label1.Size = new Size(93, 24);
+            label1.TabIndex = 21;
+            label1.Text = "Apellido:";
+            // 
+            // txtBuscarApellido
+            // 
+            txtBuscarApellido.Location = new Point(125, 28);
+            txtBuscarApellido.Name = "txtBuscarApellido";
+            txtBuscarApellido.Size = new Size(100, 29);
+            txtBuscarApellido.TabIndex = 11;
+            txtBuscarApellido.TextChanged += txtBuscarNombreDni_TextChanged;
+            txtBuscarApellido.KeyDown += CopiaryPegar_KeyDown;
+            txtBuscarApellido.KeyPress += Solotexto_KeyPress;
+            // 
+            // groupBox4
+            // 
+            groupBox4.BackColor = Color.Transparent;
+            groupBox4.Controls.Add(btnDarDeAltaUsuario);
+            groupBox4.Controls.Add(btnDarDeBajaUsuario);
+            groupBox4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            groupBox4.ForeColor = Color.White;
+            groupBox4.Location = new Point(343, 10);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(350, 75);
+            groupBox4.TabIndex = 23;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Dar de Alta o Baja";
+            // 
+            // btnDarDeAltaUsuario
+            // 
+            btnDarDeAltaUsuario.BackColor = Color.White;
+            btnDarDeAltaUsuario.FlatAppearance.BorderSize = 0;
+            btnDarDeAltaUsuario.FlatStyle = FlatStyle.Flat;
+            btnDarDeAltaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            btnDarDeAltaUsuario.ForeColor = Color.FromArgb(56, 124, 31);
+            btnDarDeAltaUsuario.Image = (Image)resources.GetObject("btnDarDeAltaUsuario.Image");
+            btnDarDeAltaUsuario.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDarDeAltaUsuario.Location = new Point(21, 25);
+            btnDarDeAltaUsuario.Name = "btnDarDeAltaUsuario";
+            btnDarDeAltaUsuario.Size = new Size(150, 40);
+            btnDarDeAltaUsuario.TabIndex = 0;
+            btnDarDeAltaUsuario.Text = "Alta";
+            btnDarDeAltaUsuario.UseVisualStyleBackColor = false;
+            btnDarDeAltaUsuario.Click += btnAltaUsuario_Click;
+            // 
+            // btnDarDeBajaUsuario
+            // 
+            btnDarDeBajaUsuario.BackColor = Color.White;
+            btnDarDeBajaUsuario.FlatAppearance.BorderSize = 0;
+            btnDarDeBajaUsuario.FlatStyle = FlatStyle.Flat;
+            btnDarDeBajaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            btnDarDeBajaUsuario.ForeColor = Color.FromArgb(56, 124, 31);
+            btnDarDeBajaUsuario.Image = (Image)resources.GetObject("btnDarDeBajaUsuario.Image");
+            btnDarDeBajaUsuario.ImageAlign = ContentAlignment.MiddleLeft;
+            btnDarDeBajaUsuario.Location = new Point(189, 25);
+            btnDarDeBajaUsuario.Name = "btnDarDeBajaUsuario";
+            btnDarDeBajaUsuario.Size = new Size(150, 40);
+            btnDarDeBajaUsuario.TabIndex = 7;
+            btnDarDeBajaUsuario.Text = "Baja";
+            btnDarDeBajaUsuario.UseVisualStyleBackColor = false;
+            btnDarDeBajaUsuario.Click += btnBajaUsuario_Click;
             // 
             // groupBox2
             // 
             groupBox2.BackColor = Color.FromArgb(141, 181, 146);
+            groupBox2.Controls.Add(txtRespuestaSeguridad);
+            groupBox2.Controls.Add(label14);
             groupBox2.Controls.Add(chkPañol);
             groupBox2.Controls.Add(chkVenta);
             groupBox2.Controls.Add(chkInventario);
             groupBox2.Controls.Add(chkIndustria);
+            groupBox2.Controls.Add(cmbPreguntaSeguridad);
+            groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(chkProduccionAnimal);
             groupBox2.Controls.Add(chkProduccionVegetal);
-            groupBox2.Controls.Add(label14);
-            groupBox2.Controls.Add(cmbPreguntaSeguridad);
-            groupBox2.Controls.Add(txtRespuestaSeguridad);
-            groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(txtID);
             groupBox2.Controls.Add(lblID);
             groupBox2.Controls.Add(chkAdministracion);
@@ -258,17 +283,38 @@
             groupBox2.Controls.Add(txtDocumento);
             groupBox2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(291, 26);
+            groupBox2.Location = new Point(4, 3);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1581, 291);
+            groupBox2.Size = new Size(1000, 333);
             groupBox2.TabIndex = 22;
             groupBox2.TabStop = false;
             groupBox2.Text = "Datos Personales :";
+            groupBox2.Enter += groupBox2_Enter;
+            // 
+            // txtRespuestaSeguridad
+            // 
+            txtRespuestaSeguridad.Location = new Point(254, 282);
+            txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
+            txtRespuestaSeguridad.Size = new Size(326, 29);
+            txtRespuestaSeguridad.TabIndex = 31;
+            txtRespuestaSeguridad.KeyDown += CopiaryPegar_KeyDown;
+            txtRespuestaSeguridad.KeyPress += TextoyNumero_KeyPress;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(5, 287);
+            label14.Name = "label14";
+            label14.Size = new Size(243, 24);
+            label14.TabIndex = 32;
+            label14.Text = "Respuesta de seguridad:";
             // 
             // chkPañol
             // 
             chkPañol.AutoSize = true;
-            chkPañol.Location = new Point(1346, 244);
+            chkPañol.Location = new Point(641, 250);
             chkPañol.Name = "chkPañol";
             chkPañol.Size = new Size(82, 28);
             chkPañol.TabIndex = 44;
@@ -278,7 +324,7 @@
             // chkVenta
             // 
             chkVenta.AutoSize = true;
-            chkVenta.Location = new Point(1346, 20);
+            chkVenta.Location = new Point(640, 221);
             chkVenta.Name = "chkVenta";
             chkVenta.Size = new Size(83, 28);
             chkVenta.TabIndex = 43;
@@ -288,7 +334,7 @@
             // chkInventario
             // 
             chkInventario.AutoSize = true;
-            chkInventario.Location = new Point(1346, 76);
+            chkInventario.Location = new Point(641, 82);
             chkInventario.Name = "chkInventario";
             chkInventario.Size = new Size(120, 28);
             chkInventario.TabIndex = 42;
@@ -298,17 +344,37 @@
             // chkIndustria
             // 
             chkIndustria.AutoSize = true;
-            chkIndustria.Location = new Point(1346, 48);
+            chkIndustria.Location = new Point(641, 54);
             chkIndustria.Name = "chkIndustria";
             chkIndustria.Size = new Size(108, 28);
             chkIndustria.TabIndex = 41;
             chkIndustria.Text = "Industria";
             chkIndustria.UseVisualStyleBackColor = true;
             // 
+            // cmbPreguntaSeguridad
+            // 
+            cmbPreguntaSeguridad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPreguntaSeguridad.FormattingEnabled = true;
+            cmbPreguntaSeguridad.Location = new Point(253, 244);
+            cmbPreguntaSeguridad.Name = "cmbPreguntaSeguridad";
+            cmbPreguntaSeguridad.Size = new Size(326, 32);
+            cmbPreguntaSeguridad.TabIndex = 29;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(15, 250);
+            label13.Name = "label13";
+            label13.Size = new Size(232, 24);
+            label13.TabIndex = 30;
+            label13.Text = "Pregunta de Seguridad:";
+            // 
             // chkProduccionAnimal
             // 
             chkProduccionAnimal.AutoSize = true;
-            chkProduccionAnimal.Location = new Point(1346, 104);
+            chkProduccionAnimal.Location = new Point(641, 110);
             chkProduccionAnimal.Name = "chkProduccionAnimal";
             chkProduccionAnimal.Size = new Size(200, 28);
             chkProduccionAnimal.TabIndex = 40;
@@ -318,56 +384,16 @@
             // chkProduccionVegetal
             // 
             chkProduccionVegetal.AutoSize = true;
-            chkProduccionVegetal.Location = new Point(1346, 132);
+            chkProduccionVegetal.Location = new Point(641, 138);
             chkProduccionVegetal.Name = "chkProduccionVegetal";
             chkProduccionVegetal.Size = new Size(207, 28);
             chkProduccionVegetal.TabIndex = 39;
             chkProduccionVegetal.Text = "ProduccionVegetal";
             chkProduccionVegetal.UseVisualStyleBackColor = true;
             // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(583, 239);
-            label14.Name = "label14";
-            label14.Size = new Size(243, 24);
-            label14.TabIndex = 32;
-            label14.Text = "Respuesta de seguridad:";
-            // 
-            // cmbPreguntaSeguridad
-            // 
-            cmbPreguntaSeguridad.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPreguntaSeguridad.FormattingEnabled = true;
-            cmbPreguntaSeguridad.Location = new Point(244, 234);
-            cmbPreguntaSeguridad.Name = "cmbPreguntaSeguridad";
-            cmbPreguntaSeguridad.Size = new Size(326, 32);
-            cmbPreguntaSeguridad.TabIndex = 29;
-            // 
-            // txtRespuestaSeguridad
-            // 
-            txtRespuestaSeguridad.Location = new Point(832, 234);
-            txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
-            txtRespuestaSeguridad.Size = new Size(326, 29);
-            txtRespuestaSeguridad.TabIndex = 31;
-            txtRespuestaSeguridad.KeyDown += CopiaryPegar_KeyDown;
-            txtRespuestaSeguridad.KeyPress += TextoyNumero_KeyPress;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label13.ForeColor = Color.White;
-            label13.Location = new Point(6, 240);
-            label13.Name = "label13";
-            label13.Size = new Size(232, 24);
-            label13.TabIndex = 30;
-            label13.Text = "Pregunta de Seguridad:";
-            // 
             // txtID
             // 
-            txtID.Location = new Point(1157, 39);
+            txtID.Location = new Point(471, 201);
             txtID.Name = "txtID";
             txtID.Size = new Size(162, 29);
             txtID.TabIndex = 33;
@@ -379,7 +405,7 @@
             lblID.AutoSize = true;
             lblID.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblID.ForeColor = Color.White;
-            lblID.Location = new Point(1109, 41);
+            lblID.Location = new Point(423, 203);
             lblID.Name = "lblID";
             lblID.Size = new Size(35, 24);
             lblID.TabIndex = 34;
@@ -389,7 +415,7 @@
             // chkAdministracion
             // 
             chkAdministracion.AutoSize = true;
-            chkAdministracion.Location = new Point(1346, 160);
+            chkAdministracion.Location = new Point(641, 166);
             chkAdministracion.Name = "chkAdministracion";
             chkAdministracion.Size = new Size(167, 28);
             chkAdministracion.TabIndex = 38;
@@ -399,7 +425,7 @@
             // chkEntornoFormativo
             // 
             chkEntornoFormativo.AutoSize = true;
-            chkEntornoFormativo.Location = new Point(1346, 216);
+            chkEntornoFormativo.Location = new Point(641, 28);
             chkEntornoFormativo.Name = "chkEntornoFormativo";
             chkEntornoFormativo.Size = new Size(221, 28);
             chkEntornoFormativo.TabIndex = 37;
@@ -409,7 +435,7 @@
             // chkAltaUsuario
             // 
             chkAltaUsuario.AutoSize = true;
-            chkAltaUsuario.Location = new Point(1346, 188);
+            chkAltaUsuario.Location = new Point(641, 194);
             chkAltaUsuario.Name = "chkAltaUsuario";
             chkAltaUsuario.Size = new Size(141, 28);
             chkAltaUsuario.TabIndex = 36;
@@ -425,7 +451,7 @@
             btnLimpiar.ForeColor = Color.FromArgb(56, 124, 31);
             btnLimpiar.Image = (Image)resources.GetObject("btnLimpiar.Image");
             btnLimpiar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLimpiar.Location = new Point(1180, 232);
+            btnLimpiar.Location = new Point(743, 259);
             btnLimpiar.Name = "btnLimpiar";
             btnLimpiar.Size = new Size(139, 41);
             btnLimpiar.TabIndex = 35;
@@ -435,7 +461,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(519, 169);
+            txtEmail.Location = new Point(471, 99);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(162, 29);
             txtEmail.TabIndex = 0;
@@ -447,7 +473,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(432, 167);
+            label12.Location = new Point(384, 97);
             label12.Name = "label12";
             label12.Size = new Size(68, 24);
             label12.TabIndex = 24;
@@ -457,7 +483,7 @@
             // 
             cmbLocalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbLocalidad.FormattingEnabled = true;
-            cmbLocalidad.Location = new Point(144, 165);
+            cmbLocalidad.Location = new Point(140, 136);
             cmbLocalidad.Name = "cmbLocalidad";
             cmbLocalidad.Size = new Size(162, 32);
             cmbLocalidad.TabIndex = 23;
@@ -466,7 +492,7 @@
             // 
             cmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPartido.FormattingEnabled = true;
-            cmbPartido.Location = new Point(144, 122);
+            cmbPartido.Location = new Point(140, 98);
             cmbPartido.Name = "cmbPartido";
             cmbPartido.Size = new Size(162, 32);
             cmbPartido.TabIndex = 22;
@@ -477,7 +503,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(34, 44);
+            label8.Location = new Point(30, 33);
             label8.Name = "label8";
             label8.Size = new Size(97, 24);
             label8.TabIndex = 21;
@@ -485,7 +511,7 @@
             // 
             // txtNombre
             // 
-            txtNombre.Location = new Point(144, 39);
+            txtNombre.Location = new Point(140, 28);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(162, 29);
             txtNombre.TabIndex = 15;
@@ -497,7 +523,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(823, 44);
+            label5.Location = new Point(31, 177);
             label5.Name = "label5";
             label5.Size = new Size(99, 24);
             label5.TabIndex = 18;
@@ -505,7 +531,7 @@
             // 
             // txtContraseña
             // 
-            txtContraseña.Location = new Point(932, 120);
+            txtContraseña.Location = new Point(471, 166);
             txtContraseña.Name = "txtContraseña";
             txtContraseña.Size = new Size(162, 29);
             txtContraseña.TabIndex = 10;
@@ -517,7 +543,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(383, 47);
+            label7.Location = new Point(4, 213);
             label7.Name = "label7";
             label7.Size = new Size(123, 24);
             label7.TabIndex = 20;
@@ -528,7 +554,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(795, 121);
+            label10.Location = new Point(334, 167);
             label10.Name = "label10";
             label10.Size = new Size(122, 24);
             label10.TabIndex = 26;
@@ -539,7 +565,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(355, 125);
+            label4.Location = new Point(307, 63);
             label4.Name = "label4";
             label4.Size = new Size(145, 24);
             label4.TabIndex = 17;
@@ -547,7 +573,7 @@
             // 
             // txtNombreUsuario
             // 
-            txtNombreUsuario.Location = new Point(932, 81);
+            txtNombreUsuario.Location = new Point(471, 131);
             txtNombreUsuario.Name = "txtNombreUsuario";
             txtNombreUsuario.Size = new Size(162, 29);
             txtNombreUsuario.TabIndex = 2;
@@ -559,18 +585,18 @@
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(721, 81);
+            label11.Location = new Point(365, 131);
             label11.Name = "label11";
-            label11.Size = new Size(196, 24);
+            label11.Size = new Size(87, 24);
             label11.TabIndex = 25;
-            label11.Text = "Nombre de usuario:";
+            label11.Text = "Usuario:";
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(401, 89);
+            label3.Location = new Point(353, 31);
             label3.Name = "label3";
             label3.Size = new Size(105, 24);
             label3.TabIndex = 16;
@@ -581,7 +607,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(38, 86);
+            label6.Location = new Point(34, 68);
             label6.Name = "label6";
             label6.Size = new Size(93, 24);
             label6.TabIndex = 19;
@@ -592,7 +618,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(44, 121);
+            label2.Location = new Point(40, 97);
             label2.Name = "label2";
             label2.Size = new Size(81, 24);
             label2.TabIndex = 15;
@@ -600,7 +626,7 @@
             // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(932, 41);
+            txtTelefono.Location = new Point(140, 174);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(162, 29);
             txtTelefono.TabIndex = 6;
@@ -612,7 +638,7 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblApellido.ForeColor = Color.White;
-            lblApellido.Location = new Point(19, 163);
+            lblApellido.Location = new Point(15, 134);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(106, 24);
             lblApellido.TabIndex = 14;
@@ -620,7 +646,7 @@
             // 
             // txtCodigoPostal
             // 
-            txtCodigoPostal.Location = new Point(519, 125);
+            txtCodigoPostal.Location = new Point(471, 63);
             txtCodigoPostal.Name = "txtCodigoPostal";
             txtCodigoPostal.Size = new Size(162, 29);
             txtCodigoPostal.TabIndex = 7;
@@ -629,7 +655,7 @@
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(519, 84);
+            txtDireccion.Location = new Point(471, 26);
             txtDireccion.Name = "txtDireccion";
             txtDireccion.Size = new Size(162, 29);
             txtDireccion.TabIndex = 9;
@@ -638,7 +664,7 @@
             // 
             // txtApellido
             // 
-            txtApellido.Location = new Point(144, 81);
+            txtApellido.Location = new Point(140, 63);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(162, 29);
             txtApellido.TabIndex = 4;
@@ -647,73 +673,48 @@
             // 
             // txtDocumento
             // 
-            txtDocumento.Location = new Point(519, 42);
+            txtDocumento.Location = new Point(140, 208);
             txtDocumento.Name = "txtDocumento";
             txtDocumento.Size = new Size(162, 29);
             txtDocumento.TabIndex = 5;
             txtDocumento.KeyDown += CopiaryPegar_KeyDown;
             txtDocumento.KeyPress += SoloNumeros_KeyPress;
             // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = Color.FromArgb(141, 181, 146);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(txtBuscarApellido);
-            groupBox1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(12, 26);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(273, 372);
-            groupBox1.TabIndex = 21;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Buscar :";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(25, 39);
-            label1.Name = "label1";
-            label1.Size = new Size(93, 24);
-            label1.TabIndex = 21;
-            label1.Text = "Apellido:";
-            // 
-            // txtBuscarApellido
-            // 
-            txtBuscarApellido.Location = new Point(124, 39);
-            txtBuscarApellido.Name = "txtBuscarApellido";
-            txtBuscarApellido.Size = new Size(100, 29);
-            txtBuscarApellido.TabIndex = 11;
-            txtBuscarApellido.TextChanged += txtBuscarNombreDni_TextChanged;
-            txtBuscarApellido.KeyDown += CopiaryPegar_KeyDown;
-            txtBuscarApellido.KeyPress += Solotexto_KeyPress;
-            // 
             // dtgAbmUsuario
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgAbmUsuario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtgAbmUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dtgAbmUsuario.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgAbmUsuario.DefaultCellStyle = dataGridViewCellStyle2;
-            dtgAbmUsuario.Dock = DockStyle.Bottom;
-            dtgAbmUsuario.Location = new Point(0, 404);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dtgAbmUsuario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dtgAbmUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dtgAbmUsuario.DefaultCellStyle = dataGridViewCellStyle3;
+            dtgAbmUsuario.Dock = DockStyle.Fill;
+            dtgAbmUsuario.Location = new Point(0, 0);
             dtgAbmUsuario.Name = "dtgAbmUsuario";
             dtgAbmUsuario.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dtgAbmUsuario.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgAbmUsuario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgAbmUsuario.Size = new Size(1884, 457);
+            dtgAbmUsuario.Size = new Size(1000, 239);
             dtgAbmUsuario.TabIndex = 1;
             dtgAbmUsuario.CellClick += dtgAbmUsuario_CellContentClick;
             dtgAbmUsuario.CellContentClick += dtgAbmUsuario_CellContentClick;
@@ -722,32 +723,50 @@
             // 
             errorProvider1.ContainerControl = this;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(dtgAbmUsuario);
+            panel3.Dock = DockStyle.Fill;
+            panel3.Location = new Point(0, 422);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(1000, 239);
+            panel3.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(groupBox2);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1000, 334);
+            panel1.TabIndex = 26;
+            // 
             // AbmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1884, 861);
-            Controls.Add(dtgAbmUsuario);
-            Controls.Add(PanelDatos);
-            FormBorderStyle = FormBorderStyle.None;
+            BackColor = Color.FromArgb(141, 181, 146);
+            ClientSize = new Size(1000, 661);
+            Controls.Add(panel3);
+            Controls.Add(panel2);
+            Controls.Add(panel1);
             Name = "AbmUsuario";
             Text = "AbmUsuario";
-            PanelDatos.ResumeLayout(false);
-            groupBox4.ResumeLayout(false);
+            panel2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pbExitAbmUsuario).EndInit();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgAbmUsuario).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
+            panel3.ResumeLayout(false);
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-
-        private Panel PanelDatos;
         private DataGridView dtgAbmUsuario;
         private Label label7;
         private Label label6;
@@ -785,7 +804,6 @@
         private Tienda.RJButton btnAgregarUsuario;
         private Label lblID;
         private TextBox txtID;
-        private PictureBox pbExitAbmUsuario;
         private Tienda.RJButton btnLimpiar;
         private GroupBox groupBox4;
         private GroupBox groupBox3;
@@ -807,5 +825,8 @@
         private CheckBox chkProduccionVegetal;
         private CheckBox chkAdministracion;
         private CheckBox chkPañol;
+        private Panel panel2;
+        private Panel panel3;
+        private Panel panel1;
     }
 }

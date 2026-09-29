@@ -37,7 +37,7 @@ namespace Agraria.Formularios
 
             if (esInvitado)
                 DeshabilitarControles();
-            
+
         }
 
         private void DeshabilitarControles()
@@ -54,7 +54,7 @@ namespace Agraria.Formularios
 
                 else if (c is ComboBox combo)
                     combo.Enabled = false;
-            
+
                 else if (c is Button btn && btn.Name != "btnCerrar")
                     btn.Enabled = false;
 
@@ -177,7 +177,7 @@ namespace Agraria.Formularios
                 chkProduccionAnimal.Checked,
                 chkProduccionVegetal.Checked,
                 chkAdministracion.Checked,
-                chkPañol.Checked 
+                chkPañol.Checked
             );
 
 
@@ -372,6 +372,11 @@ namespace Agraria.Formularios
         private void SoloTextoNumeroEspacio_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.SoloTextoNumeroEspacio(e);
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
