@@ -357,7 +357,7 @@
             // txtCantidadPollosEngorde
             // 
             txtCantidadPollosEngorde.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCantidadPollosEngorde.Location = new Point(442, 28);
+            txtCantidadPollosEngorde.Location = new Point(439, 28);
             txtCantidadPollosEngorde.MaxLength = 7;
             txtCantidadPollosEngorde.Name = "txtCantidadPollosEngorde";
             txtCantidadPollosEngorde.Size = new Size(141, 29);
