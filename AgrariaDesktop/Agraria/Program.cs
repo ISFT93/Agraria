@@ -13,7 +13,10 @@ namespace Agraria
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Formularios.Login());
+
+            var inicio = new Inicio(true); // arranca en modo invitado hasta que se autentique
+            inicio.WindowState = FormWindowState.Maximized;
+            Application.Run(inicio);
         }
     }
 }

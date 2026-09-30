@@ -1,0 +1,119 @@
+﻿using Agraria.Datos.DAL;
+using System;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace Agraria.Datos
+{
+    public class ArticulosDAL
+    {
+        // 1. Listar Artículos con Filtros (Categoría y Nombre)
+        public static DataTable ObtenerArticulosFiltrados(int? idCategoria, string nombre)
+        {
+            ConexionBD.ConectarBD();
+            string query = "SELECT a.id_articulo, a.nombre, m.nombre AS marca, a.stock_minimo, c.nombre AS categoria " +
+               "FROM articulos a " +
+               "LEFT JOIN marca m ON a.id_marca = m.id_marca " +
+               "LEFT JOIN categoria c ON a.id_categoria = c.id_categoria " +
+               "WHERE (@id_categoria IS NULL OR a.id_categoria = @id_categoria) " +
+               "AND (@nombre IS NULL OR a.nombre LIKE '%' + @nombre + '%')";
+            using (var cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
+            {
+                cmd.Parameters.AddWithValue("@id_categoria", (object)idCategoria ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@nombre", string.IsNullOrEmpty(nombre) ? (object)DBNull.Value : nombre);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        // Lógica de ID: ID Usuario adelante y base 20000 (Ej: Usuario 2 -> 220000 + cantidad)
+        public static long ObtenerUltimoIdPorUsuario(long idUsuario)
+        {
+            long baseUsuario = (idUsuario * 100000) + 20000;
+            long cantRegistrosUsuario = 0;
+
+            ConexionBD.ConectarBD();
+            string query = "SELECT COUNT(*) FROM articulos WHERE id_articulo >= @min AND id_articulo < @max";
+            using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
+            {
+                cmd.Parameters.AddWithValue("@min", idUsuario * 100000);
+                cmd.Parameters.AddWithValue("@max", (idUsuario + 1) * 100000);
+
+                object resultado = cmd.ExecuteScalar();
+                if (resultado != null && resultado != DBNull.Value)
+                {
+                    cantRegistrosUsuario = Convert.ToInt64(resultado);
+                }
+            }
+
+            return baseUsuario + cantRegistrosUsuario;
+        }
+
+        // 3. Insertar Artículo
+        public static void Insertar(long id, string nombre, int idMarca, float stockMinimo, int idCategoria)
+        {
+            ConexionBD.ConectarBD();
+            using (SqlCommand cmd = new SqlCommand("sp_insert_articulo", ConexionBD.ConexionSQL))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_articulo", id);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@id_marca", idMarca);
+                cmd.Parameters.AddWithValue("@stock_minimo", stockMinimo);
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // 4. Modificar Artículo
+        public static void Modificar(long id, string nombre, int idMarca, float stockMinimo, int idCategoria)
+        {
+            ConexionBD.ConectarBD();
+            using (SqlCommand cmd = new SqlCommand("sp_update_articulo", ConexionBD.ConexionSQL))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_articulo", id);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+                cmd.Parameters.AddWithValue("@id_marca", idMarca);
+                cmd.Parameters.AddWithValue("@stock_minimo", stockMinimo);
+                cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        // 5. Obtener Marcas para ComboBox
+        public static DataTable ObtenerMarcas()
+        {
+            ConexionBD.ConectarBD();
+            using (SqlCommand cmd = new SqlCommand("SELECT id_marca, nombre FROM marca", ConexionBD.ConexionSQL))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
+        // 6. Obtener Categorías para ComboBox
+        public static DataTable ObtenerCategorias()
+        {
+            ConexionBD.ConectarBD();
+            using (SqlCommand cmd = new SqlCommand("SELECT id_categoria, nombre FROM categoria", ConexionBD.ConexionSQL))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+    }
+}

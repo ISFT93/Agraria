@@ -112,7 +112,7 @@ namespace Agraria.Formularios
             cmbTipoEntorno.DisplayMember = "Nombre";
             cmbTipoEntorno.ValueMember = "IdTipoEntorno";
         }
-   
+
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -235,6 +235,11 @@ namespace Agraria.Formularios
         }
 
         private void dtgEntorno_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
 
         }

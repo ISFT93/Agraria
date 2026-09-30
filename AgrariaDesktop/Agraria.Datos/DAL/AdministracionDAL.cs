@@ -35,7 +35,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -51,7 +51,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarPartido(int idPartido, string nombrePartido)
@@ -67,7 +67,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== LOCALIDADES ========
@@ -93,7 +93,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -111,7 +111,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarLocalidad(int idLocalidad, string nombreLocalidad, int idPartido, int codigoPostal = 0)
@@ -129,7 +129,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== TIPO ENTORNO ========
@@ -153,7 +153,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -169,7 +169,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarTipoEntorno(int id, string nombre)
@@ -185,7 +185,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== TIPO MEDIDA ========
@@ -209,7 +209,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -225,7 +225,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarTipoMedida(int id, string nombre)
@@ -241,7 +241,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ======== PRODUCTOS ========
@@ -266,7 +266,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -284,7 +284,7 @@ namespace Agraria.Datos.DAL
                     return Convert.ToDecimal(o);
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public string ObtenerDescripcionPorNombre(string nombreProducto)
@@ -302,7 +302,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -323,7 +323,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public void ActualizarProducto(int idProducto, string nombre, string descripcion, decimal precioUnitario)
@@ -341,7 +341,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         private int ObtenerSiguienteIdProducto()
@@ -366,7 +366,7 @@ namespace Agraria.Datos.DAL
         {
             ConexionBD.ConectarBD();
 
-            string sql = @"INSERT INTO Proveedores (RazonSocial, Telefono, Email, Direccion)
+            string sql = @"INSERT INTO Proveedores (nombre, Telefono, mail, Direccion)
                            VALUES (@RazonSocial, @Telefono, @Email, @Direccion)";
             using (SqlCommand cmd = new SqlCommand(sql, ConexionBD.ConexionSQL))
             {
@@ -377,7 +377,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static void ModificarProveedor(Proveedor proveedor)
@@ -385,9 +385,9 @@ namespace Agraria.Datos.DAL
             ConexionBD.ConectarBD();
 
             string sql = @"UPDATE Proveedores 
-                           SET RazonSocial = @RazonSocial, 
+                           SET nombre = @RazonSocial, 
                                Telefono = @Telefono, 
-                               Email = @Email, 
+                               mail = @Email, 
                                Direccion = @Direccion
                            WHERE IdProveedor = @IdProveedor";
 
@@ -401,7 +401,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static List<Proveedor> ListarProveedores()
@@ -409,7 +409,7 @@ namespace Agraria.Datos.DAL
             List<Proveedor> lista = new List<Proveedor>();
             ConexionBD.ConectarBD();
 
-            string sql = "SELECT IdProveedor, RazonSocial, Telefono, Email, Direccion FROM Proveedores";
+            string sql = "SELECT IdProveedor, nombre, Telefono, mail, Direccion FROM Proveedores";
             using (SqlCommand cmd = new SqlCommand(sql, ConexionBD.ConexionSQL))
             using (SqlDataReader dr = cmd.ExecuteReader())
             {
@@ -417,16 +417,16 @@ namespace Agraria.Datos.DAL
                 {
                     lista.Add(new Proveedor
                     {
-                        IdProveedor = Convert.ToInt32(dr["IdProveedor"]),
-                        RazonSocial = dr["RazonSocial"].ToString(),
+                        IdProveedor = Convert.ToInt32(dr["id_proveedor"]),
+                        RazonSocial = dr["nombre"].ToString(),
                         Telefono = dr["Telefono"].ToString(),
-                        Email = dr["Email"].ToString(),
+                        Email = dr["mail"].ToString(),
                         Direccion = dr["Direccion"].ToString()
                     });
                 }
             }
 
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
     }

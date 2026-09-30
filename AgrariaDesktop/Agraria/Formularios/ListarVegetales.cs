@@ -39,9 +39,6 @@ namespace Agraria.Formularios
             CargarVegetales();
 
         }
-
-
-
         private void CargarVegetales(string filtro = "")
         {
             try
@@ -86,11 +83,10 @@ namespace Agraria.Formularios
         {
             CargarVegetales(txtBuscar.Text.Trim());
         }
-
-
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             AbmVegetales frm = new AbmVegetales(_usuarioLogeado); // <--- Le pasamos el usuario real
+            frm.Text = "Nuevo Vegetal";
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 CargarVegetales();
@@ -103,6 +99,7 @@ namespace Agraria.Formularios
             {
                 long idVegetal = Convert.ToInt64(dtgvListarVegetales.SelectedRows[0].Cells["id_vegetal"].Value);
                 AbmVegetales frm = new AbmVegetales(idVegetal, _usuarioLogeado); // <--- Le pasamos el ID y el usuario
+                frm.Text = "Modificar Vegetal";
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     CargarVegetales();
@@ -113,26 +110,10 @@ namespace Agraria.Formularios
                 MessageBox.Show("Por favor seleccione un vegetal de la grilla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        /* Para probar una busqueda automatica
-        private void txtBuscar_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                btnBuscar_Click(sender, e);
-                e.Handled = true;
-                e.SuppressKeyPress = true;
-            }
-        }
-        */
-
         private void CargarComboFiltro()
         {
             try
@@ -140,7 +121,7 @@ namespace Agraria.Formularios
                 DataTable dt = abmBll.CargarCombo("tipo_cultivo");
 
                 DataRow row = dt.NewRow();
-                row["id_tipo_cultivo"] = 0; 
+                row["id_tipo_cultivo"] = 0;
                 row["nombre"] = "Todos";
                 dt.Rows.InsertAt(row, 0);
 
@@ -238,5 +219,33 @@ namespace Agraria.Formularios
             }
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dtgvListarVegetales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificamos que estemos en la columna correcta y que la celda no esté vacía
+            if (dtgvListarVegetales.Columns[e.ColumnIndex].Name == "periodosiembra" && e.Value != null)
+            {
+                if (int.TryParse(e.Value.ToString(), out int periodoGuardado))
+                {
+                    List<string> periodos = new List<string>();
+
+                    // Aplicamos la misma lógica (operador &) para saber qué estaciones contiene el número
+                    if ((periodoGuardado & 2) == 2) periodos.Add("Verano");
+                    if ((periodoGuardado & 4) == 4) periodos.Add("Otoño");
+                    if ((periodoGuardado & 8) == 8) periodos.Add("Invierno");
+                    if ((periodoGuardado & 16) == 16) periodos.Add("Primavera");
+
+                    // Reemplazamos visualmente el número por las estaciones separadas por coma
+                    e.Value = periodos.Count > 0 ? string.Join(", ", periodos) : "Ninguno";
+
+                    // Le avisamos a la grilla que nosotros ya nos encargamos de formatear esta celda
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+//using static System.Windows.Forms.VisualStyleElement.Window;
 using System.Runtime.InteropServices;
 
 
@@ -37,6 +37,10 @@ namespace Agraria.Formularios
         /// <summary>
         /// // hasta aqui
         /// </summary>
+
+        // Propiedades públicas para que el form propietario (Inicio) reciba el resultado
+        public UsuarioLoginDTO UsuarioAutenticado { get; private set; }
+        public bool EsInvitado { get; private set; } = false;
 
         public Login()
         {
@@ -76,28 +80,53 @@ namespace Agraria.Formularios
 
         private void pbCerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-
+            // Si cierra sin autenticar, cerrará el diálogo retornando Cancel al propietario
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
         }
 
-        private void btnAceptarLogin_Click(object sender, EventArgs e)
+        // Event handler actualizado: ahora asíncrono y muestra reloj de arena hasta que finaliza el proceso
+        private async void btnAceptarLogin_Click(object sender, EventArgs e)
         {
             string usuario = txtUsuario.Text.Trim();
             string pass = txtContraseña.Text.Trim();
 
-            var user = usuarioLoginBLL.Autenticar(usuario, pass);
+            // Deshabilitar controles para evitar múltiples envíos
+            var controlesAffectados = new Control[] { txtUsuario, txtContraseña, btnIngresar };
+            foreach (var c in controlesAffectados) c.Enabled = false;
 
-            if (user != null)
+            // Mostrar cursor de espera a nivel de formulario/ aplicación
+            this.UseWaitCursor = true;
+            Cursor.Current = Cursors.WaitCursor;
+            try
             {
-                MessageBox.Show("Bienvenido " + user.NombreUsuario);
+                // Ejecutar autenticación en hilo de fondo para no bloquear la UI
+                var user = await Task.Run(() => usuarioLoginBLL.Autenticar(usuario, pass));
 
-                Inicio inicio = new Inicio(user); // paso el usuario logeado
-                inicio.Show();
-                this.Hide();
+                if (user != null)
+                {
+                    // Devolvemos el usuario al formulario propietario en lugar de crear otro Inicio
+                    UsuarioAutenticado = user;
+                    EsInvitado = false;
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Usuario o contraseña incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Manejo mínimo de errores; opcionalmente loguear
+                MessageBox.Show("Error durante la autenticación: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Restaurar cursor y re-habilitar controles
+                this.UseWaitCursor = false;
+                Cursor.Current = Cursors.Default;
+                foreach (var c in controlesAffectados) c.Enabled = true;
             }
         }
 
@@ -110,15 +139,11 @@ namespace Agraria.Formularios
 
         private void lblInvitado_Click(object sender, EventArgs e)
         {
-            Inicio frmInicio = new Inicio(true);
-            frmInicio.Show();
-
-            // Cierra el login si querés
-            this.Hide();
-
-            MessageBox.Show("Entraste en modo invitado.\nPodés navegar pero no modificar datos.",
-                "Modo Invitado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+            // Marca modo invitado y cierra el diálogo con OK para que el propietario lo procese
+            UsuarioAutenticado = null;
+            EsInvitado = true;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
 

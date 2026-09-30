@@ -23,7 +23,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@c", cantidad);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static void GuardarRegistroEngorde(string nombre, int idBox, DateTime fechaActualizado,
@@ -49,7 +49,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@alimDia", alimentoDia);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static List<EngordeDTO> Listar(string nombrePagina)
@@ -101,7 +101,7 @@ ORDER BY e.IdEngorde DESC";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -151,7 +151,7 @@ ORDER BY e.IdEngorde DESC";
                     });
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -172,7 +172,7 @@ ORDER BY e.IdEngorde DESC";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -190,7 +190,7 @@ ORDER BY e.IdEngorde DESC";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -214,7 +214,7 @@ ORDER BY e.IdEngorde DESC";
                 da.SelectCommand.Parameters.AddWithValue("@n", nombrePagina);
                 da.Fill(dt);
             }
-            ConexionBD.CierraBD();
+             ;
             return dt;
         }
 
@@ -251,7 +251,7 @@ ORDER BY e.IdEngorde DESC";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -290,7 +290,7 @@ ORDER BY e.IdEngorde DESC";
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return (totalActual, (decimal)totalProducido);

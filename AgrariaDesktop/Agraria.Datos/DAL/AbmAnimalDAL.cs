@@ -23,15 +23,14 @@ namespace Agraria.Datos.DAL
                     cmd.Parameters.AddWithValue("@id_tipo", animal.IdTipo);
                     cmd.Parameters.AddWithValue("@id_rubro", animal.IdRubro);
                     cmd.Parameters.AddWithValue("@id_subrubro", animal.IdSubrubro);
-                    cmd.Parameters.AddWithValue("@fecha_nacimiento", animal.FechaNacimiento);
-                    cmd.Parameters.AddWithValue("@sexo", animal.Sexo);
+                    cmd.Parameters.AddWithValue("@stock_minimo", animal.MinimoStock);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -51,15 +50,14 @@ namespace Agraria.Datos.DAL
                     cmd.Parameters.AddWithValue("@id_tipo", animal.IdTipo);
                     cmd.Parameters.AddWithValue("@id_rubro", animal.IdRubro);
                     cmd.Parameters.AddWithValue("@id_subrubro", animal.IdSubrubro);
-                    cmd.Parameters.AddWithValue("@fecha_nacimiento", animal.FechaNacimiento);
-                    cmd.Parameters.AddWithValue("@sexo", animal.Sexo);
+                    cmd.Parameters.AddWithValue("@stock_minimo", animal.MinimoStock);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -82,7 +80,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
             return dt;
         }
@@ -98,8 +96,8 @@ namespace Agraria.Datos.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    long minId = Convert.ToInt64(baseUsuario.ToString() + "130000");
-                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "2000000");
+                    long minId = Convert.ToInt64(baseUsuario.ToString() + "2000000");
+                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "3000000");
 
                     cmd.Parameters.AddWithValue("@min", minId);
                     cmd.Parameters.AddWithValue("@max", maxId);
@@ -113,7 +111,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
             return ultimoId;
         }
@@ -136,7 +134,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
             return dt;
         }

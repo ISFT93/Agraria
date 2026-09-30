@@ -26,7 +26,7 @@ public static class BoxDAL
                 });
             }
         }
-        finally { ConexionBD.CierraBD(); }
+        finally {  ; }
         return lista;
     }
 }

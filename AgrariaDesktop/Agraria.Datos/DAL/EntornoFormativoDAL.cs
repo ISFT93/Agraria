@@ -49,12 +49,47 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
         }
 
+        public List<EntornoFormativoHoyDTO> ObtenerEntornosHoy()
+        {
+            var lista = new List<EntornoFormativoHoyDTO>();
+
+            try
+            {
+                ConexionBD.ConectarBD();
+
+                string query = @"SELECT  t.Nombre AS TipoEntorno, 
+                                        e.Responsable, e.Observaciones
+                                 FROM Entorno e
+                                 INNER JOIN TipoEntorno t ON e.IdTipoEntorno = t.IdTipoEntorno";
+                               //   WHERE e.Fecha";
+
+                SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lista.Add(new EntornoFormativoHoyDTO
+                    {
+                        Nombre = reader["TipoEntorno"].ToString(),
+                        Responsable = reader["Responsable"].ToString(),
+                        Observaciones = reader["Observaciones"].ToString()
+                    });
+                }
+                reader.Close();
+            }
+            finally
+            {
+                ;
+            }
+
+            return lista;
+        }
         public void Insertar(EntornoFormativo entorno)
         {
             try
@@ -79,7 +114,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -121,7 +156,7 @@ namespace Agraria.Datos.DAL
                 }
                 finally
                 {
-                    ConexionBD.CierraBD();
+                     ;
                 }
             }
 
@@ -140,7 +175,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 

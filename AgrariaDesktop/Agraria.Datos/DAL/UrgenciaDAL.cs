@@ -18,7 +18,7 @@ namespace Agraria.Datos.DAL
                     cmd.ExecuteNonQuery();
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static List<string> ObtenerMensajesDelDia()
@@ -38,7 +38,7 @@ namespace Agraria.Datos.DAL
                         mensajes.Add(dr.GetString(0));
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return mensajes;
         }
 
@@ -54,7 +54,7 @@ namespace Agraria.Datos.DAL
                     return count > 0;
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@f", fecha);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static void InsertarIngresoMiel(string nombre, int cantidad, DateTime fecha)
@@ -43,7 +43,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@f", fecha);
                 cmd.ExecuteNonQuery();
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         public static void EnviarMielAIndustria(string nombre, int cantidad, DateTime fechaEgreso, int idTipoEntorno, string responsable, int idTipoMedida)
@@ -117,7 +117,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
             {
                 throw;
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
         }
 
         // ✅ NUEVO: Obtener lista de registros de Colmenas por nombre (para TotalesColmenas)
@@ -150,7 +150,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
 
             return lista;
         }
@@ -199,7 +199,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -251,7 +251,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
                 cmd.Parameters.AddWithValue("@cant", cantidadAEnviar);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static int ObtenerColmenasDisponibles(string nombre)
@@ -273,7 +273,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -308,7 +308,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -331,7 +331,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -370,7 +370,7 @@ VALUES (@nombre, @cantidad, @idTipoMedida, NULL, @fecha, @idEntorno, @resp, @fec
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             if (colmenasActivas < 0) colmenasActivas = 0; // por seguridad

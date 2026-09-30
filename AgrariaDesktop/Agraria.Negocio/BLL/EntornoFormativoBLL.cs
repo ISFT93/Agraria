@@ -18,7 +18,10 @@ namespace Agraria.Negocio.BLL
         {
             return dal.ObtenerEntornos();
         }
-
+        public List<EntornoFormativoHoyDTO> ObtenerEntornosHoy()
+        {
+            return dal.ObtenerEntornosHoy();
+        }
         public void Guardar(EntornoFormativo entorno)
         {
             dal.Insertar(entorno);

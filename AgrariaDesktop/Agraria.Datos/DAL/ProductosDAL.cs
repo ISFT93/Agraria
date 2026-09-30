@@ -34,7 +34,7 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally { ConexionBD.CierraBD(); }
+            finally {  ; }
             return lista;
         }
 
@@ -66,7 +66,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return producto;

@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Data;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class FormArticulosLista : Form
+    public partial class ListaArticulos : Form
     {
         // Instancia de la BLL para conectar con la lógica del negocio
         private Agraria.BLL.ArticulosBLL articulosBLL = new Agraria.BLL.ArticulosBLL();
         private object _usuarioActual; // Objeto de sesión del usuario logueado
 
         // Constructor que recibe el usuario logueado (opcional para pruebas individuales)
-        public FormArticulosLista(object usuarioLogeado = null)
+        public ListaArticulos(object usuarioLogeado = null)
         {
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
@@ -23,7 +24,6 @@ namespace Agraria.Formularios
         private void FormArticulosLista_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
 
             // Cargamos el combo de categorías y la grilla al iniciar
@@ -80,14 +80,14 @@ namespace Agraria.Formularios
                     if (dgvArticulos.Columns["nombre"] != null) dgvArticulos.Columns["nombre"].HeaderText = "Nombre";
                     if (dgvArticulos.Columns["marca"] != null) dgvArticulos.Columns["marca"].HeaderText = "Marca";
                     if (dgvArticulos.Columns["categoria"] != null) dgvArticulos.Columns["categoria"].HeaderText = "Categoría";
-                    if (dgvArticulos.Columns["fecha_alta"] != null) dgvArticulos.Columns["fecha_alta"].HeaderText = "Fecha Alta";
+                    if (dgvArticulos.Columns["stock_minimo"] != null) dgvArticulos.Columns["stock_minimo"].HeaderText = "Stock Mínimo";
 
                     // 2. Anchos específicos para que ninguna columna se comprima ni quede invisible
                     if (dgvArticulos.Columns["id_articulo"] != null) dgvArticulos.Columns["id_articulo"].Width = 70;
                     if (dgvArticulos.Columns["nombre"] != null) dgvArticulos.Columns["nombre"].Width = 160;
                     if (dgvArticulos.Columns["marca"] != null) dgvArticulos.Columns["marca"].Width = 120;
                     if (dgvArticulos.Columns["categoria"] != null) dgvArticulos.Columns["categoria"].Width = 120;
-                    if (dgvArticulos.Columns["fecha_alta"] != null) dgvArticulos.Columns["fecha_alta"].Width = 110;
+                    if (dgvArticulos.Columns["stock_minimo"] != null) dgvArticulos.Columns["stock_minimo"].Width = 110;
                 }
             }
             catch (Exception ex)
@@ -98,9 +98,8 @@ namespace Agraria.Formularios
 
         private void rjBNuevo_Click(object sender, EventArgs e)
         {
-            // Creamos el formulario de detalle pasándole el usuario actual para la lógica de bloques
-            FormArticulosDetalle formDetalle = new FormArticulosDetalle(_usuarioActual);
-            formDetalle.idArticuloActual = null; // Es null para indicar alta nueva
+            // Creamos el formulario de detalle pasándole el usuario actual para la lógica de bloques (Alta nueva)
+            AbmArticulos formDetalle = new AbmArticulos(_usuarioActual);
 
             if (formDetalle.ShowDialog() == DialogResult.OK)
             {
@@ -112,16 +111,57 @@ namespace Agraria.Formularios
         {
             if (dgvArticulos.SelectedRows.Count > 0)
             {
-                // Obtenemos el ID del artículo seleccionado en la grilla
-                long idSeleccionado = Convert.ToInt64(dgvArticulos.SelectedRows[0].Cells["id_articulo"].Value);
-
-                // Creamos el formulario de detalle pasándole el usuario actual y el ID para modificar
-                FormArticulosDetalle formDetalle = new FormArticulosDetalle(_usuarioActual);
-                formDetalle.idArticuloActual = idSeleccionado;
-
-                if (formDetalle.ShowDialog() == DialogResult.OK)
+                try
                 {
-                    CargarGrilla(); // Actualiza la grilla al modificar con éxito
+                    DataGridViewRow fila = dgvArticulos.SelectedRows[0];
+
+                    // 1. Extraemos ID de forma segura
+                    long idSeleccionado = 0;
+                    if (dgvArticulos.Columns.Contains("id_articulo") && fila.Cells["id_articulo"].Value != null && fila.Cells["id_articulo"].Value != DBNull.Value)
+                        idSeleccionado = Convert.ToInt64(fila.Cells["id_articulo"].Value);
+                    else if (fila.Cells.Count > 0 && fila.Cells[0].Value != null)
+                        idSeleccionado = Convert.ToInt64(fila.Cells[0].Value);
+
+                    // 2. Extraemos Nombre de forma segura
+                    string nombre = string.Empty;
+                    if (dgvArticulos.Columns.Contains("nombre") && fila.Cells["nombre"].Value != null)
+                        nombre = fila.Cells["nombre"].Value.ToString();
+                    else if (fila.Cells.Count > 1 && fila.Cells[1].Value != null)
+                        nombre = fila.Cells[1].Value.ToString();
+
+                    // 3. Extraemos el texto de la Marca directamente de la grilla
+                    string nombreMarca = string.Empty;
+                    if (dgvArticulos.Columns.Contains("marca") && fila.Cells["marca"].Value != null)
+                        nombreMarca = fila.Cells["marca"].Value.ToString();
+
+                    // 4. Extraemos el texto de la Categoría directamente de la grilla
+                    string nombreCategoria = string.Empty;
+                    if (dgvArticulos.Columns.Contains("categoria") && fila.Cells["categoria"].Value != null)
+                        nombreCategoria = fila.Cells["categoria"].Value.ToString();
+
+                    // 5. Extraemos Stock Mínimo como float (en lugar de la fecha)
+                    float stockMinimo = 0f;
+                    string[] posiblesColsStock = { "stock_minimo", "stockminimo", "stock" };
+                    foreach (var colName in posiblesColsStock)
+                    {
+                        if (dgvArticulos.Columns.Contains(colName) && fila.Cells[colName].Value != null && fila.Cells[colName].Value != DBNull.Value)
+                        {
+                            float.TryParse(fila.Cells[colName].Value.ToString(), out stockMinimo);
+                            break;
+                        }
+                    }
+
+                    // 6. Instanciamos el formulario de modificación pasándole el float de stock
+                    AbmArticulos formDetalle = new AbmArticulos(_usuarioActual, idSeleccionado, nombre, nombreMarca, stockMinimo, nombreCategoria);
+
+                    if (formDetalle.ShowDialog() == DialogResult.OK)
+                    {
+                        CargarGrilla();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar los datos para modificar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -188,7 +228,6 @@ namespace Agraria.Formularios
                     // 6) Generar el archivo PDF usando iTextSharp
                     using (FileStream stream = new FileStream(savefile.FileName, FileMode.Create))
                     {
-                        // Usamos A4.Rotate() para hoja apaisada, ideal para tablas anchas
                         iTextSharp.text.Document pdfDoc = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 25, 25, 25, 25);
                         iTextSharp.text.pdf.PdfWriter writer = iTextSharp.text.pdf.PdfWriter.GetInstance(pdfDoc, stream);
                         pdfDoc.Open();
@@ -241,12 +280,10 @@ namespace Agraria.Formularios
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void dgvArticulos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
     }
 }

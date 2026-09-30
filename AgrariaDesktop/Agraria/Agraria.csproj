@@ -93,6 +93,7 @@
   <ItemGroup>
     <PackageReference Include="iTextSharp" Version="5.5.13.6" />
     <PackageReference Include="itextsharp.xmlworker" Version="5.5.13.6" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.10.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -127,6 +128,9 @@
     </None>
     <None Update="Recursos\Animales.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Recursos\ListarStock.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

@@ -24,7 +24,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@r", art.Responsable);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
         public void Modificar(ArticulosPañol art)
@@ -45,7 +45,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@r", art.Responsable);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
         public void CambiarEstado(int id, bool estado)
@@ -58,7 +58,7 @@ namespace Agraria.Datos.DAL
                 cmd.Parameters.AddWithValue("@e", estado);
                 cmd.ExecuteNonQuery();
             }
-            ConexionBD.CierraBD();
+             ;
         }
 
         public List<ArticulosPañolDTO> Listar(string filtro = "")
@@ -97,7 +97,7 @@ namespace Agraria.Datos.DAL
                 }
             }
 
-            ConexionBD.CierraBD();
+             ;
             return lista;
         }
 

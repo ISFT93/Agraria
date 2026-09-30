@@ -29,7 +29,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
         public static List<LecheDTO> Listar(string nombrePagina)
         {
@@ -68,7 +68,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -91,7 +91,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static DataTable BuscarPorNumeroAnimal(string numero, string nombrePagina)
@@ -107,7 +107,7 @@ namespace Agraria.Datos.DAL
                 da.Fill(dt);
             }
 
-            ConexionBD.CierraBD();
+             ;
             return dt;
         }
 
@@ -129,7 +129,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
 
@@ -162,7 +162,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -202,7 +202,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return (animalesActivos, litros);

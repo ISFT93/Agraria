@@ -37,11 +37,12 @@
             administracionToolStripMenuItem = new ToolStripMenuItem();
             entornosFormativosToolStripMenuItem = new ToolStripMenuItem();
             verToolStripMenuItem = new ToolStripMenuItem();
+            pañolToolStripMenuItem = new ToolStripMenuItem();
+            entornoAnimalToolStripMenuItem = new ToolStripMenuItem();
             produccionVegetalToolStripMenuItem = new ToolStripMenuItem();
             produccionAnimalToolStripMenuItem = new ToolStripMenuItem();
             industriaToolStripMenuItem = new ToolStripMenuItem();
-            pañolToolStripMenuItem = new ToolStripMenuItem();
-            entornoAnimalToolStripMenuItem = new ToolStripMenuItem();
+            stockToolStripMenuItem = new ToolStripMenuItem();
             herramientasToolStripMenuItem = new ToolStripMenuItem();
             inventarioToolStripMenuItem = new ToolStripMenuItem();
             ventasToolStripMenuItem = new ToolStripMenuItem();
@@ -112,45 +113,54 @@
             // 
             // verToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, pañolToolStripMenuItem, entornoAnimalToolStripMenuItem });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pañolToolStripMenuItem, entornoAnimalToolStripMenuItem, produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, stockToolStripMenuItem });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(44, 24);
             verToolStripMenuItem.Text = "Ver";
             // 
-            // produccionVegetalToolStripMenuItem
-            // 
-            produccionVegetalToolStripMenuItem.Name = "produccionVegetalToolStripMenuItem";
-            produccionVegetalToolStripMenuItem.Size = new Size(220, 26);
-            produccionVegetalToolStripMenuItem.Text = "Produccion Vegetal";
-            produccionVegetalToolStripMenuItem.Click += btnProduccionVegetal_Click;
-            // 
-            // produccionAnimalToolStripMenuItem
-            // 
-            produccionAnimalToolStripMenuItem.Name = "produccionAnimalToolStripMenuItem";
-            produccionAnimalToolStripMenuItem.Size = new Size(220, 26);
-            produccionAnimalToolStripMenuItem.Text = "Produccion Animal";
-            produccionAnimalToolStripMenuItem.Click += btnProduccionAnimal_Click;
-            // 
-            // industriaToolStripMenuItem
-            // 
-            industriaToolStripMenuItem.Name = "industriaToolStripMenuItem";
-            industriaToolStripMenuItem.Size = new Size(220, 26);
-            industriaToolStripMenuItem.Text = "Industria";
-            industriaToolStripMenuItem.Click += btnIndustria_Click;
-            // 
             // pañolToolStripMenuItem
             // 
             pañolToolStripMenuItem.Name = "pañolToolStripMenuItem";
-            pañolToolStripMenuItem.Size = new Size(220, 26);
-            pañolToolStripMenuItem.Text = "Pañol";
+            pañolToolStripMenuItem.Size = new Size(217, 26);
+            pañolToolStripMenuItem.Text = "Artículos";
             pañolToolStripMenuItem.Click += btnPañol_Click;
             // 
             // entornoAnimalToolStripMenuItem
             // 
             entornoAnimalToolStripMenuItem.Name = "entornoAnimalToolStripMenuItem";
-            entornoAnimalToolStripMenuItem.Size = new Size(176, 22);
-            entornoAnimalToolStripMenuItem.Text = "Entorno Animal";
+            entornoAnimalToolStripMenuItem.Size = new Size(217, 26);
+            entornoAnimalToolStripMenuItem.Text = "Animales";
             entornoAnimalToolStripMenuItem.Click += entornoAnimalToolStripMenuItem_Click;
+            // 
+            // produccionVegetalToolStripMenuItem
+            // 
+            produccionVegetalToolStripMenuItem.Name = "produccionVegetalToolStripMenuItem";
+            produccionVegetalToolStripMenuItem.Size = new Size(217, 26);
+            produccionVegetalToolStripMenuItem.Text = "Vegetales";
+            produccionVegetalToolStripMenuItem.Click += btnProduccionVegetal_Click;
+            // 
+            // produccionAnimalToolStripMenuItem
+            // 
+            produccionAnimalToolStripMenuItem.Enabled = false;
+            produccionAnimalToolStripMenuItem.Name = "produccionAnimalToolStripMenuItem";
+            produccionAnimalToolStripMenuItem.Size = new Size(217, 26);
+            produccionAnimalToolStripMenuItem.Text = "Produccion Animal";
+            produccionAnimalToolStripMenuItem.Click += btnProduccionAnimal_Click;
+            // 
+            // industriaToolStripMenuItem
+            // 
+            industriaToolStripMenuItem.Enabled = false;
+            industriaToolStripMenuItem.Name = "industriaToolStripMenuItem";
+            industriaToolStripMenuItem.Size = new Size(217, 26);
+            industriaToolStripMenuItem.Text = "Industria";
+            industriaToolStripMenuItem.Click += btnIndustria_Click;
+            // 
+            // stockToolStripMenuItem
+            // 
+            stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            stockToolStripMenuItem.Size = new Size(217, 26);
+            stockToolStripMenuItem.Text = "Stock";
+            stockToolStripMenuItem.Click += stockToolStripMenuItem_Click;
             // 
             // herramientasToolStripMenuItem
             // 
@@ -227,5 +237,6 @@
         private ToolStripMenuItem entornosFormativosToolStripMenuItem;
         private ToolStripMenuItem entornoAnimalToolStripMenuItem;
         private PictureBox pictureBox1;
+        private ToolStripMenuItem stockToolStripMenuItem;
     }
 }

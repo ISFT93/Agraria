@@ -19,7 +19,7 @@ namespace Agraria.Datos.DAL
             cmd.Parameters.AddWithValue("@fm", fechaMonta);
             cmd.Parameters.AddWithValue("@fp", fechaParto);
             cmd.ExecuteNonQuery();
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static void GuardarNacimiento(string nombre, string madre, string padre, DateTime fechaParto,
@@ -37,7 +37,7 @@ namespace Agraria.Datos.DAL
             cmd.Parameters.AddWithValue("@c", machos);
             cmd.Parameters.AddWithValue("@t", total);
             cmd.ExecuteNonQuery();
-            ConexionBD.CierraBD();
+             ;
         }
 
         public static List<RegistroFertilidadCarneDTO> ListarRegistrosFertilidad(string nombre)
@@ -83,7 +83,7 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;

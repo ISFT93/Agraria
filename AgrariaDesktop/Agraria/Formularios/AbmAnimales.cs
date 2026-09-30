@@ -8,28 +8,23 @@ using Agraria.Negocio.BLL;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmAnimal : Form
+    public partial class AbmAnimales : Form
     {
         private AbmAnimalDAL AbmanimalDAL = new AbmAnimalDAL();
         private AbmAnimalBLL abmAnimalBLL = new AbmAnimalBLL();
         private AnimalDTO animalEdicion = null;
         private int _idUsuarioActual = 1; // ID de usuario logueado en sesión
 
-        // Constructor para registros NUEVOS
-        public AbmAnimal()
-        {
-            InitializeComponent();
-        }
-
-        // Constructor para registros NUEVOS especificando el usuario
-        public AbmAnimal(int idUsuarioLogueado)
+    
+    
+        public AbmAnimales(int idUsuarioLogueado)
         {
             InitializeComponent();
             this._idUsuarioActual = idUsuarioLogueado;
         }
 
         // Constructor para MODIFICAR un registro existente
-        public AbmAnimal(AnimalDTO animalParaEditar)
+        public AbmAnimales(AnimalDTO animalParaEditar)
         {
             InitializeComponent();
             this.animalEdicion = animalParaEditar;
@@ -37,7 +32,7 @@ namespace Agraria.Formularios
 
         private void AbmAnimal_Load(object sender, EventArgs e)
         {
-            // Carga datos de los combos y bloquearles la escritura libre
+            // Carga datos de los combos y bloquea la escritura libre
             CargarCombos();
 
             // Bloquea la caja del código para que no sea editable
@@ -50,22 +45,20 @@ namespace Agraria.Formularios
 
                 txtNombreComun.Text = animalEdicion.NombreComun;
                 txtNombreCientifico.Text = animalEdicion.NombreCientifico;
-                dtpFechaNacimiento.Value = animalEdicion.FechaNacimiento;
+                txtStock.Text = animalEdicion.MinimoStock.ToString();
 
                 if (animalEdicion.IdTipo > 0) CbTipoAnimal.SelectedValue = animalEdicion.IdTipo;
                 if (animalEdicion.IdRubro > 0) CbRubro.SelectedValue = animalEdicion.IdRubro;
                 if (animalEdicion.IdSubrubro > 0) CbSubrubro.SelectedValue = animalEdicion.IdSubrubro;
 
-                if (!string.IsNullOrEmpty(animalEdicion.Sexo))
-                {
-                    CbSexo.SelectedItem = animalEdicion.Sexo.ToLower();
-                }
+
             }
             else
             {
                 // Alta: Genera el código de bloque único
                 long proximoId = abmAnimalBLL.GenerarIdBloque(_idUsuarioActual);
                 TxtCodigo.Text = proximoId.ToString();
+                TxtCodigo.Focus();
             }
         }
 
@@ -77,8 +70,7 @@ namespace Agraria.Formularios
                 CbTipoAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbSubrubro.DropDownStyle = ComboBoxStyle.DropDownList;
-                CbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
-
+                
                 // Carga de clasificadores desde la DAL
                 CbTipoAnimal.DataSource = AbmanimalDAL.ObtenerTabla("Tipo_animal");
                 CbTipoAnimal.DisplayMember = "Nombre";
@@ -92,11 +84,6 @@ namespace Agraria.Formularios
                 CbSubrubro.DisplayMember = "Nombre";
                 CbSubrubro.ValueMember = "Id_subrubro";
 
-                // Carga de ítems fijos para 'sexo'
-                CbSexo.DataSource = null;
-                CbSexo.Items.Clear();
-                CbSexo.Items.Add("Hembra");
-                CbSexo.Items.Add("Macho");
             }
             catch (Exception ex)
             {
@@ -116,12 +103,6 @@ namespace Agraria.Formularios
                     return;
                 }
 
-                if (CbSexo.SelectedItem == null)
-                {
-                    MessageBox.Show("Debe seleccionar el sexo del animal.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    CbSexo.Focus();
-                    return;
-                }
 
                 // Determina si es modificación o alta por bloque
                 bool esModificacion = (animalEdicion != null);
@@ -136,8 +117,7 @@ namespace Agraria.Formularios
                     IdTipo = Convert.ToInt32(CbTipoAnimal.SelectedValue),
                     IdRubro = Convert.ToInt32(CbRubro.SelectedValue),
                     IdSubrubro = Convert.ToInt32(CbSubrubro.SelectedValue),
-                    FechaNacimiento = dtpFechaNacimiento.Value.Date,
-                    Sexo = CbSexo.SelectedItem.ToString()
+                    MinimoStock = float.Parse(txtStock.Text)
                 };
 
                 // 4. Guardado directo
@@ -175,6 +155,8 @@ namespace Agraria.Formularios
                     e.Cancel = true;
                 }
             }
-        }        
+        }
+
+  
     }
 }

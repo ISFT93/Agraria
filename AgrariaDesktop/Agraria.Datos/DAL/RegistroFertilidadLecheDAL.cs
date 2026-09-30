@@ -33,7 +33,7 @@ namespace Agraria.Datos.DAL
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
             public static List<RegistroFertilidadLecheDTO> Listar(string nombrePagina)
@@ -91,7 +91,7 @@ namespace Agraria.Datos.DAL
                 }
                 finally
                 {
-                    ConexionBD.CierraBD();
+                     ;
                 }
 
                 return lista;
@@ -114,7 +114,7 @@ namespace Agraria.Datos.DAL
                 da.Fill(dt);
             }
 
-            ConexionBD.CierraBD();
+             ;
             return dt;
         }
 

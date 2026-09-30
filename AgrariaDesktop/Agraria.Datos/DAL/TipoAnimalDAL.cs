@@ -21,7 +21,7 @@ namespace Agraria.Datos.DAL
                 da.Fill(dt);
             }
 
-            ConexionBD.CierraBD();
+             ;
             return dt;
         }
     }

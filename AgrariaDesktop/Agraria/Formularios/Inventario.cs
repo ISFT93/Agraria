@@ -513,22 +513,22 @@ namespace Agraria.Formularios
 
 
 
-                try
+            try
 
-                { 
-               
-                
-                if (IdAlimentoSeleccionado == 0)
             {
-                MessageBox.Show("Seleccione un artículo para modificar.");
-                return;
-            }
+
+
+                if (IdAlimentoSeleccionado == 0)
+                {
+                    MessageBox.Show("Seleccione un artículo para modificar.");
+                    return;
+                }
 
 
 
 
 
-            Alimento alimento = new Alimento
+                Alimento alimento = new Alimento
                 {
                     IdAlimento = IdAlimentoSeleccionado,
                     Nombre = txtNombreAlimentoProveedor.Text.Trim(),
@@ -548,7 +548,7 @@ namespace Agraria.Formularios
                 // Refrescar grilla
                 CargarAlimentos();
                 LimpiarCamposAlimentos();
-                
+
             }
             catch (Exception ex)
             {
@@ -568,8 +568,19 @@ namespace Agraria.Formularios
             dtpFechaIngresoAlimento.Value = DateTime.Now;
         }
 
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
 
+        }
 
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void gbEnviarPolloIndustria_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

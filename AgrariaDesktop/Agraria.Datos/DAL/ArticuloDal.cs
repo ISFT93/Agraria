@@ -39,7 +39,7 @@ namespace Agraria.Datos
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -73,7 +73,7 @@ namespace Agraria.Datos
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -131,7 +131,7 @@ namespace Agraria.Datos
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
 
             return lista;
@@ -153,7 +153,7 @@ namespace Agraria.Datos
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -195,7 +195,7 @@ namespace Agraria.Datos
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
             return lista;
         }
@@ -234,7 +234,7 @@ namespace Agraria.Datos
             }
             finally
             {
-                ConexionBD.CierraBD();
+                 ;
             }
         }
 
@@ -259,7 +259,7 @@ namespace Agraria.Datos
                 cmd.ExecuteNonQuery();
             }
 
-            ConexionBD.CierraBD();
+             ;
         }
 
 

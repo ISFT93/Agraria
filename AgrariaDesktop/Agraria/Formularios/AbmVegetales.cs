@@ -1,4 +1,5 @@
-﻿using Agraria.Datos.DTO;
+﻿using Agraria.Datos.DAL;
+using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
 using System;
 using System;
@@ -26,6 +27,7 @@ namespace Agraria.Formularios
             _usuarioActual = usuarioLogeado; // <--- ¡Faltaba asignar esta variable aquí!
             CargarCombos();
             txtCodigoVegetal.Enabled = false;
+            txtNombreComun.Focus();
         }
 
         // Constructor para MODIFICAR
@@ -119,7 +121,7 @@ namespace Agraria.Formularios
                 bool esModificacion = (idVegetalEditar != null);
 
                 if (!esModificacion)
-                {    
+                {
                     int idUsuarioLogueado = _usuarioActual.Id;
                     idVegetalFinal = bll.GenerarIdBloque(idUsuarioLogueado);
                 }
@@ -157,6 +159,13 @@ namespace Agraria.Formularios
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void AbmVegetales_Load(object sender, EventArgs e)
+        {
+            long proximoId = bll.GenerarIdBloque(_usuarioActual.Id);
+            txtCodigoVegetal.Text = proximoId.ToString();
+            txtCodigoVegetal.Focus();
         }
     }
 }

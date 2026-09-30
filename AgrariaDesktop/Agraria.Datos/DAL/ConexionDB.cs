@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Agraria.Datos;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Data.Sql;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using Agraria.Datos;
-using System.Data;
-using System.Data.Sql;
 
 namespace Agraria.Datos.DAL
 {
@@ -14,21 +15,35 @@ namespace Agraria.Datos.DAL
     {
         public static string connectionstring;
         public static SqlConnection ConexionSQL = null; // Mantener la misma conexión
-        public static string datasource = DetectarInstanciaSimple();
-        public static string basededatos = "Agraria";
+        //public static string datasource = DetectarInstanciaSimple();
+        //public static string basededatos = "Agraria";
         public static SqlCommand Orden;
         public static SqlDataReader Lector;
 
+
         public static void ConectarBD()
         {
-            // Verificar si la conexión ya existe y está abierta
-            if (ConexionSQL == null)
+            // Prioridad 1: Variable de entorno (según README.md)
+            string strConexion = System.Environment.GetEnvironmentVariable("AGRARIADB_CONNECTION_STRING");
+
+            // Prioridad 2: App.config (fallback)
+            if (string.IsNullOrWhiteSpace(strConexion))
             {
-                connectionstring = @"Data Source=" + datasource + ";Initial Catalog=" + basededatos + ";Trusted_Connection=True;";
-                ConexionSQL = new SqlConnection(connectionstring);
+                var connSetting = ConfigurationManager.ConnectionStrings["agrariaDB"];
+                if (connSetting != null)
+                {
+                    strConexion = connSetting.ConnectionString;
+                }
             }
 
-            // Solo abrir la conexión si está cerrada
+            if (string.IsNullOrWhiteSpace(strConexion))
+            {
+                throw new System.InvalidOperationException(
+                    "No se pudo establecer la conexión. Defina la variable de entorno 'AGRARIADB_CONNECTION_STRING' " +
+                    "o configure 'InstiDB' en el App.config.");
+            }
+
+            ConexionSQL = new SqlConnection(strConexion);
             if (ConexionSQL.State == System.Data.ConnectionState.Closed)
             {
                 try
@@ -42,6 +57,30 @@ namespace Agraria.Datos.DAL
                 }
             }
         }
+
+        //public static void ConectarBD()
+        //{
+        //    // Verificar si la conexión ya existe y está abierta
+        //    if (ConexionSQL == null)
+        //    {
+        //        connectionstring = @"Data Source=" + datasource + ";Initial Catalog=" + basededatos + ";Trusted_Connection=True;";
+        //        ConexionSQL = new SqlConnection(connectionstring);
+        //    }
+
+        //    // Solo abrir la conexión si está cerrada
+        //    if (ConexionSQL.State == System.Data.ConnectionState.Closed)
+        //    {
+        //        try
+        //        {
+        //            ConexionSQL.Open();
+        //        }
+        //        catch
+        //        {
+        //            // Manejo de errores, opcional
+        //            // MessageBox.Show("Error al intentar abrir base de datos", "AVISO IMPORTANTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //        }
+        //    }
+        //}
 
         public static void CierraBD()
         {
@@ -65,45 +104,36 @@ namespace Agraria.Datos.DAL
             ejecuta.ExecuteNonQuery();
         }
 
-       
-        public static SqlConnection ObtenerConexion()
-        {
-            string connectionString = @"Data Source=" + datasource + ";Initial Catalog=" + basededatos + ";Trusted_Connection=True;";
-            SqlConnection cn = new SqlConnection(connectionString);
-            cn.Open();
-            return cn;
-        }
+    //    public static string DetectarInstanciaSimple()
+    //    {
+    //        string pc = Environment.MachineName;
 
-        public static string DetectarInstanciaSimple()
-        {
-            string pc = Environment.MachineName;
+    //        string[] posibles =
+    //        {
+    //    pc + "\\SQLEXPRESS",
+    //    pc + "\\MSSQLSERVER",
+    //    pc + "\\SQL2019",
+    //    pc + "\\SQL2022",
+    //    "(localdb)\\MSSQLLocalDB",
+    //    ".\\SQLEXPRESS",
+    //    ".\\MSSQLSERVER"
+    //};
 
-            string[] posibles =
-            {
-        pc + "\\SQLEXPRESS",
-        pc + "\\MSSQLSERVER",
-        pc + "\\SQL2019",
-        pc + "\\SQL2022",
-        "(localdb)\\MSSQLLocalDB",
-        ".\\SQLEXPRESS",
-        ".\\MSSQLSERVER"
-    };
+    //        foreach (string instancia in posibles)
+    //        {
+    //            try
+    //            {
+    //                using (var cn = new SqlConnection(@"Data Source=" + instancia + ";Integrated Security=True;"))
+    //                {
+    //                    cn.Open();
+    //                    return instancia;
+    //                }
+    //            }
+    //            catch { }
+    //        }
 
-            foreach (string instancia in posibles)
-            {
-                try
-                {
-                    using (var cn = new SqlConnection(@"Data Source=" + instancia + ";Integrated Security=True;"))
-                    {
-                        cn.Open();
-                        return instancia;
-                    }
-                }
-                catch { }
-            }
-
-            return "(localdb)\\MSSQLLocalDB"; // fallback seguro
-        }
+    //        return "(localdb)\\MSSQLLocalDB"; // fallback seguro
+    //    }
 
 
     }

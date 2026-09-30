@@ -216,7 +216,7 @@ namespace Agraria.UserControls
                 {
                     if (!row.IsNewRow)
                     {
-                        
+
                         filas += "<tr>";
                         filas += $"<td>{_nombrePagina}</td>";
                         filas += $"<td>{row.Cells["NumeroAnimal"].Value ?? "-"}</td>";
@@ -505,6 +505,11 @@ namespace Agraria.UserControls
         }
 
         private void dtgRegistrosProduccion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cmbLitroLecheEnviado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
