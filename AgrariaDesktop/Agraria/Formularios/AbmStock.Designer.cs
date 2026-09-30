@@ -375,6 +375,7 @@
             dtpFechaBaja.Name = "dtpFechaBaja";
             dtpFechaBaja.Size = new Size(200, 29);
             dtpFechaBaja.TabIndex = 6;
+            dtpFechaBaja.ValueChanged += dtpFechaBaja_ValueChanged;
             // 
             // label11
             // 
@@ -520,6 +521,7 @@
             MinimizeBox = false;
             Name = "AbmStock";
             Text = "Stock";
+            Load += AbmStock_Load;
             ((System.ComponentModel.ISupportInitialize)numPrecio).EndInit();
             ResumeLayout(false);
             PerformLayout();

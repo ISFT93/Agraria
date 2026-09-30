@@ -211,6 +211,7 @@
             dtgvListarVegetales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListarVegetales.Size = new Size(719, 263);
             dtgvListarVegetales.TabIndex = 0;
+            dtgvListarVegetales.CellFormatting += dtgvListarVegetales_CellFormatting;
             // 
             // ListarVegetales
             // 

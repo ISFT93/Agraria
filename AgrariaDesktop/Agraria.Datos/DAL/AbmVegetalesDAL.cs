@@ -124,8 +124,8 @@ namespace Agraria.Datos.DAL
                 using (SqlCommand cmd = new SqlCommand("sp_select_ultimo_id_vegetal", ConexionBD.ConexionSQL))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    long minId = Convert.ToInt64(baseUsuario.ToString() + "1000000");
-                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "2000000");
+                    long minId = Convert.ToInt64(baseUsuario.ToString() + "10000");
+                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "20000");
                     cmd.Parameters.AddWithValue("@min", minId);
                     cmd.Parameters.AddWithValue("@max", maxId);
 

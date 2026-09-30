@@ -751,6 +751,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "AbmUsuario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "AbmUsuario";
             panel2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);

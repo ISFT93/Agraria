@@ -106,18 +106,34 @@ BEGIN
 END;
 GO
 
-IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[proveedores]') AND type in (N'U'))
+
+
+IF EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[proveedores]') AND type in (N'U'))
+
 BEGIN
-    CREATE TABLE proveedores (
-        id_proveedores BIGINT PRIMARY KEY,
-        nombre VARCHAR(150),
-        cuil VARCHAR(20),
-        telefono VARCHAR(30),
-        direccion VARCHAR(100),
-        mail VARCHAR(100)
-    );
-END;
+ALTER TABLE Alimento DROP CONSTRAINT FK_AlimentoIdProv_2645B050;
+drop table Proveedores
+end
+
+SET QUOTED_IDENTIFIER ON
 GO
+CREATE TABLE [dbo].[proveedores](
+	[id_proveedor] [bigint] IDENTITY(1,1) NOT NULL,
+	[nombre] [varchar](150) NULL,
+	[cuil] [varchar](20) NULL,
+	[telefono] [varchar](30) NULL,
+	[direccion] [varchar](100) NULL,
+	[mail] [varchar](100) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_proveedor] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+
+
 
 /* Realizado por Noelia */
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[marca]') AND type in (N'U'))
@@ -141,11 +157,12 @@ GO
 IF NOT EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[articulos]') AND type in (N'U'))
 BEGIN
     CREATE TABLE articulos (
-        id_articulo BIGINT IDENTITY(1,1) PRIMARY KEY,
+        id_articulo BIGINT  PRIMARY KEY,
         nombre VARCHAR(150),
         id_marca INT,
         fecha_alta DATE,
         id_categoria INT, 
+        minimo_stock FLOAT NULL, 
         CONSTRAINT fk_articulos_marca FOREIGN KEY (id_marca) REFERENCES marca(id_marca),
         CONSTRAINT fk_articulos_categoria FOREIGN KEY (id_categoria) REFERENCES categoria(id_categoria)
     );

@@ -21,7 +21,7 @@ BEGIN
         activo BIT DEFAULT 1, 
         vendible BIT DEFAULT 0,
         motivo_movimiento VARCHAR(100) NULL,
-        CONSTRAINT fk_stock_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedoress(id_proveedores)
+        CONSTRAINT fk_stock_proveedor FOREIGN KEY (id_proveedor) REFERENCES proveedores(id_proveedor)
     );
 END
 ELSE
@@ -135,8 +135,8 @@ BEGIN
         s.vendible,
         s.motivo_movimiento
     FROM stock s
-    LEFT JOIN proveedoress p 
-        ON s.id_proveedor = p.id_proveedores
+    LEFT JOIN proveedores p 
+        ON s.id_proveedor = p.id_proveedor
     WHERE (@tipo_elemento = '' OR s.tipo_elemento = @tipo_elemento)
       AND (@nro_animal = '' OR s.nro_animal LIKE '%' + @nro_animal + '%');
 END;
@@ -188,29 +188,29 @@ GO
 CREATE OR ALTER PROCEDURE sp_select_proveedores
 AS
 BEGIN
-    SELECT id_proveedores, nombre FROM proveedoress ORDER BY nombre ASC;
+    SELECT id_proveedor, nombre FROM proveedores ORDER BY nombre ASC;
 END;
 GO
 ---------------------------cargamos unos proveedores para probar el circuito.
 
 -- Se inserta el proveedor 1 solo si no existe
-IF NOT EXISTS (SELECT 1 FROM [dbo].[proveedoress] WHERE id_proveedores = 1)
+IF NOT EXISTS (SELECT 1 FROM [dbo].[proveedores] WHERE id_proveedor = 1)
 BEGIN
-    INSERT INTO [dbo].[proveedoress] ([id_proveedores], [nombre], [cuil], [telefono], [direccion], [mail])
-    VALUES (1, 'Agroinsumos Pampeanos S.A.', '30-12345678-9', '011-5555-1010', 'Ruta 5 Km 100, Mercedes, BA', 'ventas@agropampeanos.com.ar');
+    INSERT INTO [dbo].[proveedores] ([nombre], [cuil], [telefono], [direccion], [mail])
+    VALUES ( 'Agroinsumos Pampeanos S.A.', '30-12345678-9', '011-5555-1010', 'Ruta 5 Km 100, Mercedes, BA', 'ventas@agropampeanos.com.ar');
 END;
 
 -- Se inserta el proveedor 2 solo si no existe
-IF NOT EXISTS (SELECT 1 FROM [dbo].[proveedoress] WHERE id_proveedores = 2)
+IF NOT EXISTS (SELECT 1 FROM [dbo].[proveedores] WHERE id_proveedor = 2)
 BEGIN
-    INSERT INTO [dbo].[proveedoress] ([id_proveedores], [nombre], [cuil], [telefono], [direccion], [mail])
-    VALUES (2, 'Semillas y Forrajes Del Sur SRL', '30-87654321-1', '0223-456-7890', 'Av. Circunvalación 1200, Tandil, BA', 'contacto@semillasdelsur.com.ar');
+    INSERT INTO [dbo].[proveedores] ( [nombre], [cuil], [telefono], [direccion], [mail])
+    VALUES ( 'Semillas y Forrajes Del Sur SRL', '30-87654321-1', '0223-456-7890', 'Av. Circunvalación 1200, Tandil, BA', 'contacto@semillasdelsur.com.ar');
 END;
 
 -- Se inserta el proveedor 3 solo si no existe
-IF NOT EXISTS (SELECT 1 FROM [dbo].[proveedoress] WHERE id_proveedores = 3)
+IF NOT EXISTS (SELECT 1 FROM [dbo].[proveedores] WHERE id_proveedor = 3)
 BEGIN
-    INSERT INTO [dbo].[proveedoress] ([id_proveedores], [nombre], [cuil], [telefono], [direccion], [mail])
-    VALUES (3, 'Veterinaria El Estribo', '27-11223344-5', '0221-333-4444', 'Calle 44 Nro 1500, La Plata, BA', 'info@vet-elestribo.com.ar');
+    INSERT INTO [dbo].[proveedores] ( [nombre], [cuil], [telefono], [direccion], [mail])
+    VALUES ( 'Veterinaria El Estribo', '27-11223344-5', '0221-333-4444', 'Calle 44 Nro 1500, La Plata, BA', 'info@vet-elestribo.com.ar');
 END;
 GO

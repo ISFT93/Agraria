@@ -368,6 +368,7 @@
             MinimizeBox = false;
             Name = "AbmVegetales";
             Text = "AbmVegetales";
+            Load += AbmVegetales_Load;
             ResumeLayout(false);
             PerformLayout();
         }

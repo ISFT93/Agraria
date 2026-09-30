@@ -235,5 +235,29 @@ namespace Agraria.Formularios
                 MessageBox.Show("Error al generar reporte: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void dtgvListarStock_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificamos que estemos en la columna "ciclo" y que el valor no sea nulo
+            if (dtgvListarStock.Columns[e.ColumnIndex].Name == "ciclo" && e.Value != null)
+            {
+                // Intentamos convertir el valor de la celda a número entero
+                if (int.TryParse(e.Value.ToString(), out int cicloGuardado))
+                {
+                    List<string> periodos = new List<string>();
+
+                    // Aplicamos la misma lógica (operador &) para decodificar las estaciones elegidas
+                    if ((cicloGuardado & 2) == 2) periodos.Add("Verano");    //[cite: 3]
+                    if ((cicloGuardado & 4) == 4) periodos.Add("Otoño");     //[cite: 3]
+                    if ((cicloGuardado & 8) == 8) periodos.Add("Invierno");  //[cite: 3]
+                    if ((cicloGuardado & 16) == 16) periodos.Add("Primavera");//[cite: 3]
+
+                    // Reemplazamos el número visualmente por las estaciones separadas por coma
+                    e.Value = periodos.Count > 0 ? string.Join(", ", periodos) : "Ninguno";
+
+                    // Le indicamos a la grilla que el formato ya fue aplicado
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

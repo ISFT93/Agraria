@@ -38,8 +38,7 @@ namespace Agraria.Formularios
 
             txtCodigoStock.Enabled = false;
             txtCodigoBloque.Enabled = false;
-            dtpFechaBaja.Format = DateTimePickerFormat.Custom;
-            dtpFechaBaja.CustomFormat = " ";
+
             CargarCombosEstaticos();
         }
 
@@ -60,7 +59,7 @@ namespace Agraria.Formularios
             if (idStockEditar == null && cmbTipoElemento.SelectedIndex != -1)
             {
                 txtCodigoBloque.Text = bll.GenerarIdElementoSeguro(cmbTipoElemento.Text, _usuarioActual.Id).ToString();
-             
+
             }
         }
 
@@ -117,7 +116,7 @@ namespace Agraria.Formularios
                 long? idProveedor = cmbProveedor.SelectedValue != null ? (long?)Convert.ToInt64(cmbProveedor.SelectedValue) : null;
 
                 // 2. Modificamos la llamada a Guardar reemplazando el 'null' por 'idProveedor'
-                bll.Guardar(idStockFinal,idElemento,tipoElemento,nombre,ciclo,fechaAlta,fechaBaja,cantidad,nroAnimal,estadoSalud,esProductor,precio,idProveedor,activo,vendible,motivoMovimiento,esModificacion);
+                bll.Guardar(idStockFinal, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo, vendible, motivoMovimiento, esModificacion);
                 MessageBox.Show("Stock guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -208,8 +207,19 @@ namespace Agraria.Formularios
             DataTable dtProveedores = bll.CargarProveedores();
             cmbProveedor.DataSource = dtProveedores;
             cmbProveedor.DisplayMember = "nombre";
-            cmbProveedor.ValueMember = "id_proveedores";
+            cmbProveedor.ValueMember = "id_proveedor";
             cmbProveedor.SelectedIndex = -1;
+        }
+
+        private void AbmStock_Load(object sender, EventArgs e)
+        {
+            dtpFechaBaja.Format = DateTimePickerFormat.Custom; 
+            dtpFechaBaja.CustomFormat = " ";
+        }
+
+        private void dtpFechaBaja_ValueChanged(object sender, EventArgs e)
+        {
+            dtpFechaBaja.Format = DateTimePickerFormat.Short; //
         }
     }
 }

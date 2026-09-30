@@ -13,11 +13,11 @@ namespace Agraria.Negocio.BLL
         {
             string baseTipo = "0";
             if (tipoElemento == "Vegetal") baseTipo = "1";
-            else if (tipoElemento == "Animal") baseTipo = "2";
-            else if (tipoElemento == "Articulo") baseTipo = "3";
+            else if (tipoElemento == "Animal") baseTipo = "3";
+            else if (tipoElemento == "Articulo") baseTipo = "2";
 
-            long minId = Convert.ToInt64($"{idUsuario}{baseTipo}000000");
-            long maxId = Convert.ToInt64($"{idUsuario}{baseTipo}999999");
+            long minId = Convert.ToInt64($"{idUsuario}{baseTipo}0000");
+            long maxId = Convert.ToInt64($"{idUsuario}{baseTipo}9999");
 
             long ultimoIdEntero = dal.ObtenerUltimoIdElemento(tipoElemento, minId, maxId);
             long siguienteIncremental = 1;
@@ -37,7 +37,7 @@ namespace Agraria.Negocio.BLL
                 }
             }
 
-            string idConcatenado = $"{idUsuario}{baseTipo}{siguienteIncremental:D6}";
+            string idConcatenado = $"{idUsuario}{baseTipo}{siguienteIncremental:D4}";
             return Convert.ToInt64(idConcatenado);
         }
 

@@ -210,6 +210,7 @@
             dtgvListarStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListarStock.Size = new Size(719, 263);
             dtgvListarStock.TabIndex = 0;
+            dtgvListarStock.CellFormatting += dtgvListarStock_CellFormatting;
             // 
             // ListarStock
             // 

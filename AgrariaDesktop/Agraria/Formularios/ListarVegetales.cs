@@ -223,5 +223,29 @@ namespace Agraria.Formularios
         {
 
         }
+
+        private void dtgvListarVegetales_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Verificamos que estemos en la columna correcta y que la celda no esté vacía
+            if (dtgvListarVegetales.Columns[e.ColumnIndex].Name == "periodosiembra" && e.Value != null)
+            {
+                if (int.TryParse(e.Value.ToString(), out int periodoGuardado))
+                {
+                    List<string> periodos = new List<string>();
+
+                    // Aplicamos la misma lógica (operador &) para saber qué estaciones contiene el número
+                    if ((periodoGuardado & 2) == 2) periodos.Add("Verano");
+                    if ((periodoGuardado & 4) == 4) periodos.Add("Otoño");
+                    if ((periodoGuardado & 8) == 8) periodos.Add("Invierno");
+                    if ((periodoGuardado & 16) == 16) periodos.Add("Primavera");
+
+                    // Reemplazamos visualmente el número por las estaciones separadas por coma
+                    e.Value = periodos.Count > 0 ? string.Join(", ", periodos) : "Ninguno";
+
+                    // Le avisamos a la grilla que nosotros ya nos encargamos de formatear esta celda
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

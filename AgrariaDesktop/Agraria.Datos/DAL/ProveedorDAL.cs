@@ -17,7 +17,7 @@ namespace Agraria.Datos.DAL
             try
             {
                 ConexionBD.ConectarBD();
-                string sql = "SELECT IdProveedor, RazonSocial, Telefono, Email, Direccion FROM Proveedores ORDER BY RazonSocial";
+                string sql = "SELECT id_proveedor, nombre, Telefono, mail, Direccion FROM Proveedores ORDER BY nombre";
                 using (SqlCommand cmd = new SqlCommand(sql, ConexionBD.ConexionSQL))
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {
@@ -25,10 +25,10 @@ namespace Agraria.Datos.DAL
                     {
                         lista.Add(new Proveedor
                         {
-                            IdProveedor = Convert.ToInt32(dr["IdProveedor"]),
-                            RazonSocial = dr["RazonSocial"].ToString(),
+                            IdProveedor = Convert.ToInt32(dr["id_proveedor"]),
+                            RazonSocial = dr["nombre"].ToString(),
                             Telefono = dr["Telefono"].ToString(),
-                            Email = dr["Email"].ToString(),
+                            Email = dr["mail"].ToString(),
                             Direccion = dr["Direccion"].ToString()
                         });
                     }

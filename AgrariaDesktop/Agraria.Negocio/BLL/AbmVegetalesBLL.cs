@@ -63,7 +63,7 @@ namespace Agraria.Negocio.BLL
 
             // 2. CONCATENACIÓN EXACTA: [IdUsuario] + [1] + [Incremental de 6 dígitos con ceros a la izquierda]
             // Ejemplo: Usuario 3, primer registro -> "3" + "1" + "000001" = "3100001"
-            string idConcatenado = $"{idUsuario}1{siguienteIncremental:D6}";
+            string idConcatenado = $"{idUsuario}1{siguienteIncremental:D4}";
 
             // 3. Convertimos a long (BIGINT) para la Primary Key de SQL Server
             return Convert.ToInt64(idConcatenado);
