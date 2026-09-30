@@ -35,7 +35,7 @@
             lblcategoria = new Label();
             cmbcategoria = new ComboBox();
             label1 = new Label();
-            numStockMinimo = new NumericUpDown(); // Nuevo control NumericUpDown para stock mínimo / alerta
+            numStockMinimo = new NumericUpDown();
             txtcodigoArticulo = new TextBox();
             lblNumArticulo = new Label();
             rjBAceptar = new Button();
@@ -77,7 +77,7 @@
             // cbmMarca
             // 
             cbmMarca.BackColor = SystemColors.Window;
-            cbmMarca.DropDownStyle = ComboBoxStyle.DropDownList; // Bloqueado para que no se pueda escribir
+            cbmMarca.DropDownStyle = ComboBoxStyle.DropDownList;
             cbmMarca.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cbmMarca.ForeColor = SystemColors.WindowText;
             cbmMarca.FormattingEnabled = true;
@@ -100,7 +100,7 @@
             // cmbcategoria
             // 
             cmbcategoria.BackColor = SystemColors.Window;
-            cmbcategoria.DropDownStyle = ComboBoxStyle.DropDownList; // Bloqueado para que no se pueda escribir
+            cmbcategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbcategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbcategoria.ForeColor = SystemColors.WindowText;
             cmbcategoria.FormattingEnabled = true;
@@ -116,9 +116,9 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(22, 297);
             label1.Name = "label1";
-            label1.Size = new Size(275, 29);
+            label1.Size = new Size(177, 29);
             label1.TabIndex = 12;
-            label1.Text = "Stock Mínimo (Alerta)";
+            label1.Text = "Stock Mínimo ";
             // 
             // numStockMinimo
             // 
