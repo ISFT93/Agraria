@@ -7,14 +7,11 @@ namespace Agraria.Datos
 {
     public class ArticulosDAL
     {
-        // Ajustá esta cadena de conexión si es necesario
-        // private static string cadenaConexion = "Server=NOELIA_FLEITAS\\SQLEXPRESS;Database=Agraria;Trusted_Connection=True;";
-
         // 1. Listar Artículos con Filtros (Categoría y Nombre)
         public static DataTable ObtenerArticulosFiltrados(int? idCategoria, string nombre)
         {
             ConexionBD.ConectarBD();
-            string query = "SELECT a.id_articulo, a.nombre, m.nombre AS marca, a.fecha_alta, c.nombre AS categoria " +
+            string query = "SELECT a.id_articulo, a.nombre, m.nombre AS marca, a.stock_minimo, c.nombre AS categoria " +
                "FROM articulos a " +
                "LEFT JOIN marca m ON a.id_marca = m.id_marca " +
                "LEFT JOIN categoria c ON a.id_categoria = c.id_categoria " +
@@ -34,10 +31,10 @@ namespace Agraria.Datos
             }
         }
 
-        // 2. Obtener el próximo ID por usuario para el Código por Bloques (Base 20000 larga)
+        // Lógica de ID: ID Usuario adelante y base 20000 (Ej: Usuario 2 -> 220000 + cantidad)
         public static long ObtenerUltimoIdPorUsuario(long idUsuario)
         {
-            long baseUsuario = (idUsuario * 100000) + 20000; // Ej: Usuario 2 -> 220000
+            long baseUsuario = (idUsuario * 100000) + 20000;
             long cantRegistrosUsuario = 0;
 
             ConexionBD.ConectarBD();
@@ -58,7 +55,7 @@ namespace Agraria.Datos
         }
 
         // 3. Insertar Artículo
-        public static void Insertar(long id, string nombre, int idMarca, DateTime fechaAlta, int idCategoria)
+        public static void Insertar(long id, string nombre, int idMarca, float stockMinimo, int idCategoria)
         {
             ConexionBD.ConectarBD();
             using (SqlCommand cmd = new SqlCommand("sp_insert_articulo", ConexionBD.ConexionSQL))
@@ -67,14 +64,14 @@ namespace Agraria.Datos
                 cmd.Parameters.AddWithValue("@id_articulo", id);
                 cmd.Parameters.AddWithValue("@nombre", nombre);
                 cmd.Parameters.AddWithValue("@id_marca", idMarca);
-                cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
+                cmd.Parameters.AddWithValue("@stock_minimo", stockMinimo);
                 cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
                 cmd.ExecuteNonQuery();
             }
         }
 
         // 4. Modificar Artículo
-        public static void Modificar(long id, string nombre, int idMarca, DateTime fechaAlta, int idCategoria)
+        public static void Modificar(long id, string nombre, int idMarca, float stockMinimo, int idCategoria)
         {
             ConexionBD.ConectarBD();
             using (SqlCommand cmd = new SqlCommand("sp_update_articulo", ConexionBD.ConexionSQL))
@@ -83,7 +80,7 @@ namespace Agraria.Datos
                 cmd.Parameters.AddWithValue("@id_articulo", id);
                 cmd.Parameters.AddWithValue("@nombre", nombre);
                 cmd.Parameters.AddWithValue("@id_marca", idMarca);
-                cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
+                cmd.Parameters.AddWithValue("@stock_minimo", stockMinimo);
                 cmd.Parameters.AddWithValue("@id_categoria", idCategoria);
                 cmd.ExecuteNonQuery();
             }

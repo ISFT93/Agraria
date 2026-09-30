@@ -10,6 +10,9 @@
     <Compile Update="Formularios\AbmAnimales.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\AbmArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\AbmEntornoFormativo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -35,9 +38,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\ListaAnimales.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\AbmArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\ListaArticulos.cs">
