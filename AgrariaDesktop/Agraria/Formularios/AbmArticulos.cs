@@ -8,17 +8,30 @@ namespace Agraria.Formularios
     public partial class AbmArticulos : Form
     {
         private Agraria.BLL.ArticulosBLL articulosBLL = new Agraria.BLL.ArticulosBLL();
-        private object _usuarioActual; // Objeto de sesión del usuario logueado
-        public long? idArticuloActual = null; // Si es null es alta nueva, si tiene valor es modificación
+        private object _usuarioActual;
+        public long? idArticuloActual = null;
 
-        // Constructor que recibe el usuario logueado para respetar la lógica de bloques
+        // Constructor para ALTA NUEVA
         public AbmArticulos(object usuarioLogeado)
         {
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
-
+            idArticuloActual = null;
         }
 
+        // Constructor para MODIFICACIÓN
+        public AbmArticulos(object usuarioLogeado, long idArticulo, string nombre, string nombreMarca, float stockMinimo, string nombreCategoria)
+        {
+            InitializeComponent();
+            _usuarioActual = usuarioLogeado;
+            idArticuloActual = idArticulo;
+
+            txtcodigoArticulo.Text = idArticulo.ToString();
+            txtNombre.Text = nombre;
+            numStockMinimo.Value = (decimal)stockMinimo;
+
+            this.Tag = new { nombreMarca, nombreCategoria };
+        }
 
         private void rjBAceptar_Click(object sender, EventArgs e)
         {
@@ -45,23 +58,21 @@ namespace Agraria.Formularios
                 }
 
                 int idMarca = Convert.ToInt32(cbmMarca.SelectedValue);
-                DateTime fechaAlta = dypFechaAlta.Value.Date;
+                float stockMinimo = (float)numStockMinimo.Value;
                 int idCategoria = Convert.ToInt32(cmbcategoria.SelectedValue);
 
                 if (idArticuloActual == null)
                 {
                     long.TryParse(txtcodigoArticulo.Text, out long nuevoId);
-
-                    articulosBLL.Insertar(nuevoId, nombre, idMarca, fechaAlta, idCategoria);
+                    articulosBLL.Insertar(nuevoId, nombre, idMarca, stockMinimo, idCategoria);
                     MessageBox.Show("¡Artículo guardado con éxito con el ID: " + nuevoId + "!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    articulosBLL.Modificar(idArticuloActual.Value, nombre, idMarca, fechaAlta, idCategoria);
+                    articulosBLL.Modificar(idArticuloActual.Value, nombre, idMarca, stockMinimo, idCategoria);
                     MessageBox.Show("¡Artículo modificado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
-                // Notifica al formulario lista para refrescar la grilla
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -81,10 +92,19 @@ namespace Agraria.Formularios
         {
             try
             {
+                cbmMarca.DataSource = Agraria.Datos.ArticulosDAL.ObtenerMarcas();
+                cbmMarca.DisplayMember = "nombre";
+                cbmMarca.ValueMember = "id_marca";
+                cbmMarca.SelectedIndex = -1;
+
+                cmbcategoria.DataSource = Agraria.Datos.ArticulosDAL.ObtenerCategorias();
+                cmbcategoria.DisplayMember = "nombre";
+                cmbcategoria.ValueMember = "id_categoria";
+                cmbcategoria.SelectedIndex = -1;
+
                 if (idArticuloActual == null)
                 {
-                    // Extracción segura del ID del usuario (evita NullReferenceException si es null o no encuentra la propiedad)
-                    int idUsuarioActual = 1; // Valor por defecto de respaldo
+                    int idUsuarioActual = 1;
 
                     if (_usuarioActual != null)
                     {
@@ -103,37 +123,45 @@ namespace Agraria.Formularios
 
                     txtcodigoArticulo.Text = idSiguiente.ToString();
                     txtcodigoArticulo.ReadOnly = true;
-                    txtcodigoArticulo.BackColor = System.Drawing.Color.LightGray; // Bloqueado visualmente
+                    txtcodigoArticulo.BackColor = System.Drawing.Color.LightGray;
+                    numStockMinimo.Value = 0;
                 }
                 else
                 {
                     txtcodigoArticulo.Text = idArticuloActual.Value.ToString();
                     txtcodigoArticulo.ReadOnly = true;
                     txtcodigoArticulo.BackColor = System.Drawing.Color.LightGray;
+
+                    if (this.Tag != null)
+                    {
+                        var valores = (dynamic)this.Tag;
+
+                        string marcaBuscada = valores.nombreMarca;
+                        if (!string.IsNullOrEmpty(marcaBuscada))
+                        {
+                            int indexMarca = cbmMarca.FindStringExact(marcaBuscada);
+                            if (indexMarca != -1) cbmMarca.SelectedIndex = indexMarca;
+                        }
+
+                        string categoriaBuscada = valores.nombreCategoria;
+                        if (!string.IsNullOrEmpty(categoriaBuscada))
+                        {
+                            int indexCat = cmbcategoria.FindStringExact(categoriaBuscada);
+                            if (indexCat != -1) cmbcategoria.SelectedIndex = indexCat;
+                        }
+                    }
                 }
-
-                // Cargar los ComboBox de Marcas y Categorías usando la BLL/DAL
-                cbmMarca.DataSource = Agraria.Datos.ArticulosDAL.ObtenerMarcas();
-                cbmMarca.DisplayMember = "nombre";
-                cbmMarca.ValueMember = "id_marca";
-                cbmMarca.SelectedIndex = -1;
-
-                cmbcategoria.DataSource = Agraria.Datos.ArticulosDAL.ObtenerCategorias();
-                cmbcategoria.DisplayMember = "nombre";
-                cmbcategoria.ValueMember = "id_categoria";
-                cmbcategoria.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al cargar los datos iniciales: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            txtNombre.Focus();
 
+            txtNombre.Focus();
         }
 
         private void txtcodigoArticulo_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

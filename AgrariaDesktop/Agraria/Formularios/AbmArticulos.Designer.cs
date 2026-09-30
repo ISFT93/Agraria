@@ -35,11 +35,12 @@
             lblcategoria = new Label();
             cmbcategoria = new ComboBox();
             label1 = new Label();
-            dypFechaAlta = new DateTimePicker();
+            numStockMinimo = new NumericUpDown(); // Nuevo control NumericUpDown para stock mínimo / alerta
             txtcodigoArticulo = new TextBox();
             lblNumArticulo = new Label();
             rjBAceptar = new Button();
             rjBCancelar = new Button();
+            ((System.ComponentModel.ISupportInitialize)numStockMinimo).BeginInit();
             SuspendLayout();
             // 
             // lblNombre
@@ -76,6 +77,7 @@
             // cbmMarca
             // 
             cbmMarca.BackColor = SystemColors.Window;
+            cbmMarca.DropDownStyle = ComboBoxStyle.DropDownList; // Bloqueado para que no se pueda escribir
             cbmMarca.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cbmMarca.ForeColor = SystemColors.WindowText;
             cbmMarca.FormattingEnabled = true;
@@ -98,6 +100,7 @@
             // cmbcategoria
             // 
             cmbcategoria.BackColor = SystemColors.Window;
+            cmbcategoria.DropDownStyle = ComboBoxStyle.DropDownList; // Bloqueado para que no se pueda escribir
             cmbcategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbcategoria.ForeColor = SystemColors.WindowText;
             cmbcategoria.FormattingEnabled = true;
@@ -113,19 +116,18 @@
             label1.ForeColor = Color.White;
             label1.Location = new Point(22, 297);
             label1.Name = "label1";
-            label1.Size = new Size(173, 29);
+            label1.Size = new Size(275, 29);
             label1.TabIndex = 12;
-            label1.Text = "Fecha de Alta";
+            label1.Text = "Stock Mínimo (Alerta)";
             // 
-            // dypFechaAlta
+            // numStockMinimo
             // 
-            dypFechaAlta.CalendarFont = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dypFechaAlta.CustomFormat = "dd/MM/yyyy";
-            dypFechaAlta.Format = DateTimePickerFormat.Short;
-            dypFechaAlta.Location = new Point(28, 328);
-            dypFechaAlta.Name = "dypFechaAlta";
-            dypFechaAlta.Size = new Size(127, 27);
-            dypFechaAlta.TabIndex = 4;
+            numStockMinimo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            numStockMinimo.Location = new Point(28, 328);
+            numStockMinimo.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            numStockMinimo.Name = "numStockMinimo";
+            numStockMinimo.Size = new Size(150, 34);
+            numStockMinimo.TabIndex = 4;
             // 
             // txtcodigoArticulo
             // 
@@ -181,7 +183,7 @@
             Controls.Add(rjBAceptar);
             Controls.Add(txtcodigoArticulo);
             Controls.Add(lblNumArticulo);
-            Controls.Add(dypFechaAlta);
+            Controls.Add(numStockMinimo);
             Controls.Add(label1);
             Controls.Add(cmbcategoria);
             Controls.Add(lblcategoria);
@@ -196,6 +198,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Detalle de Artículo";
             Load += FormArticulosDetalle_Load_1;
+            ((System.ComponentModel.ISupportInitialize)numStockMinimo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -207,13 +210,10 @@
         private Label lblMarca;
         private ComboBox cbmMarca;
         private Label lblcategoria;
-       
-        private Label label4;
-        private TextBox textBox2;
         private Button rjBAceptar;
         private ComboBox cmbcategoria;
         private Label label1;
-        private DateTimePicker dypFechaAlta;
+        private NumericUpDown numStockMinimo; // Declarado como NumericUpDown
         private TextBox txtcodigoArticulo;
         private Label lblNumArticulo;
         private Button rjBCancelar;
