@@ -86,7 +86,7 @@ namespace Agraria.Formularios
                     string rubroVal = dt.Columns.Contains("rubro") ? row["rubro"].ToString() : "";
                     string subrubroVal = dt.Columns.Contains("subrubro") ? row["subrubro"].ToString() : "";
 
-                    DateTime fechaNacVal = dt.Columns.Contains("fecha_nacimiento") ? Convert.ToDateTime(row["fecha_nacimiento"]) : Convert.ToDateTime(row["fechanacimiento"]);
+                    string minimoStockVal = dt.Columns.Contains("sock_minimo") ? (row["sock_minimo"]).ToString() : "0";
 
                     listaAnimales.Add(new AnimalDTO
                     {
@@ -99,8 +99,7 @@ namespace Agraria.Formularios
                         TipoAnimal = tipoVal,
                         Rubro = rubroVal,
                         Subrubro = subrubroVal,
-                        FechaNacimiento = fechaNacVal,
-                        Sexo = row["sexo"].ToString()
+                        MinimoStock =float.Parse(minimoStockVal)
                     });
                 }
 
@@ -169,9 +168,6 @@ namespace Agraria.Formularios
                     case "subrubro":
                         return !string.IsNullOrEmpty(a.Subrubro) && a.Subrubro.ToLower().Contains(busqueda);
 
-                    case "sexo":
-                        return !string.IsNullOrEmpty(a.Sexo) && a.Sexo.ToLower().StartsWith(busqueda);
-
                     case "todos":
                     default:
                         return a.IdAnimal.ToString().Contains(busqueda) ||
@@ -179,8 +175,7 @@ namespace Agraria.Formularios
                                (!string.IsNullOrEmpty(a.NombreCientifico) && a.NombreCientifico.ToLower().Contains(busqueda)) ||
                                (!string.IsNullOrEmpty(a.TipoAnimal) && a.TipoAnimal.ToLower().Contains(busqueda)) ||
                                (!string.IsNullOrEmpty(a.Rubro) && a.Rubro.ToLower().Contains(busqueda)) ||
-                               (!string.IsNullOrEmpty(a.Subrubro) && a.Subrubro.ToLower().Contains(busqueda)) ||
-                               (!string.IsNullOrEmpty(a.Sexo) && a.Sexo.ToLower().Contains(busqueda));
+                               (!string.IsNullOrEmpty(a.Subrubro) && a.Subrubro.ToLower().Contains(busqueda));
                 }
             }).ToList();
 
@@ -204,8 +199,8 @@ namespace Agraria.Formularios
             if (DtgAnimal.Columns["TipoAnimal"] != null) DtgAnimal.Columns["TipoAnimal"].HeaderText = "Tipo de Animal";
             if (DtgAnimal.Columns["Rubro"] != null) DtgAnimal.Columns["Rubro"].HeaderText = "Rubro";
             if (DtgAnimal.Columns["Subrubro"] != null) DtgAnimal.Columns["Subrubro"].HeaderText = "Subrubro";
-            if (DtgAnimal.Columns["FechaNacimiento"] != null) DtgAnimal.Columns["FechaNacimiento"].HeaderText = "Fecha Nacimiento";
-            if (DtgAnimal.Columns["Sexo"] != null) DtgAnimal.Columns["Sexo"].HeaderText = "Sexo";
+            if (DtgAnimal.Columns["StockMinimo"] != null) DtgAnimal.Columns["StockMinimo"].HeaderText = "Stock Mínimo";
+
         }
 
         private void DtgAnimal_CellContentClick(object sender, DataGridViewCellEventArgs e)

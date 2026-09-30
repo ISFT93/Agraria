@@ -14,7 +14,6 @@ namespace Agraria.Datos.Entidades
         public int IdTipo { get; set; }
         public int IdRubro { get; set; }
         public int IdSubrubro { get; set; }
-        public DateTime FechaNacimiento { get; set; }
-        public string Sexo { get; set; }
+        public float MinimoStock { get; set; }
     }
 }

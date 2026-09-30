@@ -45,16 +45,13 @@ namespace Agraria.Formularios
 
                 txtNombreComun.Text = animalEdicion.NombreComun;
                 txtNombreCientifico.Text = animalEdicion.NombreCientifico;
-                dtpFechaNacimiento.Value = animalEdicion.FechaNacimiento;
+                txtStock.Text = animalEdicion.MinimoStock.ToString();
 
                 if (animalEdicion.IdTipo > 0) CbTipoAnimal.SelectedValue = animalEdicion.IdTipo;
                 if (animalEdicion.IdRubro > 0) CbRubro.SelectedValue = animalEdicion.IdRubro;
                 if (animalEdicion.IdSubrubro > 0) CbSubrubro.SelectedValue = animalEdicion.IdSubrubro;
 
-                if (!string.IsNullOrEmpty(animalEdicion.Sexo))
-                {
-                    CbSexo.SelectedItem = animalEdicion.Sexo.ToLower();
-                }
+
             }
             else
             {
@@ -73,8 +70,7 @@ namespace Agraria.Formularios
                 CbTipoAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbSubrubro.DropDownStyle = ComboBoxStyle.DropDownList;
-                CbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
-
+                
                 // Carga de clasificadores desde la DAL
                 CbTipoAnimal.DataSource = AbmanimalDAL.ObtenerTabla("Tipo_animal");
                 CbTipoAnimal.DisplayMember = "Nombre";
@@ -88,11 +84,6 @@ namespace Agraria.Formularios
                 CbSubrubro.DisplayMember = "Nombre";
                 CbSubrubro.ValueMember = "Id_subrubro";
 
-                // Carga de ítems fijos para 'sexo'
-                CbSexo.DataSource = null;
-                CbSexo.Items.Clear();
-                CbSexo.Items.Add("Hembra");
-                CbSexo.Items.Add("Macho");
             }
             catch (Exception ex)
             {
@@ -112,12 +103,6 @@ namespace Agraria.Formularios
                     return;
                 }
 
-                if (CbSexo.SelectedItem == null)
-                {
-                    MessageBox.Show("Debe seleccionar el sexo del animal.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    CbSexo.Focus();
-                    return;
-                }
 
                 // Determina si es modificación o alta por bloque
                 bool esModificacion = (animalEdicion != null);
@@ -132,8 +117,7 @@ namespace Agraria.Formularios
                     IdTipo = Convert.ToInt32(CbTipoAnimal.SelectedValue),
                     IdRubro = Convert.ToInt32(CbRubro.SelectedValue),
                     IdSubrubro = Convert.ToInt32(CbSubrubro.SelectedValue),
-                    FechaNacimiento = dtpFechaNacimiento.Value.Date,
-                    Sexo = CbSexo.SelectedItem.ToString()
+                    MinimoStock = float.Parse(txtStock.Text)
                 };
 
                 // 4. Guardado directo

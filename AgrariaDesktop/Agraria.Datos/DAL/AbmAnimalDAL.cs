@@ -23,8 +23,7 @@ namespace Agraria.Datos.DAL
                     cmd.Parameters.AddWithValue("@id_tipo", animal.IdTipo);
                     cmd.Parameters.AddWithValue("@id_rubro", animal.IdRubro);
                     cmd.Parameters.AddWithValue("@id_subrubro", animal.IdSubrubro);
-                    cmd.Parameters.AddWithValue("@fecha_nacimiento", animal.FechaNacimiento);
-                    cmd.Parameters.AddWithValue("@sexo", animal.Sexo);
+                    cmd.Parameters.AddWithValue("@stock_minimo", animal.MinimoStock);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }
@@ -51,8 +50,7 @@ namespace Agraria.Datos.DAL
                     cmd.Parameters.AddWithValue("@id_tipo", animal.IdTipo);
                     cmd.Parameters.AddWithValue("@id_rubro", animal.IdRubro);
                     cmd.Parameters.AddWithValue("@id_subrubro", animal.IdSubrubro);
-                    cmd.Parameters.AddWithValue("@fecha_nacimiento", animal.FechaNacimiento);
-                    cmd.Parameters.AddWithValue("@sexo", animal.Sexo);
+                    cmd.Parameters.AddWithValue("@stock_minimo", animal.MinimoStock);
 
                     return cmd.ExecuteNonQuery() > 0;
                 }

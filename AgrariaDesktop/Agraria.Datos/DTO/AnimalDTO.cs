@@ -16,8 +16,6 @@ namespace Agraria.Datos.DTO
         public string TipoAnimal { get; set; }
         public string Rubro { get; set; }
         public string Subrubro { get; set; }
-
-        public DateTime FechaNacimiento { get; set; }
-        public string Sexo { get; set; }
+        public float MinimoStock { get; set; }
     }
 }
