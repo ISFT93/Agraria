@@ -2,6 +2,60 @@
 use Agraria
 go
 
+IF NOT EXISTS (SELECT 1 FROM Partido)
+BEGIN
+
+INSERT INTO dbo.Partido (NombrePartido) VALUES ('Almirante Brown');
+INSERT INTO dbo.Partido (NombrePartido) VALUES ('San Vicente');
+END;
+GO
+
+/* =====================================================
+   INSERCIÓN DE LOCALIDADES - ALMIRANTE BROWN
+   ===================================================== */
+-- IdPartido = 1 (Almirante Brown)
+-- IdPartido = 2 (San Vicente)
+
+IF NOT EXISTS (SELECT 1 FROM Localidad)
+BEGIN
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Adrogué', 1846, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Burzaco', 1852, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Claypole', 1849, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Glew', 1856, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Longchamps', 1854, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Malvinas Argentinas (Brown)', 1847, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Ministro Rivadavia', 1854, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'San José', 1846, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Soledad', 1853, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Rafael Calzada', 1847, 1);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'San Vicente', 1865, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Alejandro Korn', 1864, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Domselaar', 1984, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Villa Coll', 1865, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Laguna del Ojo', 1865, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Estancia El Pino', 1865, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Paraje La Laurita', 1865, 2);
+INSERT INTO dbo.Localidad (NombreLocalidad, CodigoPostal, IdPartido) VALUES (N'Campo de Mayo Chico', 1865, 2);
+END;
+GO
+/* =====================================================
+   INSERCIÓN DE LOCALIDADES - SAN VICENTE
+   ===================================================== */
+-- IdPartido = 2 (San Vicente)
+
+IF NOT EXISTS (SELECT 1 FROM PreguntaSeguridad)
+BEGIN
+
+INSERT INTO PreguntaSeguridad (TextoPregunta)
+VALUES 
+('¿Nombre de tu primer Mascota?'),
+('¿Cual es tu libro favorito?'),
+('¿Nombre de tu mejor amigo de la infancia?'),
+('¿Ciudad donde naciste?'),
+('¿Nombre de tu escuela primaria?');
+END;
+GO
+
 IF NOT EXISTS (SELECT 1 FROM tipo_cultivo)
 BEGIN
     INSERT INTO tipo_cultivo (nombre) VALUES ('Hortícola'), ('Extensivo'), ('Frutícola'), ('Forrajero'), ('Pastura');
