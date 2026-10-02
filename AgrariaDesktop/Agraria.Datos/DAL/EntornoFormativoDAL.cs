@@ -63,7 +63,7 @@ namespace Agraria.Datos.DAL
             {
                 ConexionBD.ConectarBD();
 
-                string query = @"SELECT  t.Nombre AS TipoEntorno, 
+                string query = @"SELECT e.nombre, t.Nombre AS TipoEntorno, 
                                         e.Responsable, e.Observaciones
                                  FROM Entorno e
                                  INNER JOIN TipoEntorno t ON e.IdTipoEntorno = t.IdTipoEntorno";
@@ -76,7 +76,8 @@ namespace Agraria.Datos.DAL
                 {
                     lista.Add(new EntornoFormativoHoyDTO
                     {
-                        Nombre = reader["TipoEntorno"].ToString(),
+                        Nombre = reader["Nombre"].ToString(),
+                        TipoEntorno = reader["TipoEntorno"].ToString(),
                         Responsable = reader["Responsable"].ToString(),
                         Observaciones = reader["Observaciones"].ToString()
                     });

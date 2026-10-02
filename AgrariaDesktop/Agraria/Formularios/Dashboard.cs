@@ -46,7 +46,7 @@ namespace Agraria.Formularios
             serie.IsValueShownAsLabel = true; // muestra valor o etiqueta según Label
             serie.Label = "#VALX: #PERCENT{P0}"; // Nombre: cantidad (porc.)
             //serie.Legend = "Entornos";
-            var agrupado = entornosHoy.GroupBy(e => e.Nombre ?? "(Sin nombre)")
+            var agrupado = entornosHoy.GroupBy(e => e.TipoEntorno ?? "(Sin nombre)")
                 .Select(g => new { Nombre = g.Key, Cantidad = g.Count() })
                 .OrderByDescending(x => x.Cantidad)
                 .ToList();
@@ -59,6 +59,16 @@ namespace Agraria.Formularios
 
             chart1.Series.Add(serie);
             chart1.ChartAreas[0].Area3DStyle.Enable3D = false;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

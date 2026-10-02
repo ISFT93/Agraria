@@ -9,9 +9,10 @@ namespace Agraria.Datos.DTO
 {
     public class EntornoFormativoHoyDTO
     {
-
         [DisplayName("Nombre")]
         public string Nombre { get; set; } // Nombre del tipo
+        [DisplayName("TipoEntorno")]
+        public string TipoEntorno { get; set; } // Nombre del tipo
         [DisplayName("Profesor Responsable")]
         public string Responsable { get; set; }
         public string Observaciones { get; set; }
