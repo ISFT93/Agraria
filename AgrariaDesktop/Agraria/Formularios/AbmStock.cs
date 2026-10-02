@@ -1,4 +1,5 @@
-﻿using Agraria.Datos.DTO;
+﻿using Agraria.BLL;
+using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
 using System;
 using System.Data;
@@ -9,6 +10,9 @@ namespace Agraria.Formularios
     public partial class AbmStock : Form
     {
         private AbmStockBLL bll = new AbmStockBLL();
+        private AbmAnimalBLL animalBLL = new AbmAnimalBLL();
+        private AbmVegetalesBLL vegetalBLL = new AbmVegetalesBLL();
+        private ArticulosBLL articuloBLL = new ArticulosBLL();
         private long? idStockEditar = null;
         private UsuarioLoginDTO _usuarioActual;
 
@@ -61,6 +65,9 @@ namespace Agraria.Formularios
                 txtCodigoBloque.Text = bll.GenerarIdElementoSeguro(cmbTipoElemento.Text, _usuarioActual.Id).ToString();
 
             }
+
+            CargarDatos();
+
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -211,9 +218,39 @@ namespace Agraria.Formularios
             cmbProveedor.SelectedIndex = -1;
         }
 
+        private void CargarDatos()
+        {
+            cmbDatos.Items.Clear();
+            if (cmbTipoElemento.Text == "Animal")
+            {
+                DataTable dtAnimales = animalBLL.MostrarAnimales();
+                cmbDatos.DataSource = dtAnimales;
+                cmbDatos.DisplayMember = "nombrecomun";
+                cmbDatos.ValueMember = "idanimal";
+                cmbDatos.SelectedIndex = -1;
+            }
+            else if (cmbTipoElemento.Text == "Vegetal")
+            {
+                DataTable dtAnimales = vegetalBLL.CargarCombo("vegetal");
+                cmbDatos.DataSource = dtAnimales;
+                cmbDatos.DisplayMember = "nombre_comun";
+                cmbDatos.ValueMember = "id_vegetal";
+                cmbDatos.SelectedIndex = -1;
+            }
+            else if (cmbTipoElemento.Text == "Articulo")
+            {
+                DataTable dtAnimales = articuloBLL.ObtenerArticulos();
+                cmbDatos.DataSource = dtAnimales;
+                cmbDatos.DisplayMember = "nombre";
+                cmbDatos.ValueMember = "id_articulo";
+                cmbDatos.SelectedIndex = -1;
+
+            }
+        }
+
         private void AbmStock_Load(object sender, EventArgs e)
         {
-            dtpFechaBaja.Format = DateTimePickerFormat.Custom; 
+            dtpFechaBaja.Format = DateTimePickerFormat.Custom;
             dtpFechaBaja.CustomFormat = " ";
         }
 
@@ -221,5 +258,52 @@ namespace Agraria.Formularios
         {
             dtpFechaBaja.Format = DateTimePickerFormat.Short; //
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void cmbDatos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Solo copiar el id al txtCodigoStock si estamos creando (no en modo edición)
+            if (idStockEditar != null) return;
+
+            try
+            {
+                // Si no hay selección o DataSource, limpiamos
+                if (cmbDatos.SelectedIndex == -1 || cmbDatos.SelectedValue == null)
+                {
+                    txtCodigoStock.Clear();
+                    return;
+                }
+
+                // Cuando el combo está ligado a un DataTable, SelectedValue suele ser el valor del ValueMember.
+                // En algunos casos SelectedValue puede ser un DataRowView; lo manejamos.
+                if (cmbDatos.SelectedValue is DataRowView drv)
+                {
+                    var valueMember = cmbDatos.ValueMember;
+                    if (!string.IsNullOrEmpty(valueMember) && drv.Row.Table.Columns.Contains(valueMember))
+                    {
+                        txtCodigoStock.Text = drv.Row[valueMember]?.ToString();
+                    }
+                    else
+                    {
+                        txtCodigoStock.Clear();
+                    }
+                }
+                else
+                {
+                    txtCodigoStock.Text = cmbDatos.SelectedValue.ToString();
+                }
+            }
+            catch
+            {
+                // Si ocurre cualquier error, no romper la UI; opcionalmente loggear aquí.
+                txtCodigoStock.Clear();
+            }
+        }
     }
+    
 }
