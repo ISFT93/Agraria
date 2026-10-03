@@ -408,6 +408,7 @@
             Controls.Add(groupBox2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Pañol";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pañol";
             Load += Pañol_Load;
             groupBox2.ResumeLayout(false);

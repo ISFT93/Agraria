@@ -206,3 +206,56 @@ GO
 
 insert into marca (nombre) values ('Propia'), ('Otro'), ('Molinos');
 go
+
+
+---------------------------------Otras tablas restantes ---------------------------------------------------
+
+INSERT INTO TipoEntorno (Nombre)
+VALUES ('Animal'), ('Vegetal'), ('Industria'), ('Compras') , ('Pañol');
+GO
+
+INSERT INTO TipoMedida (Nombre)
+VALUES ('Kilo'), ('Unidad'), ('Litro');
+GO
+
+
+INSERT INTO Productos (idProducto,Nombre, Descripcion,PrecioUnitario)
+VALUES
+(1,'Pollo al escabeche', 'Se cocina el pollo en agua con sal, luego se fríe y se marina con vinagre, laurel, ajo, pimienta y zanahoria.', 4000),
+(2,'Empanadas de pollo', 'Pollo desmenuzado con cebolla y morrón. Se rellena la masa y se hornea.', 3000),
+(3,'Pollo parrillero', 'Pollo condimentado con salmuera o adobo y cocinado a la parrilla.', 2000),
+(4,'Miel', 'Preparación de miel con frascos de 1kg o ½ kg según el producto.', 2400);
+GO
+
+INSERT INTO Box (Nombre)
+VALUES ('Box1'), ('Box2'), ('Box3');
+GO
+
+
+INSERT INTO Alimento (Nombre, Cantidad, IdTipoMedida, Precio, FechaIngreso, IdTipoEntorno, IdProveedor, Estado)
+VALUES 
+('Maíz molido', 1000, 2, 350.00, GETDATE(), 2, 1, 1),
+('Balanceado Engorde', 800, 2, 420.00, GETDATE(), 2, 1, 1),
+('Soja Pelletizada', 600, 2, 480.00, GETDATE(), 2, 1, 1),
+('Avena', 500, 2, 300.00, GETDATE(), 2, 1, 1);
+GO
+
+
+INSERT INTO BoxCarne (Nombre)
+VALUES 
+('Box 1'),
+('Box 2'),
+('Box 3');
+GO
+
+
+INSERT INTO Box (Nombre)
+VALUES ('Box1'), ('Box2'), ('Box3');
+GO
+
+INSERT INTO TipoAnimal (Nombre)
+VALUES ('Melliceros');
+GO
+
+
+

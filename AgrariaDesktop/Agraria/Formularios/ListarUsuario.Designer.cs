@@ -1,6 +1,6 @@
 ﻿namespace Agraria.Formularios
 {
-    partial class ListarStock
+    partial class ListarUsuario
     {
         /// <summary>
         /// Required designer variable.
@@ -38,16 +38,14 @@
             btnSalir = new Button();
             panel2 = new Panel();
             btnBuscar = new Button();
-            cmbFiltrarPor = new ComboBox();
-            label1 = new Label();
             laaa = new Label();
             txtBuscar = new TextBox();
             panel3 = new Panel();
-            dtgvListarStock = new DataGridView();
+            dtgvListarUsuarios = new DataGridView();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgvListarStock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvListarUsuarios).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -106,8 +104,6 @@
             // panel2
             // 
             panel2.Controls.Add(btnBuscar);
-            panel2.Controls.Add(cmbFiltrarPor);
-            panel2.Controls.Add(label1);
             panel2.Controls.Add(laaa);
             panel2.Controls.Add(txtBuscar);
             panel2.Dock = DockStyle.Top;
@@ -119,7 +115,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(756, 76);
+            btnBuscar.Location = new Point(756, 70);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 3;
@@ -127,35 +123,12 @@
             btnBuscar.UseVisualStyleBackColor = true;
             btnBuscar.Click += btnBuscar_Click;
             // 
-            // cmbFiltrarPor
-            // 
-            cmbFiltrarPor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbFiltrarPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(186, 23);
-            cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
-            cmbFiltrarPor.Name = "cmbFiltrarPor";
-            cmbFiltrarPor.Size = new Size(177, 32);
-            cmbFiltrarPor.TabIndex = 1;
-            cmbFiltrarPor.SelectedIndexChanged += cmbFiltrarPor_SelectedIndexChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(3, 26);
-            label1.Name = "label1";
-            label1.Size = new Size(177, 24);
-            label1.TabIndex = 17;
-            label1.Text = "Tipo de Elemento";
-            // 
             // laaa
             // 
             laaa.AutoSize = true;
             laaa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             laaa.ForeColor = Color.White;
-            laaa.Location = new Point(3, 63);
+            laaa.Location = new Point(5, 67);
             laaa.Name = "laaa";
             laaa.Size = new Size(85, 24);
             laaa.TabIndex = 16;
@@ -164,7 +137,7 @@
             // txtBuscar
             // 
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(93, 58);
+            txtBuscar.Location = new Point(109, 62);
             txtBuscar.Margin = new Padding(2);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
@@ -173,7 +146,7 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(dtgvListarStock);
+            panel3.Controls.Add(dtgvListarUsuarios);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(0, 114);
             panel3.Margin = new Padding(2);
@@ -181,21 +154,18 @@
             panel3.Size = new Size(719, 263);
             panel3.TabIndex = 2;
             // 
-            // dtgvListarStock
+            // dtgvListarUsuarios
             // 
-            dtgvListarStock.AllowUserToAddRows = false;
-            dtgvListarStock.AllowUserToResizeColumns = false;
-            dtgvListarStock.AllowUserToResizeRows = false;
-            dtgvListarStock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dtgvListarUsuarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
             dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dtgvListarStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dtgvListarStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvListarUsuarios.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dtgvListarUsuarios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
@@ -203,13 +173,13 @@
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgvListarStock.DefaultCellStyle = dataGridViewCellStyle2;
-            dtgvListarStock.Dock = DockStyle.Fill;
-            dtgvListarStock.EnableHeadersVisualStyles = false;
-            dtgvListarStock.Location = new Point(0, 0);
-            dtgvListarStock.Margin = new Padding(2);
-            dtgvListarStock.Name = "dtgvListarStock";
-            dtgvListarStock.ReadOnly = true;
+            dtgvListarUsuarios.DefaultCellStyle = dataGridViewCellStyle2;
+            dtgvListarUsuarios.Dock = DockStyle.Fill;
+            dtgvListarUsuarios.EnableHeadersVisualStyles = false;
+            dtgvListarUsuarios.Location = new Point(0, 0);
+            dtgvListarUsuarios.Margin = new Padding(2);
+            dtgvListarUsuarios.Name = "dtgvListarUsuarios";
+            dtgvListarUsuarios.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
             dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
@@ -217,14 +187,13 @@
             dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvListarStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dtgvListarStock.RowHeadersWidth = 62;
-            dtgvListarStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvListarStock.Size = new Size(719, 263);
-            dtgvListarStock.TabIndex = 0;
-            dtgvListarStock.CellFormatting += dtgvListarStock_CellFormatting;
+            dtgvListarUsuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dtgvListarUsuarios.RowHeadersWidth = 62;
+            dtgvListarUsuarios.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvListarUsuarios.Size = new Size(719, 263);
+            dtgvListarUsuarios.TabIndex = 0;
             // 
-            // ListarStock
+            // ListarUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -234,15 +203,15 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Margin = new Padding(2);
-            Name = "ListarStock";
+            Name = "ListarUsuario";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Lista de Stock";
-            Load += ListarStock_Load;
+            Text = "ListarUsuario";
+            Load += ListarUsuario_Load;
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgvListarStock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dtgvListarUsuarios).EndInit();
             ResumeLayout(false);
         }
 
@@ -251,11 +220,9 @@
         private Panel panel1;
         private Panel panel2;
         private Panel panel3;
-        private DataGridView dtgvListarStock;
+        private DataGridView dtgvListarUsuarios;
         private TextBox txtBuscar;
         private Label laaa;
-        private ComboBox cmbFiltrarPor;
-        private Label label1;
         private Button btnNuevo;
         private Button btnImprimir;
         private Button btnModificar;

@@ -28,7 +28,13 @@
     <Compile Update="Formularios\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Formularios\ListarEntornoFormativo.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\ListarStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\ListarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\ListarVegetales.cs">

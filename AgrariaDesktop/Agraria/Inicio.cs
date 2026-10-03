@@ -115,9 +115,8 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            var cargaForm = new Formularios.AbmUsuario(esInvitado);
+            var cargaForm = new Formularios.ListarUsuario(usuarioLogeado, esInvitado);
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
@@ -146,9 +145,8 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            var cargaForm = new Formularios.AbmEntornoFormativo(esInvitado);
+            var cargaForm = new Formularios.ListarEntornoFormativo(usuarioLogeado, esInvitado);
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
@@ -226,7 +224,6 @@ namespace Agraria
 
             var cargaForm = new Formularios.Industria(esInvitado);
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
@@ -239,7 +236,6 @@ namespace Agraria
 
             var cargaForm = new Formularios.Inventario(esInvitado);
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);
@@ -252,7 +248,6 @@ namespace Agraria
 
             var cargaForm = new Formularios.AbmAdministracion(esInvitado);
             cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
             cargaForm.Show();
 
             formulariosAbiertos.Add(cargaForm);

@@ -29,746 +29,546 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AbmUsuario));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             panel2 = new Panel();
-            groupBox3 = new GroupBox();
-            btnAgregarUsuario = new Tienda.RJButton();
-            btnModificarUsuario = new Tienda.RJButton();
-            groupBox1 = new GroupBox();
-            label1 = new Label();
-            txtBuscarApellido = new TextBox();
-            groupBox4 = new GroupBox();
-            btnDarDeAltaUsuario = new Tienda.RJButton();
-            btnDarDeBajaUsuario = new Tienda.RJButton();
-            groupBox2 = new GroupBox();
             txtRespuestaSeguridad = new TextBox();
+            btnCancelar = new Button();
             label14 = new Label();
+            btnAceptar = new Button();
             chkPañol = new CheckBox();
-            chkVenta = new CheckBox();
-            chkInventario = new CheckBox();
-            chkIndustria = new CheckBox();
-            cmbPreguntaSeguridad = new ComboBox();
-            label13 = new Label();
-            chkProduccionAnimal = new CheckBox();
-            chkProduccionVegetal = new CheckBox();
-            txtID = new TextBox();
-            lblID = new Label();
-            chkAdministracion = new CheckBox();
-            chkEntornoFormativo = new CheckBox();
-            chkAltaUsuario = new CheckBox();
-            btnLimpiar = new Tienda.RJButton();
-            txtEmail = new TextBox();
-            label12 = new Label();
-            cmbLocalidad = new ComboBox();
-            cmbPartido = new ComboBox();
-            label8 = new Label();
             txtNombre = new TextBox();
-            label5 = new Label();
-            txtContraseña = new TextBox();
-            label7 = new Label();
-            label10 = new Label();
-            label4 = new Label();
-            txtNombreUsuario = new TextBox();
-            label11 = new Label();
-            label3 = new Label();
-            label6 = new Label();
-            label2 = new Label();
-            txtTelefono = new TextBox();
-            lblApellido = new Label();
-            txtCodigoPostal = new TextBox();
-            txtDireccion = new TextBox();
-            txtApellido = new TextBox();
+            chkVenta = new CheckBox();
             txtDocumento = new TextBox();
-            dtgAbmUsuario = new DataGridView();
+            chkInventario = new CheckBox();
+            txtApellido = new TextBox();
+            chkIndustria = new CheckBox();
+            txtDireccion = new TextBox();
+            cmbPreguntaSeguridad = new ComboBox();
+            txtCodigoPostal = new TextBox();
+            label13 = new Label();
+            lblApellido = new Label();
+            chkProduccionAnimal = new CheckBox();
+            txtTelefono = new TextBox();
+            chkProduccionVegetal = new CheckBox();
+            label2 = new Label();
+            txtID = new TextBox();
+            label6 = new Label();
+            lblID = new Label();
+            label3 = new Label();
+            chkAdministracion = new CheckBox();
+            label11 = new Label();
+            chkEntornoFormativo = new CheckBox();
+            txtNombreUsuario = new TextBox();
+            chkAltaUsuario = new CheckBox();
+            label4 = new Label();
+            txtEmail = new TextBox();
+            label10 = new Label();
+            label12 = new Label();
+            label7 = new Label();
+            cmbLocalidad = new ComboBox();
+            txtContraseña = new TextBox();
+            cmbPartido = new ComboBox();
+            label5 = new Label();
+            label8 = new Label();
             errorProvider1 = new ErrorProvider(components);
-            panel3 = new Panel();
-            panel1 = new Panel();
             panel2.SuspendLayout();
-            groupBox3.SuspendLayout();
-            groupBox1.SuspendLayout();
-            groupBox4.SuspendLayout();
-            groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgAbmUsuario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
-            panel3.SuspendLayout();
-            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel2
             // 
-            panel2.Controls.Add(groupBox3);
-            panel2.Controls.Add(groupBox1);
-            panel2.Controls.Add(groupBox4);
-            panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 334);
+            panel2.Controls.Add(txtRespuestaSeguridad);
+            panel2.Controls.Add(btnCancelar);
+            panel2.Controls.Add(label14);
+            panel2.Controls.Add(btnAceptar);
+            panel2.Controls.Add(chkPañol);
+            panel2.Controls.Add(txtNombre);
+            panel2.Controls.Add(chkVenta);
+            panel2.Controls.Add(txtDocumento);
+            panel2.Controls.Add(chkInventario);
+            panel2.Controls.Add(txtApellido);
+            panel2.Controls.Add(chkIndustria);
+            panel2.Controls.Add(txtDireccion);
+            panel2.Controls.Add(cmbPreguntaSeguridad);
+            panel2.Controls.Add(txtCodigoPostal);
+            panel2.Controls.Add(label13);
+            panel2.Controls.Add(lblApellido);
+            panel2.Controls.Add(chkProduccionAnimal);
+            panel2.Controls.Add(txtTelefono);
+            panel2.Controls.Add(chkProduccionVegetal);
+            panel2.Controls.Add(label2);
+            panel2.Controls.Add(txtID);
+            panel2.Controls.Add(label6);
+            panel2.Controls.Add(lblID);
+            panel2.Controls.Add(label3);
+            panel2.Controls.Add(chkAdministracion);
+            panel2.Controls.Add(label11);
+            panel2.Controls.Add(chkEntornoFormativo);
+            panel2.Controls.Add(txtNombreUsuario);
+            panel2.Controls.Add(chkAltaUsuario);
+            panel2.Controls.Add(label4);
+            panel2.Controls.Add(txtEmail);
+            panel2.Controls.Add(label10);
+            panel2.Controls.Add(label12);
+            panel2.Controls.Add(label7);
+            panel2.Controls.Add(cmbLocalidad);
+            panel2.Controls.Add(txtContraseña);
+            panel2.Controls.Add(cmbPartido);
+            panel2.Controls.Add(label5);
+            panel2.Controls.Add(label8);
+            panel2.Dock = DockStyle.Fill;
+            panel2.Location = new Point(0, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(1000, 88);
+            panel2.Size = new Size(833, 513);
             panel2.TabIndex = 25;
-            // 
-            // groupBox3
-            // 
-            groupBox3.BackColor = Color.Transparent;
-            groupBox3.Controls.Add(btnAgregarUsuario);
-            groupBox3.Controls.Add(btnModificarUsuario);
-            groupBox3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(5, 10);
-            groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(332, 75);
-            groupBox3.TabIndex = 22;
-            groupBox3.TabStop = false;
-            groupBox3.Text = "Agregar o Modificar Usuario";
-            // 
-            // btnAgregarUsuario
-            // 
-            btnAgregarUsuario.BackColor = Color.White;
-            btnAgregarUsuario.FlatAppearance.BorderSize = 0;
-            btnAgregarUsuario.FlatStyle = FlatStyle.Flat;
-            btnAgregarUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnAgregarUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnAgregarUsuario.Image = (Image)resources.GetObject("btnAgregarUsuario.Image");
-            btnAgregarUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAgregarUsuario.Location = new Point(16, 28);
-            btnAgregarUsuario.Name = "btnAgregarUsuario";
-            btnAgregarUsuario.Size = new Size(150, 40);
-            btnAgregarUsuario.TabIndex = 5;
-            btnAgregarUsuario.Text = "Nuevo";
-            btnAgregarUsuario.UseVisualStyleBackColor = false;
-            btnAgregarUsuario.Click += btnNuevoUsuario_Click;
-            // 
-            // btnModificarUsuario
-            // 
-            btnModificarUsuario.BackColor = Color.White;
-            btnModificarUsuario.FlatAppearance.BorderSize = 0;
-            btnModificarUsuario.FlatStyle = FlatStyle.Flat;
-            btnModificarUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnModificarUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnModificarUsuario.Image = (Image)resources.GetObject("btnModificarUsuario.Image");
-            btnModificarUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnModificarUsuario.Location = new Point(172, 29);
-            btnModificarUsuario.Name = "btnModificarUsuario";
-            btnModificarUsuario.Size = new Size(150, 40);
-            btnModificarUsuario.TabIndex = 6;
-            btnModificarUsuario.Text = "Modificar";
-            btnModificarUsuario.UseVisualStyleBackColor = false;
-            btnModificarUsuario.Click += btnModificarUsuario_Click;
-            // 
-            // groupBox1
-            // 
-            groupBox1.BackColor = Color.FromArgb(141, 181, 146);
-            groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(txtBuscarApellido);
-            groupBox1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(699, 12);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(249, 73);
-            groupBox1.TabIndex = 21;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Buscar :";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(26, 28);
-            label1.Name = "label1";
-            label1.Size = new Size(93, 24);
-            label1.TabIndex = 21;
-            label1.Text = "Apellido:";
-            // 
-            // txtBuscarApellido
-            // 
-            txtBuscarApellido.Location = new Point(125, 28);
-            txtBuscarApellido.Name = "txtBuscarApellido";
-            txtBuscarApellido.Size = new Size(100, 29);
-            txtBuscarApellido.TabIndex = 11;
-            txtBuscarApellido.TextChanged += txtBuscarNombreDni_TextChanged;
-            txtBuscarApellido.KeyDown += CopiaryPegar_KeyDown;
-            txtBuscarApellido.KeyPress += Solotexto_KeyPress;
-            // 
-            // groupBox4
-            // 
-            groupBox4.BackColor = Color.Transparent;
-            groupBox4.Controls.Add(btnDarDeAltaUsuario);
-            groupBox4.Controls.Add(btnDarDeBajaUsuario);
-            groupBox4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox4.ForeColor = Color.White;
-            groupBox4.Location = new Point(343, 10);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(350, 75);
-            groupBox4.TabIndex = 23;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "Dar de Alta o Baja";
-            // 
-            // btnDarDeAltaUsuario
-            // 
-            btnDarDeAltaUsuario.BackColor = Color.White;
-            btnDarDeAltaUsuario.FlatAppearance.BorderSize = 0;
-            btnDarDeAltaUsuario.FlatStyle = FlatStyle.Flat;
-            btnDarDeAltaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnDarDeAltaUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnDarDeAltaUsuario.Image = (Image)resources.GetObject("btnDarDeAltaUsuario.Image");
-            btnDarDeAltaUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDarDeAltaUsuario.Location = new Point(21, 25);
-            btnDarDeAltaUsuario.Name = "btnDarDeAltaUsuario";
-            btnDarDeAltaUsuario.Size = new Size(150, 40);
-            btnDarDeAltaUsuario.TabIndex = 0;
-            btnDarDeAltaUsuario.Text = "Alta";
-            btnDarDeAltaUsuario.UseVisualStyleBackColor = false;
-            btnDarDeAltaUsuario.Click += btnAltaUsuario_Click;
-            // 
-            // btnDarDeBajaUsuario
-            // 
-            btnDarDeBajaUsuario.BackColor = Color.White;
-            btnDarDeBajaUsuario.FlatAppearance.BorderSize = 0;
-            btnDarDeBajaUsuario.FlatStyle = FlatStyle.Flat;
-            btnDarDeBajaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnDarDeBajaUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnDarDeBajaUsuario.Image = (Image)resources.GetObject("btnDarDeBajaUsuario.Image");
-            btnDarDeBajaUsuario.ImageAlign = ContentAlignment.MiddleLeft;
-            btnDarDeBajaUsuario.Location = new Point(189, 25);
-            btnDarDeBajaUsuario.Name = "btnDarDeBajaUsuario";
-            btnDarDeBajaUsuario.Size = new Size(150, 40);
-            btnDarDeBajaUsuario.TabIndex = 7;
-            btnDarDeBajaUsuario.Text = "Baja";
-            btnDarDeBajaUsuario.UseVisualStyleBackColor = false;
-            btnDarDeBajaUsuario.Click += btnBajaUsuario_Click;
-            // 
-            // groupBox2
-            // 
-            groupBox2.BackColor = Color.FromArgb(141, 181, 146);
-            groupBox2.Controls.Add(txtRespuestaSeguridad);
-            groupBox2.Controls.Add(label14);
-            groupBox2.Controls.Add(chkPañol);
-            groupBox2.Controls.Add(chkVenta);
-            groupBox2.Controls.Add(chkInventario);
-            groupBox2.Controls.Add(chkIndustria);
-            groupBox2.Controls.Add(cmbPreguntaSeguridad);
-            groupBox2.Controls.Add(label13);
-            groupBox2.Controls.Add(chkProduccionAnimal);
-            groupBox2.Controls.Add(chkProduccionVegetal);
-            groupBox2.Controls.Add(txtID);
-            groupBox2.Controls.Add(lblID);
-            groupBox2.Controls.Add(chkAdministracion);
-            groupBox2.Controls.Add(chkEntornoFormativo);
-            groupBox2.Controls.Add(chkAltaUsuario);
-            groupBox2.Controls.Add(btnLimpiar);
-            groupBox2.Controls.Add(txtEmail);
-            groupBox2.Controls.Add(label12);
-            groupBox2.Controls.Add(cmbLocalidad);
-            groupBox2.Controls.Add(cmbPartido);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(txtNombre);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(txtContraseña);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(label10);
-            groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(txtNombreUsuario);
-            groupBox2.Controls.Add(label11);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(label2);
-            groupBox2.Controls.Add(txtTelefono);
-            groupBox2.Controls.Add(lblApellido);
-            groupBox2.Controls.Add(txtCodigoPostal);
-            groupBox2.Controls.Add(txtDireccion);
-            groupBox2.Controls.Add(txtApellido);
-            groupBox2.Controls.Add(txtDocumento);
-            groupBox2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(4, 3);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1000, 333);
-            groupBox2.TabIndex = 22;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Datos Personales :";
-            groupBox2.Enter += groupBox2_Enter;
             // 
             // txtRespuestaSeguridad
             // 
-            txtRespuestaSeguridad.Location = new Point(254, 282);
+            txtRespuestaSeguridad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtRespuestaSeguridad.Location = new Point(259, 477);
             txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
-            txtRespuestaSeguridad.Size = new Size(326, 29);
+            txtRespuestaSeguridad.Size = new Size(113, 29);
             txtRespuestaSeguridad.TabIndex = 31;
             txtRespuestaSeguridad.KeyDown += CopiaryPegar_KeyDown;
             txtRespuestaSeguridad.KeyPress += TextoyNumero_KeyPress;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Location = new Point(744, 477);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 46;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(5, 287);
+            label14.Location = new Point(10, 482);
             label14.Name = "label14";
-            label14.Size = new Size(243, 24);
+            label14.Size = new Size(237, 24);
             label14.TabIndex = 32;
-            label14.Text = "Respuesta de seguridad:";
+            label14.Text = "Respuesta de seguridad";
+            // 
+            // btnAceptar
+            // 
+            btnAceptar.ForeColor = Color.Black;
+            btnAceptar.Location = new Point(744, 448);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.TabIndex = 45;
+            btnAceptar.Text = "Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // chkPañol
             // 
             chkPañol.AutoSize = true;
-            chkPañol.Location = new Point(641, 250);
+            chkPañol.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkPañol.ForeColor = Color.White;
+            chkPañol.Location = new Point(525, 377);
             chkPañol.Name = "chkPañol";
             chkPañol.Size = new Size(82, 28);
             chkPañol.TabIndex = 44;
             chkPañol.Text = "Pañol";
             chkPañol.UseVisualStyleBackColor = true;
             // 
+            // txtNombre
+            // 
+            txtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtNombre.Location = new Point(166, 21);
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(225, 29);
+            txtNombre.TabIndex = 15;
+            txtNombre.KeyDown += CopiaryPegar_KeyDown;
+            txtNombre.KeyPress += Solotexto_KeyPress;
+            // 
             // chkVenta
             // 
             chkVenta.AutoSize = true;
-            chkVenta.Location = new Point(640, 221);
+            chkVenta.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkVenta.ForeColor = Color.White;
+            chkVenta.Location = new Point(526, 333);
             chkVenta.Name = "chkVenta";
             chkVenta.Size = new Size(83, 28);
             chkVenta.TabIndex = 43;
             chkVenta.Text = "Venta";
             chkVenta.UseVisualStyleBackColor = true;
             // 
+            // txtDocumento
+            // 
+            txtDocumento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtDocumento.Location = new Point(166, 202);
+            txtDocumento.Name = "txtDocumento";
+            txtDocumento.Size = new Size(114, 29);
+            txtDocumento.TabIndex = 5;
+            txtDocumento.KeyDown += CopiaryPegar_KeyDown;
+            txtDocumento.KeyPress += SoloNumeros_KeyPress;
+            // 
             // chkInventario
             // 
             chkInventario.AutoSize = true;
-            chkInventario.Location = new Point(641, 82);
+            chkInventario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkInventario.ForeColor = Color.White;
+            chkInventario.Location = new Point(526, 113);
             chkInventario.Name = "chkInventario";
             chkInventario.Size = new Size(120, 28);
             chkInventario.TabIndex = 42;
             chkInventario.Text = "Inventario";
             chkInventario.UseVisualStyleBackColor = true;
             // 
+            // txtApellido
+            // 
+            txtApellido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtApellido.Location = new Point(166, 56);
+            txtApellido.Name = "txtApellido";
+            txtApellido.Size = new Size(225, 29);
+            txtApellido.TabIndex = 4;
+            txtApellido.KeyDown += CopiaryPegar_KeyDown;
+            txtApellido.KeyPress += Solotexto_KeyPress;
+            // 
             // chkIndustria
             // 
             chkIndustria.AutoSize = true;
-            chkIndustria.Location = new Point(641, 54);
+            chkIndustria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkIndustria.ForeColor = Color.White;
+            chkIndustria.Location = new Point(526, 69);
             chkIndustria.Name = "chkIndustria";
             chkIndustria.Size = new Size(108, 28);
             chkIndustria.TabIndex = 41;
             chkIndustria.Text = "Industria";
             chkIndustria.UseVisualStyleBackColor = true;
             // 
+            // txtDireccion
+            // 
+            txtDireccion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtDireccion.Location = new Point(166, 237);
+            txtDireccion.Name = "txtDireccion";
+            txtDireccion.Size = new Size(225, 29);
+            txtDireccion.TabIndex = 9;
+            txtDireccion.KeyDown += CopiaryPegar_KeyDown;
+            txtDireccion.KeyPress += TextoyNumero_KeyPress;
+            // 
             // cmbPreguntaSeguridad
             // 
             cmbPreguntaSeguridad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPreguntaSeguridad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbPreguntaSeguridad.FormattingEnabled = true;
-            cmbPreguntaSeguridad.Location = new Point(253, 244);
+            cmbPreguntaSeguridad.Location = new Point(258, 439);
             cmbPreguntaSeguridad.Name = "cmbPreguntaSeguridad";
-            cmbPreguntaSeguridad.Size = new Size(326, 32);
+            cmbPreguntaSeguridad.Size = new Size(447, 32);
             cmbPreguntaSeguridad.TabIndex = 29;
+            // 
+            // txtCodigoPostal
+            // 
+            txtCodigoPostal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtCodigoPostal.Location = new Point(166, 272);
+            txtCodigoPostal.Name = "txtCodigoPostal";
+            txtCodigoPostal.Size = new Size(89, 29);
+            txtCodigoPostal.TabIndex = 7;
+            txtCodigoPostal.KeyDown += CopiaryPegar_KeyDown;
+            txtCodigoPostal.KeyPress += SoloNumeros_KeyPress;
             // 
             // label13
             // 
             label13.AutoSize = true;
             label13.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label13.ForeColor = Color.White;
-            label13.Location = new Point(15, 250);
+            label13.Location = new Point(21, 447);
             label13.Name = "label13";
-            label13.Size = new Size(232, 24);
+            label13.Size = new Size(226, 24);
             label13.TabIndex = 30;
-            label13.Text = "Pregunta de Seguridad:";
-            // 
-            // chkProduccionAnimal
-            // 
-            chkProduccionAnimal.AutoSize = true;
-            chkProduccionAnimal.Location = new Point(641, 110);
-            chkProduccionAnimal.Name = "chkProduccionAnimal";
-            chkProduccionAnimal.Size = new Size(200, 28);
-            chkProduccionAnimal.TabIndex = 40;
-            chkProduccionAnimal.Text = "ProduccionAnimal";
-            chkProduccionAnimal.UseVisualStyleBackColor = true;
-            // 
-            // chkProduccionVegetal
-            // 
-            chkProduccionVegetal.AutoSize = true;
-            chkProduccionVegetal.Location = new Point(641, 138);
-            chkProduccionVegetal.Name = "chkProduccionVegetal";
-            chkProduccionVegetal.Size = new Size(207, 28);
-            chkProduccionVegetal.TabIndex = 39;
-            chkProduccionVegetal.Text = "ProduccionVegetal";
-            chkProduccionVegetal.UseVisualStyleBackColor = true;
-            // 
-            // txtID
-            // 
-            txtID.Location = new Point(471, 201);
-            txtID.Name = "txtID";
-            txtID.Size = new Size(162, 29);
-            txtID.TabIndex = 33;
-            txtID.Visible = false;
-            txtID.KeyDown += CopiaryPegar_KeyDown;
-            // 
-            // lblID
-            // 
-            lblID.AutoSize = true;
-            lblID.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            lblID.ForeColor = Color.White;
-            lblID.Location = new Point(423, 203);
-            lblID.Name = "lblID";
-            lblID.Size = new Size(35, 24);
-            lblID.TabIndex = 34;
-            lblID.Text = "ID:";
-            lblID.Visible = false;
-            // 
-            // chkAdministracion
-            // 
-            chkAdministracion.AutoSize = true;
-            chkAdministracion.Location = new Point(641, 166);
-            chkAdministracion.Name = "chkAdministracion";
-            chkAdministracion.Size = new Size(167, 28);
-            chkAdministracion.TabIndex = 38;
-            chkAdministracion.Text = "Administracion";
-            chkAdministracion.UseVisualStyleBackColor = true;
-            // 
-            // chkEntornoFormativo
-            // 
-            chkEntornoFormativo.AutoSize = true;
-            chkEntornoFormativo.Location = new Point(641, 28);
-            chkEntornoFormativo.Name = "chkEntornoFormativo";
-            chkEntornoFormativo.Size = new Size(221, 28);
-            chkEntornoFormativo.TabIndex = 37;
-            chkEntornoFormativo.Text = "Entornos Formativos";
-            chkEntornoFormativo.UseVisualStyleBackColor = true;
-            // 
-            // chkAltaUsuario
-            // 
-            chkAltaUsuario.AutoSize = true;
-            chkAltaUsuario.Location = new Point(641, 194);
-            chkAltaUsuario.Name = "chkAltaUsuario";
-            chkAltaUsuario.Size = new Size(141, 28);
-            chkAltaUsuario.TabIndex = 36;
-            chkAltaUsuario.Text = "Alta Usuario";
-            chkAltaUsuario.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.BackColor = Color.White;
-            btnLimpiar.FlatAppearance.BorderSize = 0;
-            btnLimpiar.FlatStyle = FlatStyle.Flat;
-            btnLimpiar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            btnLimpiar.ForeColor = Color.FromArgb(56, 124, 31);
-            btnLimpiar.Image = (Image)resources.GetObject("btnLimpiar.Image");
-            btnLimpiar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLimpiar.Location = new Point(743, 259);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(139, 41);
-            btnLimpiar.TabIndex = 35;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = false;
-            btnLimpiar.Click += btnLimpiar_Click;
-            // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(471, 99);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(162, 29);
-            txtEmail.TabIndex = 0;
-            txtEmail.KeyDown += CopiaryPegar_KeyDown;
-            txtEmail.KeyPress += TextoyNumero_KeyPress;
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label12.ForeColor = Color.White;
-            label12.Location = new Point(384, 97);
-            label12.Name = "label12";
-            label12.Size = new Size(68, 24);
-            label12.TabIndex = 24;
-            label12.Text = "Email:";
-            // 
-            // cmbLocalidad
-            // 
-            cmbLocalidad.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbLocalidad.FormattingEnabled = true;
-            cmbLocalidad.Location = new Point(140, 136);
-            cmbLocalidad.Name = "cmbLocalidad";
-            cmbLocalidad.Size = new Size(162, 32);
-            cmbLocalidad.TabIndex = 23;
-            // 
-            // cmbPartido
-            // 
-            cmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPartido.FormattingEnabled = true;
-            cmbPartido.Location = new Point(140, 98);
-            cmbPartido.Name = "cmbPartido";
-            cmbPartido.Size = new Size(162, 32);
-            cmbPartido.TabIndex = 22;
-            cmbPartido.SelectedIndexChanged += cmbPartido_SelectedIndexChanged;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(30, 33);
-            label8.Name = "label8";
-            label8.Size = new Size(97, 24);
-            label8.TabIndex = 21;
-            label8.Text = "Nombre :";
-            // 
-            // txtNombre
-            // 
-            txtNombre.Location = new Point(140, 28);
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(162, 29);
-            txtNombre.TabIndex = 15;
-            txtNombre.KeyDown += CopiaryPegar_KeyDown;
-            txtNombre.KeyPress += Solotexto_KeyPress;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label5.ForeColor = Color.White;
-            label5.Location = new Point(31, 177);
-            label5.Name = "label5";
-            label5.Size = new Size(99, 24);
-            label5.TabIndex = 18;
-            label5.Text = "Telefono:";
-            // 
-            // txtContraseña
-            // 
-            txtContraseña.Location = new Point(471, 166);
-            txtContraseña.Name = "txtContraseña";
-            txtContraseña.Size = new Size(162, 29);
-            txtContraseña.TabIndex = 10;
-            txtContraseña.KeyDown += CopiaryPegar_KeyDown;
-            txtContraseña.KeyPress += TextoyNumero_KeyPress;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(4, 213);
-            label7.Name = "label7";
-            label7.Size = new Size(123, 24);
-            label7.TabIndex = 20;
-            label7.Text = "Documento:";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(334, 167);
-            label10.Name = "label10";
-            label10.Size = new Size(122, 24);
-            label10.TabIndex = 26;
-            label10.Text = "Contraseña:";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(307, 63);
-            label4.Name = "label4";
-            label4.Size = new Size(145, 24);
-            label4.TabIndex = 17;
-            label4.Text = "Código Postal:";
-            // 
-            // txtNombreUsuario
-            // 
-            txtNombreUsuario.Location = new Point(471, 131);
-            txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(162, 29);
-            txtNombreUsuario.TabIndex = 2;
-            txtNombreUsuario.KeyDown += CopiaryPegar_KeyDown;
-            txtNombreUsuario.KeyPress += Solotexto_KeyPress;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label11.ForeColor = Color.White;
-            label11.Location = new Point(365, 131);
-            label11.Name = "label11";
-            label11.Size = new Size(87, 24);
-            label11.TabIndex = 25;
-            label11.Text = "Usuario:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(353, 31);
-            label3.Name = "label3";
-            label3.Size = new Size(105, 24);
-            label3.TabIndex = 16;
-            label3.Text = "Dirección:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(34, 68);
-            label6.Name = "label6";
-            label6.Size = new Size(93, 24);
-            label6.TabIndex = 19;
-            label6.Text = "Apellido:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(40, 97);
-            label2.Name = "label2";
-            label2.Size = new Size(81, 24);
-            label2.TabIndex = 15;
-            label2.Text = "Partido:";
-            // 
-            // txtTelefono
-            // 
-            txtTelefono.Location = new Point(140, 174);
-            txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(162, 29);
-            txtTelefono.TabIndex = 6;
-            txtTelefono.KeyDown += CopiaryPegar_KeyDown;
-            txtTelefono.KeyPress += SoloNumeros_KeyPress;
+            label13.Text = "Pregunta de Seguridad";
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblApellido.ForeColor = Color.White;
-            lblApellido.Location = new Point(15, 134);
+            lblApellido.Location = new Point(53, 137);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(106, 24);
+            lblApellido.Size = new Size(100, 24);
             lblApellido.TabIndex = 14;
-            lblApellido.Text = "Localidad:";
+            lblApellido.Text = "Localidad";
             // 
-            // txtCodigoPostal
+            // chkProduccionAnimal
             // 
-            txtCodigoPostal.Location = new Point(471, 63);
-            txtCodigoPostal.Name = "txtCodigoPostal";
-            txtCodigoPostal.Size = new Size(162, 29);
-            txtCodigoPostal.TabIndex = 7;
-            txtCodigoPostal.KeyDown += CopiaryPegar_KeyDown;
-            txtCodigoPostal.KeyPress += SoloNumeros_KeyPress;
+            chkProduccionAnimal.AutoSize = true;
+            chkProduccionAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkProduccionAnimal.ForeColor = Color.White;
+            chkProduccionAnimal.Location = new Point(526, 157);
+            chkProduccionAnimal.Name = "chkProduccionAnimal";
+            chkProduccionAnimal.Size = new Size(200, 28);
+            chkProduccionAnimal.TabIndex = 40;
+            chkProduccionAnimal.Text = "ProduccionAnimal";
+            chkProduccionAnimal.UseVisualStyleBackColor = true;
             // 
-            // txtDireccion
+            // txtTelefono
             // 
-            txtDireccion.Location = new Point(471, 26);
-            txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(162, 29);
-            txtDireccion.TabIndex = 9;
-            txtDireccion.KeyDown += CopiaryPegar_KeyDown;
-            txtDireccion.KeyPress += TextoyNumero_KeyPress;
+            txtTelefono.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtTelefono.Location = new Point(166, 167);
+            txtTelefono.Name = "txtTelefono";
+            txtTelefono.Size = new Size(162, 29);
+            txtTelefono.TabIndex = 6;
+            txtTelefono.KeyDown += CopiaryPegar_KeyDown;
+            txtTelefono.KeyPress += SoloNumeros_KeyPress;
             // 
-            // txtApellido
+            // chkProduccionVegetal
             // 
-            txtApellido.Location = new Point(140, 63);
-            txtApellido.Name = "txtApellido";
-            txtApellido.Size = new Size(162, 29);
-            txtApellido.TabIndex = 4;
-            txtApellido.KeyDown += CopiaryPegar_KeyDown;
-            txtApellido.KeyPress += Solotexto_KeyPress;
+            chkProduccionVegetal.AutoSize = true;
+            chkProduccionVegetal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkProduccionVegetal.ForeColor = Color.White;
+            chkProduccionVegetal.Location = new Point(526, 201);
+            chkProduccionVegetal.Name = "chkProduccionVegetal";
+            chkProduccionVegetal.Size = new Size(207, 28);
+            chkProduccionVegetal.TabIndex = 39;
+            chkProduccionVegetal.Text = "ProduccionVegetal";
+            chkProduccionVegetal.UseVisualStyleBackColor = true;
             // 
-            // txtDocumento
+            // label2
             // 
-            txtDocumento.Location = new Point(140, 208);
-            txtDocumento.Name = "txtDocumento";
-            txtDocumento.Size = new Size(162, 29);
-            txtDocumento.TabIndex = 5;
-            txtDocumento.KeyDown += CopiaryPegar_KeyDown;
-            txtDocumento.KeyPress += SoloNumeros_KeyPress;
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(78, 99);
+            label2.Name = "label2";
+            label2.Size = new Size(75, 24);
+            label2.TabIndex = 15;
+            label2.Text = "Partido";
             // 
-            // dtgAbmUsuario
+            // txtID
             // 
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dtgAbmUsuario.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dtgAbmUsuario.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            dtgAbmUsuario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Window;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            dtgAbmUsuario.DefaultCellStyle = dataGridViewCellStyle3;
-            dtgAbmUsuario.Dock = DockStyle.Fill;
-            dtgAbmUsuario.Location = new Point(0, 0);
-            dtgAbmUsuario.Name = "dtgAbmUsuario";
-            dtgAbmUsuario.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dtgAbmUsuario.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            dtgAbmUsuario.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgAbmUsuario.Size = new Size(1000, 239);
-            dtgAbmUsuario.TabIndex = 1;
-            dtgAbmUsuario.CellClick += dtgAbmUsuario_CellContentClick;
-            dtgAbmUsuario.CellContentClick += dtgAbmUsuario_CellContentClick;
+            txtID.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtID.Location = new Point(166, 412);
+            txtID.Name = "txtID";
+            txtID.Size = new Size(55, 29);
+            txtID.TabIndex = 33;
+            txtID.Visible = false;
+            txtID.KeyDown += CopiaryPegar_KeyDown;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label6.ForeColor = Color.White;
+            label6.Location = new Point(66, 61);
+            label6.Name = "label6";
+            label6.Size = new Size(87, 24);
+            label6.TabIndex = 19;
+            label6.Text = "Apellido";
+            // 
+            // lblID
+            // 
+            lblID.AutoSize = true;
+            lblID.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            lblID.ForeColor = Color.White;
+            lblID.Location = new Point(122, 417);
+            lblID.Name = "lblID";
+            lblID.Size = new Size(29, 24);
+            lblID.TabIndex = 34;
+            lblID.Text = "ID";
+            lblID.Visible = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(52, 244);
+            label3.Name = "label3";
+            label3.Size = new Size(99, 24);
+            label3.TabIndex = 16;
+            label3.Text = "Dirección";
+            // 
+            // chkAdministracion
+            // 
+            chkAdministracion.AutoSize = true;
+            chkAdministracion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkAdministracion.ForeColor = Color.White;
+            chkAdministracion.Location = new Point(526, 245);
+            chkAdministracion.Name = "chkAdministracion";
+            chkAdministracion.Size = new Size(167, 28);
+            chkAdministracion.TabIndex = 38;
+            chkAdministracion.Text = "Administracion";
+            chkAdministracion.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label11.ForeColor = Color.White;
+            label11.Location = new Point(70, 347);
+            label11.Name = "label11";
+            label11.Size = new Size(81, 24);
+            label11.TabIndex = 25;
+            label11.Text = "Usuario";
+            // 
+            // chkEntornoFormativo
+            // 
+            chkEntornoFormativo.AutoSize = true;
+            chkEntornoFormativo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkEntornoFormativo.ForeColor = Color.White;
+            chkEntornoFormativo.Location = new Point(526, 25);
+            chkEntornoFormativo.Name = "chkEntornoFormativo";
+            chkEntornoFormativo.Size = new Size(221, 28);
+            chkEntornoFormativo.TabIndex = 37;
+            chkEntornoFormativo.Text = "Entornos Formativos";
+            chkEntornoFormativo.UseVisualStyleBackColor = true;
+            // 
+            // txtNombreUsuario
+            // 
+            txtNombreUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtNombreUsuario.Location = new Point(166, 342);
+            txtNombreUsuario.Name = "txtNombreUsuario";
+            txtNombreUsuario.Size = new Size(174, 29);
+            txtNombreUsuario.TabIndex = 2;
+            txtNombreUsuario.KeyDown += CopiaryPegar_KeyDown;
+            txtNombreUsuario.KeyPress += Solotexto_KeyPress;
+            // 
+            // chkAltaUsuario
+            // 
+            chkAltaUsuario.AutoSize = true;
+            chkAltaUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            chkAltaUsuario.ForeColor = Color.White;
+            chkAltaUsuario.Location = new Point(525, 289);
+            chkAltaUsuario.Name = "chkAltaUsuario";
+            chkAltaUsuario.Size = new Size(141, 28);
+            chkAltaUsuario.TabIndex = 36;
+            chkAltaUsuario.Text = "Alta Usuario";
+            chkAltaUsuario.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(14, 277);
+            label4.Name = "label4";
+            label4.Size = new Size(139, 24);
+            label4.TabIndex = 17;
+            label4.Text = "Código Postal";
+            // 
+            // txtEmail
+            // 
+            txtEmail.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtEmail.Location = new Point(166, 307);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(304, 29);
+            txtEmail.TabIndex = 0;
+            txtEmail.KeyDown += CopiaryPegar_KeyDown;
+            txtEmail.KeyPress += TextoyNumero_KeyPress;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(35, 382);
+            label10.Name = "label10";
+            label10.Size = new Size(116, 24);
+            label10.TabIndex = 26;
+            label10.Text = "Contraseña";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(89, 312);
+            label12.Name = "label12";
+            label12.Size = new Size(62, 24);
+            label12.TabIndex = 24;
+            label12.Text = "Email";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(36, 207);
+            label7.Name = "label7";
+            label7.Size = new Size(117, 24);
+            label7.TabIndex = 20;
+            label7.Text = "Documento";
+            // 
+            // cmbLocalidad
+            // 
+            cmbLocalidad.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbLocalidad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbLocalidad.FormattingEnabled = true;
+            cmbLocalidad.Location = new Point(166, 129);
+            cmbLocalidad.Name = "cmbLocalidad";
+            cmbLocalidad.Size = new Size(191, 32);
+            cmbLocalidad.TabIndex = 23;
+            // 
+            // txtContraseña
+            // 
+            txtContraseña.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            txtContraseña.Location = new Point(166, 377);
+            txtContraseña.Name = "txtContraseña";
+            txtContraseña.Size = new Size(174, 29);
+            txtContraseña.TabIndex = 10;
+            txtContraseña.KeyDown += CopiaryPegar_KeyDown;
+            txtContraseña.KeyPress += TextoyNumero_KeyPress;
+            // 
+            // cmbPartido
+            // 
+            cmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPartido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            cmbPartido.FormattingEnabled = true;
+            cmbPartido.Location = new Point(166, 91);
+            cmbPartido.Name = "cmbPartido";
+            cmbPartido.Size = new Size(191, 32);
+            cmbPartido.TabIndex = 22;
+            cmbPartido.SelectedIndexChanged += cmbPartido_SelectedIndexChanged;
+            cmbPartido.Click += cmbPartido_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label5.ForeColor = Color.White;
+            label5.Location = new Point(60, 172);
+            label5.Name = "label5";
+            label5.Size = new Size(93, 24);
+            label5.TabIndex = 18;
+            label5.Text = "Telefono";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(66, 26);
+            label8.Name = "label8";
+            label8.Size = new Size(85, 24);
+            label8.TabIndex = 21;
+            label8.Text = "Nombre";
             // 
             // errorProvider1
             // 
             errorProvider1.ContainerControl = this;
-            // 
-            // panel3
-            // 
-            panel3.Controls.Add(dtgAbmUsuario);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 422);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(1000, 239);
-            panel3.TabIndex = 1;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(groupBox2);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1000, 334);
-            panel1.TabIndex = 26;
             // 
             // AbmUsuario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(1000, 661);
-            Controls.Add(panel3);
+            ClientSize = new Size(833, 513);
             Controls.Add(panel2);
-            Controls.Add(panel1);
             Name = "AbmUsuario";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "AbmUsuario";
             panel2.ResumeLayout(false);
-            groupBox3.ResumeLayout(false);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox4.ResumeLayout(false);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgAbmUsuario).EndInit();
+            panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
-            panel3.ResumeLayout(false);
-            panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
-        private DataGridView dtgAbmUsuario;
         private Label label7;
         private Label label6;
         private Label label5;
@@ -776,7 +576,6 @@
         private Label label3;
         private Label label2;
         private Label lblApellido;
-        private TextBox txtBuscarApellido;
         private TextBox txtContraseña;
         private TextBox txtDireccion;
         private TextBox txtCodigoPostal;
@@ -785,11 +584,8 @@
         private TextBox txtApellido;
         private TextBox txtNombreUsuario;
         private TextBox txtEmail;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
         private Label label8;
         private TextBox txtNombre;
-        private Label label1;
         private Label label10;
         private Label label11;
         private Label label12;
@@ -799,15 +595,8 @@
         private ComboBox cmbPreguntaSeguridad;
         private TextBox txtRespuestaSeguridad;
         private Label label14;
-        private Tienda.RJButton btnDarDeAltaUsuario;
-        private Tienda.RJButton btnDarDeBajaUsuario;
-        private Tienda.RJButton btnModificarUsuario;
-        private Tienda.RJButton btnAgregarUsuario;
         private Label lblID;
         private TextBox txtID;
-        private Tienda.RJButton btnLimpiar;
-        private GroupBox groupBox4;
-        private GroupBox groupBox3;
         private ErrorProvider errorProvider1;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
@@ -827,7 +616,7 @@
         private CheckBox chkAdministracion;
         private CheckBox chkPañol;
         private Panel panel2;
-        private Panel panel3;
-        private Panel panel1;
+        private Button btnCancelar;
+        private Button btnAceptar;
     }
 }

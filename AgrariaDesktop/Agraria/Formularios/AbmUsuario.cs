@@ -18,26 +18,63 @@ namespace Agraria.Formularios
     {
         public AbmUsuarioBLL AbmUsuarioBLL = new AbmUsuarioBLL();
         private bool esInvitado = false;
+        private int? idUsuarioEditar = null;
+        private UsuarioLoginDTO _usuarioActual; // Recibimos la sesión real
 
-        public AbmUsuario(Form formulariomenu)
+        // Constructor para NUEVO
+        public AbmUsuario(UsuarioLoginDTO usuarioLogeado, bool invitado = false)
         {
             InitializeComponent();
-            CargarUsuariosEnGrid();
-            CargarComboBoxes();
-        }
-
-
-        public AbmUsuario(bool invitado = false)
-        {
-
-            InitializeComponent();
-            CargarUsuariosEnGrid();
-            CargarComboBoxes();
+            _usuarioActual = usuarioLogeado;
             esInvitado = invitado;
+
+            CargarComboBoxes();
 
             if (esInvitado)
                 DeshabilitarControles();
+        }
 
+        // Constructor para MODIFICAR
+        public AbmUsuario(int idUsuario, UsuarioLoginDTO usuarioLogeado) : this(usuarioLogeado)
+        {
+            idUsuarioEditar = idUsuario;
+            CargarDatos(idUsuarioEditar.Value);
+        }
+
+        private void CargarDatos(int id)
+        {
+            // Buscamos los datos del usuario en la lista utilizando su ID
+            List<AbmUsuarioDTO> usuarios = AbmUsuarioBLL.CargarTodoslosUsuarios();
+            var usuario = usuarios.FirstOrDefault(u => u.Id == id);
+
+            if (usuario != null)
+            {
+                txtNombre.Text = usuario.Nombre;
+                txtApellido.Text = usuario.Apellido;
+                txtDocumento.Text = usuario.Documento.ToString();
+                txtDireccion.Text = usuario.Direccion;
+                txtTelefono.Text = usuario.Telefono;
+                cmbPartido.Text = usuario.Partido;
+                cmbLocalidad.Text = usuario.Localidad;
+                txtCodigoPostal.Text = usuario.CodigoPostal.ToString();
+                txtEmail.Text = usuario.Email;
+                txtNombreUsuario.Text = usuario.NombreUsuario;
+                txtContraseña.Text = usuario.Contraseña;
+                cmbPreguntaSeguridad.Text = usuario.PreguntaSeguridad;
+                txtRespuestaSeguridad.Text = usuario.RespuestaSeguridad;
+
+                // Cargar los permisos
+                var permisos = AbmUsuarioBLL.ObtenerPermisosPorUsuario(id);
+                chkEntornoFormativo.Checked = permisos.PuedeEntornoFormativo;
+                chkAltaUsuario.Checked = permisos.PuedeAltaUsuario;
+                chkVenta.Checked = permisos.PuedeVenta;
+                chkInventario.Checked = permisos.PuedeInventario;
+                chkIndustria.Checked = permisos.PuedeIndustria;
+                chkProduccionAnimal.Checked = permisos.PuedeProduccionAnimal;
+                chkProduccionVegetal.Checked = permisos.PuedeProduccionVegetal;
+                chkAdministracion.Checked = permisos.PuedeAdministracion;
+                chkPañol.Checked = permisos.PuedePañol;
+            }
         }
 
         private void DeshabilitarControles()
@@ -51,241 +88,17 @@ namespace Agraria.Formularios
             {
                 if (c is TextBox txt)
                     txt.ReadOnly = true;
-
                 else if (c is ComboBox combo)
                     combo.Enabled = false;
-
-                else if (c is Button btn && btn.Name != "btnCerrar")
+                else if (c is Button btn && btn.Name != "btnCancelar") // Dejamos libre Cancelar
                     btn.Enabled = false;
-
                 else if (c is CheckBox chk)
                     chk.Enabled = false;
 
-                else if (c is DataGridView dgv)
-                {
-                    dgv.Enabled = false;               // deshabilita el control completo
-                    dgv.ReadOnly = true;               // evita edición directa
-                    dgv.AllowUserToAddRows = false;    // evita agregar filas
-                    dgv.AllowUserToDeleteRows = false; // evita borrar filas
-                }
-
-                // 🔁 Recorre los hijos (Paneles, GroupBox, TabPage, etc.)
+                // 🔁 Recorre los hijos
                 if (c.HasChildren)
                     DeshabilitarControlesRecursivo(c);
             }
-        }
-
-        private void dtgAbmUsuario_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                CargarTextbox(e.RowIndex);
-
-                // 🔹 Obtener el Id del usuario seleccionado
-                int idUsuario = Convert.ToInt32(dtgAbmUsuario.Rows[e.RowIndex].Cells["Id"].Value);
-
-                // 🔹 Consultar los permisos desde la BLL
-                var permisos = AbmUsuarioBLL.ObtenerPermisosPorUsuario(idUsuario);
-
-                // 🔹 Asignar los valores a los CheckBox
-                chkEntornoFormativo.Checked = permisos.PuedeEntornoFormativo;
-                chkAltaUsuario.Checked = permisos.PuedeAltaUsuario;
-                chkVenta.Checked = permisos.PuedeVenta;
-                chkInventario.Checked = permisos.PuedeInventario;
-                chkIndustria.Checked = permisos.PuedeIndustria;
-                chkProduccionAnimal.Checked = permisos.PuedeProduccionAnimal;
-                chkProduccionVegetal.Checked = permisos.PuedeProduccionVegetal;
-                chkAdministracion.Checked = permisos.PuedeAdministracion;
-                chkPañol.Checked = permisos.PuedePañol; // ✅ nuevo
-
-            }
-        }
-
-
-        private void CargarUsuariosEnGrid()
-        {
-            List<AbmUsuarioDTO> usuarios = AbmUsuarioBLL.CargarTodoslosUsuarios();
-            dtgAbmUsuario.DataSource = usuarios;
-
-            dtgAbmUsuario.Columns["Id"].Visible = false;
-            dtgAbmUsuario.Columns["Contraseña"].Visible = false;
-            dtgAbmUsuario.Columns["PreguntaSeguridad"].Visible = false;
-            dtgAbmUsuario.Columns["RespuestaSeguridad"].Visible = false;
-            dtgAbmUsuario.Columns["Documento"].Visible = false;
-            dtgAbmUsuario.Columns["Telefono"].Visible = false;
-            dtgAbmUsuario.Columns["Direccion"].Visible = false;
-            dtgAbmUsuario.Columns["NombreUsuario"].Visible = false;
-
-            dtgAbmUsuario.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
-        private void CargarTextbox(int index)
-        {
-            if (index < 0 || index >= dtgAbmUsuario.Rows.Count) return;
-
-            var fila = dtgAbmUsuario.Rows[index];
-
-            txtID.Text = fila.Cells["Id"].Value?.ToString();
-            txtNombre.Text = fila.Cells["Nombre"].Value?.ToString();
-            txtApellido.Text = fila.Cells["Apellido"].Value?.ToString();
-            txtDocumento.Text = fila.Cells["Documento"].Value?.ToString();
-            txtDireccion.Text = fila.Cells["Direccion"].Value?.ToString();
-            txtTelefono.Text = fila.Cells["Telefono"].Value?.ToString();
-            cmbPartido.Text = fila.Cells["Partido"].Value?.ToString();
-            cmbLocalidad.Text = fila.Cells["Localidad"].Value?.ToString();
-            txtCodigoPostal.Text = fila.Cells["CodigoPostal"].Value?.ToString();
-            txtEmail.Text = fila.Cells["Email"].Value?.ToString();
-            txtNombreUsuario.Text = fila.Cells["NombreUsuario"].Value?.ToString();
-            txtContraseña.Text = fila.Cells["Contraseña"].Value?.ToString();
-            cmbPreguntaSeguridad.Text = fila.Cells["PreguntaSeguridad"].Value?.ToString();
-            txtRespuestaSeguridad.Text = fila.Cells["RespuestaSeguridad"].Value?.ToString();
-        }
-
-        private void btnNuevoUsuario_Click(object sender, EventArgs e)
-        {
-            if (!ValidarCampos()) return;
-
-            var usuario = new Agraria.Datos.Entidades.AbmUsuario
-            {
-                Nombre = txtNombre.Text,
-                Apellido = txtApellido.Text,
-                Documento = int.Parse(txtDocumento.Text),
-                Telefono = txtTelefono.Text,
-                Direccion = txtDireccion.Text,
-                IdLocalidad = new LocalidadDTO { NombreLocalidad = cmbLocalidad.Text },
-                IdPartido = new PartidoDTO { NombrePartido = cmbPartido.Text },
-
-                // ✅ Ahora agregamos la pregunta seleccionada
-                IdPreguntaSeguridad = new PreguntaSeguridadDTO { TextoPregunta = cmbPreguntaSeguridad.Text },
-
-                Email = txtEmail.Text,
-                NombreUsuario = txtNombreUsuario.Text,
-                Contraseña = txtContraseña.Text,
-                RespuestaSeguridad = txtRespuestaSeguridad.Text,
-                Estado = true
-            };
-
-            int nuevoId = AbmUsuarioBLL.InsertarUsuarioYObtenerId(usuario);
-
-            AbmUsuarioBLL.GuardarPermisos(
-                nuevoId,
-                chkEntornoFormativo.Checked,
-                chkAltaUsuario.Checked,
-                chkVenta.Checked,
-                chkInventario.Checked,
-                chkIndustria.Checked,
-                chkProduccionAnimal.Checked,
-                chkProduccionVegetal.Checked,
-                chkAdministracion.Checked,
-                chkPañol.Checked
-            );
-
-
-            MessageBox.Show("Usuario creado con permisos asignados.");
-            CargarUsuariosEnGrid();
-            LimpiarCampos();
-        }
-
-
-        private void btnModificarUsuario_Click(object sender, EventArgs e)
-        {
-            if (!ValidarCampos()) return;
-
-            Agraria.Datos.Entidades.AbmUsuario usuario = new Agraria.Datos.Entidades.AbmUsuario
-            {
-                Id = (string.IsNullOrEmpty(txtID.Text)) ? 0 : int.Parse(txtID.Text),
-                Nombre = txtNombre.Text,
-                Apellido = txtApellido.Text,
-                Documento = int.Parse(txtDocumento.Text),
-                Telefono = txtTelefono.Text,
-                Direccion = txtDireccion.Text,
-                IdPartido = new PartidoDTO { NombrePartido = cmbPartido.Text },
-                IdLocalidad = new LocalidadDTO { NombreLocalidad = cmbLocalidad.Text },
-                IdPreguntaSeguridad = new PreguntaSeguridadDTO { TextoPregunta = cmbPreguntaSeguridad.Text },
-                Email = txtEmail.Text,
-                NombreUsuario = txtNombreUsuario.Text,
-                Contraseña = txtContraseña.Text,
-                RespuestaSeguridad = txtRespuestaSeguridad.Text,
-                Estado = true
-            };
-
-            AbmUsuarioBLL.ModificarUsuario(usuario);
-
-
-            // 🔐 Actualizar permisos (upsert)
-            AbmUsuarioBLL.ActualizarPermisos(
-                usuario.Id,
-                chkEntornoFormativo.Checked,
-                chkAltaUsuario.Checked,
-                chkVenta.Checked,
-                chkInventario.Checked,
-                chkIndustria.Checked,
-                chkProduccionAnimal.Checked,
-                chkProduccionVegetal.Checked,
-                chkAdministracion.Checked,
-                chkPañol.Checked
-            );
-
-            MessageBox.Show("Usuario modificado y permisos actualizados.");
-            MessageBox.Show("Usuario modificado correctamente.");
-            CargarUsuariosEnGrid();
-            LimpiarCampos();
-        }
-
-        private void btnAltaUsuario_Click(object sender, EventArgs e)
-        {
-            if (dtgAbmUsuario.SelectedRows.Count == 0) return;
-
-            int id = Convert.ToInt32(dtgAbmUsuario.SelectedRows[0].Cells["Id"].Value);
-            if ((bool)dtgAbmUsuario.SelectedRows[0].Cells["Estado"].Value)
-            {
-                MessageBox.Show("Este usuario ya está dado de alta.");
-                return;
-            }
-
-            AbmUsuarioBLL.CambiarEstadoUsuario(id, true);
-            MessageBox.Show("Usuario dado de alta.");
-            CargarUsuariosEnGrid();
-        }
-
-        private void btnBajaUsuario_Click(object sender, EventArgs e)
-        {
-            if (dtgAbmUsuario.SelectedRows.Count == 0) return;
-
-            int id = Convert.ToInt32(dtgAbmUsuario.SelectedRows[0].Cells["Id"].Value);
-            if (!(bool)dtgAbmUsuario.SelectedRows[0].Cells["Estado"].Value)
-            {
-                MessageBox.Show("Este usuario ya está dado de baja.");
-                return;
-            }
-
-            AbmUsuarioBLL.CambiarEstadoUsuario(id, false);
-            MessageBox.Show("Usuario dado de baja.");
-            CargarUsuariosEnGrid();
-        }
-
-        private void LimpiarCampos()
-        {
-            txtID.Clear();
-            txtNombre.Clear();
-            txtApellido.Clear();
-            txtDocumento.Clear();
-            txtTelefono.Clear();
-            txtDireccion.Clear();
-            cmbLocalidad.SelectedIndex = -1;
-            cmbPartido.SelectedIndex = -1;
-            txtCodigoPostal.Clear();
-            txtEmail.Clear();
-            txtNombreUsuario.Clear();
-            txtContraseña.Clear();
-            cmbPreguntaSeguridad.SelectedIndex = -1;
-            txtRespuestaSeguridad.Clear();
-        }
-
-        private void txtBuscarNombreDni_TextChanged(object sender, EventArgs e)
-        {
-            string textoBuscado = txtBuscarApellido.Text.Trim();
-            dtgAbmUsuario.DataSource = AbmUsuarioBLL.BuscarUsuarioPorNombreODni(textoBuscado);
         }
 
         private void CargarComboBoxes()
@@ -317,7 +130,6 @@ namespace Agraria.Formularios
             }
         }
 
-
         private bool ValidarCampos()
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
@@ -339,16 +151,91 @@ namespace Agraria.Formularios
             return true;
         }
 
-        private void pbExitAbmUsuarios_Click(object sender, EventArgs e)
+        private void btnAceptar_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos()) return;
+
+            try
+            {
+                bool esModificacion = (idUsuarioEditar != null);
+
+                // Armamos la entidad del Usuario
+                var usuario = new Agraria.Datos.Entidades.AbmUsuario
+                {
+                    Id = esModificacion ? idUsuarioEditar.Value : 0,
+                    Nombre = txtNombre.Text,
+                    Apellido = txtApellido.Text,
+                    Documento = int.Parse(txtDocumento.Text),
+                    Telefono = txtTelefono.Text,
+                    Direccion = txtDireccion.Text,
+                    IdLocalidad = new LocalidadDTO { NombreLocalidad = cmbLocalidad.Text },
+                    IdPartido = new PartidoDTO { NombrePartido = cmbPartido.Text },
+                    IdPreguntaSeguridad = new PreguntaSeguridadDTO { TextoPregunta = cmbPreguntaSeguridad.Text },
+                    Email = txtEmail.Text,
+                    NombreUsuario = txtNombreUsuario.Text,
+                    Contraseña = txtContraseña.Text,
+                    RespuestaSeguridad = txtRespuestaSeguridad.Text,
+                    Estado = true
+                };
+
+                if (!esModificacion)
+                {
+                    // NUEVO USUARIO
+                    int nuevoId = AbmUsuarioBLL.InsertarUsuarioYObtenerId(usuario);
+
+                    AbmUsuarioBLL.GuardarPermisos(
+                        nuevoId,
+                        chkEntornoFormativo.Checked,
+                        chkAltaUsuario.Checked,
+                        chkVenta.Checked,
+                        chkInventario.Checked,
+                        chkIndustria.Checked,
+                        chkProduccionAnimal.Checked,
+                        chkProduccionVegetal.Checked,
+                        chkAdministracion.Checked,
+                        chkPañol.Checked
+                    );
+
+                    MessageBox.Show("Usuario creado correctamente con sus permisos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    // MODIFICAR USUARIO EXISTENTE
+                    AbmUsuarioBLL.ModificarUsuario(usuario);
+
+                    AbmUsuarioBLL.ActualizarPermisos(
+                        usuario.Id,
+                        chkEntornoFormativo.Checked,
+                        chkAltaUsuario.Checked,
+                        chkVenta.Checked,
+                        chkInventario.Checked,
+                        chkIndustria.Checked,
+                        chkProduccionAnimal.Checked,
+                        chkProduccionVegetal.Checked,
+                        chkAdministracion.Checked,
+                        chkPañol.Checked
+                    );
+
+                    MessageBox.Show("Usuario modificado y permisos actualizados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                // Cierra y avisa a ListarUsuario que todo salió bien
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            LimpiarCampos();
-        }
-
+        // --- VALIDACIONES DE CAMPOS (Mantenemos tus configuraciones de teclado) ---
         private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.SoloNumeros(e);
@@ -372,11 +259,6 @@ namespace Agraria.Formularios
         private void SoloTextoNumeroEspacio_KeyPress(object sender, KeyPressEventArgs e)
         {
             Validaciones.SoloTextoNumeroEspacio(e);
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

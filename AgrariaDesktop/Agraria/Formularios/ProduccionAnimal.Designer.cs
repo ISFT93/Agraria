@@ -115,6 +115,7 @@
             ClientSize = new Size(984, 729);
             Controls.Add(groupBox7);
             Name = "ProduccionAnimal";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ProduccionAnimal";
             Load += ProduccionAnimal_Load;
             groupBox7.ResumeLayout(false);

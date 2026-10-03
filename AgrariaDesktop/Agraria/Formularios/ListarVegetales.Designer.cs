@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnNuevo = new Button();
             btnModificar = new Button();
@@ -183,19 +184,22 @@
             // 
             // dtgvListarVegetales
             // 
+            dtgvListarVegetales.AllowUserToAddRows = false;
+            dtgvListarVegetales.AllowUserToResizeColumns = false;
+            dtgvListarVegetales.AllowUserToResizeRows = false;
             dtgvListarVegetales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dtgvListarVegetales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvListarVegetales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -207,6 +211,14 @@
             dtgvListarVegetales.Margin = new Padding(2);
             dtgvListarVegetales.Name = "dtgvListarVegetales";
             dtgvListarVegetales.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgvListarVegetales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvListarVegetales.RowHeadersWidth = 62;
             dtgvListarVegetales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListarVegetales.Size = new Size(719, 263);
@@ -224,6 +236,7 @@
             Controls.Add(panel2);
             Margin = new Padding(2);
             Name = "ListarVegetales";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ListarVegetales";
             Load += ListarVegetales_Load;
             panel1.ResumeLayout(false);
