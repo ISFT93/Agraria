@@ -215,6 +215,8 @@ namespace Agraria.Formularios
         {
             using (AbmAnimales formRegistro = new AbmAnimales(idUsuarioSesion))
             {
+                formRegistro.Text = "Nuevo Animal";
+
                 if (formRegistro.ShowDialog() == DialogResult.OK)
                 {
                     CargarGrilla();
@@ -230,6 +232,8 @@ namespace Agraria.Formularios
 
                 using (AbmAnimales formEditar = new AbmAnimales(seleccionado))
                 {
+                    formEditar.Text = "Modificar Animal";
+
                     if (formEditar.ShowDialog() == DialogResult.OK)
                     {
                         CargarGrilla();
