@@ -56,7 +56,7 @@ namespace Agraria.Datos.DAL
             return ultimoId;
         }
 
-        public void Insertar(long idElemento, string tipoElemento, string nombre, string ciclo, DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, string nroAnimal, string estadoSalud, bool esProductor, decimal? precio, long? idProveedor, bool activo, bool vendible, string motivoMovimiento)
+        public void Insertar(long idElemento, string tipoElemento, string nombre, string ciclo, DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, string nroAnimal, string estadoSalud, bool esProductor, decimal? precio, long? idProveedor, bool activo, bool vendible)
         {
             ConexionBD.ConectarBD();
             using (SqlConnection cn = ConexionBD.ConexionSQL)
@@ -78,14 +78,13 @@ namespace Agraria.Datos.DAL
                     cmd.Parameters.AddWithValue("@id_proveedor", idProveedor.HasValue ? (object)idProveedor.Value : DBNull.Value);
                     cmd.Parameters.AddWithValue("@activo", activo);
                     cmd.Parameters.AddWithValue("@vendible", vendible);
-                    cmd.Parameters.AddWithValue("@motivo_movimiento", string.IsNullOrEmpty(motivoMovimiento) ? (object)DBNull.Value : motivoMovimiento);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void Actualizar(long idStock, long idElemento, string tipoElemento, string nombre, string ciclo, DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, string nroAnimal, string estadoSalud, bool esProductor, decimal? precio, long? idProveedor, bool activo, bool vendible, string motivoMovimiento)
+        public void Actualizar(long idStock, long idElemento, string tipoElemento, string nombre, string ciclo, DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, string nroAnimal, string estadoSalud, bool esProductor, decimal? precio, long? idProveedor, bool activo, bool vendible)
         {
             ConexionBD.ConectarBD();
             using (SqlConnection cn = ConexionBD.ConexionSQL)
@@ -108,12 +107,12 @@ namespace Agraria.Datos.DAL
                     cmd.Parameters.AddWithValue("@id_proveedor", idProveedor.HasValue ? (object)idProveedor.Value : DBNull.Value);
                     cmd.Parameters.AddWithValue("@activo", activo);
                     cmd.Parameters.AddWithValue("@vendible", vendible);
-                    cmd.Parameters.AddWithValue("@motivo_movimiento", string.IsNullOrEmpty(motivoMovimiento) ? (object)DBNull.Value : motivoMovimiento);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
+
         public DataTable ObtenerPorId(long idStock)
         {
             DataTable dt = new DataTable();
@@ -149,6 +148,25 @@ namespace Agraria.Datos.DAL
                 }
             }
             return dt;
+        }
+
+        // Método nuevo para insertar los detalles individuales de cada animal
+        public void InsertarDetalleAnimal(long idElemento, string nroAnimal, string sexo, bool esProductor)
+        {
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_insert_detalle_animal", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_elemento", idElemento);
+                    cmd.Parameters.AddWithValue("@nro_animal", string.IsNullOrEmpty(nroAnimal) ? (object)DBNull.Value : nroAnimal);
+                    cmd.Parameters.AddWithValue("@sexo", string.IsNullOrEmpty(sexo) ? (object)DBNull.Value : sexo);
+                    cmd.Parameters.AddWithValue("@es_productor", esProductor);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

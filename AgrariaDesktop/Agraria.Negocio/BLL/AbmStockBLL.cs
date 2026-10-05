@@ -68,16 +68,17 @@ namespace Agraria.Negocio.BLL
             return Convert.ToInt64($"{idUsuario}4{siguienteIncremental:D6}");
         }
 
-        public void Guardar(long idStock, long idElemento,string tipoElemento,string nombre,string ciclo,DateTime fechaAlta,DateTime? fechaBaja,decimal cantidad,string nroAnimal,string estadoSalud,bool esProductor,decimal? precio,long? idProveedor, bool activo, bool vendible, string motivoMovimiento, bool esModificacion)
+        public void Guardar(long idStock, long idElemento, string tipoElemento, string nombre, string ciclo, DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, string nroAnimal, string estadoSalud, bool esProductor, decimal? precio, long? idProveedor, bool activo, bool vendible, bool esModificacion)
         {
             if (esModificacion)
             {
                 dal.Actualizar(
-                    idStock,idElemento,tipoElemento,nombre, ciclo,fechaAlta,fechaBaja,cantidad,nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo,vendible, motivoMovimiento);
+                    idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo, vendible);
             }
             else
             {
-                dal.Insertar(idElemento,tipoElemento,nombre, ciclo,fechaAlta,fechaBaja,cantidad,nroAnimal,estadoSalud,esProductor, precio,idProveedor,activo, vendible,motivoMovimiento);
+                dal.Insertar(
+                    idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo, vendible);
             }
         }
 
@@ -85,9 +86,37 @@ namespace Agraria.Negocio.BLL
         {
             return dal.ObtenerPorId(idStock);
         }
+
         public DataTable CargarProveedores()
         {
             return dal.ObtenerProveedores();
         }
+        // Método para guardar el stock general y los animales detallados en bucle
+        // Método para guardar el stock general y los animales detallados en bucle
+        public void GuardarConDetalleAnimales(
+            long idStock, long idElemento, string tipoElemento, string nombre, string ciclo,
+            DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, decimal? precio,
+            long? idProveedor, bool activo, bool vendible, bool esModificacion,
+            System.Collections.IEnumerable listaAnimales)
+        {
+            // 1. Guardamos el stock general primero
+            if (esModificacion)
+            {
+                dal.Actualizar(idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, null, null, false, precio, idProveedor, activo, vendible);
+            }
+            else
+            {
+                dal.Insertar(idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, null, null, false, precio, idProveedor, activo, vendible);
+            }
+
+            // 2. Si es de tipo Animal y la lista tiene elementos, los guardamos uno a uno
+            if (tipoElemento == "Animal" && listaAnimales != null)
+            {
+                foreach (dynamic animal in listaAnimales)
+                {
+                    dal.InsertarDetalleAnimal(idElemento, animal.NroAnimal, animal.Sexo, animal.EsProductor);
+                }
+            }
+        }
     }
-}
+    }
