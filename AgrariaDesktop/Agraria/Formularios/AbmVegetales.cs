@@ -1,6 +1,8 @@
 ﻿using Agraria.Datos.DAL;
 using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmVegetales : Form
+    public partial class AbmVegetales : MaterialForm
     {
         private AbmVegetalesBLL bll = new AbmVegetalesBLL();
         private long? idVegetalEditar = null;
@@ -28,6 +30,20 @@ namespace Agraria.Formularios
             CargarCombos();
             txtCodigoVegetal.Enabled = false;
             txtNombreComun.Focus();
+
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Green800,
+                Primary.Green900,
+                Primary.Green500,
+                Accent.Green200,
+                TextShade.WHITE
+            );
         }
 
         // Constructor para MODIFICAR
