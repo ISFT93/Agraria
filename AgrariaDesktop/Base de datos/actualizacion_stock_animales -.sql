@@ -1,4 +1,4 @@
-USE Agraria
+USE Agraria;
 GO
 
 -- ==========================================
@@ -22,32 +22,33 @@ CREATE TABLE [dbo].[datosAnimales](
 GO
 
 -- ==========================================
--- 2. SP: INSERTAR STOCK (Adaptado)
+-- 2. SP: INSERTAR STOCK (Corregido con valores por defecto)
 -- ==========================================
 IF OBJECT_ID('dbo.sp_insert_stock', 'P') IS NOT NULL 
     DROP PROCEDURE [dbo].[sp_insert_stock];
 GO
+
 CREATE PROCEDURE [dbo].[sp_insert_stock]
     @id_elemento BIGINT,
     @tipo_elemento VARCHAR(50),
     @Nombre VARCHAR(50),
-    @ciclo VARCHAR(50),
+    @ciclo VARCHAR(50) = NULL,
     @fecha_alta DATE,
-    @fecha_baja DATE,
+    @fecha_baja DATE = NULL,
     @cantidad DECIMAL(10,2),
     @nro_animal VARCHAR(50) = NULL,
     @estado_salud VARCHAR(50) = NULL,
     @es_productor BIT = NULL,
-    @precio MONEY,
-    @id_proveedor BIGINT,
+    @precio MONEY = NULL,
+    @id_proveedor BIGINT = NULL,
     @activo BIT,
     @vendible BIT,
-    @motivo_movimiento VARCHAR(100)
+    @motivo_movimiento VARCHAR(100) = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- 1. Insertamos en la tabla principal stock (sin los campos de animales)
+    -- 1. Insertamos en la tabla principal stock
     INSERT INTO stock (
         id_elemento, tipo_elemento, Nombre, ciclo, fecha_alta, fecha_baja, 
         cantidad, precio, id_proveedor, activo, vendible, motivo_movimiento
@@ -75,6 +76,7 @@ GO
 IF OBJECT_ID('dbo.sp_select_stock', 'P') IS NOT NULL 
     DROP PROCEDURE [dbo].[sp_select_stock];
 GO
+
 CREATE PROCEDURE [dbo].[sp_select_stock]
     @tipo_elemento VARCHAR(50) = '',
     @nro_animal VARCHAR(50) = ''
@@ -107,28 +109,29 @@ END;
 GO
 
 -- ==========================================
--- 4. SP: ACTUALIZAR STOCK (Adaptado)
+-- 4. SP: ACTUALIZAR STOCK (Corregido con valores por defecto)
 -- ==========================================
 IF OBJECT_ID('dbo.sp_update_stock', 'P') IS NOT NULL 
     DROP PROCEDURE [dbo].[sp_update_stock];
 GO
+
 CREATE PROCEDURE [dbo].[sp_update_stock]
     @id_stock BIGINT,
     @id_elemento BIGINT,
     @tipo_elemento VARCHAR(50),
     @Nombre VARCHAR(50),
-    @ciclo VARCHAR(50),
+    @ciclo VARCHAR(50) = NULL,
     @fecha_alta DATE,
-    @fecha_baja DATE,
+    @fecha_baja DATE = NULL,
     @cantidad DECIMAL(10,2),
     @nro_animal VARCHAR(50) = NULL,
     @estado_salud VARCHAR(50) = NULL,
     @es_productor BIT = NULL,
-    @precio MONEY,
-    @id_proveedor BIGINT,
+    @precio MONEY = NULL,
+    @id_proveedor BIGINT = NULL,
     @activo BIT,
     @vendible BIT,
-    @motivo_movimiento VARCHAR(100)
+    @motivo_movimiento VARCHAR(100) = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
