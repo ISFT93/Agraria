@@ -165,21 +165,3 @@ BEGIN
     END
 END;
 GO
-ALTER PROCEDURE sp_insert_stock
-    -- ... (acá van tus otros parámetros existentes) ...
-    @tipo VARCHAR(50),
-    @codigo VARCHAR(50),
-    @cantidad INT,
-    @proveedor VARCHAR(100),
-    @precio DECIMAL(18,2),
-    @activo BIT,
-    @vendible BIT,
-    @fecha_alta DATE,
-    @fecha_baja DATE = NULL,
-    @motivo_movimiento VARCHAR(100) = 'Sin especificar' -- <--- AQUÍ LE DAS EL VALOR POR DEFECTO
-AS
-BEGIN
-    -- Tu lógica de INSERT INTO stock ...
-    INSERT INTO stock (tipo, codigo, cantidad, proveedor, precio, activo, vendible, fecha_alta, fecha_baja, motivo_movimiento)
-    VALUES (@tipo, @codigo, @cantidad, @proveedor, @precio, @activo, @vendible, @fecha_alta, @fecha_baja, @motivo_movimiento)
-END
