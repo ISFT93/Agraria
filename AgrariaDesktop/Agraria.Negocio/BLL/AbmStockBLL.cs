@@ -1,6 +1,8 @@
 ﻿using Agraria.Datos.DAL;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Agraria.Negocio.BLL
 {
@@ -8,7 +10,6 @@ namespace Agraria.Negocio.BLL
     {
         private AbmStockDAL dal = new AbmStockDAL();
 
-        // Genera el código para Vegetal (Base 1), Animal (Base 2) o Articulo (Base 3) validando existencia
         public long GenerarIdElementoSeguro(string tipoElemento, int idUsuario)
         {
             string baseTipo = "0";
@@ -41,7 +42,6 @@ namespace Agraria.Negocio.BLL
             return Convert.ToInt64(idConcatenado);
         }
 
-        // Genera el código propio para la tabla Stock (Base 4)
         public long GenerarIdStock(int idUsuario)
         {
             long minId = Convert.ToInt64($"{idUsuario}4000000");
@@ -68,20 +68,6 @@ namespace Agraria.Negocio.BLL
             return Convert.ToInt64($"{idUsuario}4{siguienteIncremental:D6}");
         }
 
-        public void Guardar(long idStock, long idElemento, string tipoElemento, string nombre, string ciclo, DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, string nroAnimal, string estadoSalud, bool esProductor, decimal? precio, long? idProveedor, bool activo, bool vendible, bool esModificacion)
-        {
-            if (esModificacion)
-            {
-                dal.Actualizar(
-                    idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo, vendible);
-            }
-            else
-            {
-                dal.Insertar(
-                    idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo, vendible);
-            }
-        }
-
         public DataTable BuscarPorId(long idStock)
         {
             return dal.ObtenerPorId(idStock);
@@ -91,32 +77,36 @@ namespace Agraria.Negocio.BLL
         {
             return dal.ObtenerProveedores();
         }
-        // Método para guardar el stock general y los animales detallados en bucle
-        // Método para guardar el stock general y los animales detallados en bucle
+
         public void GuardarConDetalleAnimales(
-            long idStock, long idElemento, string tipoElemento, string nombre, string ciclo,
-            DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, decimal? precio,
-            long? idProveedor, bool activo, bool vendible, bool esModificacion,
-            System.Collections.IEnumerable listaAnimales)
+              long idStock, long idElemento, string tipoElemento, string nombre, string ciclo,
+              DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, decimal? precio,
+              long? idProveedor, bool activo, bool vendible, bool esModificacion,
+              List<AnimalItemDto> listaAnimales)
         {
-            // 1. Guardamos el stock general primero
             if (esModificacion)
             {
-                dal.Actualizar(idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, null, null, false, precio, idProveedor, activo, vendible);
+                dal.Actualizar(idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, precio, idProveedor, activo, vendible);
             }
             else
             {
-                dal.Insertar(idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, null, null, false, precio, idProveedor, activo, vendible);
+                dal.Insertar(idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, precio, idProveedor, activo, vendible, null);
             }
 
-            // 2. Si es de tipo Animal y la lista tiene elementos, los guardamos uno a uno
             if (tipoElemento == "Animal" && listaAnimales != null)
             {
-                foreach (dynamic animal in listaAnimales)
+                foreach (AnimalItemDto animal in listaAnimales)
                 {
-                    dal.InsertarDetalleAnimal(idElemento, animal.NroAnimal, animal.Sexo, animal.EsProductor);
+                    dal.InsertarDetalleAnimal(idStock, animal.NroAnimal, animal.Sexo, animal.EsProductor);
                 }
             }
         }
     }
+
+    public class AnimalItemDto
+    {
+        public string NroAnimal { get; set; }
+        public string Sexo { get; set; }
+        public bool EsProductor { get; set; }
     }
+}

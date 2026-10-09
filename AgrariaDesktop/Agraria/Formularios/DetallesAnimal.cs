@@ -1,128 +1,67 @@
-﻿using System;
-using System.Drawing;
+﻿using Agraria.Negocio.BLL;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    // Clase para almacenar los datos de cada animal individual
-    public class AnimalItemDto
-    {
-        public string NroAnimal { get; set; }
-        public string Sexo { get; set; }
-        public bool EsProductor { get; set; }
-    }
-
     public partial class DetallesAnimal : Form
     {
-        private Panel panelContenedor;
-
-        // Lista pública para que el formulario principal pueda leer los animales cargados
-        public List<AnimalItemDto> ListaAnimales { get; private set; } = new List<AnimalItemDto>();
+        public List<AnimalItemDto> ListaAnimales { get; private set; }
+        private int cantidadLote;
+        private List<ItemAnimalControl> filasAnimales = new List<ItemAnimalControl>();
 
         public DetallesAnimal(int cantidad)
         {
             InitializeComponent();
-            ConfigurarVentanaDinamica(cantidad);
+            cantidadLote = cantidad;
+            ConstruirFilasDinamicas();
         }
 
-        private void ConfigurarVentanaDinamica(int cantidad)
+        private void ConstruirFilasDinamicas()
         {
-            this.Text = $"Detalle de Animales (Cantidad: {cantidad})";
-            this.StartPosition = FormStartPosition.CenterParent;
+            // Asumiendo que en tu diseñador de DetallesAnimal agregaste un Panel llamado 'panelContenedor'
+            panelContenedor.Controls.Clear();
+            filasAnimales.Clear();
 
-            // Panel contenedor con scroll para los campos dinámicos
-            panelContenedor = new Panel();
-            panelContenedor.AutoScroll = true;
-            panelContenedor.Location = new Point(15, 15);
-            panelContenedor.Size = new Size(645, 380);
-            this.Controls.Add(panelContenedor);
-
-            // Tipografía uniforme para los elementos dinámicos
-            Font fuenteEstilo = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold); // Ajustado a 10F para que no sea tan gigante y entre bien
-
-            // Generar filas dinámicamente con espacios amplios para que no se amontonen
-            int yPos = 15;
-            for (int i = 0; i < cantidad; i++)
+            int yPos = 10;
+            for (int i = 0; i < cantidadLote; i++)
             {
-                // 1. Label ID Animal
-                Label lblId = new Label();
-                lblId.Text = $"ID Animal {i + 1}:";
-                lblId.Location = new Point(15, yPos + 4);
-                lblId.AutoSize = true;
-                lblId.Font = fuenteEstilo;
-                lblId.ForeColor = Color.White;
-                panelContenedor.Controls.Add(lblId);
+                var fila = new ItemAnimalControl();
+                fila.Location = new Point(10, yPos);
 
-                // 2. TextBox ID Animal
-                TextBox txtId = new TextBox();
-                txtId.Name = $"txtIdAnimal_{i}";
-                txtId.Location = new Point(125, yPos);
-                txtId.Size = new Size(90, 27);
-                txtId.Font = fuenteEstilo;
-                panelContenedor.Controls.Add(txtId);
+                // Opcional: si quieres mostrar un identificador o número de orden visual, 
+                // puedes ajustar el texto si tu ItemAnimalControl tiene una etiqueta para ello.
 
-                // 3. Label Sexo
-                Label lblSexo = new Label();
-                lblSexo.Text = "Sexo:";
-                lblSexo.Location = new Point(235, yPos + 4);
-                lblSexo.AutoSize = true;
-                lblSexo.Font = fuenteEstilo;
-                lblSexo.ForeColor = Color.White;
-                panelContenedor.Controls.Add(lblSexo);
-
-                // 4. ComboBox Sexo
-                ComboBox cmbSexo = new ComboBox();
-                cmbSexo.Name = $"cmbSexo_{i}";
-                cmbSexo.Location = new Point(285, yPos);
-                cmbSexo.Size = new Size(110, 28);
-                cmbSexo.Font = fuenteEstilo;
-                cmbSexo.DropDownStyle = ComboBoxStyle.DropDownList;
-                cmbSexo.Items.AddRange(new object[] { "Macho", "Hembra" });
-                cmbSexo.SelectedIndex = 0;
-                panelContenedor.Controls.Add(cmbSexo);
-
-                // 5. Checkbox Es Productor
-                CheckBox chkProductor = new CheckBox();
-                chkProductor.Name = $"chkProductor_{i}";
-                chkProductor.Text = "Es Productor";
-                chkProductor.Location = new Point(410, yPos + 2);
-                chkProductor.AutoSize = true;
-                chkProductor.Font = fuenteEstilo;
-                chkProductor.ForeColor = Color.White;
-                panelContenedor.Controls.Add(chkProductor);
-
-                yPos += 45; // Salto vertical para la siguiente fila
+                panelContenedor.Controls.Add(fila);
+                filasAnimales.Add(fila);
+                yPos += fila.Height + 5; // Espacio vertical dinámico basado en la altura del control
             }
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            ListaAnimales.Clear();
+            ListaAnimales = new List<AnimalItemDto>();
 
-            // Recorremos los controles que agregamos al panel para extraer la información
-            // Como sabemos que creamos filas basadas en índices, buscamos por nombre o tipo
-            foreach (Control ctrl in panelContenedor.Controls)
+            foreach (var fila in filasAnimales)
             {
-                if (ctrl is TextBox txt && txt.Name.StartsWith("txtIdAnimal_"))
+                string nroAnimal = fila.IdAnimal;
+                string sexo = fila.Sexo;
+                bool esProductor = fila.EsProductor;
+
+                if (string.IsNullOrWhiteSpace(nroAnimal))
                 {
-                    // Extraemos el índice numérico del control (ej: "txtIdAnimal_0" -> "0")
-                    string indice = txt.Name.Split('_')[1];
-
-                    // Buscamos sus compañeros en el mismo panel por el mismo índice
-                    ComboBox cmb = panelContenedor.Controls[$"cmbSexo_{indice}"] as ComboBox;
-                    CheckBox chk = panelContenedor.Controls[$"chkProductor_{indice}"] as CheckBox;
-
-                    // Creamos el objeto con los datos cargados por el usuario
-                    var animal = new AnimalItemDto
-                    {
-                        NroAnimal = txt.Text.Trim(),
-                        Sexo = cmb != null ? cmb.SelectedItem?.ToString() ?? string.Empty : string.Empty,
-                        EsProductor = chk != null && chk.Checked
-                    };
-
-                    ListaAnimales.Add(animal);
+                    MessageBox.Show("Por favor, complete el número para todos los animales.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
+
+                ListaAnimales.Add(new AnimalItemDto
+                {
+                    NroAnimal = nroAnimal,
+                    Sexo = string.IsNullOrEmpty(sexo) ? "Macho" : sexo,
+                    EsProductor = esProductor
+                });
             }
 
             this.DialogResult = DialogResult.OK;

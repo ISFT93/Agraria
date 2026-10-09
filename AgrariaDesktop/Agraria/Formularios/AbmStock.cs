@@ -39,14 +39,13 @@ namespace Agraria.Formularios
             cmbVendible.SelectedIndex = 1;
 
             txtCodigoStock.Enabled = false;
-            txtCodigoBloque.Enabled = false; // Visible siempre, solo bloqueado para escritura manual
+            txtCodigoBloque.Enabled = false;
 
             CargarCombosEstaticos();
         }
 
         private void cmbTipoElemento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // El Código Bloque se genera y se ve siempre al cambiar el tipo
             if (idStockEditar == null && cmbTipoElemento.SelectedIndex != -1)
             {
                 txtCodigoBloque.Text = bll.GenerarIdElementoSeguro(cmbTipoElemento.Text, _usuarioActual.Id).ToString();
@@ -72,11 +71,9 @@ namespace Agraria.Formularios
                     return;
                 }
 
-                // Variable para atrapar el modal si es animal
                 DetallesAnimal formDetalles = null;
                 int cantidadAnimales = 0;
 
-                // SI ES ANIMAL: Validamos la cantidad y abrimos el modal dinámico
                 if (cmbTipoElemento.Text == "Animal")
                 {
                     if (!int.TryParse(txtCantidad.Text, out cantidadAnimales) || cantidadAnimales <= 0)
@@ -88,17 +85,16 @@ namespace Agraria.Formularios
                     formDetalles = new DetallesAnimal(cantidadAnimales);
                     if (formDetalles.ShowDialog() != DialogResult.OK)
                     {
-                        return; // Si cancela el modal, se frena el guardado
+                        return;
                     }
                 }
 
                 bool esModificacion = (idStockEditar != null);
 
-                long idStockFinal = esModificacion ? Convert.ToInt64(txtCodigoStock.Text) : 0;
+                long idStockFinal = esModificacion ? Convert.ToInt64(txtCodigoStock.Text) : bll.GenerarIdStock(_usuarioActual.Id);
                 long idElemento = Convert.ToInt64(txtCodigoBloque.Text);
                 string tipoElemento = cmbTipoElemento.Text;
 
-                // Sumatoria del ciclo
                 int sumaCiclo = 0;
                 if (chkVerano.Checked) sumaCiclo += 2;
                 if (chkOtoño.Checked) sumaCiclo += 4;
@@ -118,37 +114,9 @@ namespace Agraria.Formularios
                 bool vendible = (cmbVendible.Text == "Sí");
                 long? idProveedor = cmbProveedor.SelectedValue != null ? (long?)Convert.ToInt64(cmbProveedor.SelectedValue) : null;
 
-                // GUARDADO SEGÚN EL TIPO DE ELEMENTO
                 if (tipoElemento == "Animal" && formDetalles != null && formDetalles.ListaAnimales != null && formDetalles.ListaAnimales.Count > 0)
                 {
-                    // Si es animal, recorremos la lista para guardar una fila por cada animal con cantidad 1
-                    foreach (var animal in formDetalles.ListaAnimales)
-                    {
-                        bll.Guardar(
-                            0, // ID 0 para nuevo registro
-                            idElemento,
-                            tipoElemento,
-                            nombre,
-                            ciclo,
-                            fechaAlta,
-                            fechaBaja,
-                            1, // Cantidad individual por cada animal
-                            animal.NroAnimal,   // Número de animal específico
-                            animal.Sexo,        // Estado de salud o sexo
-                            animal.EsProductor, // Si es productor
-                            precio,
-                            idProveedor,
-                            activo,
-                            vendible,
-                            false
-                        );
-                    }
-                }
-                else
-                {
-                    // Si es Artículo o Vegetal, se guarda de forma normal con la cantidad general ingresada
-                    decimal cantidadGeneral = decimal.TryParse(txtCantidad.Text, out decimal c) ? c : 0m;
-                    bll.Guardar(
+                    bll.GuardarConDetalleAnimales(
                         idStockFinal,
                         idElemento,
                         tipoElemento,
@@ -156,16 +124,31 @@ namespace Agraria.Formularios
                         ciclo,
                         fechaAlta,
                         fechaBaja,
-                        cantidadGeneral,
-                        null,
-                        null,
-                        false,
+                        formDetalles.ListaAnimales.Count,
                         precio,
                         idProveedor,
                         activo,
                         vendible,
-                        esModificacion
+                        esModificacion,
+                        formDetalles.ListaAnimales
                     );
+                }
+                else
+                {
+                    decimal cantidadGeneral = decimal.TryParse(txtCantidad.Text, out decimal c) ? c : 0m;
+
+                    if (esModificacion)
+                    {
+                        new Agraria.Datos.DAL.AbmStockDAL().Actualizar(
+                            idStockFinal, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidadGeneral, precio, idProveedor, activo, vendible
+                        );
+                    }
+                    else
+                    {
+                        new Agraria.Datos.DAL.AbmStockDAL().Insertar(
+                            idStockFinal, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidadGeneral, precio, idProveedor, activo, vendible, null
+                        );
+                    }
                 }
 
                 MessageBox.Show("Stock guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
