@@ -182,5 +182,38 @@ namespace Agraria.Datos.DAL
             }
             return dt;
         }
+
+        public DataTable ObtenerDetalleAnimales(long idStock)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                ConexionBD.ConectarBD();
+                using (SqlCommand cmd = new SqlCommand("sp_obtener_detalle_animales_por_stock", ConexionBD.ConexionSQL))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_stock", idStock);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al obtener los detalles de animales: " + ex.Message);
+            }
+            finally
+            {
+                // Asegúrate de cerrar la conexión si tu estructura lo requiere al finalizar
+                if (ConexionBD.ConexionSQL.State == ConnectionState.Open)
+                {
+                    ConexionBD.ConexionSQL.Close();
+                }
+            }
+
+            return dt;
+        }
     }
 }

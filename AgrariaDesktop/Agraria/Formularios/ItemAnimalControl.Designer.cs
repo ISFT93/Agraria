@@ -39,27 +39,26 @@
             // 
             lblIdAnimal.AutoSize = true;
             lblIdAnimal.ForeColor = Color.White;
-            lblIdAnimal.Location = new Point(-9, 13);
+            lblIdAnimal.Location = new Point(21, 10);
             lblIdAnimal.Name = "lblIdAnimal";
-            lblIdAnimal.Size = new Size(78, 20);
+            lblIdAnimal.Size = new Size(62, 15);
             lblIdAnimal.TabIndex = 0;
             lblIdAnimal.Text = "ID Animal:";
             // 
             // txtIdAnimal
             // 
-            txtIdAnimal.Location = new Point(75, 10);
-            txtIdAnimal.Margin = new Padding(3, 4, 3, 4);
+            txtIdAnimal.Location = new Point(95, 8);
             txtIdAnimal.Name = "txtIdAnimal";
-            txtIdAnimal.Size = new Size(100, 27);
+            txtIdAnimal.Size = new Size(88, 23);
             txtIdAnimal.TabIndex = 1;
             // 
             // lblSexoAnimal
             // 
             lblSexoAnimal.AutoSize = true;
             lblSexoAnimal.ForeColor = Color.White;
-            lblSexoAnimal.Location = new Point(190, 13);
+            lblSexoAnimal.Location = new Point(195, 10);
             lblSexoAnimal.Name = "lblSexoAnimal";
-            lblSexoAnimal.Size = new Size(44, 20);
+            lblSexoAnimal.Size = new Size(34, 15);
             lblSexoAnimal.TabIndex = 2;
             lblSexoAnimal.Text = "Sexo:";
             // 
@@ -67,27 +66,25 @@
             // 
             cmbSexoAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbSexoAnimal.FormattingEnabled = true;
-            cmbSexoAnimal.Location = new Point(249, 10);
-            cmbSexoAnimal.Margin = new Padding(3, 4, 3, 4);
+            cmbSexoAnimal.Location = new Point(247, 8);
             cmbSexoAnimal.Name = "cmbSexoAnimal";
-            cmbSexoAnimal.Size = new Size(100, 28);
+            cmbSexoAnimal.Size = new Size(88, 23);
             cmbSexoAnimal.TabIndex = 3;
             // 
             // chkEsProductor
             // 
             chkEsProductor.AutoSize = true;
             chkEsProductor.ForeColor = Color.White;
-            chkEsProductor.Location = new Point(355, 12);
-            chkEsProductor.Margin = new Padding(3, 4, 3, 4);
+            chkEsProductor.Location = new Point(340, 9);
             chkEsProductor.Name = "chkEsProductor";
-            chkEsProductor.Size = new Size(114, 24);
+            chkEsProductor.Size = new Size(93, 19);
             chkEsProductor.TabIndex = 4;
             chkEsProductor.Text = "Es Productor";
             chkEsProductor.UseVisualStyleBackColor = true;
             // 
             // ItemAnimalControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(chkEsProductor);
@@ -95,9 +92,8 @@
             Controls.Add(lblSexoAnimal);
             Controls.Add(txtIdAnimal);
             Controls.Add(lblIdAnimal);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ItemAnimalControl";
-            Size = new Size(480, 50);
+            Size = new Size(445, 38);
             ResumeLayout(false);
             PerformLayout();
 

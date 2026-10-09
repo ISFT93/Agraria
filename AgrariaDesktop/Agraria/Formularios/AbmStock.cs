@@ -283,12 +283,43 @@ namespace Agraria.Formularios
         {
             dtpFechaBaja.Format = DateTimePickerFormat.Short;
         }
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (cmbTipoElemento.Text == "Animal")
+                {
+                    // Usamos decimal.TryParse para que soporte el formato "5,00" o "5"
+                    if (decimal.TryParse(txtCantidad.Text, out decimal cantidadDecimal) && cantidadDecimal > 0)
+                    {
+                        // Convertimos el decimal a entero para pasarlo al formulario de detalles
+                        int cantidadAnimales = Convert.ToInt32(cantidadDecimal);
 
+                        DetallesAnimal formDetalles = new DetallesAnimal(cantidadAnimales);
+
+                        if (formDetalles.ShowDialog() == DialogResult.OK)
+                        {
+                            if (formDetalles.ListaAnimales != null)
+                            {
+                                txtCantidad.Text = formDetalles.ListaAnimales.Count.ToString();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay una cantidad válida de animales registrada para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El botón de búsqueda de detalles solo está disponible para elementos de tipo Animal.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al abrir los detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
         private void cmbDatos_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (idStockEditar != null) return;

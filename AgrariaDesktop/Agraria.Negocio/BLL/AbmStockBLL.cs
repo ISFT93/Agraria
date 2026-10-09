@@ -109,4 +109,10 @@ namespace Agraria.Negocio.BLL
         public string Sexo { get; set; }
         public bool EsProductor { get; set; }
     }
-}
+
+
+
+    
+
+
+    }

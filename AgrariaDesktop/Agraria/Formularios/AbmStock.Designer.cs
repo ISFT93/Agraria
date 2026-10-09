@@ -62,354 +62,355 @@
             ((System.ComponentModel.ISupportInitialize)numPrecio).BeginInit();
             SuspendLayout();
             // 
-            // label3
+            // btnCancelar
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(15, 12);
-            label3.Name = "label3";
-            label3.Size = new Size(56, 25);
-            label3.TabIndex = 17;
-            label3.Text = "Tipo";
+            btnCancelar.Location = new Point(363, 371);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(79, 30);
+            btnCancelar.TabIndex = 21;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
-            // cmbTipoElemento
+            // btnAceptar
             // 
-            cmbTipoElemento.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbTipoElemento.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            cmbTipoElemento.FormattingEnabled = true;
-            cmbTipoElemento.Location = new Point(15, 40);
-            cmbTipoElemento.Margin = new Padding(3, 4, 3, 4);
-            cmbTipoElemento.Name = "cmbTipoElemento";
-            cmbTipoElemento.Size = new Size(200, 33);
-            cmbTipoElemento.TabIndex = 3;
-            cmbTipoElemento.SelectedIndexChanged += cmbTipoElemento_SelectedIndexChanged;
-            // 
-            // laaa
-            // 
-            laaa.AutoSize = true;
-            laaa.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            laaa.ForeColor = Color.White;
-            laaa.Location = new Point(230, 12);
-            laaa.Name = "laaa";
-            laaa.Size = new Size(81, 25);
-            laaa.TabIndex = 15;
-            laaa.Text = "Código";
-            // 
-            // cmbDatos
-            // 
-            cmbDatos.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-            cmbDatos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            cmbDatos.FormattingEnabled = true;
-            cmbDatos.Location = new Point(230, 40);
-            cmbDatos.Name = "cmbDatos";
-            cmbDatos.Size = new Size(140, 33);
-            cmbDatos.TabIndex = 43;
-            cmbDatos.SelectedIndexChanged += cmbDatos_SelectedIndexChanged;
-            // 
-            // txtCodigoStock
-            // 
-            txtCodigoStock.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            txtCodigoStock.Location = new Point(380, 40);
-            txtCodigoStock.Margin = new Padding(2, 3, 2, 3);
-            txtCodigoStock.MaxLength = 10;
-            txtCodigoStock.Name = "txtCodigoStock";
-            txtCodigoStock.Size = new Size(85, 30);
-            txtCodigoStock.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            btnSearch.Image = Properties.Resources.buscar66;
-            btnSearch.Location = new Point(475, 38);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(40, 34);
-            btnSearch.TabIndex = 42;
-            btnSearch.UseVisualStyleBackColor = true;
-            btnSearch.Click += btnSearch_Click;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label8.ForeColor = Color.White;
-            label8.Location = new Point(15, 85);
-            label8.Name = "label8";
-            label8.Size = new Size(119, 25);
-            label8.TabIndex = 22;
-            label8.Text = "Fecha Alta";
-            // 
-            // dtpFechaAlta
-            // 
-            dtpFechaAlta.CustomFormat = "dd/MM/yyyy";
-            dtpFechaAlta.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            dtpFechaAlta.Format = DateTimePickerFormat.Short;
-            dtpFechaAlta.Location = new Point(15, 113);
-            dtpFechaAlta.Margin = new Padding(3, 4, 3, 4);
-            dtpFechaAlta.Name = "dtpFechaAlta";
-            dtpFechaAlta.Size = new Size(160, 30);
-            dtpFechaAlta.TabIndex = 5;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(190, 85);
-            label9.Name = "label9";
-            label9.Size = new Size(125, 25);
-            label9.TabIndex = 23;
-            label9.Text = "Fecha Baja";
-            // 
-            // dtpFechaBaja
-            // 
-            dtpFechaBaja.CustomFormat = "dd/MM/yyyy";
-            dtpFechaBaja.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            dtpFechaBaja.Format = DateTimePickerFormat.Short;
-            dtpFechaBaja.Location = new Point(190, 113);
-            dtpFechaBaja.Margin = new Padding(3, 4, 3, 4);
-            dtpFechaBaja.Name = "dtpFechaBaja";
-            dtpFechaBaja.Size = new Size(160, 30);
-            dtpFechaBaja.TabIndex = 6;
-            dtpFechaBaja.ValueChanged += dtpFechaBaja_ValueChanged;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label4.ForeColor = Color.White;
-            label4.Location = new Point(365, 85);
-            label4.Name = "label4";
-            label4.Size = new Size(99, 25);
-            label4.TabIndex = 18;
-            label4.Text = "Cantidad";
-            // 
-            // txtCantidad
-            // 
-            txtCantidad.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            txtCantidad.Location = new Point(365, 113);
-            txtCantidad.Margin = new Padding(2, 3, 2, 3);
-            txtCantidad.MaxLength = 10;
-            txtCantidad.Name = "txtCantidad";
-            txtCantidad.Size = new Size(150, 30);
-            txtCantidad.TabIndex = 7;
-            // 
-            // Precio
-            // 
-            Precio.AutoSize = true;
-            Precio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            Precio.ForeColor = Color.White;
-            Precio.Location = new Point(15, 158);
-            Precio.Name = "Precio";
-            Precio.Size = new Size(74, 25);
-            Precio.TabIndex = 24;
-            Precio.Text = "Precio";
-            // 
-            // numPrecio
-            // 
-            numPrecio.DecimalPlaces = 2;
-            numPrecio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            numPrecio.Location = new Point(15, 186);
-            numPrecio.Margin = new Padding(3, 4, 3, 4);
-            numPrecio.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
-            numPrecio.Name = "numPrecio";
-            numPrecio.Size = new Size(160, 30);
-            numPrecio.TabIndex = 8;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label10.ForeColor = Color.White;
-            label10.Location = new Point(190, 158);
-            label10.Name = "label10";
-            label10.Size = new Size(115, 25);
-            label10.TabIndex = 38;
-            label10.Text = "Proveedor";
-            // 
-            // cmbProveedor
-            // 
-            cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbProveedor.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            cmbProveedor.FormattingEnabled = true;
-            cmbProveedor.Location = new Point(190, 184);
-            cmbProveedor.Margin = new Padding(2, 3, 2, 3);
-            cmbProveedor.Name = "cmbProveedor";
-            cmbProveedor.Size = new Size(325, 33);
-            cmbProveedor.TabIndex = 9;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(15, 230);
-            label1.Name = "label1";
-            label1.Size = new Size(156, 25);
-            label1.TabIndex = 16;
-            label1.Text = "Codigo Bloque";
-            // 
-            // txtCodigoBloque
-            // 
-            txtCodigoBloque.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            txtCodigoBloque.Location = new Point(15, 258);
-            txtCodigoBloque.Margin = new Padding(2, 3, 2, 3);
-            txtCodigoBloque.MaxLength = 10;
-            txtCodigoBloque.Name = "txtCodigoBloque";
-            txtCodigoBloque.Size = new Size(160, 30);
-            txtCodigoBloque.TabIndex = 2;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label14.ForeColor = Color.White;
-            label14.Location = new Point(190, 230);
-            label14.Name = "label14";
-            label14.Size = new Size(93, 25);
-            label14.TabIndex = 41;
-            label14.Text = "Nombre";
-            // 
-            // txtNombre
-            // 
-            txtNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            txtNombre.Location = new Point(190, 258);
-            txtNombre.Margin = new Padding(2, 3, 2, 3);
-            txtNombre.MaxLength = 20;
-            txtNombre.Name = "txtNombre";
-            txtNombre.Size = new Size(325, 30);
-            txtNombre.TabIndex = 4;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(15, 302);
-            label7.Name = "label7";
-            label7.Size = new Size(72, 25);
-            label7.TabIndex = 21;
-            label7.Text = "Activo";
-            // 
-            // cmbActivo
-            // 
-            cmbActivo.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbActivo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            cmbActivo.FormattingEnabled = true;
-            cmbActivo.Location = new Point(15, 330);
-            cmbActivo.Margin = new Padding(2, 3, 2, 3);
-            cmbActivo.Name = "cmbActivo";
-            cmbActivo.Size = new Size(125, 33);
-            cmbActivo.TabIndex = 10;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label13.ForeColor = Color.White;
-            label13.Location = new Point(160, 302);
-            label13.Name = "label13";
-            label13.Size = new Size(100, 25);
-            label13.TabIndex = 39;
-            label13.Text = "Vendible";
-            // 
-            // cmbVendible
-            // 
-            cmbVendible.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbVendible.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            cmbVendible.FormattingEnabled = true;
-            cmbVendible.Location = new Point(160, 330);
-            cmbVendible.Margin = new Padding(2, 3, 2, 3);
-            cmbVendible.Name = "cmbVendible";
-            cmbVendible.Size = new Size(125, 33);
-            cmbVendible.TabIndex = 11;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(15, 375);
-            label2.Name = "label2";
-            label2.Size = new Size(61, 25);
-            label2.TabIndex = 30;
-            label2.Text = "Ciclo";
-            // 
-            // chkOtoño
-            // 
-            chkOtoño.AutoSize = true;
-            chkOtoño.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
-            chkOtoño.ForeColor = Color.White;
-            chkOtoño.Location = new Point(15, 405);
-            chkOtoño.Name = "chkOtoño";
-            chkOtoño.Size = new Size(88, 28);
-            chkOtoño.TabIndex = 15;
-            chkOtoño.Text = "Otoño";
-            chkOtoño.UseVisualStyleBackColor = true;
-            // 
-            // chkInvierno
-            // 
-            chkInvierno.AutoSize = true;
-            chkInvierno.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
-            chkInvierno.ForeColor = Color.White;
-            chkInvierno.Location = new Point(120, 405);
-            chkInvierno.Name = "chkInvierno";
-            chkInvierno.Size = new Size(106, 28);
-            chkInvierno.TabIndex = 16;
-            chkInvierno.Text = "Invierno";
-            chkInvierno.UseVisualStyleBackColor = true;
-            // 
-            // chkPrimavera
-            // 
-            chkPrimavera.AutoSize = true;
-            chkPrimavera.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
-            chkPrimavera.ForeColor = Color.White;
-            chkPrimavera.Location = new Point(245, 405);
-            chkPrimavera.Name = "chkPrimavera";
-            chkPrimavera.Size = new Size(127, 28);
-            chkPrimavera.TabIndex = 17;
-            chkPrimavera.Text = "Primavera";
-            chkPrimavera.UseVisualStyleBackColor = true;
+            btnAceptar.Location = new Point(276, 371);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(79, 30);
+            btnAceptar.TabIndex = 20;
+            btnAceptar.Text = "&Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // chkVerano
             // 
             chkVerano.AutoSize = true;
             chkVerano.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
             chkVerano.ForeColor = Color.White;
-            chkVerano.Location = new Point(390, 405);
+            chkVerano.Location = new Point(341, 304);
+            chkVerano.Margin = new Padding(3, 2, 3, 2);
             chkVerano.Name = "chkVerano";
-            chkVerano.Size = new Size(99, 28);
+            chkVerano.Size = new Size(80, 22);
             chkVerano.TabIndex = 18;
             chkVerano.Text = "Verano";
             chkVerano.UseVisualStyleBackColor = true;
             // 
-            // btnAceptar
+            // chkPrimavera
             // 
-            btnAceptar.Location = new Point(315, 495);
-            btnAceptar.Margin = new Padding(3, 4, 3, 4);
-            btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(90, 40);
-            btnAceptar.TabIndex = 20;
-            btnAceptar.Text = "&Aceptar";
-            btnAceptar.UseVisualStyleBackColor = true;
-            btnAceptar.Click += btnAceptar_Click;
+            chkPrimavera.AutoSize = true;
+            chkPrimavera.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
+            chkPrimavera.ForeColor = Color.White;
+            chkPrimavera.Location = new Point(214, 304);
+            chkPrimavera.Margin = new Padding(3, 2, 3, 2);
+            chkPrimavera.Name = "chkPrimavera";
+            chkPrimavera.Size = new Size(103, 22);
+            chkPrimavera.TabIndex = 17;
+            chkPrimavera.Text = "Primavera";
+            chkPrimavera.UseVisualStyleBackColor = true;
             // 
-            // btnCancelar
+            // chkInvierno
             // 
-            btnCancelar.Location = new Point(415, 495);
-            btnCancelar.Margin = new Padding(3, 4, 3, 4);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(90, 40);
-            btnCancelar.TabIndex = 21;
-            btnCancelar.Text = "&Cancelar";
-            btnCancelar.UseVisualStyleBackColor = true;
-            btnCancelar.Click += btnCancelar_Click;
+            chkInvierno.AutoSize = true;
+            chkInvierno.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
+            chkInvierno.ForeColor = Color.White;
+            chkInvierno.Location = new Point(105, 304);
+            chkInvierno.Margin = new Padding(3, 2, 3, 2);
+            chkInvierno.Name = "chkInvierno";
+            chkInvierno.Size = new Size(86, 22);
+            chkInvierno.TabIndex = 16;
+            chkInvierno.Text = "Invierno";
+            chkInvierno.UseVisualStyleBackColor = true;
+            // 
+            // chkOtoño
+            // 
+            chkOtoño.AutoSize = true;
+            chkOtoño.Font = new Font("Microsoft Sans Serif", 11F, FontStyle.Bold);
+            chkOtoño.ForeColor = Color.White;
+            chkOtoño.Location = new Point(13, 304);
+            chkOtoño.Margin = new Padding(3, 2, 3, 2);
+            chkOtoño.Name = "chkOtoño";
+            chkOtoño.Size = new Size(74, 22);
+            chkOtoño.TabIndex = 15;
+            chkOtoño.Text = "Otoño";
+            chkOtoño.UseVisualStyleBackColor = true;
+            // 
+            // Precio
+            // 
+            Precio.AutoSize = true;
+            Precio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            Precio.ForeColor = Color.White;
+            Precio.Location = new Point(13, 118);
+            Precio.Name = "Precio";
+            Precio.Size = new Size(59, 20);
+            Precio.TabIndex = 24;
+            Precio.Text = "Precio";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(166, 64);
+            label9.Name = "label9";
+            label9.Size = new Size(100, 20);
+            label9.TabIndex = 23;
+            label9.Text = "Fecha Baja";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(13, 64);
+            label8.Name = "label8";
+            label8.Size = new Size(96, 20);
+            label8.TabIndex = 22;
+            label8.Text = "Fecha Alta";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label7.ForeColor = Color.White;
+            label7.Location = new Point(13, 226);
+            label7.Name = "label7";
+            label7.Size = new Size(58, 20);
+            label7.TabIndex = 21;
+            label7.Text = "Activo";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(319, 64);
+            label4.Name = "label4";
+            label4.Size = new Size(81, 20);
+            label4.TabIndex = 18;
+            label4.Text = "Cantidad";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(13, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(43, 20);
+            label3.TabIndex = 17;
+            label3.Text = "Tipo";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(13, 172);
+            label1.Name = "label1";
+            label1.Size = new Size(126, 20);
+            label1.TabIndex = 16;
+            label1.Text = "Codigo Bloque";
+            // 
+            // laaa
+            // 
+            laaa.AutoSize = true;
+            laaa.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            laaa.ForeColor = Color.White;
+            laaa.Location = new Point(201, 9);
+            laaa.Name = "laaa";
+            laaa.Size = new Size(65, 20);
+            laaa.TabIndex = 15;
+            laaa.Text = "Código";
+            // 
+            // cmbActivo
+            // 
+            cmbActivo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbActivo.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            cmbActivo.FormattingEnabled = true;
+            cmbActivo.Location = new Point(13, 248);
+            cmbActivo.Margin = new Padding(2, 2, 2, 2);
+            cmbActivo.Name = "cmbActivo";
+            cmbActivo.Size = new Size(110, 28);
+            cmbActivo.TabIndex = 10;
+            // 
+            // cmbVendible
+            // 
+            cmbVendible.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbVendible.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            cmbVendible.FormattingEnabled = true;
+            cmbVendible.Location = new Point(140, 248);
+            cmbVendible.Margin = new Padding(2, 2, 2, 2);
+            cmbVendible.Name = "cmbVendible";
+            cmbVendible.Size = new Size(110, 28);
+            cmbVendible.TabIndex = 11;
+            // 
+            // cmbProveedor
+            // 
+            cmbProveedor.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbProveedor.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            cmbProveedor.FormattingEnabled = true;
+            cmbProveedor.Location = new Point(166, 138);
+            cmbProveedor.Margin = new Padding(2, 2, 2, 2);
+            cmbProveedor.Name = "cmbProveedor";
+            cmbProveedor.Size = new Size(285, 28);
+            cmbProveedor.TabIndex = 9;
+            // 
+            // txtCantidad
+            // 
+            txtCantidad.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            txtCantidad.Location = new Point(319, 85);
+            txtCantidad.Margin = new Padding(2, 2, 2, 2);
+            txtCantidad.MaxLength = 10;
+            txtCantidad.Name = "txtCantidad";
+            txtCantidad.Size = new Size(81, 26);
+            txtCantidad.TabIndex = 7;
+            // 
+            // txtNombre
+            // 
+            txtNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            txtNombre.Location = new Point(166, 194);
+            txtNombre.Margin = new Padding(2, 2, 2, 2);
+            txtNombre.MaxLength = 20;
+            txtNombre.Name = "txtNombre";
+            txtNombre.Size = new Size(285, 26);
+            txtNombre.TabIndex = 4;
+            // 
+            // txtCodigoBloque
+            // 
+            txtCodigoBloque.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            txtCodigoBloque.Location = new Point(13, 194);
+            txtCodigoBloque.Margin = new Padding(2, 2, 2, 2);
+            txtCodigoBloque.MaxLength = 10;
+            txtCodigoBloque.Name = "txtCodigoBloque";
+            txtCodigoBloque.Size = new Size(140, 26);
+            txtCodigoBloque.TabIndex = 2;
+            // 
+            // txtCodigoStock
+            // 
+            txtCodigoStock.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            txtCodigoStock.Location = new Point(332, 30);
+            txtCodigoStock.Margin = new Padding(2, 2, 2, 2);
+            txtCodigoStock.MaxLength = 10;
+            txtCodigoStock.Name = "txtCodigoStock";
+            txtCodigoStock.Size = new Size(75, 26);
+            txtCodigoStock.TabIndex = 1;
+            // 
+            // cmbTipoElemento
+            // 
+            cmbTipoElemento.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTipoElemento.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            cmbTipoElemento.FormattingEnabled = true;
+            cmbTipoElemento.Location = new Point(13, 30);
+            cmbTipoElemento.Name = "cmbTipoElemento";
+            cmbTipoElemento.Size = new Size(176, 28);
+            cmbTipoElemento.TabIndex = 3;
+            cmbTipoElemento.SelectedIndexChanged += cmbTipoElemento_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(13, 281);
+            label2.Name = "label2";
+            label2.Size = new Size(48, 20);
+            label2.TabIndex = 30;
+            label2.Text = "Ciclo";
+            // 
+            // dtpFechaAlta
+            // 
+            dtpFechaAlta.CustomFormat = "dd/MM/yyyy";
+            dtpFechaAlta.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            dtpFechaAlta.Format = DateTimePickerFormat.Short;
+            dtpFechaAlta.Location = new Point(13, 85);
+            dtpFechaAlta.Name = "dtpFechaAlta";
+            dtpFechaAlta.Size = new Size(140, 26);
+            dtpFechaAlta.TabIndex = 5;
+            // 
+            // dtpFechaBaja
+            // 
+            dtpFechaBaja.CustomFormat = "dd/MM/yyyy";
+            dtpFechaBaja.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            dtpFechaBaja.Format = DateTimePickerFormat.Short;
+            dtpFechaBaja.Location = new Point(166, 85);
+            dtpFechaBaja.Name = "dtpFechaBaja";
+            dtpFechaBaja.Size = new Size(140, 26);
+            dtpFechaBaja.TabIndex = 6;
+            dtpFechaBaja.ValueChanged += dtpFechaBaja_ValueChanged;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label10.ForeColor = Color.White;
+            label10.Location = new Point(166, 118);
+            label10.Name = "label10";
+            label10.Size = new Size(90, 20);
+            label10.TabIndex = 38;
+            label10.Text = "Proveedor";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(140, 226);
+            label13.Name = "label13";
+            label13.Size = new Size(79, 20);
+            label13.TabIndex = 39;
+            label13.Text = "Vendible";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(166, 172);
+            label14.Name = "label14";
+            label14.Size = new Size(71, 20);
+            label14.TabIndex = 41;
+            label14.Text = "Nombre";
+            // 
+            // numPrecio
+            // 
+            numPrecio.DecimalPlaces = 2;
+            numPrecio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            numPrecio.Location = new Point(13, 140);
+            numPrecio.Maximum = new decimal(new int[] { 99999999, 0, 0, 0 });
+            numPrecio.Name = "numPrecio";
+            numPrecio.Size = new Size(140, 26);
+            numPrecio.TabIndex = 8;
+            // 
+            // btnSearch
+            // 
+            btnSearch.Image = Properties.Resources.buscar66;
+            btnSearch.Location = new Point(406, 85);
+            btnSearch.Margin = new Padding(3, 2, 3, 2);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(36, 26);
+            btnSearch.TabIndex = 42;
+            btnSearch.Text = "Ver";
+            btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
+            // 
+            // cmbDatos
+            // 
+            cmbDatos.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cmbDatos.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
+            cmbDatos.FormattingEnabled = true;
+            cmbDatos.Location = new Point(201, 30);
+            cmbDatos.Margin = new Padding(3, 2, 3, 2);
+            cmbDatos.Name = "cmbDatos";
+            cmbDatos.Size = new Size(123, 28);
+            cmbDatos.TabIndex = 43;
+            cmbDatos.SelectedIndexChanged += cmbDatos_SelectedIndexChanged;
             // 
             // AbmStock
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(540, 555);
+            ClientSize = new Size(472, 416);
             Controls.Add(cmbDatos);
             Controls.Add(btnSearch);
             Controls.Add(numPrecio);
@@ -442,7 +443,7 @@
             Controls.Add(label1);
             Controls.Add(laaa);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(2, 2, 2, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AbmStock";

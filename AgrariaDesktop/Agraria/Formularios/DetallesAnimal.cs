@@ -73,5 +73,6 @@ namespace Agraria.Formularios
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
     }
 }

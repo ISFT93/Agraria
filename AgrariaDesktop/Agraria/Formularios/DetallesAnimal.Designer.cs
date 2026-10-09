@@ -17,58 +17,62 @@
 
         private void InitializeComponent()
         {
-            this.btnAceptar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.panelContenedor = new System.Windows.Forms.Panel();
-            this.SuspendLayout();
+            btnAceptar = new Button();
+            btnCancelar = new Button();
+            panelContenedor = new Panel();
+            SuspendLayout();
             // 
             // btnAceptar
             // 
-            this.btnAceptar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnAceptar.Location = new System.Drawing.Point(315, 410);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new Size(90, 35);
-            this.btnAceptar.TabIndex = 1;
-            this.btnAceptar.Text = "&Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            this.btnAceptar.Click += new System.EventHandler(this.btnAceptar_Click);
+            btnAceptar.Font = new Font("Segoe UI", 9F);
+            btnAceptar.Location = new Point(391, 319);
+            btnAceptar.Margin = new Padding(3, 2, 3, 2);
+            btnAceptar.Name = "btnAceptar";
+            btnAceptar.Size = new Size(79, 26);
+            btnAceptar.TabIndex = 1;
+            btnAceptar.Text = "&Aceptar";
+            btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click;
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnCancelar.Location = new System.Drawing.Point(420, 410);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(90, 35);
-            this.btnCancelar.TabIndex = 2;
-            this.btnCancelar.Text = "&Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            btnCancelar.Font = new Font("Segoe UI", 9F);
+            btnCancelar.Location = new Point(483, 319);
+            btnCancelar.Margin = new Padding(3, 2, 3, 2);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(79, 26);
+            btnCancelar.TabIndex = 2;
+            btnCancelar.Text = "&Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // panelContenedor
             // 
-            this.panelContenedor.AutoScroll = true;
-            this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(141, 181, 146);
-            this.panelContenedor.Location = new System.Drawing.Point(12, 12);
-            this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new Size(520, 385);
-            this.panelContenedor.TabIndex = 3;
+            panelContenedor.AutoScroll = true;
+            panelContenedor.BackColor = Color.FromArgb(141, 181, 146);
+            panelContenedor.Location = new Point(10, 9);
+            panelContenedor.Margin = new Padding(3, 2, 3, 2);
+            panelContenedor.Name = "panelContenedor";
+            panelContenedor.Size = new Size(552, 306);
+            panelContenedor.TabIndex = 3;
             // 
             // DetallesAnimal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(141, 181, 146);
-            this.ClientSize = new System.Drawing.Size(535, 460);
-            this.Controls.Add(this.panelContenedor);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAceptar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "DetallesAnimal";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Detalle de Animales";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(141, 181, 146);
+            ClientSize = new Size(564, 356);
+            Controls.Add(panelContenedor);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnAceptar);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "DetallesAnimal";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Detalle de Animales";
+            ResumeLayout(false);
 
         }
 
