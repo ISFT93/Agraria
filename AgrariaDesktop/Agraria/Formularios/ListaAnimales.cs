@@ -13,20 +13,22 @@ namespace Agraria.Formularios
     {
         private AbmAnimalDAL animalDAL = new AbmAnimalDAL();
         private bool esInvitado;
-        private int idUsuarioSesion = 1;
+        private UsuarioLoginDTO _usuarioActual; // 🔹 Sesión de usuario logueado
         private List<AnimalDTO> listaAnimales = new List<AnimalDTO>();
 
+        // Constructor principal que recibe el usuario en sesión
+        public ListaAnimales(UsuarioLoginDTO usuarioLogeado, bool esInvitado = false)
+        {
+            InitializeComponent();
+            this._usuarioActual = usuarioLogeado;
+            this.esInvitado = esInvitado;
+        }
+
+        // Constructor para retrocompatibilidad
         public ListaAnimales(bool esInvitado)
         {
             InitializeComponent();
             this.esInvitado = esInvitado;
-        }
-
-        public ListaAnimales(bool esInvitado, int idUsuario)
-        {
-            InitializeComponent();
-            this.esInvitado = esInvitado;
-            this.idUsuarioSesion = idUsuario;
         }
 
         public ListaAnimales()
@@ -52,7 +54,6 @@ namespace Agraria.Formularios
             CbFiltrar.Items.Add("Tipo de Animal");
             CbFiltrar.Items.Add("Rubro");
             CbFiltrar.Items.Add("Subrubro");
-            CbFiltrar.Items.Add("Sexo");
             CbFiltrar.SelectedIndex = 0;
         }
 
@@ -86,7 +87,7 @@ namespace Agraria.Formularios
                     string rubroVal = dt.Columns.Contains("rubro") ? row["rubro"].ToString() : "";
                     string subrubroVal = dt.Columns.Contains("subrubro") ? row["subrubro"].ToString() : "";
 
-                    string minimoStockVal = dt.Columns.Contains("sock_minimo") ? (row["sock_minimo"]).ToString() : "0";
+                    string minimoStockVal = dt.Columns.Contains("sock_minimo") ? row["sock_minimo"].ToString() : "0";
 
                     listaAnimales.Add(new AnimalDTO
                     {
@@ -99,7 +100,7 @@ namespace Agraria.Formularios
                         TipoAnimal = tipoVal,
                         Rubro = rubroVal,
                         Subrubro = subrubroVal,
-                        MinimoStock =float.Parse(minimoStockVal)
+                        MinimoStock = float.Parse(minimoStockVal)
                     });
                 }
 
@@ -199,8 +200,7 @@ namespace Agraria.Formularios
             if (DtgAnimal.Columns["TipoAnimal"] != null) DtgAnimal.Columns["TipoAnimal"].HeaderText = "Tipo de Animal";
             if (DtgAnimal.Columns["Rubro"] != null) DtgAnimal.Columns["Rubro"].HeaderText = "Rubro";
             if (DtgAnimal.Columns["Subrubro"] != null) DtgAnimal.Columns["Subrubro"].HeaderText = "Subrubro";
-            if (DtgAnimal.Columns["StockMinimo"] != null) DtgAnimal.Columns["StockMinimo"].HeaderText = "Stock Mínimo";
-
+            if (DtgAnimal.Columns["MinimoStock"] != null) DtgAnimal.Columns["MinimoStock"].HeaderText = "Stock Mínimo";
         }
 
         private void DtgAnimal_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -213,7 +213,8 @@ namespace Agraria.Formularios
 
         private void BtnNuevo_Click_1(object sender, EventArgs e)
         {
-            using (AbmAnimales formRegistro = new AbmAnimales(idUsuarioSesion))
+            // 🔹 Se le pasa el objeto UsuarioLoginDTO real a AbmAnimales
+            using (AbmAnimales formRegistro = new AbmAnimales(_usuarioActual))
             {
                 formRegistro.Text = "Nuevo Animal";
 
@@ -230,7 +231,8 @@ namespace Agraria.Formularios
             {
                 AnimalDTO seleccionado = (AnimalDTO)DtgAnimal.CurrentRow.DataBoundItem;
 
-                using (AbmAnimales formEditar = new AbmAnimales(seleccionado))
+                // 🔹 Se pasa el seleccionado Y el objeto UsuarioLoginDTO real
+                using (AbmAnimales formEditar = new AbmAnimales(seleccionado, _usuarioActual))
                 {
                     formEditar.Text = "Modificar Animal";
 
