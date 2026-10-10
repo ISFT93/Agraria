@@ -207,5 +207,26 @@ namespace Agraria.Datos.DAL
             return dt;
         }
 
+        public void UpdateDetalleAnimal(long idStock, string nroAnimal, string sexo, bool esProductor)
+        {
+            try
+            {
+                ConexionBD.ConectarBD();
+                using (SqlCommand cmd = new SqlCommand("sp_update_detalle_animal", ConexionBD.ConexionSQL))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_stock", idStock);
+                    cmd.Parameters.AddWithValue("@nro_animal", nroAnimal);
+                    cmd.Parameters.AddWithValue("@sexo", sexo);
+                    cmd.Parameters.AddWithValue("@es_productor", esProductor);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                ConexionBD.CierraBD();
+            }
+        }
+
     }
 }

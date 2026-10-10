@@ -14,15 +14,18 @@ namespace Agraria.Formularios
         private DataTable datosPrevios;
         private List<ItemAnimalControl> filasAnimales = new List<ItemAnimalControl>();
 
-        // Constructor modificado para recibir datos existentes (opcional)
-        public DetallesAnimal(int cantidad, DataTable dtAnimales = null)
+        // Nueva variable para saber si estamos modificando
+        private long? idStockEditar = null;
+
+        // Constructor modificado para recibir el ID del stock
+        public DetallesAnimal(int cantidad, DataTable dtAnimales = null, long? idStock = null)
         {
             InitializeComponent();
             cantidadLote = cantidad;
             datosPrevios = dtAnimales;
+            idStockEditar = idStock; // Guardamos el ID
             ConstruirFilasDinamicas();
         }
-
         private void ConstruirFilasDinamicas()
         {
             panelContenedor.Controls.Clear();
@@ -69,12 +72,32 @@ namespace Agraria.Formularios
                     return;
                 }
 
-                ListaAnimales.Add(new AnimalItemDto
+                var nuevoAnimal = new AnimalItemDto
                 {
                     NroAnimal = nroAnimal,
                     Sexo = string.IsNullOrEmpty(sexo) ? "Macho" : sexo,
                     EsProductor = esProductor
-                });
+                };
+
+                ListaAnimales.Add(nuevoAnimal);
+
+                // SI ESTAMOS MODIFICANDO: Guardamos el animal directo en la BD
+                if (idStockEditar != null)
+                {
+                    AbmStockBLL bll = new AbmStockBLL();
+                    bll.UpdateDetalleAnimal(idStockEditar.Value, nuevoAnimal.NroAnimal, nuevoAnimal.Sexo, nuevoAnimal.EsProductor);
+                }
+            }
+
+            // AVISOS AL USUARIO
+            if (idStockEditar != null)
+            {
+                MessageBox.Show("Detalles de los animales actualizados en la base de datos.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // AVISO DE RETENCIÓN EN MEMORIA (Para registros nuevos)
+                MessageBox.Show("Detalles confirmados. Recuerde hacer clic en 'Aceptar' en la ventana principal para guardar el stock en la base de datos.", "Datos en Memoria", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             this.DialogResult = DialogResult.OK;

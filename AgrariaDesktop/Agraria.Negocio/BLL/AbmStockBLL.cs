@@ -109,6 +109,11 @@ namespace Agraria.Negocio.BLL
             return dal.ObtenerDetalleAnimales(idStock);
         }
 
+        public void UpdateDetalleAnimal(long idStock, string nroAnimal, string sexo, bool esProductor)
+        {
+            dal.UpdateDetalleAnimal(idStock, nroAnimal, sexo, esProductor);
+        }
+
     }
 
 

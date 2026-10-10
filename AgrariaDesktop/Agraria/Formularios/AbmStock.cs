@@ -15,6 +15,7 @@ namespace Agraria.Formularios
         private ArticulosBLL articuloBLL = new ArticulosBLL();
         private long? idStockEditar = null;
         private UsuarioLoginDTO _usuarioActual;
+        private List<AnimalItemDto> listaAnimalesTemporales = null;
 
         public AbmStock(UsuarioLoginDTO usuarioLogeado)
         {
@@ -71,42 +72,37 @@ namespace Agraria.Formularios
                     return;
                 }
 
-                DetallesAnimal formDetalles = null;
-                int cantidadAnimales = 0;
+                bool esModificacion = (idStockEditar != null);
 
-                if (cmbTipoElemento.Text == "Animal")
+                // Validamos que si es un animal nuevo, haya usado el botón Search para detallarlos
+                if (cmbTipoElemento.Text == "Animal" && !esModificacion)
                 {
-                    if (!int.TryParse(txtCantidad.Text, out cantidadAnimales) || cantidadAnimales <= 0)
+                    if (listaAnimalesTemporales == null || listaAnimalesTemporales.Count == 0)
                     {
-                        MessageBox.Show("Por favor, ingrese una cantidad válida de animales para detallar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    formDetalles = new DetallesAnimal(cantidadAnimales);
-                    if (formDetalles.ShowDialog() != DialogResult.OK)
-                    {
+                        MessageBox.Show("Debe detallar los animales usando el botón de búsqueda (lupa) antes de guardar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
                 }
 
-                bool esModificacion = (idStockEditar != null);
+                // Tomamos la lista directamente de la memoria
+                List<AnimalItemDto> listaFinalAnimales = this.listaAnimalesTemporales;
 
                 long idStockFinal = esModificacion ? Convert.ToInt64(txtCodigoStock.Text) : bll.GenerarIdStock(_usuarioActual.Id);
                 long idElemento = Convert.ToInt64(txtCodigoBloque.Text);
                 string tipoElemento = cmbTipoElemento.Text;
 
                 int sumaCiclo = 0;
-                if (chkVerano.Checked) sumaCiclo += 2;
-                if (chkOtoño.Checked) sumaCiclo += 4;
-                if (chkInvierno.Checked) sumaCiclo += 8;
-                if (chkPrimavera.Checked) sumaCiclo += 16;
+                if (chkVerano.Checked) sumaCiclo += 2;     //[cite: 3]
+                if (chkOtoño.Checked) sumaCiclo += 4;      //[cite: 3]
+                if (chkInvierno.Checked) sumaCiclo += 8;   //[cite: 3]
+                if (chkPrimavera.Checked) sumaCiclo += 16; //[cite: 3]
 
                 string ciclo = sumaCiclo > 0 ? sumaCiclo.ToString() : null;
 
                 DateTime fechaAlta = dtpFechaAlta.Value;
                 DateTime? fechaBaja = (dtpFechaBaja.Format == DateTimePickerFormat.Custom && dtpFechaBaja.CustomFormat == " ")
-                       ? null
-                       : (DateTime?)dtpFechaBaja.Value;
+                        ? null
+                        : (DateTime?)dtpFechaBaja.Value;
 
                 decimal? precio = numPrecio.Value > 0 ? (decimal?)numPrecio.Value : null;
 
@@ -114,7 +110,7 @@ namespace Agraria.Formularios
                 bool vendible = (cmbVendible.Text == "Sí");
                 long? idProveedor = cmbProveedor.SelectedValue != null ? (long?)Convert.ToInt64(cmbProveedor.SelectedValue) : null;
 
-                if (tipoElemento == "Animal" && formDetalles != null && formDetalles.ListaAnimales != null && formDetalles.ListaAnimales.Count > 0)
+                if (tipoElemento == "Animal" && listaFinalAnimales != null && listaFinalAnimales.Count > 0)
                 {
                     bll.GuardarConDetalleAnimales(
                         idStockFinal,
@@ -124,13 +120,13 @@ namespace Agraria.Formularios
                         ciclo,
                         fechaAlta,
                         fechaBaja,
-                        formDetalles.ListaAnimales.Count,
+                        listaFinalAnimales.Count,
                         precio,
                         idProveedor,
                         activo,
                         vendible,
                         esModificacion,
-                        formDetalles.ListaAnimales
+                        listaFinalAnimales
                     );
                 }
                 else
@@ -160,7 +156,6 @@ namespace Agraria.Formularios
                 MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CargarDatos(long id)
         {
             DataTable dt = bll.BuscarPorId(id);
@@ -294,33 +289,56 @@ namespace Agraria.Formularios
                         int cantidadAnimales = Convert.ToInt32(cantidadDecimal);
                         DetallesAnimal formDetalles;
 
-                        // Si estamos editando y tenemos un id_stock, traemos los datos de la BD
+                        // Verificamos si es una modificación o un registro nuevo
                         if (idStockEditar != null)
                         {
                             DataTable dtAnimalesBD = bll.ObtenerDetalleAnimales(idStockEditar.Value);
-                            formDetalles = new DetallesAnimal(cantidadAnimales, dtAnimalesBD);
+                            formDetalles = new DetallesAnimal(cantidadAnimales, dtAnimalesBD, idStockEditar.Value);
                         }
                         else
                         {
-                            formDetalles = new DetallesAnimal(cantidadAnimales);
+                            // ES NUEVO. Si ya teníamos datos temporales (de un clic anterior), se los pasamos para que los cargue.
+                            if (this.listaAnimalesTemporales != null && this.listaAnimalesTemporales.Count > 0)
+                            {
+                                // Nota: Tendrás que adaptar tu constructor de DetallesAnimal para recibir esta Lista, o crear un DataTable "falso" para reusar tu código actual.
+                                // La forma más rápida usando lo que ya tenés armado es crear un DataTable al vuelo:
+                                DataTable dtTemporal = new DataTable();
+                                dtTemporal.Columns.Add("nro_animal");
+                                dtTemporal.Columns.Add("sexo");
+                                dtTemporal.Columns.Add("es_productor", typeof(bool));
+
+                                foreach (var animal in this.listaAnimalesTemporales)
+                                {
+                                    dtTemporal.Rows.Add(animal.NroAnimal, animal.Sexo, animal.EsProductor);
+                                }
+
+                                formDetalles = new DetallesAnimal(cantidadAnimales, dtTemporal);
+                            }
+                            else
+                            {
+                                // Es nuevo, primera vez que aprieta search
+                                formDetalles = new DetallesAnimal(cantidadAnimales);
+                            }
                         }
 
+                        // Abrimos el formulario y guardamos el resultado en la variable global temporal
                         if (formDetalles.ShowDialog() == DialogResult.OK)
                         {
                             if (formDetalles.ListaAnimales != null)
                             {
+                                listaAnimalesTemporales = formDetalles.ListaAnimales;
                                 txtCantidad.Text = formDetalles.ListaAnimales.Count.ToString();
                             }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("No hay una cantidad válida de animales registrada para editar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Ingrese una cantidad válida mayor a 0 antes de detallar los animales.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El botón de búsqueda de detalles solo está disponible para elementos de tipo Animal.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("El detalle por lote solo está disponible para elementos de tipo Animal.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
