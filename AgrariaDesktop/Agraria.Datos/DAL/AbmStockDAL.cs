@@ -200,20 +200,12 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al obtener los detalles de animales: " + ex.Message);
-            }
             finally
             {
-                // Asegúrate de cerrar la conexión si tu estructura lo requiere al finalizar
-                if (ConexionBD.ConexionSQL.State == ConnectionState.Open)
-                {
-                    ConexionBD.ConexionSQL.Close();
-                }
+                ConexionBD.CierraBD();
             }
-
             return dt;
         }
+
     }
 }

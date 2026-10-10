@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Agraria.Negocio.BLL
 {
@@ -100,8 +101,17 @@ namespace Agraria.Negocio.BLL
                     dal.InsertarDetalleAnimal(idStock, animal.NroAnimal, animal.Sexo, animal.EsProductor);
                 }
             }
+
+
         }
+        public DataTable ObtenerDetalleAnimales(long idStock)
+        {
+            return dal.ObtenerDetalleAnimales(idStock);
+        }
+
     }
+
+
 
     public class AnimalItemDto
     {
@@ -109,10 +119,6 @@ namespace Agraria.Negocio.BLL
         public string Sexo { get; set; }
         public bool EsProductor { get; set; }
     }
-
-
-
-    
 
 
     }

@@ -1,6 +1,7 @@
 ﻿using Agraria.Negocio.BLL;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,18 +11,20 @@ namespace Agraria.Formularios
     {
         public List<AnimalItemDto> ListaAnimales { get; private set; }
         private int cantidadLote;
+        private DataTable datosPrevios;
         private List<ItemAnimalControl> filasAnimales = new List<ItemAnimalControl>();
 
-        public DetallesAnimal(int cantidad)
+        // Constructor modificado para recibir datos existentes (opcional)
+        public DetallesAnimal(int cantidad, DataTable dtAnimales = null)
         {
             InitializeComponent();
             cantidadLote = cantidad;
+            datosPrevios = dtAnimales;
             ConstruirFilasDinamicas();
         }
 
         private void ConstruirFilasDinamicas()
         {
-            // Asumiendo que en tu diseñador de DetallesAnimal agregaste un Panel llamado 'panelContenedor'
             panelContenedor.Controls.Clear();
             filasAnimales.Clear();
 
@@ -31,12 +34,22 @@ namespace Agraria.Formularios
                 var fila = new ItemAnimalControl();
                 fila.Location = new Point(10, yPos);
 
-                // Opcional: si quieres mostrar un identificador o número de orden visual, 
-                // puedes ajustar el texto si tu ItemAnimalControl tiene una etiqueta para ello.
+                // Si hay datos en la BD para este índice, los cargamos en el control
+                if (datosPrevios != null && i < datosPrevios.Rows.Count)
+                {
+                    DataRow dr = datosPrevios.Rows[i];
+                    fila.IdAnimal = dr["nro_animal"]?.ToString();
+                    fila.Sexo = dr["sexo"]?.ToString();
+
+                    if (dr["es_productor"] != DBNull.Value)
+                    {
+                        fila.EsProductor = Convert.ToBoolean(dr["es_productor"]);
+                    }
+                }
 
                 panelContenedor.Controls.Add(fila);
                 filasAnimales.Add(fila);
-                yPos += fila.Height + 5; // Espacio vertical dinámico basado en la altura del control
+                yPos += fila.Height + 5;
             }
         }
 
@@ -73,6 +86,5 @@ namespace Agraria.Formularios
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-
     }
 }

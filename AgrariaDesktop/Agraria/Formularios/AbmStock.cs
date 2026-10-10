@@ -289,13 +289,21 @@ namespace Agraria.Formularios
             {
                 if (cmbTipoElemento.Text == "Animal")
                 {
-                    // Usamos decimal.TryParse para que soporte el formato "5,00" o "5"
                     if (decimal.TryParse(txtCantidad.Text, out decimal cantidadDecimal) && cantidadDecimal > 0)
                     {
-                        // Convertimos el decimal a entero para pasarlo al formulario de detalles
                         int cantidadAnimales = Convert.ToInt32(cantidadDecimal);
+                        DetallesAnimal formDetalles;
 
-                        DetallesAnimal formDetalles = new DetallesAnimal(cantidadAnimales);
+                        // Si estamos editando y tenemos un id_stock, traemos los datos de la BD
+                        if (idStockEditar != null)
+                        {
+                            DataTable dtAnimalesBD = bll.ObtenerDetalleAnimales(idStockEditar.Value);
+                            formDetalles = new DetallesAnimal(cantidadAnimales, dtAnimalesBD);
+                        }
+                        else
+                        {
+                            formDetalles = new DetallesAnimal(cantidadAnimales);
+                        }
 
                         if (formDetalles.ShowDialog() == DialogResult.OK)
                         {

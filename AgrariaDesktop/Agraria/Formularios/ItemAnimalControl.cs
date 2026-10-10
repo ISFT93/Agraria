@@ -24,10 +24,23 @@ namespace Agraria.Formularios
             }
         }
 
-        // Propiedades públicas para que DetallesAnimal pueda extraer lo que cargó el usuario
-        // (Asegurate de que los nombres de tus controles en el diseñador coincidan con estos)
-        public string IdAnimal => txtIdAnimal.Text.Trim();
-        public string Sexo => cmbSexoAnimal.Text;
-        public bool EsProductor => chkEsProductor.Checked;
+        // Propiedades públicas con GET y SET para permitir lectura y escritura
+        public string IdAnimal
+        {
+            get { return txtIdAnimal.Text.Trim(); }
+            set { txtIdAnimal.Text = value; }
+        }
+
+        public string Sexo
+        {
+            get { return cmbSexoAnimal.Text; }
+            set { cmbSexoAnimal.Text = value; }
+        }
+
+        public bool EsProductor
+        {
+            get { return chkEsProductor.Checked; }
+            set { chkEsProductor.Checked = value; }
+        }
     }
 }
