@@ -323,7 +323,8 @@ namespace Agraria
         {
             CerrarTodosLosFormularios();
 
-            var cargaForm = new Formularios.ListaAnimales(esInvitado);
+            // 🟢 Corregido: se usa 'usuarioLogeado' (con una sola 'o') y se pasa 'esInvitado'
+            var cargaForm = new Formularios.ListaAnimales(usuarioLogeado, esInvitado);
             cargaForm.MdiParent = this;
             cargaForm.Show();
 
