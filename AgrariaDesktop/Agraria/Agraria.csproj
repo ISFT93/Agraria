@@ -129,6 +129,9 @@
     <None Update="Recursos\Animales.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Recursos\EntornoFormativo.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Recursos\ListarStock.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

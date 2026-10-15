@@ -30,6 +30,7 @@
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnNuevo = new Button();
             btnModificar = new Button();
@@ -182,19 +183,22 @@
             // 
             // dtgvListarStock
             // 
+            dtgvListarStock.AllowUserToAddRows = false;
+            dtgvListarStock.AllowUserToResizeColumns = false;
+            dtgvListarStock.AllowUserToResizeRows = false;
             dtgvListarStock.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.White;
             dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dtgvListarStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvListarStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -206,6 +210,14 @@
             dtgvListarStock.Margin = new Padding(2);
             dtgvListarStock.Name = "dtgvListarStock";
             dtgvListarStock.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = SystemColors.Control;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+            dtgvListarStock.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvListarStock.RowHeadersWidth = 62;
             dtgvListarStock.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvListarStock.Size = new Size(719, 263);
@@ -223,6 +235,7 @@
             Controls.Add(panel2);
             Margin = new Padding(2);
             Name = "ListarStock";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Lista de Stock";
             Load += ListarStock_Load;
             panel1.ResumeLayout(false);

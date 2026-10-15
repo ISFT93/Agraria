@@ -1,4 +1,5 @@
-﻿using Agraria.Datos.DTO;
+﻿using Agraria.BLL;
+using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
 using System;
 using System.Data;
@@ -9,8 +10,12 @@ namespace Agraria.Formularios
     public partial class AbmStock : Form
     {
         private AbmStockBLL bll = new AbmStockBLL();
+        private AbmAnimalBLL animalBLL = new AbmAnimalBLL();
+        private AbmVegetalesBLL vegetalBLL = new AbmVegetalesBLL();
+        private ArticulosBLL articuloBLL = new ArticulosBLL();
         private long? idStockEditar = null;
         private UsuarioLoginDTO _usuarioActual;
+        private List<AnimalItemDto> listaAnimalesTemporales = null;
 
         public AbmStock(UsuarioLoginDTO usuarioLogeado)
         {
@@ -28,13 +33,11 @@ namespace Agraria.Formularios
         private void ConfigurarFormulario()
         {
             cmbTipoElemento.Items.AddRange(new object[] { "Articulo", "Vegetal", "Animal" });
-            cmbEsProductor.Items.AddRange(new object[] { "Sí", "No" });
             cmbActivo.Items.AddRange(new object[] { "Sí", "No" });
             cmbVendible.Items.AddRange(new object[] { "Sí", "No" });
 
             cmbActivo.SelectedIndex = 0;
             cmbVendible.SelectedIndex = 1;
-            cmbEsProductor.SelectedIndex = 1;
 
             txtCodigoStock.Enabled = false;
             txtCodigoBloque.Enabled = false;
@@ -44,23 +47,12 @@ namespace Agraria.Formularios
 
         private void cmbTipoElemento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool esAnimal = (cmbTipoElemento.Text == "Animal");
-
-            txtNroAnimal.Enabled = esAnimal;
-            txtEstadoSalud.Enabled = esAnimal;
-            cmbEsProductor.Enabled = esAnimal;
-
-            if (!esAnimal)
-            {
-                txtNroAnimal.Clear();
-                txtEstadoSalud.Clear();
-                cmbEsProductor.SelectedIndex = 1; // "No"
-            }
             if (idStockEditar == null && cmbTipoElemento.SelectedIndex != -1)
             {
                 txtCodigoBloque.Text = bll.GenerarIdElementoSeguro(cmbTipoElemento.Text, _usuarioActual.Id).ToString();
-
             }
+
+            CargarDatos();
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -82,41 +74,79 @@ namespace Agraria.Formularios
 
                 bool esModificacion = (idStockEditar != null);
 
-                long idStockFinal = esModificacion ? Convert.ToInt64(txtCodigoStock.Text) : 0;
-                long idElemento = Convert.ToInt64(txtCodigoBloque.Text);
+                // Validamos que si es un animal nuevo, haya usado el botón Search para detallarlos
+                if (cmbTipoElemento.Text == "Animal" && !esModificacion)
+                {
+                    if (listaAnimalesTemporales == null || listaAnimalesTemporales.Count == 0)
+                    {
+                        MessageBox.Show("Debe detallar los animales usando el botón de búsqueda (lupa) antes de guardar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
 
+                // Tomamos la lista directamente de la memoria
+                List<AnimalItemDto> listaFinalAnimales = this.listaAnimalesTemporales;
+
+                long idStockFinal = esModificacion ? Convert.ToInt64(txtCodigoStock.Text) : bll.GenerarIdStock(_usuarioActual.Id);
+                long idElemento = Convert.ToInt64(txtCodigoBloque.Text);
                 string tipoElemento = cmbTipoElemento.Text;
 
-                // Sumatoria del ciclo para guardar
                 int sumaCiclo = 0;
                 if (chkVerano.Checked) sumaCiclo += 2;     //[cite: 3]
                 if (chkOtoño.Checked) sumaCiclo += 4;      //[cite: 3]
                 if (chkInvierno.Checked) sumaCiclo += 8;   //[cite: 3]
                 if (chkPrimavera.Checked) sumaCiclo += 16; //[cite: 3]
 
-                // Solo guardamos número si tildaron algo, si no, se guarda nulo
                 string ciclo = sumaCiclo > 0 ? sumaCiclo.ToString() : null;
 
                 DateTime fechaAlta = dtpFechaAlta.Value;
                 DateTime? fechaBaja = (dtpFechaBaja.Format == DateTimePickerFormat.Custom && dtpFechaBaja.CustomFormat == " ")
-                       ? null
-                       : (DateTime?)dtpFechaBaja.Value;
+                        ? null
+                        : (DateTime?)dtpFechaBaja.Value;
 
-                decimal cantidad = decimal.TryParse(txtCantidad.Text, out decimal c) ? c : 0m;
                 decimal? precio = numPrecio.Value > 0 ? (decimal?)numPrecio.Value : null;
 
-                string nroAnimal = txtNroAnimal.Text.Trim();
-                string estadoSalud = txtEstadoSalud.Text.Trim();
-                string motivoMovimiento = txtMotivoMovimiento.Text.Trim();
-
-                bool esProductor = (cmbEsProductor.Text == "Sí");
                 bool activo = (cmbActivo.Text == "Sí");
                 bool vendible = (cmbVendible.Text == "Sí");
-                // 1. Capturamos el ID del proveedor (si seleccionó uno)
                 long? idProveedor = cmbProveedor.SelectedValue != null ? (long?)Convert.ToInt64(cmbProveedor.SelectedValue) : null;
 
-                // 2. Modificamos la llamada a Guardar reemplazando el 'null' por 'idProveedor'
-                bll.Guardar(idStockFinal, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo, vendible, motivoMovimiento, esModificacion);
+                if (tipoElemento == "Animal" && listaFinalAnimales != null && listaFinalAnimales.Count > 0)
+                {
+                    bll.GuardarConDetalleAnimales(
+                        idStockFinal,
+                        idElemento,
+                        tipoElemento,
+                        nombre,
+                        ciclo,
+                        fechaAlta,
+                        fechaBaja,
+                        listaFinalAnimales.Count,
+                        precio,
+                        idProveedor,
+                        activo,
+                        vendible,
+                        esModificacion,
+                        listaFinalAnimales
+                    );
+                }
+                else
+                {
+                    decimal cantidadGeneral = decimal.TryParse(txtCantidad.Text, out decimal c) ? c : 0m;
+
+                    if (esModificacion)
+                    {
+                        new Agraria.Datos.DAL.AbmStockDAL().Actualizar(
+                            idStockFinal, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidadGeneral, precio, idProveedor, activo, vendible
+                        );
+                    }
+                    else
+                    {
+                        new Agraria.Datos.DAL.AbmStockDAL().Insertar(
+                            idStockFinal, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidadGeneral, precio, idProveedor, activo, vendible, null
+                        );
+                    }
+                }
+
                 MessageBox.Show("Stock guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -126,7 +156,6 @@ namespace Agraria.Formularios
                 MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void CargarDatos(long id)
         {
             DataTable dt = bll.BuscarPorId(id);
@@ -135,13 +164,12 @@ namespace Agraria.Formularios
                 DataRow dr = dt.Rows[0];
                 txtCodigoStock.Text = dr["id_stock"].ToString();
                 txtCodigoBloque.Text = dr["id_elemento"].ToString();
-                txtNombre.Text = dr["Nombre"]?.ToString(); // Cargar Nombre
+                txtNombre.Text = dr["Nombre"]?.ToString();
 
                 cmbTipoElemento.SelectedIndexChanged -= cmbTipoElemento_SelectedIndexChanged;
                 cmbTipoElemento.Text = dr["tipo_elemento"].ToString();
                 cmbTipoElemento.SelectedIndexChanged += cmbTipoElemento_SelectedIndexChanged;
 
-                // Decodificar el ciclo
                 if (dr["ciclo"] != DBNull.Value && int.TryParse(dr["ciclo"].ToString(), out int cicloGuardado))
                 {
                     chkVerano.Checked = (cicloGuardado & 2) == 2;
@@ -160,18 +188,17 @@ namespace Agraria.Formularios
                 if (dr["fecha_alta"] != DBNull.Value) dtpFechaAlta.Value = Convert.ToDateTime(dr["fecha_alta"]);
                 if (dr["fecha_baja"] != DBNull.Value)
                 {
-                    dtpFechaBaja.Format = DateTimePickerFormat.Short; // Mostramos el formato normal
+                    dtpFechaBaja.Format = DateTimePickerFormat.Short;
                     dtpFechaBaja.Value = Convert.ToDateTime(dr["fecha_baja"]);
                 }
                 else
                 {
                     dtpFechaBaja.Format = DateTimePickerFormat.Custom;
-                    dtpFechaBaja.CustomFormat = " "; // Lo dejamos en blanco si viene Null
+                    dtpFechaBaja.CustomFormat = " ";
                 }
 
                 txtCantidad.Text = dr["cantidad"].ToString();
-                txtNroAnimal.Text = dr["nro_animal"]?.ToString();
-                txtEstadoSalud.Text = dr["estado_salud"]?.ToString();
+
                 if (dr["precio"] != DBNull.Value && decimal.TryParse(dr["precio"].ToString(), out decimal precioGuardado))
                 {
                     numPrecio.Value = precioGuardado;
@@ -180,18 +207,16 @@ namespace Agraria.Formularios
                 {
                     numPrecio.Value = 0;
                 }
-                txtMotivoMovimiento.Text = dr["motivo_movimiento"]?.ToString();
+
                 if (dr["id_proveedor"] != DBNull.Value)
                 {
-                    cmbProveedor.SelectedValue =
-                        Convert.ToInt64(dr["id_proveedor"]);
+                    cmbProveedor.SelectedValue = Convert.ToInt64(dr["id_proveedor"]);
                 }
                 else
                 {
                     cmbProveedor.SelectedIndex = -1;
                 }
 
-                cmbEsProductor.Text = Convert.ToBoolean(dr["es_productor"]) ? "Sí" : "No";
                 cmbActivo.Text = Convert.ToBoolean(dr["activo"]) ? "Sí" : "No";
                 cmbVendible.Text = Convert.ToBoolean(dr["vendible"]) ? "Sí" : "No";
             }
@@ -202,6 +227,7 @@ namespace Agraria.Formularios
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
         private void CargarCombosEstaticos()
         {
             DataTable dtProveedores = bll.CargarProveedores();
@@ -211,15 +237,148 @@ namespace Agraria.Formularios
             cmbProveedor.SelectedIndex = -1;
         }
 
+        private void CargarDatos()
+        {
+            cmbDatos.DataSource = null;
+            cmbDatos.Items.Clear();
+
+            if (cmbTipoElemento.Text == "Animal")
+            {
+                DataTable dtAnimales = animalBLL.MostrarAnimales();
+                cmbDatos.DataSource = dtAnimales;
+                cmbDatos.DisplayMember = "nombrecomun";
+                cmbDatos.ValueMember = "idanimal";
+                cmbDatos.SelectedIndex = -1;
+            }
+            else if (cmbTipoElemento.Text == "Vegetal")
+            {
+                DataTable dtVegetales = vegetalBLL.CargarCombo("vegetal");
+                cmbDatos.DataSource = dtVegetales;
+                cmbDatos.DisplayMember = "nombre_comun";
+                cmbDatos.ValueMember = "id_vegetal";
+                cmbDatos.SelectedIndex = -1;
+            }
+            else if (cmbTipoElemento.Text == "Articulo")
+            {
+                DataTable dtArticulos = articuloBLL.ObtenerArticulos();
+                cmbDatos.DataSource = dtArticulos;
+                cmbDatos.DisplayMember = "nombre";
+                cmbDatos.ValueMember = "id_articulo";
+                cmbDatos.SelectedIndex = -1;
+            }
+        }
+
         private void AbmStock_Load(object sender, EventArgs e)
         {
-            dtpFechaBaja.Format = DateTimePickerFormat.Custom; 
+            dtpFechaBaja.Format = DateTimePickerFormat.Custom;
             dtpFechaBaja.CustomFormat = " ";
         }
 
         private void dtpFechaBaja_ValueChanged(object sender, EventArgs e)
         {
-            dtpFechaBaja.Format = DateTimePickerFormat.Short; //
+            dtpFechaBaja.Format = DateTimePickerFormat.Short;
+        }
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbTipoElemento.Text == "Animal")
+                {
+                    if (decimal.TryParse(txtCantidad.Text, out decimal cantidadDecimal) && cantidadDecimal > 0)
+                    {
+                        int cantidadAnimales = Convert.ToInt32(cantidadDecimal);
+                        DetallesAnimal formDetalles;
+
+                        // Verificamos si es una modificación o un registro nuevo
+                        if (idStockEditar != null)
+                        {
+                            DataTable dtAnimalesBD = bll.ObtenerDetalleAnimales(idStockEditar.Value);
+                            formDetalles = new DetallesAnimal(cantidadAnimales, dtAnimalesBD, idStockEditar.Value);
+                        }
+                        else
+                        {
+                            // ES NUEVO. Si ya teníamos datos temporales (de un clic anterior), se los pasamos para que los cargue.
+                            if (this.listaAnimalesTemporales != null && this.listaAnimalesTemporales.Count > 0)
+                            {
+                                // Nota: Tendrás que adaptar tu constructor de DetallesAnimal para recibir esta Lista, o crear un DataTable "falso" para reusar tu código actual.
+                                // La forma más rápida usando lo que ya tenés armado es crear un DataTable al vuelo:
+                                DataTable dtTemporal = new DataTable();
+                                dtTemporal.Columns.Add("nro_animal");
+                                dtTemporal.Columns.Add("sexo");
+                                dtTemporal.Columns.Add("es_productor", typeof(bool));
+
+                                foreach (var animal in this.listaAnimalesTemporales)
+                                {
+                                    dtTemporal.Rows.Add(animal.NroAnimal, animal.Sexo, animal.EsProductor);
+                                }
+
+                                formDetalles = new DetallesAnimal(cantidadAnimales, dtTemporal);
+                            }
+                            else
+                            {
+                                // Es nuevo, primera vez que aprieta search
+                                formDetalles = new DetallesAnimal(cantidadAnimales);
+                            }
+                        }
+
+                        // Abrimos el formulario y guardamos el resultado en la variable global temporal
+                        if (formDetalles.ShowDialog() == DialogResult.OK)
+                        {
+                            if (formDetalles.ListaAnimales != null)
+                            {
+                                listaAnimalesTemporales = formDetalles.ListaAnimales;
+                                txtCantidad.Text = formDetalles.ListaAnimales.Count.ToString();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ingrese una cantidad válida mayor a 0 antes de detallar los animales.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El detalle por lote solo está disponible para elementos de tipo Animal.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocurrió un error al abrir los detalles: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void cmbDatos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (idStockEditar != null) return;
+
+            try
+            {
+                if (cmbDatos.SelectedIndex == -1 || cmbDatos.SelectedValue == null)
+                {
+                    txtCodigoStock.Clear();
+                    return;
+                }
+
+                if (cmbDatos.SelectedValue is DataRowView drv)
+                {
+                    var valueMember = cmbDatos.ValueMember;
+                    if (!string.IsNullOrEmpty(valueMember) && drv.Row.Table.Columns.Contains(valueMember))
+                    {
+                        txtCodigoStock.Text = drv.Row[valueMember]?.ToString();
+                    }
+                    else
+                    {
+                        txtCodigoStock.Clear();
+                    }
+                }
+                else
+                {
+                    txtCodigoStock.Text = cmbDatos.SelectedValue.ToString();
+                }
+            }
+            catch
+            {
+                txtCodigoStock.Clear();
+            }
         }
     }
 }

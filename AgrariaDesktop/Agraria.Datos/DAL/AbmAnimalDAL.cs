@@ -1,75 +1,67 @@
-﻿using System;
+﻿using Agraria.Datos.DAL;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using Agraria.Datos.Entidades;
 
 namespace Agraria.Datos.DAL
 {
     public class AbmAnimalDAL
     {
-
-        public bool GuardarAnimal(Animal animal)
+        public void Insertar(long idAnimal, string nombreComun, string nombreCientifico, int idTipo, int idRubro, int idSubrubro, float minimoStock)
         {
-            try
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                ConexionBD.ConectarBD();
-                using (SqlCommand cmd = new SqlCommand("sp_InsertAnimal", ConexionBD.ConexionSQL))
+                using (SqlCommand cmd = new SqlCommand("sp_insertanimal", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_animal", idAnimal);
+                    cmd.Parameters.AddWithValue("@nombre_comun", nombreComun);
+                    cmd.Parameters.AddWithValue("@nombre_cientifico", string.IsNullOrEmpty(nombreCientifico) ? (object)DBNull.Value : nombreCientifico);
+                    cmd.Parameters.AddWithValue("@id_tipo", idTipo);
+                    cmd.Parameters.AddWithValue("@id_rubro", idRubro);
+                    cmd.Parameters.AddWithValue("@id_subrubro", idSubrubro);
+                    cmd.Parameters.AddWithValue("@stock_minimo", minimoStock);
 
-                    cmd.Parameters.AddWithValue("@id_animal", animal.IdAnimal);
-                    cmd.Parameters.AddWithValue("@nombre_comun", animal.NombreComun);
-                    cmd.Parameters.AddWithValue("@nombre_cientifico", string.IsNullOrEmpty(animal.NombreCientifico) ? (object)DBNull.Value : animal.NombreCientifico);
-                    cmd.Parameters.AddWithValue("@id_tipo", animal.IdTipo);
-                    cmd.Parameters.AddWithValue("@id_rubro", animal.IdRubro);
-                    cmd.Parameters.AddWithValue("@id_subrubro", animal.IdSubrubro);
-                    cmd.Parameters.AddWithValue("@stock_minimo", animal.MinimoStock);
-
-                    return cmd.ExecuteNonQuery() > 0;
+                    cmd.ExecuteNonQuery();
                 }
-            }
-            finally
-            {
-                 ;
             }
         }
 
-   
-        public bool ModificarAnimal(Animal animal)
+        public void Actualizar(long idAnimal, string nombreComun, string nombreCientifico, int idTipo, int idRubro, int idSubrubro, float minimoStock)
         {
-            try
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                ConexionBD.ConectarBD();
-                using (SqlCommand cmd = new SqlCommand("sp_UpdateAnimal", ConexionBD.ConexionSQL))
+                using (SqlCommand cmd = new SqlCommand("sp_updateanimal", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@id_animal", idAnimal);
+                    cmd.Parameters.AddWithValue("@nombre_comun", nombreComun);
+                    cmd.Parameters.AddWithValue("@nombre_cientifico", string.IsNullOrEmpty(nombreCientifico) ? (object)DBNull.Value : nombreCientifico);
+                    cmd.Parameters.AddWithValue("@id_tipo", idTipo);
+                    cmd.Parameters.AddWithValue("@id_rubro", idRubro);
+                    cmd.Parameters.AddWithValue("@id_subrubro", idSubrubro);
+                    cmd.Parameters.AddWithValue("@stock_minimo", minimoStock);
 
-                    cmd.Parameters.AddWithValue("@id_animal", animal.IdAnimal);
-                    cmd.Parameters.AddWithValue("@nombre_comun", animal.NombreComun);
-                    cmd.Parameters.AddWithValue("@nombre_cientifico", string.IsNullOrEmpty(animal.NombreCientifico) ? (object)DBNull.Value : animal.NombreCientifico);
-                    cmd.Parameters.AddWithValue("@id_tipo", animal.IdTipo);
-                    cmd.Parameters.AddWithValue("@id_rubro", animal.IdRubro);
-                    cmd.Parameters.AddWithValue("@id_subrubro", animal.IdSubrubro);
-                    cmd.Parameters.AddWithValue("@stock_minimo", animal.MinimoStock);
-
-                    return cmd.ExecuteNonQuery() > 0;
+                    cmd.ExecuteNonQuery();
                 }
             }
-            finally
-            {
-                 ;
-            }
         }
-
-       
 
         public DataTable ObtenerAnimales()
         {
             DataTable dt = new DataTable();
-            try
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                ConexionBD.ConectarBD();
-                using (SqlCommand cmd = new SqlCommand("sp_SelectAnimal", ConexionBD.ConexionSQL))
+                using (SqlCommand cmd = new SqlCommand("sp_selectanimal", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
@@ -78,14 +70,28 @@ namespace Agraria.Datos.DAL
                     }
                 }
             }
-            finally
+            return dt;
+        }
+
+        public DataTable ObtenerCombo(string tabla)
+        {
+            DataTable dt = new DataTable();
+            ConexionBD.ConectarBD();
+            using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                 ;
+                using (SqlCommand cmd = new SqlCommand("sp_select_combo", cn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@tabla", tabla);
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
+                }
             }
             return dt;
         }
 
-        // obtiene del último Id según rango de bloque de usuario
         public long ObtenerUltimoIdPorUsuario(long baseUsuario)
         {
             long ultimoId = 0;
@@ -96,8 +102,9 @@ namespace Agraria.Datos.DAL
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    long minId = Convert.ToInt64(baseUsuario.ToString() + "2000000");
-                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "3000000");
+                    // Rango de bloque para Animales (Módulo 3): X30000 a X39999
+                    long minId = Convert.ToInt64(baseUsuario.ToString() + "30000");
+                    long maxId = Convert.ToInt64(baseUsuario.ToString() + "39999");
 
                     cmd.Parameters.AddWithValue("@min", minId);
                     cmd.Parameters.AddWithValue("@max", maxId);
@@ -111,32 +118,9 @@ namespace Agraria.Datos.DAL
             }
             finally
             {
-                 ;
+                ConexionBD.CierraBD();
             }
             return ultimoId;
-        }
-
-        // consulta genérica para poblar desplegables
-        public DataTable ObtenerTabla(string nombreTabla)
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                ConexionBD.ConectarBD();
-                string query = $"SELECT * FROM {nombreTabla}";
-                using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
-                {
-                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                    {
-                        da.Fill(dt);
-                    }
-                }
-            }
-            finally
-            {
-                 ;
-            }
-            return dt;
         }
     }
 }

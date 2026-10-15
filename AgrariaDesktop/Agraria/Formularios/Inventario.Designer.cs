@@ -773,6 +773,7 @@
             ClientSize = new Size(984, 661);
             Controls.Add(groupBox2);
             Name = "Inventario";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Inventario";
             Load += Inventario_Load;
             groupBox2.ResumeLayout(false);

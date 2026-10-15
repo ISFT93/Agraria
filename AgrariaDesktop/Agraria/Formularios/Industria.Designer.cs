@@ -419,6 +419,7 @@
             Controls.Add(panel2);
             Controls.Add(groupBox1);
             Name = "Industria";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Industria";
             Load += Industria_Load;
             groupBox1.ResumeLayout(false);

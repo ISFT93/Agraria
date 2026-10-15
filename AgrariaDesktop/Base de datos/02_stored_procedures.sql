@@ -1,7 +1,13 @@
-USE AGRARIA
+USE Agraria
 GO
 
-CREATE OR ALTER   PROCEDURE [dbo].[sp_delete_articulo]
+-- ==========================================
+-- 1. SP: Eliminar Artículo
+-- ==========================================
+IF OBJECT_ID('dbo.sp_delete_articulo', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_delete_articulo];
+GO
+CREATE PROCEDURE [dbo].[sp_delete_articulo]
     @id_articulo BIGINT
 AS
 BEGIN
@@ -9,28 +15,34 @@ BEGIN
     WHERE id_articulo = @id_articulo;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_delete_vegetal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 3. SP: Eliminar Vegetal
-CREATE OR ALTER PROCEDURE [dbo].[sp_delete_vegetal]
+IF OBJECT_ID('dbo.sp_delete_vegetal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_delete_vegetal];
+GO
+CREATE PROCEDURE [dbo].[sp_delete_vegetal]
     @id_vegetal BIGINT
 AS
 BEGIN
     DELETE FROM vegetal 
     WHERE id_vegetal = @id_vegetal;
 END;
-
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_articulo]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE OR ALTER   PROCEDURE [dbo].[sp_insert_articulo]
+
+IF OBJECT_ID('dbo.sp_insert_articulo', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_insert_articulo];
+GO
+CREATE PROCEDURE [dbo].[sp_insert_articulo]
     @id_articulo BIGINT,
     @nombre VARCHAR(150),
     @id_marca INT,
@@ -42,7 +54,7 @@ BEGIN
     VALUES (@id_articulo, @nombre, @id_marca, @stock_minimo, @id_categoria);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_stock]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -53,7 +65,10 @@ GO
 -- ==========================================
 
 -- 1. SP: Insertar Stock
-CREATE OR ALTER   PROCEDURE [dbo].[sp_insert_stock]
+IF OBJECT_ID('dbo.sp_insert_stock', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_insert_stock];
+GO
+CREATE PROCEDURE [dbo].[sp_insert_stock]
     @id_elemento BIGINT,
     @tipo_elemento VARCHAR(50),
     @Nombre VARCHAR(50),
@@ -83,7 +98,7 @@ BEGIN
     );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_vegetal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,7 +109,10 @@ GO
 -- ==========================================
 
 -- 1. SP: Insertar Vegetal
-CREATE OR ALTER   PROCEDURE [dbo].[sp_insert_vegetal]
+IF OBJECT_ID('dbo.sp_insert_vegetal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_insert_vegetal];
+GO
+CREATE PROCEDURE [dbo].[sp_insert_vegetal]
     @id_vegetal BIGINT,
     @nombre_comun VARCHAR(100),
     @nombre_cientifico VARCHAR(150),
@@ -133,14 +151,16 @@ BEGIN
     );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertanimal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-CREATE OR ALTER   PROCEDURE [dbo].[sp_insertanimal]
+IF OBJECT_ID('dbo.sp_insertanimal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_insertanimal];
+GO
+CREATE PROCEDURE [dbo].[sp_insertanimal]
     @id_animal bigint,
     @nombre_comun varchar(100),
     @nombre_cientifico varchar(150) = null,
@@ -148,12 +168,11 @@ CREATE OR ALTER   PROCEDURE [dbo].[sp_insertanimal]
     @id_rubro int,
     @id_subrubro int,
     @stock_minimo float
+AS
+BEGIN
+    SET NOCOUNT ON;
 
-as
-begin
-    set nocount on;
-
-    insert into animal (
+    INSERT INTO animal (
         id_animal,
         nombre_comun,
         nombre_cientifico,
@@ -162,7 +181,7 @@ begin
         id_subrubro,
         stock_minimo
     )
-    values (
+    VALUES (
         @id_animal,
         @nombre_comun,
         @nombre_cientifico,
@@ -171,16 +190,19 @@ begin
         @id_subrubro,
         @stock_minimo
     );
-end;
+END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_obtener_ultimo_id_elemento]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 5. SP: Obtener último ID elemento
-CREATE OR ALTER   PROCEDURE [dbo].[sp_obtener_ultimo_id_elemento]
+IF OBJECT_ID('dbo.sp_obtener_ultimo_id_elemento', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_obtener_ultimo_id_elemento];
+GO
+CREATE PROCEDURE [dbo].[sp_obtener_ultimo_id_elemento]
     @tipo_elemento VARCHAR(50),
     @min BIGINT,
     @max BIGINT
@@ -211,14 +233,17 @@ BEGIN
         SELECT @ultimoId_Cat;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_articulos]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 4. Stored Procedure: Seleccionar Artículos (con marca y categoría)
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_articulos]
+IF OBJECT_ID('dbo.sp_select_articulos', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_articulos];
+GO
+CREATE PROCEDURE [dbo].[sp_select_articulos]
 AS
 BEGIN
     SELECT 
@@ -231,14 +256,17 @@ BEGIN
     LEFT JOIN categoria c ON a.id_categoria = c.id_categoria;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_combo]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 5. SP: Obtener Combo Dinámico
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_combo]
+IF OBJECT_ID('dbo.sp_select_combo', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_combo];
+GO
+CREATE PROCEDURE [dbo].[sp_select_combo]
     @tabla NVARCHAR(100)
 AS
 BEGIN
@@ -247,38 +275,47 @@ BEGIN
     EXEC sp_executesql @sql;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_proveedores]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 6. SP: Seleccionar Proveedores
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_proveedores]
+IF OBJECT_ID('dbo.sp_select_proveedores', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_proveedores];
+GO
+CREATE PROCEDURE [dbo].[sp_select_proveedores]
 AS
 BEGIN
     SELECT id_proveedor, nombre FROM proveedores ORDER BY nombre ASC;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_requerimiento_hidrico]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 6. SP: Obtener Requerimiento Hídrico Fijo
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_requerimiento_hidrico]
+IF OBJECT_ID('dbo.sp_select_requerimiento_hidrico', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_requerimiento_hidrico];
+GO
+CREATE PROCEDURE [dbo].[sp_select_requerimiento_hidrico]
 AS
 BEGIN
     SELECT 'Alto' AS nombre UNION SELECT 'Medio' UNION SELECT 'Bajo';
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_stock]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_stock]
+IF OBJECT_ID('dbo.sp_select_stock', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_stock];
+GO
+CREATE PROCEDURE [dbo].[sp_select_stock]
     @tipo_elemento VARCHAR(50) = '',
     @nro_animal VARCHAR(50) = ''
 AS
@@ -308,47 +345,55 @@ BEGIN
       AND (@nro_animal = '' OR s.nro_animal LIKE '%' + @nro_animal + '%');
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_stock_por_id]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 4. SP: Seleccionar Stock por ID
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_stock_por_id]
+IF OBJECT_ID('dbo.sp_select_stock_por_id', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_stock_por_id];
+GO
+CREATE PROCEDURE [dbo].[sp_select_stock_por_id]
     @id BIGINT
 AS
 BEGIN
     SELECT * FROM stock WHERE id_stock = @id;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_ultimo_id_animal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_ultimo_id_animal]
+IF OBJECT_ID('dbo.sp_select_ultimo_id_animal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_ultimo_id_animal];
+GO
+CREATE PROCEDURE [dbo].[sp_select_ultimo_id_animal]
     @min bigint,
     @max bigint
-as
-begin
-    set nocount on;
+AS
+BEGIN
+    SET NOCOUNT ON;
 
-    select isnull(max(id_animal), 0)
-    from animal
-    where id_animal >= @min and id_animal <= @max;
-end;
+    SELECT isnull(max(id_animal), 0)
+    FROM animal
+    WHERE id_animal >= @min AND id_animal <= @max;
+END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_ultimo_id_vegetal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 7. SP: Obtener Último ID por Usuario
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_ultimo_id_vegetal]
+IF OBJECT_ID('dbo.sp_select_ultimo_id_vegetal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_ultimo_id_vegetal];
+GO
+CREATE PROCEDURE [dbo].[sp_select_ultimo_id_vegetal]
     @min BIGINT,
     @max BIGINT
 AS
@@ -356,14 +401,17 @@ BEGIN
     SELECT ISNULL(MAX(id_vegetal), 0) FROM vegetal WHERE id_vegetal >= @min AND id_vegetal < @max;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_vegetal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 3. SP: Seleccionar Vegetal (Grilla)
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_vegetal]
+IF OBJECT_ID('dbo.sp_select_vegetal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_vegetal];
+GO
+CREATE PROCEDURE [dbo].[sp_select_vegetal]
     @filtro VARCHAR(100) = ''
 AS
 BEGIN
@@ -386,32 +434,38 @@ BEGIN
     WHERE (@filtro = '' OR v.nombre_comun LIKE '%' + @filtro + '%' OR v.variedad_hibrido LIKE '%' + @filtro + '%');
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_vegetal_por_id]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 4. SP: Obtener Vegetal Por ID
-CREATE OR ALTER   PROCEDURE [dbo].[sp_select_vegetal_por_id]
+IF OBJECT_ID('dbo.sp_select_vegetal_por_id', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_select_vegetal_por_id];
+GO
+CREATE PROCEDURE [dbo].[sp_select_vegetal_por_id]
     @id BIGINT
 AS
 BEGIN
     SELECT * FROM vegetal WHERE id_vegetal = @id;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_selectanimal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE OR ALTER    procedure [dbo].[sp_selectanimal]
-as
-begin
-    set nocount on;
+IF OBJECT_ID('dbo.sp_selectanimal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_selectanimal];
+GO
+CREATE PROCEDURE [dbo].[sp_selectanimal]
+AS
+BEGIN
+    SET NOCOUNT ON;
 
-    select 
+    SELECT 
         a.id_animal as idanimal,
         a.nombre_comun as nombrecomun,
         a.nombre_cientifico as nombrecientifico,
@@ -422,18 +476,22 @@ begin
         r.nombre as rubro,
         sr.nombre as subrubro,
         a.stock_minimo as stockminimo
-    from animal a
-    left join tipo_animal t on a.id_tipo = t.id_tipo_animal
-    left join rubro r on a.id_rubro = r.id_rubro
-    left join subrubro sr on a.id_subrubro = sr.id_subrubro;
-end;
+    FROM animal a
+    LEFT JOIN tipo_animal t ON a.id_tipo = t.id_tipo_animal
+    LEFT JOIN rubro r ON a.id_rubro = r.id_rubro
+    LEFT JOIN subrubro sr ON a.id_subrubro = sr.id_subrubro;
+END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_articulo]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE OR ALTER    PROCEDURE [dbo].[sp_update_articulo]
+
+IF OBJECT_ID('dbo.sp_update_articulo', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_update_articulo];
+GO
+CREATE PROCEDURE [dbo].[sp_update_articulo]
     @id_articulo BIGINT,
     @nombre VARCHAR(150),
     @id_marca INT,
@@ -449,14 +507,17 @@ BEGIN
     WHERE id_articulo = @id_articulo;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_stock]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 2. SP: Actualizar Stock
-CREATE OR ALTER    PROCEDURE [dbo].[sp_update_stock]
+IF OBJECT_ID('dbo.sp_update_stock', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_update_stock];
+GO
+CREATE PROCEDURE [dbo].[sp_update_stock]
     @id_stock BIGINT,
     @id_elemento BIGINT,
     @tipo_elemento VARCHAR(50),
@@ -494,14 +555,17 @@ BEGIN
     WHERE id_stock = @id_stock;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_vegetal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
 -- 2. SP: Actualizar Vegetal
-CREATE OR ALTER    PROCEDURE [dbo].[sp_update_vegetal]
+IF OBJECT_ID('dbo.sp_update_vegetal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_update_vegetal];
+GO
+CREATE PROCEDURE [dbo].[sp_update_vegetal]
     @id_vegetal BIGINT,
     @nombre_comun VARCHAR(100),
     @nombre_cientifico VARCHAR(150),
@@ -527,14 +591,16 @@ BEGIN
     WHERE id_vegetal = @id_vegetal;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_updateanimal]    Script Date: 30/09/2026 9:48:32 ******/
+
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-CREATE OR ALTER   procedure [dbo].[sp_updateanimal]
+IF OBJECT_ID('dbo.sp_updateanimal', 'P') IS NOT NULL 
+    DROP PROCEDURE [dbo].[sp_updateanimal];
+GO
+CREATE PROCEDURE [dbo].[sp_updateanimal]
     @id_animal bigint,
     @nombre_comun varchar(100),
     @nombre_cientifico varchar(150) = null,
@@ -542,17 +608,17 @@ CREATE OR ALTER   procedure [dbo].[sp_updateanimal]
     @id_rubro int,
     @id_subrubro int,
     @stock_minimo float
-as
-begin
-    set nocount on;
+AS
+BEGIN
+    SET NOCOUNT ON;
 
-    update animal
-    set nombre_comun = @nombre_comun,
+    UPDATE animal
+    SET nombre_comun = @nombre_comun,
         nombre_cientifico = @nombre_cientifico,
         id_tipo = @id_tipo,
         id_rubro = @id_rubro,
         id_subrubro = @id_subrubro,
         stock_minimo = @stock_minimo
-    where id_animal = @id_animal;
-end;
+    WHERE id_animal = @id_animal;
+END;
 GO

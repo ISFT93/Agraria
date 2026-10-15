@@ -100,7 +100,7 @@ namespace Agraria.Formularios
         {
             // Creamos el formulario de detalle pasándole el usuario actual para la lógica de bloques (Alta nueva)
             AbmArticulos formDetalle = new AbmArticulos(_usuarioActual);
-
+            formDetalle.Text = "Nuevo Articulo";
             if (formDetalle.ShowDialog() == DialogResult.OK)
             {
                 CargarGrilla(); // Actualiza la grilla al guardar con éxito
@@ -153,7 +153,7 @@ namespace Agraria.Formularios
 
                     // 6. Instanciamos el formulario de modificación pasándole el float de stock
                     AbmArticulos formDetalle = new AbmArticulos(_usuarioActual, idSeleccionado, nombre, nombreMarca, stockMinimo, nombreCategoria);
-
+                    formDetalle.Text = "Modificar Articulo";
                     if (formDetalle.ShowDialog() == DialogResult.OK)
                     {
                         CargarGrilla();

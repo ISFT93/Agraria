@@ -7,10 +7,10 @@ namespace Agraria.Negocio.BLL
     {
         private ListarStockDAL dal = new ListarStockDAL();
 
-        public DataTable Listar(string tipoElemento = "", string nroAnimal = "")
+        public DataTable Listar(string tipoElemento = "", string nombre = "")
         {
             if (tipoElemento == "Todos") tipoElemento = "";
-            return dal.ObtenerStock(tipoElemento, nroAnimal);
+            return dal.ObtenerStock(tipoElemento, nombre);
         }
     }
 }

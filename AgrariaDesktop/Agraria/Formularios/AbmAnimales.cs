@@ -13,36 +13,34 @@ namespace Agraria.Formularios
         private AbmAnimalDAL AbmanimalDAL = new AbmAnimalDAL();
         private AbmAnimalBLL abmAnimalBLL = new AbmAnimalBLL();
         private AnimalDTO animalEdicion = null;
-        private int _idUsuarioActual = 1; // ID de usuario logueado en sesión
+        private UsuarioLoginDTO _usuarioActual;
 
-    
-    
-        public AbmAnimales(int idUsuarioLogueado)
+     
+        public AbmAnimales(UsuarioLoginDTO usuarioLogeado)
         {
             InitializeComponent();
-            this._idUsuarioActual = idUsuarioLogueado;
+            _usuarioActual = usuarioLogeado;
         }
 
-        // Constructor para MODIFICAR un registro existente
-        public AbmAnimales(AnimalDTO animalParaEditar)
+      
+        public AbmAnimales(AnimalDTO animalParaEditar, UsuarioLoginDTO usuarioLogeado) : this(usuarioLogeado)
         {
-            InitializeComponent();
             this.animalEdicion = animalParaEditar;
         }
 
         private void AbmAnimal_Load(object sender, EventArgs e)
         {
-            // Carga datos de los combos y bloquea la escritura libre
-            CargarCombos();
+            if (_usuarioActual == null)
+            {
+                _usuarioActual = new UsuarioLoginDTO { Id = 1 };
+            }
 
-            // Bloquea la caja del código para que no sea editable
+            CargarCombos();
             TxtCodigo.Enabled = false;
 
             if (animalEdicion != null)
             {
-                // Modificar: Carga el Id actual del animal
                 TxtCodigo.Text = animalEdicion.IdAnimal.ToString();
-
                 txtNombreComun.Text = animalEdicion.NombreComun;
                 txtNombreCientifico.Text = animalEdicion.NombreCientifico;
                 txtStock.Text = animalEdicion.MinimoStock.ToString();
@@ -50,13 +48,10 @@ namespace Agraria.Formularios
                 if (animalEdicion.IdTipo > 0) CbTipoAnimal.SelectedValue = animalEdicion.IdTipo;
                 if (animalEdicion.IdRubro > 0) CbRubro.SelectedValue = animalEdicion.IdRubro;
                 if (animalEdicion.IdSubrubro > 0) CbSubrubro.SelectedValue = animalEdicion.IdSubrubro;
-
-
             }
             else
             {
-                // Alta: Genera el código de bloque único
-                long proximoId = abmAnimalBLL.GenerarIdBloque(_idUsuarioActual);
+                long proximoId = abmAnimalBLL.GenerarIdBloque(_usuarioActual.Id);
                 TxtCodigo.Text = proximoId.ToString();
                 TxtCodigo.Focus();
             }
@@ -66,24 +61,21 @@ namespace Agraria.Formularios
         {
             try
             {
-                // Configurar DropDownList en todos los combos para BLOQUEAR la escritura encima
                 CbTipoAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbSubrubro.DropDownStyle = ComboBoxStyle.DropDownList;
-                
-                // Carga de clasificadores desde la DAL
-                CbTipoAnimal.DataSource = AbmanimalDAL.ObtenerTabla("Tipo_animal");
+
+                CbTipoAnimal.DataSource = abmAnimalBLL.CargarCombo("Tipo_animal");
                 CbTipoAnimal.DisplayMember = "Nombre";
                 CbTipoAnimal.ValueMember = "Id_tipo_animal";
 
-                CbRubro.DataSource = AbmanimalDAL.ObtenerTabla("rubro");
+                CbRubro.DataSource = abmAnimalBLL.CargarCombo("rubro");
                 CbRubro.DisplayMember = "Nombre";
                 CbRubro.ValueMember = "Id_rubro";
 
-                CbSubrubro.DataSource = AbmanimalDAL.ObtenerTabla("subrubro");
+                CbSubrubro.DataSource = abmAnimalBLL.CargarCombo("subrubro");
                 CbSubrubro.DisplayMember = "Nombre";
                 CbSubrubro.ValueMember = "Id_subrubro";
-
             }
             catch (Exception ex)
             {
@@ -95,7 +87,6 @@ namespace Agraria.Formularios
         {
             try
             {
-                // Validaciones
                 if (string.IsNullOrWhiteSpace(txtNombreComun.Text))
                 {
                     MessageBox.Show("El nombre común es obligatorio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -103,12 +94,9 @@ namespace Agraria.Formularios
                     return;
                 }
 
-
-                // Determina si es modificación o alta por bloque
                 bool esModificacion = (animalEdicion != null);
-                long idAnimalFinal = esModificacion ? animalEdicion.IdAnimal : abmAnimalBLL.GenerarIdBloque(_idUsuarioActual);
+                long idAnimalFinal = esModificacion ? animalEdicion.IdAnimal : abmAnimalBLL.GenerarIdBloque(_usuarioActual.Id);
 
-                // Captura de datos
                 Animal animal = new Animal
                 {
                     IdAnimal = idAnimalFinal,
@@ -120,10 +108,8 @@ namespace Agraria.Formularios
                     MinimoStock = float.Parse(txtStock.Text)
                 };
 
-                // 4. Guardado directo
-                abmAnimalBLL.Guardar(animal, esModificacion, _idUsuarioActual);
+                abmAnimalBLL.Guardar(animal, esModificacion, _usuarioActual.Id);
 
-                // 5. Confirmar y cerrar para evitar reenvíos / duplicados
                 MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -156,7 +142,5 @@ namespace Agraria.Formularios
                 }
             }
         }
-
-  
     }
 }

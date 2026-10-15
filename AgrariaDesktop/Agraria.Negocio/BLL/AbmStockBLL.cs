@@ -1,6 +1,9 @@
 ﻿using Agraria.Datos.DAL;
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Agraria.Negocio.BLL
 {
@@ -8,7 +11,6 @@ namespace Agraria.Negocio.BLL
     {
         private AbmStockDAL dal = new AbmStockDAL();
 
-        // Genera el código para Vegetal (Base 1), Animal (Base 2) o Articulo (Base 3) validando existencia
         public long GenerarIdElementoSeguro(string tipoElemento, int idUsuario)
         {
             string baseTipo = "0";
@@ -41,7 +43,6 @@ namespace Agraria.Negocio.BLL
             return Convert.ToInt64(idConcatenado);
         }
 
-        // Genera el código propio para la tabla Stock (Base 4)
         public long GenerarIdStock(int idUsuario)
         {
             long minId = Convert.ToInt64($"{idUsuario}4000000");
@@ -68,26 +69,61 @@ namespace Agraria.Negocio.BLL
             return Convert.ToInt64($"{idUsuario}4{siguienteIncremental:D6}");
         }
 
-        public void Guardar(long idStock, long idElemento,string tipoElemento,string nombre,string ciclo,DateTime fechaAlta,DateTime? fechaBaja,decimal cantidad,string nroAnimal,string estadoSalud,bool esProductor,decimal? precio,long? idProveedor, bool activo, bool vendible, string motivoMovimiento, bool esModificacion)
-        {
-            if (esModificacion)
-            {
-                dal.Actualizar(
-                    idStock,idElemento,tipoElemento,nombre, ciclo,fechaAlta,fechaBaja,cantidad,nroAnimal, estadoSalud, esProductor, precio, idProveedor, activo,vendible, motivoMovimiento);
-            }
-            else
-            {
-                dal.Insertar(idElemento,tipoElemento,nombre, ciclo,fechaAlta,fechaBaja,cantidad,nroAnimal,estadoSalud,esProductor, precio,idProveedor,activo, vendible,motivoMovimiento);
-            }
-        }
-
         public DataTable BuscarPorId(long idStock)
         {
             return dal.ObtenerPorId(idStock);
         }
+
         public DataTable CargarProveedores()
         {
             return dal.ObtenerProveedores();
         }
+
+        public void GuardarConDetalleAnimales(
+              long idStock, long idElemento, string tipoElemento, string nombre, string ciclo,
+              DateTime fechaAlta, DateTime? fechaBaja, decimal cantidad, decimal? precio,
+              long? idProveedor, bool activo, bool vendible, bool esModificacion,
+              List<AnimalItemDto> listaAnimales)
+        {
+            if (esModificacion)
+            {
+                dal.Actualizar(idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, precio, idProveedor, activo, vendible);
+            }
+            else
+            {
+                dal.Insertar(idStock, idElemento, tipoElemento, nombre, ciclo, fechaAlta, fechaBaja, cantidad, precio, idProveedor, activo, vendible, null);
+            }
+
+            if (tipoElemento == "Animal" && listaAnimales != null)
+            {
+                foreach (AnimalItemDto animal in listaAnimales)
+                {
+                    dal.InsertarDetalleAnimal(idStock, animal.NroAnimal, animal.Sexo, animal.EsProductor);
+                }
+            }
+
+
+        }
+        public DataTable ObtenerDetalleAnimales(long idStock)
+        {
+            return dal.ObtenerDetalleAnimales(idStock);
+        }
+
+        public void UpdateDetalleAnimal(long idStock, string nroAnimal, string sexo, bool esProductor)
+        {
+            dal.UpdateDetalleAnimal(idStock, nroAnimal, sexo, esProductor);
+        }
+
     }
-}
+
+
+
+    public class AnimalItemDto
+    {
+        public string NroAnimal { get; set; }
+        public string Sexo { get; set; }
+        public bool EsProductor { get; set; }
+    }
+
+
+    }
