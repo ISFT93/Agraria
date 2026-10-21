@@ -31,9 +31,6 @@
     <Compile Update="Formularios\DetallesAnimal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\ItemAnimalControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="Formularios\ListarEntornoFormativo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,28 +52,7 @@
     <Compile Update="Formularios\ListaArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formularios\Industria.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\Inventario.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Formularios\Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\Pañol.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\ProduccionAnimal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\ProduccionVegetal.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\RegistroActividad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Formularios\RegistroVenta.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Inicio.cs">
@@ -85,31 +61,7 @@
     <Compile Update="RJButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Update="UserControls\FrmSeleccionUC.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcCarne.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcColmenas.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcEngorde.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcGrupoBox.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcGrupoBoxAnimal.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcHuevos.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcLeche.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControls\UcVegetales.cs">
+    <Compile Update="UserControls\ItemAnimalControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
