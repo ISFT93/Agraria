@@ -47,7 +47,7 @@
             // 
             lblNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblNombre.ForeColor = Color.White;
-            lblNombre.Location = new Point(16, 121);
+            lblNombre.Location = new Point(22, 177);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(256, 29);
             lblNombre.TabIndex = 22;
@@ -58,7 +58,7 @@
             txtNombre.BackColor = SystemColors.Window;
             txtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombre.ForeColor = SystemColors.WindowText;
-            txtNombre.Location = new Point(22, 154);
+            txtNombre.Location = new Point(28, 210);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(380, 34);
             txtNombre.TabIndex = 2;
@@ -68,7 +68,7 @@
             lblMarca.AutoSize = true;
             lblMarca.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblMarca.ForeColor = Color.White;
-            lblMarca.Location = new Point(22, 208);
+            lblMarca.Location = new Point(28, 264);
             lblMarca.Name = "lblMarca";
             lblMarca.Size = new Size(84, 29);
             lblMarca.TabIndex = 2;
@@ -81,7 +81,7 @@
             cbmMarca.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cbmMarca.ForeColor = SystemColors.WindowText;
             cbmMarca.FormattingEnabled = true;
-            cbmMarca.Location = new Point(22, 239);
+            cbmMarca.Location = new Point(28, 295);
             cbmMarca.Name = "cbmMarca";
             cbmMarca.Size = new Size(250, 37);
             cbmMarca.TabIndex = 3;
@@ -91,7 +91,7 @@
             lblcategoria.AutoSize = true;
             lblcategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblcategoria.ForeColor = Color.White;
-            lblcategoria.Location = new Point(28, 371);
+            lblcategoria.Location = new Point(34, 427);
             lblcategoria.Name = "lblcategoria";
             lblcategoria.Size = new Size(127, 29);
             lblcategoria.TabIndex = 4;
@@ -104,7 +104,7 @@
             cmbcategoria.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbcategoria.ForeColor = SystemColors.WindowText;
             cmbcategoria.FormattingEnabled = true;
-            cmbcategoria.Location = new Point(28, 402);
+            cmbcategoria.Location = new Point(34, 458);
             cmbcategoria.Name = "cmbcategoria";
             cmbcategoria.Size = new Size(250, 37);
             cmbcategoria.TabIndex = 5;
@@ -114,7 +114,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(22, 297);
+            label1.Location = new Point(28, 353);
             label1.Name = "label1";
             label1.Size = new Size(177, 29);
             label1.TabIndex = 12;
@@ -123,7 +123,7 @@
             // numStockMinimo
             // 
             numStockMinimo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            numStockMinimo.Location = new Point(28, 328);
+            numStockMinimo.Location = new Point(34, 384);
             numStockMinimo.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numStockMinimo.Name = "numStockMinimo";
             numStockMinimo.Size = new Size(150, 34);
@@ -135,7 +135,7 @@
             txtcodigoArticulo.Enabled = false;
             txtcodigoArticulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtcodigoArticulo.ForeColor = SystemColors.WindowText;
-            txtcodigoArticulo.Location = new Point(22, 69);
+            txtcodigoArticulo.Location = new Point(28, 125);
             txtcodigoArticulo.Name = "txtcodigoArticulo";
             txtcodigoArticulo.ReadOnly = true;
             txtcodigoArticulo.Size = new Size(120, 34);
@@ -147,7 +147,7 @@
             lblNumArticulo.FlatStyle = FlatStyle.Flat;
             lblNumArticulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblNumArticulo.ForeColor = Color.White;
-            lblNumArticulo.Location = new Point(22, 36);
+            lblNumArticulo.Location = new Point(28, 92);
             lblNumArticulo.Name = "lblNumArticulo";
             lblNumArticulo.Size = new Size(256, 29);
             lblNumArticulo.TabIndex = 22;
@@ -178,7 +178,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(637, 539);
+            ClientSize = new Size(655, 586);
             Controls.Add(rjBCancelar);
             Controls.Add(rjBAceptar);
             Controls.Add(txtcodigoArticulo);

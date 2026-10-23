@@ -1,37 +1,11 @@
 USE [AgrariaNueva2]
 GO
-/****** Object:  Table [dbo].[AbmUsuario]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[animales]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[AbmUsuario](
-	[Id] [int] IDENTITY(1,1) NOT NULL,
-	[Nombre] [varchar](100) NULL,
-	[Apellido] [varchar](100) NULL,
-	[Documento] [int] NULL,
-	[Telefono] [varchar](20) NULL,
-	[Direccion] [varchar](200) NULL,
-	[IdLocalidad] [int] NULL,
-	[IdPartido] [int] NULL,
-	[Email] [varchar](150) NULL,
-	[NombreUsuario] [varchar](100) NULL,
-	[Contraseña] [varchar](100) NULL,
-	[IdPreguntaSeguridad] [int] NULL,
-	[RespuestaSeguridad] [varchar](200) NULL,
-	[Estado] [bit] NULL,
- CONSTRAINT [PK_AbmUsuario] PRIMARY KEY CLUSTERED 
-(
-	[Id] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-/****** Object:  Table [dbo].[animal]    Script Date: 23/10/2026 11:41:49 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[animal](
+CREATE TABLE [dbo].[animales](
 	[id_animal] [bigint] NOT NULL,
 	[nombre_comun] [varchar](100) NULL,
 	[nombre_cientifico] [varchar](150) NULL,
@@ -45,7 +19,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[articulos]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[articulos]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -62,12 +36,81 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Localidad]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[catalogo_tipo_items]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Localidad](
+CREATE TABLE [dbo].[catalogo_tipo_items](
+	[Id_catalogo_item] [int] IDENTITY(1,1) NOT NULL,
+	[Id_catalog] [bigint] NOT NULL,
+	[Nombre] [varchar](150) NOT NULL,
+	[Activo] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_catalogo_item] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[catalogos_tipo]    Script Date: 23/10/2026 15:53:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[catalogos_tipo](
+	[Id_catalogo] [bigint] NOT NULL,
+	[Nombre] [varchar](100) NOT NULL,
+	[Activo] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id_catalogo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[datosAnimales]    Script Date: 23/10/2026 15:53:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[datosAnimales](
+	[id_detalle] [int] IDENTITY(1,1) NOT NULL,
+	[id_stock] [bigint] NOT NULL,
+	[nro_animal] [varchar](50) NULL,
+	[sexo] [varchar](20) NULL,
+	[es_productor] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_detalle] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Entornos]    Script Date: 23/10/2026 15:53:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Entornos](
+	[IdEntorno] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](150) NULL,
+	[IdTipoEntorno] [int] NULL,
+	[Responsable] [varchar](150) NULL,
+	[Año] [varchar](10) NULL,
+	[Division] [varchar](10) NULL,
+	[Grupo] [varchar](50) NULL,
+	[Fecha] [datetime] NULL,
+	[Observaciones] [varchar](max) NULL,
+ CONSTRAINT [PK_Entorno] PRIMARY KEY CLUSTERED 
+(
+	[IdEntorno] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Localidades]    Script Date: 23/10/2026 15:53:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Localidades](
 	[IdLocalidad] [int] IDENTITY(1,1) NOT NULL,
 	[NombreLocalidad] [varchar](100) NULL,
 	[CodigoPostal] [int] NULL,
@@ -78,12 +121,12 @@ CREATE TABLE [dbo].[Localidad](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[marca]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[marcas]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[marca](
+CREATE TABLE [dbo].[marcas](
 	[id_marca] [int] IDENTITY(1,1) NOT NULL,
 	[nombre] [varchar](100) NULL,
 PRIMARY KEY CLUSTERED 
@@ -92,12 +135,12 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Partido]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[Partidos]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Partido](
+CREATE TABLE [dbo].[Partidos](
 	[IdPartido] [int] IDENTITY(1,1) NOT NULL,
 	[NombrePartido] [varchar](100) NULL,
  CONSTRAINT [PK_Partido] PRIMARY KEY CLUSTERED 
@@ -106,7 +149,7 @@ CREATE TABLE [dbo].[Partido](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PermisosUsuario]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[PermisosUsuario]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -129,7 +172,7 @@ CREATE TABLE [dbo].[PermisosUsuario](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[proveedores]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[proveedores]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,12 +190,12 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[rubro]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[rubros]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[rubro](
+CREATE TABLE [dbo].[rubros](
 	[id_rubro] [int] IDENTITY(1,1) NOT NULL,
 	[id_tipo] [int] NOT NULL,
 	[nombre] [varchar](100) NOT NULL,
@@ -162,7 +205,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[stock]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[stock]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,12 +233,12 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[subrubro]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[subrubros]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[subrubro](
+CREATE TABLE [dbo].[subrubros](
 	[id_subrubro] [int] IDENTITY(1,1) NOT NULL,
 	[id_rubro] [int] NOT NULL,
 	[nombre] [varchar](150) NOT NULL,
@@ -205,12 +248,12 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TipoEntorno]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[TipoEntornos]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[TipoEntorno](
+CREATE TABLE [dbo].[TipoEntornos](
 	[IdTipoEntorno] [int] IDENTITY(1,1) NOT NULL,
 	[Nombre] [varchar](100) NULL,
  CONSTRAINT [PK_TipoEntorno] PRIMARY KEY CLUSTERED 
@@ -219,12 +262,38 @@ CREATE TABLE [dbo].[TipoEntorno](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[vegetal]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  Table [dbo].[usuarios]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[vegetal](
+CREATE TABLE [dbo].[usuarios](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NULL,
+	[Apellido] [varchar](100) NULL,
+	[Documento] [int] NULL,
+	[Telefono] [varchar](20) NULL,
+	[Direccion] [varchar](200) NULL,
+	[IdLocalidad] [int] NULL,
+	[IdPartido] [int] NULL,
+	[Email] [varchar](150) NULL,
+	[NombreUsuario] [varchar](100) NULL,
+	[Contraseña] [varchar](100) NULL,
+	[IdPreguntaSeguridad] [int] NULL,
+	[RespuestaSeguridad] [varchar](200) NULL,
+	[Estado] [bit] NULL,
+ CONSTRAINT [PK_AbmUsuario] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[vegetales]    Script Date: 23/10/2026 15:53:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[vegetales](
 	[id_vegetal] [bigint] NOT NULL,
 	[nombre_comun] [varchar](40) NOT NULL,
 	[nombre_cientifico] [varchar](40) NULL,
@@ -241,7 +310,91 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  StoredProcedure [dbo].[sp_delete_articulo]    Script Date: 23/10/2026 11:41:49 ******/
+ALTER TABLE [dbo].[catalogo_tipo_items] ADD  DEFAULT ((1)) FOR [Activo]
+GO
+ALTER TABLE [dbo].[catalogos_tipo] ADD  DEFAULT ((1)) FOR [Activo]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeEntornoFormativo]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeAltaUsuario]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeVenta]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeInventario]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeIndustria]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeProduccionAnimal]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeProduccionVegetal]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((0)) FOR [PuedeAdministracion]
+GO
+ALTER TABLE [dbo].[PermisosUsuario] ADD  DEFAULT ((1)) FOR [PuedePañol]
+GO
+ALTER TABLE [dbo].[stock] ADD  DEFAULT ((0.00)) FOR [cantidad]
+GO
+ALTER TABLE [dbo].[stock] ADD  DEFAULT ((0)) FOR [es_productor]
+GO
+ALTER TABLE [dbo].[stock] ADD  DEFAULT ((1)) FOR [activo]
+GO
+ALTER TABLE [dbo].[stock] ADD  DEFAULT ((0)) FOR [vendible]
+GO
+ALTER TABLE [dbo].[usuarios] ADD  DEFAULT ((1)) FOR [Estado]
+GO
+ALTER TABLE [dbo].[animales]  WITH CHECK ADD  CONSTRAINT [fk_anim_rubro] FOREIGN KEY([id_rubro])
+REFERENCES [dbo].[rubros] ([id_rubro])
+GO
+ALTER TABLE [dbo].[animales] CHECK CONSTRAINT [fk_anim_rubro]
+GO
+ALTER TABLE [dbo].[animales]  WITH CHECK ADD  CONSTRAINT [fk_anim_subrubro] FOREIGN KEY([id_subrubro])
+REFERENCES [dbo].[subrubros] ([id_subrubro])
+GO
+ALTER TABLE [dbo].[animales] CHECK CONSTRAINT [fk_anim_subrubro]
+GO
+ALTER TABLE [dbo].[articulos]  WITH CHECK ADD  CONSTRAINT [fk_articulos_marca] FOREIGN KEY([id_marca])
+REFERENCES [dbo].[marcas] ([id_marca])
+GO
+ALTER TABLE [dbo].[articulos] CHECK CONSTRAINT [fk_articulos_marca]
+GO
+ALTER TABLE [dbo].[catalogo_tipo_items]  WITH CHECK ADD FOREIGN KEY([Id_catalog])
+REFERENCES [dbo].[catalogos_tipo] ([Id_catalogo])
+GO
+ALTER TABLE [dbo].[datosAnimales]  WITH CHECK ADD  CONSTRAINT [FK_stock_datosAnimales] FOREIGN KEY([id_stock])
+REFERENCES [dbo].[stock] ([id_stock])
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[datosAnimales] CHECK CONSTRAINT [FK_stock_datosAnimales]
+GO
+ALTER TABLE [dbo].[Entornos]  WITH CHECK ADD FOREIGN KEY([IdTipoEntorno])
+REFERENCES [dbo].[TipoEntornos] ([IdTipoEntorno])
+GO
+ALTER TABLE [dbo].[Localidades]  WITH NOCHECK ADD FOREIGN KEY([IdPartido])
+REFERENCES [dbo].[Partidos] ([IdPartido])
+GO
+ALTER TABLE [dbo].[PermisosUsuario]  WITH CHECK ADD FOREIGN KEY([IdUsuario])
+REFERENCES [dbo].[usuarios] ([Id])
+GO
+ALTER TABLE [dbo].[subrubros]  WITH CHECK ADD  CONSTRAINT [fk_rubro] FOREIGN KEY([id_rubro])
+REFERENCES [dbo].[rubros] ([id_rubro])
+GO
+ALTER TABLE [dbo].[subrubros] CHECK CONSTRAINT [fk_rubro]
+GO
+ALTER TABLE [dbo].[usuarios]  WITH CHECK ADD FOREIGN KEY([IdLocalidad])
+REFERENCES [dbo].[Localidades] ([IdLocalidad])
+GO
+ALTER TABLE [dbo].[usuarios]  WITH CHECK ADD FOREIGN KEY([IdLocalidad])
+REFERENCES [dbo].[Localidades] ([IdLocalidad])
+GO
+ALTER TABLE [dbo].[usuarios]  WITH CHECK ADD FOREIGN KEY([IdPartido])
+REFERENCES [dbo].[Partidos] ([IdPartido])
+GO
+ALTER TABLE [dbo].[usuarios]  WITH CHECK ADD FOREIGN KEY([IdPartido])
+REFERENCES [dbo].[Partidos] ([IdPartido])
+GO
+ALTER TABLE [dbo].[vegetales]  WITH CHECK ADD CHECK  (([requerimiento_hidrico]='Bajo' OR [requerimiento_hidrico]='Medio' OR [requerimiento_hidrico]='Alto'))
+GO
+/****** Object:  StoredProcedure [dbo].[sp_delete_articulo]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -254,20 +407,7 @@ BEGIN
     WHERE id_articulo = @id_articulo;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_delete_vegetal]    Script Date: 23/10/2026 11:41:49 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[sp_delete_vegetal]
-    @id_vegetal BIGINT
-AS
-BEGIN
-    DELETE FROM vegetal 
-    WHERE id_vegetal = @id_vegetal;
-END;
-GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_articulo]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  StoredProcedure [dbo].[sp_insert_articulo]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -284,43 +424,12 @@ BEGIN
     VALUES (@id_articulo, @nombre, @id_marca, @stock_minimo, @id_categoria);
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_detalle_animal]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  StoredProcedure [dbo].[sp_insert_detalle_animal]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
-GO
-
-CREATE TABLE [dbo].[Entorno](
-	[IdEntorno] [int] IDENTITY(1,1) NOT NULL,
-	[Nombre] [varchar](150) NULL,
-	[IdTipoEntorno] [int] NULL,
-	[Responsable] [varchar](150) NULL,
-	[Año] [varchar](10) NULL,
-	[Division] [varchar](10) NULL,
-	[Grupo] [varchar](50) NULL,
-	[Fecha] [datetime] NULL,
-	[Observaciones] [varchar](max) NULL,
- CONSTRAINT [PK_Entorno] PRIMARY KEY CLUSTERED 
-(
-	[IdEntorno] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
-GO
-
-ALTER TABLE [dbo].[Entorno]  WITH CHECK ADD FOREIGN KEY([IdTipoEntorno])
-REFERENCES [dbo].[TipoEntorno] ([IdTipoEntorno])
-GO
-
-
-
-
-
--- ==========================================
--- 4. STORED PROCEDURES: DETALLES ANIMALES
--- ==========================================
 
 CREATE   PROCEDURE [dbo].[sp_insert_detalle_animal]
     @id_stock BIGINT,
@@ -333,16 +442,12 @@ BEGIN
     VALUES (@id_stock, @nro_animal, @sexo, @es_productor);
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_stock]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  StoredProcedure [dbo].[sp_insert_stock]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 
-
--- ==========================================
--- 3. STORED PROCEDURES: CABECERA DEL STOCK
--- ==========================================
 
 CREATE   PROCEDURE [dbo].[sp_insert_stock]
     @id_stock BIGINT,
@@ -370,12 +475,12 @@ BEGIN
     );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insert_vegetal]    Script Date: 23/10/2026 11:41:49 ******/
+/****** Object:  StoredProcedure [dbo].[sp_insert_vegetales]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[sp_insert_vegetal]
+CREATE PROCEDURE [dbo].[sp_insert_vegetales]
     @id_vegetal BIGINT,
     @nombre_comun VARCHAR(100),
     @nombre_cientifico VARCHAR(150),
@@ -414,12 +519,12 @@ BEGIN
     );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_insertanimal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_insertanimales]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[sp_insertanimal]
+CREATE PROCEDURE [dbo].[sp_insertanimales]
     @id_animal bigint,
     @nombre_comun varchar(100),
     @nombre_cientifico varchar(150) = null,
@@ -431,7 +536,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    INSERT INTO animal (
+    INSERT INTO animales (
         id_animal,
         nombre_comun,
         nombre_cientifico,
@@ -451,7 +556,7 @@ BEGIN
     );
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_obtener_detalle_animales_por_stock]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_obtener_detalle_animales_por_stock]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -471,7 +576,7 @@ BEGIN
     WHERE id_stock = @id_stock;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_obtener_ultimo_id_elemento]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_obtener_ultimo_id_elemento]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -507,7 +612,7 @@ BEGIN
         SELECT @ultimoId_Cat;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_articulos]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_articulos]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -525,7 +630,7 @@ BEGIN
     LEFT JOIN categoria c ON a.id_categoria = c.id_categoria;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_combo]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_combo]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -539,7 +644,7 @@ BEGIN
     EXEC sp_executesql @sql;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_proveedores]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_proveedores]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -550,7 +655,7 @@ BEGIN
     SELECT id_proveedor, nombre FROM proveedores ORDER BY nombre ASC;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_requerimiento_hidrico]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_requerimiento_hidrico]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -561,7 +666,7 @@ BEGIN
     SELECT 'Alto' AS nombre UNION SELECT 'Medio' UNION SELECT 'Bajo';
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_stock]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_stock]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -582,7 +687,7 @@ BEGIN
       AND (@Nombre IS NULL OR @Nombre = '' OR s.Nombre LIKE '%' + @Nombre + '%');
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_stock_por_id]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_stock_por_id]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -594,7 +699,7 @@ BEGIN
     SELECT * FROM stock WHERE id_stock = @id;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_ultimo_id_animal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_ultimo_id_animal]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -607,11 +712,11 @@ BEGIN
     SET NOCOUNT ON;
 
     SELECT isnull(max(id_animal), 0)
-    FROM animal
+    FROM animales
     WHERE id_animal >= @min AND id_animal <= @max;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_ultimo_id_vegetal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_ultimo_id_vegetal]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -624,12 +729,24 @@ BEGIN
     SELECT ISNULL(MAX(id_vegetal), 0) FROM vegetal WHERE id_vegetal >= @min AND id_vegetal < @max;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_vegetal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_select_vegetal_por_id]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[sp_select_vegetal]
+CREATE PROCEDURE [dbo].[sp_select_vegetal_por_id]
+    @id BIGINT
+AS
+BEGIN
+    SELECT * FROM vegetal WHERE id_vegetal = @id;
+END;
+GO
+/****** Object:  StoredProcedure [dbo].[sp_select_vegetales]    Script Date: 23/10/2026 15:53:31 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE PROCEDURE [dbo].[sp_select_vegetales]
     @filtro VARCHAR(100) = ''
 AS
 BEGIN
@@ -644,32 +761,20 @@ BEGIN
         cv.nombre AS ciclo_vida,
         ms.nombre AS metodo_siembra,
         ef.nombre AS estado_fenologico
-    FROM vegetal v
-    LEFT JOIN tipo_cultivo tc ON v.id_tipo_cultivo = tc.id_tipo_cultivo
-    LEFT JOIN ciclo_vida cv ON v.id_ciclo_vida = cv.id_ciclo_vida
-    LEFT JOIN metodo_siembra ms ON v.id_metodo_siembra = ms.id_metodo_siembra
-    LEFT JOIN estado_fenologico ef ON v.id_estado_fenologico = ef.id_estado_fenologico
+    FROM vegetales v
+    LEFT JOIN catalogo_tipo_items tc ON v.id_tipo_cultivo = tc.Id_catalogo_item
+    LEFT JOIN catalogo_tipo_items cv ON v.id_ciclo_vida = cv.Id_catalogo_item
+    LEFT JOIN catalogo_tipo_items ms ON v.id_metodo_siembra = ms.Id_catalogo_item
+    LEFT JOIN catalogo_tipo_items ef ON v.id_estado_fenologico = ef.Id_catalogo_item
     WHERE (@filtro = '' OR v.nombre_comun LIKE '%' + @filtro + '%' OR v.variedad_hibrido LIKE '%' + @filtro + '%');
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_select_vegetal_por_id]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_selectanimales]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE PROCEDURE [dbo].[sp_select_vegetal_por_id]
-    @id BIGINT
-AS
-BEGIN
-    SELECT * FROM vegetal WHERE id_vegetal = @id;
-END;
-GO
-/****** Object:  StoredProcedure [dbo].[sp_selectanimal]    Script Date: 23/10/2026 11:41:50 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE PROCEDURE [dbo].[sp_selectanimal]
+CREATE PROCEDURE [dbo].[sp_selectanimales]
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -685,13 +790,13 @@ BEGIN
         r.nombre as rubro,
         sr.nombre as subrubro,
         a.stock_minimo as stockminimo
-    FROM animal a
-    LEFT JOIN tipo_animal t ON a.id_tipo = t.id_tipo_animal
-    LEFT JOIN rubro r ON a.id_rubro = r.id_rubro
-    LEFT JOIN subrubro sr ON a.id_subrubro = sr.id_subrubro;
+    FROM animales a
+    LEFT JOIN catalogo_tipo_items t ON a.id_tipo = t.Id_catalogo_item
+    LEFT JOIN rubros r ON a.id_rubro = r.id_rubro
+    LEFT JOIN subrubros sr ON a.id_subrubro = sr.id_subrubro;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_articulo]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_update_articulo]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -712,7 +817,7 @@ BEGIN
     WHERE id_articulo = @id_articulo;
 END
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_detalle_animal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_update_detalle_animal]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -739,7 +844,7 @@ BEGIN
     END
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_stock]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_update_stock]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -775,7 +880,7 @@ BEGIN
     WHERE id_stock = @id_stock;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_update_vegetal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_update_vegetal]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -806,7 +911,7 @@ BEGIN
     WHERE id_vegetal = @id_vegetal;
 END;
 GO
-/****** Object:  StoredProcedure [dbo].[sp_updateanimal]    Script Date: 23/10/2026 11:41:50 ******/
+/****** Object:  StoredProcedure [dbo].[sp_updateanimal]    Script Date: 23/10/2026 15:53:31 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

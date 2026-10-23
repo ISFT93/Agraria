@@ -51,7 +51,7 @@
             LblSubrubro.AutoSize = true;
             LblSubrubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblSubrubro.ForeColor = Color.White;
-            LblSubrubro.Location = new Point(23, 314);
+            LblSubrubro.Location = new Point(24, 368);
             LblSubrubro.Name = "LblSubrubro";
             LblSubrubro.Size = new Size(121, 29);
             LblSubrubro.TabIndex = 18;
@@ -62,7 +62,7 @@
             LblRubro.AutoSize = true;
             LblRubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblRubro.ForeColor = Color.White;
-            LblRubro.Location = new Point(430, 229);
+            LblRubro.Location = new Point(431, 283);
             LblRubro.Name = "LblRubro";
             LblRubro.Size = new Size(84, 29);
             LblRubro.TabIndex = 17;
@@ -73,7 +73,7 @@
             LblTipoAnimal.AutoSize = true;
             LblTipoAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblTipoAnimal.ForeColor = Color.White;
-            LblTipoAnimal.Location = new Point(430, 149);
+            LblTipoAnimal.Location = new Point(431, 203);
             LblTipoAnimal.Name = "LblTipoAnimal";
             LblTipoAnimal.Size = new Size(190, 29);
             LblTipoAnimal.TabIndex = 16;
@@ -84,7 +84,7 @@
             LblNombreCientifico.AutoSize = true;
             LblNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblNombreCientifico.ForeColor = Color.White;
-            LblNombreCientifico.Location = new Point(23, 232);
+            LblNombreCientifico.Location = new Point(24, 286);
             LblNombreCientifico.Name = "LblNombreCientifico";
             LblNombreCientifico.Size = new Size(224, 29);
             LblNombreCientifico.TabIndex = 15;
@@ -95,7 +95,7 @@
             LblNombreComun.AutoSize = true;
             LblNombreComun.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblNombreComun.ForeColor = Color.White;
-            LblNombreComun.Location = new Point(23, 149);
+            LblNombreComun.Location = new Point(24, 203);
             LblNombreComun.Name = "LblNombreComun";
             LblNombreComun.Size = new Size(196, 29);
             LblNombreComun.TabIndex = 14;
@@ -104,7 +104,7 @@
             // txtNombreComun
             // 
             txtNombreComun.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreComun.Location = new Point(23, 183);
+            txtNombreComun.Location = new Point(24, 237);
             txtNombreComun.Margin = new Padding(3, 4, 3, 4);
             txtNombreComun.Name = "txtNombreComun";
             txtNombreComun.Size = new Size(342, 34);
@@ -113,7 +113,7 @@
             // txtNombreCientifico
             // 
             txtNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreCientifico.Location = new Point(23, 265);
+            txtNombreCientifico.Location = new Point(24, 319);
             txtNombreCientifico.Margin = new Padding(3, 4, 3, 4);
             txtNombreCientifico.Name = "txtNombreCientifico";
             txtNombreCientifico.Size = new Size(342, 34);
@@ -124,7 +124,7 @@
             CbSubrubro.DropDownStyle = ComboBoxStyle.DropDownList;
             CbSubrubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbSubrubro.FormattingEnabled = true;
-            CbSubrubro.Location = new Point(23, 349);
+            CbSubrubro.Location = new Point(24, 403);
             CbSubrubro.Margin = new Padding(3, 4, 3, 4);
             CbSubrubro.Name = "CbSubrubro";
             CbSubrubro.Size = new Size(214, 37);
@@ -135,7 +135,7 @@
             CbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
             CbRubro.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbRubro.FormattingEnabled = true;
-            CbRubro.Location = new Point(430, 264);
+            CbRubro.Location = new Point(431, 318);
             CbRubro.Margin = new Padding(3, 4, 3, 4);
             CbRubro.Name = "CbRubro";
             CbRubro.Size = new Size(214, 37);
@@ -147,7 +147,7 @@
             CbTipoAnimal.DropDownStyle = ComboBoxStyle.DropDownList;
             CbTipoAnimal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             CbTipoAnimal.FormattingEnabled = true;
-            CbTipoAnimal.Location = new Point(430, 184);
+            CbTipoAnimal.Location = new Point(431, 238);
             CbTipoAnimal.Margin = new Padding(3, 4, 3, 4);
             CbTipoAnimal.Name = "CbTipoAnimal";
             CbTipoAnimal.Size = new Size(214, 37);
@@ -156,7 +156,7 @@
             // TxtCodigo
             // 
             TxtCodigo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            TxtCodigo.Location = new Point(23, 67);
+            TxtCodigo.Location = new Point(24, 121);
             TxtCodigo.Margin = new Padding(3, 4, 3, 4);
             TxtCodigo.Name = "TxtCodigo";
             TxtCodigo.Size = new Size(209, 34);
@@ -167,7 +167,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(23, 33);
+            label1.Location = new Point(24, 87);
             label1.Name = "label1";
             label1.Size = new Size(98, 29);
             label1.TabIndex = 28;
@@ -175,7 +175,7 @@
             // 
             // BtnAceptar
             // 
-            BtnAceptar.Location = new Point(770, 392);
+            BtnAceptar.Location = new Point(624, 449);
             BtnAceptar.Name = "BtnAceptar";
             BtnAceptar.Size = new Size(94, 29);
             BtnAceptar.TabIndex = 9;
@@ -185,7 +185,7 @@
             // 
             // BtnCancelar
             // 
-            BtnCancelar.Location = new Point(770, 428);
+            BtnCancelar.Location = new Point(624, 485);
             BtnCancelar.Name = "BtnCancelar";
             BtnCancelar.Size = new Size(94, 29);
             BtnCancelar.TabIndex = 10;
@@ -198,7 +198,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(430, 314);
+            label2.Location = new Point(431, 368);
             label2.Name = "label2";
             label2.Size = new Size(170, 29);
             label2.TabIndex = 18;
@@ -207,7 +207,7 @@
             // txtStock
             // 
             txtStock.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtStock.Location = new Point(430, 347);
+            txtStock.Location = new Point(431, 401);
             txtStock.Margin = new Padding(3, 4, 3, 4);
             txtStock.Name = "txtStock";
             txtStock.Size = new Size(109, 34);
@@ -218,7 +218,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(914, 500);
+            ClientSize = new Size(776, 547);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
             Controls.Add(TxtCodigo);
