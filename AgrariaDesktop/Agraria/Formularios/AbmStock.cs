@@ -268,7 +268,7 @@ namespace Agraria.Formularios
             }
             else if (cmbTipoElemento.Text == "Vegetal")
             {
-                DataTable dtVegetales = vegetalBLL.CargarCombo("vegetal");
+                DataTable dtVegetales = vegetalBLL.CargarTipoCultivo();
                 cmbDatos.DataSource = dtVegetales;
                 cmbDatos.DisplayMember = "nombre_comun";
                 cmbDatos.ValueMember = "id_vegetal";

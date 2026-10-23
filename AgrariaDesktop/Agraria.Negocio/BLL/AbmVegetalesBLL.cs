@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Agraria.Datos;
+using Agraria.Datos.DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using Agraria.Datos.DAL;
 
 namespace Agraria.Negocio.BLL
 {
@@ -32,15 +33,34 @@ namespace Agraria.Negocio.BLL
         {
             return AbmVegetalesDAL.ObtenerTipoCultivo();
          }
-        public DataTable CargarCombo(string nombreTabla)
+        public DataTable CargarTipoCultivo()
         {
-            return dal.ObtenerCombo(nombreTabla);
+            return AbmVegetalesDAL.ObtenerCultivo();
+        }
+
+        
+        public DataTable CargarCicloVida()
+        {
+            return AbmVegetalesDAL.ObtenerCicloVida();
+        }
+
+        public DataTable CargarMetodoSiembra()
+                    {
+            return AbmVegetalesDAL.ObtenerMetodoSiembra();
+        }
+
+        public DataTable CargarEstadoFenologico()
+        {
+            return AbmVegetalesDAL.ObtenerEstadoFenologico();
         }
 
         public DataTable CargarRequerimientoHidrico()
         {
-            return dal.ObtenerRequerimientoHidrico();
+            return AbmVegetalesDAL.ObtenerRequerimientoHidrico();
         }
+
+
+    
         public long GenerarIdBloque(int idUsuario)
         {
             // 1. Buscamos el último ID registrado por este usuario en la base de datos

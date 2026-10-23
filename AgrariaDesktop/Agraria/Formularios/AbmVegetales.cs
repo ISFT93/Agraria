@@ -1,4 +1,6 @@
-﻿using Agraria.Datos.DAL;
+﻿using Agraria.BLL;
+using Agraria.Datos;
+using Agraria.Datos.DAL;
 using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
 using MaterialSkin;
@@ -54,29 +56,119 @@ namespace Agraria.Formularios
             txtCodigoVegetal.Enabled = false; // Deshabilitamos el campo de código para edición
         }
 
+
+
+        private void CargarComboTipoCultivo()
+        {
+            try
+            {
+                if (cmbTipoCultivo != null)
+                {
+                    DataTable dtCat = bll.CargarTipoCultivo();
+                    cmbTipoCultivo.DataSource = dtCat;
+                    cmbTipoCultivo.DisplayMember = "nombre";
+                    cmbTipoCultivo.ValueMember = "id_categoria";
+                    cmbTipoCultivo.SelectedIndex = -1; // Arranca sin seleccionar nada
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void CargarComboCicloVida()
+        {
+            try
+            {
+                if (cmbTipoCultivo != null)
+                {
+                    DataTable dtCat = bll.CargarCicloVida();
+                    cmbCicloVida.DataSource = dtCat;
+                    cmbCicloVida.DisplayMember = "nombre";
+                    cmbCicloVida.ValueMember = "id_categoria";
+                    cmbCicloVida.SelectedIndex = -1; // Arranca sin seleccionar nada
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void CargarComboMetodoSiembra()
+        {
+            try
+            {
+                if (cmbTipoCultivo != null)
+                {
+                    DataTable dtCat = bll.CargarMetodoSiembra();
+                    cmbMetodoSiembra.DataSource = dtCat;
+                    cmbMetodoSiembra.DisplayMember = "nombre";
+                    cmbMetodoSiembra.ValueMember = "id_categoria";
+                    cmbMetodoSiembra.SelectedIndex = -1; // Arranca sin seleccionar nada
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void CargarComboEstadoFenologico()
+        {
+            try
+            {
+                if (cmbTipoCultivo != null)
+                {
+                    DataTable dtCat = bll.CargarEstadoFenologico();
+                    cmbEstadoFenologico.DataSource = dtCat;
+                    cmbEstadoFenologico.DisplayMember = "nombre";
+                    cmbEstadoFenologico.ValueMember = "id_categoria";
+                    cmbEstadoFenologico.SelectedIndex = -1; // Arranca sin seleccionar nada
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void CargarComboRequerimientoHidrico()
+        {
+            try
+            {
+                if (cmbTipoCultivo != null)
+                {
+                    DataTable dtCat = bll.CargarRequerimientoHidrico();
+                    cmbRequerimientosHidrico.DataSource = dtCat;
+                    cmbRequerimientosHidrico.DisplayMember = "nombre";
+                    cmbRequerimientosHidrico.ValueMember = "id_categoria";
+                    cmbRequerimientosHidrico.SelectedIndex = -1; // Arranca sin seleccionar nada
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void CargarCombos()
         {
-            LlenarCombo(cmbTipoCultivo, "tipo_cultivo", "nombre", "id_tipo_cultivo");
-            LlenarCombo(cmbCicloVida, "ciclo_vida", "nombre", "id_ciclo_vida");
-            LlenarCombo(cmbMetodoSiembra, "metodo_siembra", "nombre", "id_metodo_siembra");
-            LlenarCombo(cmbEstadoFenologico, "estado_fenologico", "nombre", "id_estado_fenologico");
-
-            // Este va a buscar los datos directamente ejecutando la consulta en SQL
-            DataTable dtReq = bll.CargarRequerimientoHidrico();
-            cmbRequerimientosHidrico.DataSource = dtReq;
-            cmbRequerimientosHidrico.DisplayMember = "nombre";
-            cmbRequerimientosHidrico.ValueMember = "nombre";
-            cmbRequerimientosHidrico.SelectedIndex = -1;
+            CargarComboTipoCultivo();
+            CargarComboCicloVida();
+            CargarComboMetodoSiembra();
+            CargarComboEstadoFenologico();
+            CargarComboRequerimientoHidrico();
         }
 
-        private void LlenarCombo(ComboBox combo, string tabla, string display, string value)
-        {
-            DataTable dt = bll.CargarCombo(tabla);
-            combo.DataSource = dt;
-            combo.DisplayMember = display;
-            combo.ValueMember = value;
-            combo.SelectedIndex = -1;
-        }
+
+
+
+
+
 
         private void CargarDatos(long id)
         {
