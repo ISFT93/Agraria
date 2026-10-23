@@ -20,9 +20,9 @@ namespace Agraria.Datos.DAL
             {
                 ConexionBD.ConectarBD();
 
-                SqlCommand cmd = new SqlCommand("sp_select_vegetal", ConexionBD.ConexionSQL);
+                SqlCommand cmd = new SqlCommand("sp_select_vegetales", ConexionBD.ConexionSQL);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@filtro", filtro.Trim());
+                cmd.Parameters.AddWithValue("@Filtro", filtro.Trim());
 
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {

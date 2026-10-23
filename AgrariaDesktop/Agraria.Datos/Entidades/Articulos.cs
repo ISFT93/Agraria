@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Agraria.Entidades
 {
-    public class Articulo
+    public class Articulos
     {
         public int IdArticulo { get; set; }
         public string NombreProducto { get; set; }

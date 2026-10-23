@@ -5,11 +5,11 @@ using Agraria.Datos.Entidades;
 
 namespace Agraria.Negocio.BLL
 {
-    public class AbmAnimalBLL
+    public class AbmAnimalesBLL
     {
         private readonly AbmAnimalDAL dal = new AbmAnimalDAL();
 
-        public void Guardar(Animal animal, bool esModificacion, int idUsuarioLogueado)
+        public void Guardar(Animales animal, bool esModificacion, int idUsuarioLogueado)
         {
             if (esModificacion)
             {

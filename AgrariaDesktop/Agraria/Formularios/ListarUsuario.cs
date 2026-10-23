@@ -11,7 +11,7 @@ namespace Agraria.Formularios
     {
         private readonly UsuarioLoginDTO _usuarioLogeado;
         private readonly bool _esInvitado;
-        private AbmUsuarioBLL usuarioBLL = new AbmUsuarioBLL();
+        private AbmUsuariosBLL usuarioBLL = new AbmUsuariosBLL();
 
         public ListarUsuario(UsuarioLoginDTO usuarioLogeado, bool esInvitado)
         {

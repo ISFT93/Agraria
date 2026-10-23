@@ -10,12 +10,12 @@ using Agraria.Datos;
 
 namespace Agraria.Negocio.BLL
 {
-    public class AbmUsuarioBLL
+    public class AbmUsuariosBLL
     {
 
         private readonly AbmUsuarioDAL _abmUsuarioDAL;
 
-        public AbmUsuarioBLL()
+        public AbmUsuariosBLL()
         {
             _abmUsuarioDAL = new AbmUsuarioDAL();
         }

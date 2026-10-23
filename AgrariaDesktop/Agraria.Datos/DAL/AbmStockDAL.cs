@@ -63,19 +63,19 @@ namespace Agraria.Datos.DAL
                 using (SqlCommand cmd = new SqlCommand("sp_insert_stock", ConexionBD.ConexionSQL))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_stock", idStock);
-                    cmd.Parameters.AddWithValue("@id_elemento", idElemento);
-                    cmd.Parameters.AddWithValue("@tipo_elemento", tipoElemento);
+                    cmd.Parameters.AddWithValue("@Id_stock", idStock);
+                    cmd.Parameters.AddWithValue("@Id_elemento", idElemento);
+                    cmd.Parameters.AddWithValue("@Tipo_elemento", tipoElemento);
                     cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@ciclo", string.IsNullOrEmpty(ciclo) ? (object)DBNull.Value : ciclo);
-                    cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
-                    cmd.Parameters.AddWithValue("@fecha_baja", fechaBaja.HasValue ? (object)fechaBaja.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                    cmd.Parameters.AddWithValue("@precio", precio.HasValue ? (object)precio.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@id_proveedor", idProveedor.HasValue ? (object)idProveedor.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@activo", activo);
-                    cmd.Parameters.AddWithValue("@vendible", vendible);
-                    cmd.Parameters.AddWithValue("@motivo_movimiento", string.IsNullOrEmpty(motivoMovimiento) ? (object)DBNull.Value : motivoMovimiento);
+                    cmd.Parameters.AddWithValue("@Ciclo", string.IsNullOrEmpty(ciclo) ? (object)DBNull.Value : ciclo);
+                    cmd.Parameters.AddWithValue("@Fecha_alta", fechaAlta);
+                    cmd.Parameters.AddWithValue("@Fecha_baja", fechaBaja.HasValue ? (object)fechaBaja.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    cmd.Parameters.AddWithValue("@Precio", precio.HasValue ? (object)precio.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Id_proveedor", idProveedor.HasValue ? (object)idProveedor.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Activo", activo);
+                    cmd.Parameters.AddWithValue("@Vendible", vendible);
+                    cmd.Parameters.AddWithValue("@Motivo_movimiento", string.IsNullOrEmpty(motivoMovimiento) ? (object)DBNull.Value : motivoMovimiento);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -94,19 +94,18 @@ namespace Agraria.Datos.DAL
                 using (SqlCommand cmd = new SqlCommand("sp_update_stock", ConexionBD.ConexionSQL))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_stock", idStock);
-                    cmd.Parameters.AddWithValue("@id_elemento", idElemento);
-                    cmd.Parameters.AddWithValue("@tipo_elemento", tipoElemento);
+                    cmd.Parameters.AddWithValue("@Id_stock", idStock);
+                    cmd.Parameters.AddWithValue("@Id_elemento", idElemento);
+                    cmd.Parameters.AddWithValue("@Tipo_elemento", tipoElemento);
                     cmd.Parameters.AddWithValue("@Nombre", nombre);
-                    cmd.Parameters.AddWithValue("@ciclo", string.IsNullOrEmpty(ciclo) ? (object)DBNull.Value : ciclo);
-                    cmd.Parameters.AddWithValue("@fecha_alta", fechaAlta);
-                    cmd.Parameters.AddWithValue("@fecha_baja", fechaBaja.HasValue ? (object)fechaBaja.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@cantidad", cantidad);
-                    cmd.Parameters.AddWithValue("@precio", precio.HasValue ? (object)precio.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@id_proveedor", idProveedor.HasValue ? (object)idProveedor.Value : DBNull.Value);
-                    cmd.Parameters.AddWithValue("@activo", activo);
-                    cmd.Parameters.AddWithValue("@vendible", vendible);
-
+                    cmd.Parameters.AddWithValue("@Ciclo", string.IsNullOrEmpty(ciclo) ? (object)DBNull.Value : ciclo);
+                    cmd.Parameters.AddWithValue("@Fecha_alta", fechaAlta);
+                    cmd.Parameters.AddWithValue("@Fecha_baja", fechaBaja.HasValue ? (object)fechaBaja.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Cantidad", cantidad);
+                    cmd.Parameters.AddWithValue("@Precio", precio.HasValue ? (object)precio.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Id_proveedor", idProveedor.HasValue ? (object)idProveedor.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Activo", activo);
+                    cmd.Parameters.AddWithValue("@Vendible", vendible);
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -121,13 +120,13 @@ namespace Agraria.Datos.DAL
             try
             {
                 ConexionBD.ConectarBD();
-                using (SqlCommand cmd = new SqlCommand("sp_insert_detalle_animal", ConexionBD.ConexionSQL))
+                using (SqlCommand cmd = new SqlCommand("sp_insert_detalle_animales", ConexionBD.ConexionSQL))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_stock", idStock);
-                    cmd.Parameters.AddWithValue("@nro_animal", string.IsNullOrEmpty(nroAnimal) ? (object)DBNull.Value : nroAnimal);
-                    cmd.Parameters.AddWithValue("@sexo", string.IsNullOrEmpty(sexo) ? (object)DBNull.Value : sexo);
-                    cmd.Parameters.AddWithValue("@es_productor", esProductor);
+                    cmd.Parameters.AddWithValue("@Id_stock", idStock);
+                    cmd.Parameters.AddWithValue("@Nro_animal", string.IsNullOrEmpty(nroAnimal) ? (object)DBNull.Value : nroAnimal);
+                    cmd.Parameters.AddWithValue("@Sexo", string.IsNullOrEmpty(sexo) ? (object)DBNull.Value : sexo);
+                    cmd.Parameters.AddWithValue("@Es_productor", esProductor);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -212,13 +211,13 @@ namespace Agraria.Datos.DAL
             try
             {
                 ConexionBD.ConectarBD();
-                using (SqlCommand cmd = new SqlCommand("sp_update_detalle_animal", ConexionBD.ConexionSQL))
+                using (SqlCommand cmd = new SqlCommand("sp_update_detalle_animales", ConexionBD.ConexionSQL))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_stock", idStock);
-                    cmd.Parameters.AddWithValue("@nro_animal", nroAnimal);
-                    cmd.Parameters.AddWithValue("@sexo", sexo);
-                    cmd.Parameters.AddWithValue("@es_productor", esProductor);
+                    cmd.Parameters.AddWithValue("@Id_stock", idStock);
+                    cmd.Parameters.AddWithValue("@Nro_animal", nroAnimal);
+                    cmd.Parameters.AddWithValue("@Sexo", sexo);
+                    cmd.Parameters.AddWithValue("@Es_productor", esProductor);
                     cmd.ExecuteNonQuery();
                 }
             }

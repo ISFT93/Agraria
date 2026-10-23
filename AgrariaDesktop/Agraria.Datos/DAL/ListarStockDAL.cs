@@ -14,7 +14,7 @@ namespace Agraria.Datos.DAL
                 using (SqlCommand cmd = new SqlCommand("sp_select_stock", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@tipo_elemento", string.IsNullOrEmpty(tipoElemento) ? "" : tipoElemento);
+                    cmd.Parameters.AddWithValue("@Tipo_elemento", string.IsNullOrEmpty(tipoElemento) ? "" : tipoElemento);
                     cmd.Parameters.AddWithValue("@Nombre", string.IsNullOrEmpty(nombre) ? "" : nombre);
 
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
