@@ -1,4 +1,6 @@
 ﻿using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class DetallesAnimal : Form
+    public partial class DetallesAnimal : MaterialForm
     {
         public List<AnimalItemDto> ListaAnimales { get; private set; }
         private int cantidadLote;
@@ -25,6 +27,20 @@ namespace Agraria.Formularios
             datosPrevios = dtAnimales;
             idStockEditar = idStock; // Guardamos el ID
             ConstruirFilasDinamicas();
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
+
         }
         private void ConstruirFilasDinamicas()
         {

@@ -78,6 +78,20 @@ namespace Agraria.Datos.DAL
             return dt;
         }
 
+        public static DataTable ObtenerTipoCultivo()
+        {
+            ConexionBD.ConectarBD();
+            using (SqlCommand cmd = new SqlCommand("SELECT Id_catalogo_item,Nombre from catalogo_tipo_items where id_catalog=2", ConexionBD.ConexionSQL))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
+
         public DataTable ObtenerCombo(string tabla)
         {
             DataTable dt = new DataTable();

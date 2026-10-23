@@ -28,7 +28,10 @@ namespace Agraria.Negocio.BLL
         {
             return dal.ObtenerPorId(idVegetal);
         }
-
+        public DataTable ObtenerTipoCultivo()
+        {
+            return AbmVegetalesDAL.ObtenerTipoCultivo();
+         }
         public DataTable CargarCombo(string nombreTabla)
         {
             return dal.ObtenerCombo(nombreTabla);

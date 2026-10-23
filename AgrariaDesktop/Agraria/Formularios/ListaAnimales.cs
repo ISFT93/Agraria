@@ -1,15 +1,17 @@
-﻿using System;
+﻿using Agraria.Datos.DAL;
+using Agraria.Datos.DTO;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using Agraria.Datos.DAL;
-using Agraria.Datos.DTO;
 
 namespace Agraria.Formularios
 {
-    public partial class ListaAnimales : Form
+    public partial class ListaAnimales : MaterialForm
     {
         private AbmAnimalDAL animalDAL = new AbmAnimalDAL();
         private bool esInvitado;
@@ -22,6 +24,20 @@ namespace Agraria.Formularios
             InitializeComponent();
             this._usuarioActual = usuarioLogeado;
             this.esInvitado = esInvitado;
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
+
         }
 
         // Constructor para retrocompatibilidad

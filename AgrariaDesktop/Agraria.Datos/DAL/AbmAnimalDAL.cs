@@ -91,7 +91,19 @@ namespace Agraria.Datos.DAL
             }
             return dt;
         }
-
+        public static DataTable ObtenerTipoAnimal()
+        {
+            ConexionBD.ConectarBD();
+            using (SqlCommand cmd = new SqlCommand("SELECT Id_catalogo_item,Nombre from catalogo_tipo_items where id_catalog=1", ConexionBD.ConexionSQL))
+            {
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    return dt;
+                }
+            }
+        }
         public long ObtenerUltimoIdPorUsuario(long baseUsuario)
         {
             long ultimoId = 0;

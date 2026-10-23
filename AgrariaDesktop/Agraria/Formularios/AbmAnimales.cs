@@ -1,14 +1,16 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
-using Agraria.Datos.DAL;
+﻿using Agraria.Datos.DAL;
 using Agraria.Datos.DTO;
 using Agraria.Datos.Entidades;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
+using System.Data;
+using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmAnimales : Form
+    public partial class AbmAnimales : MaterialForm
     {
         private AbmAnimalDAL AbmanimalDAL = new AbmAnimalDAL();
         private AbmAnimalesBLL abmAnimalBLL = new AbmAnimalesBLL();
@@ -20,6 +22,19 @@ namespace Agraria.Formularios
         {
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+                TextShade.WHITE
+            );
         }
 
       
@@ -65,15 +80,15 @@ namespace Agraria.Formularios
                 CbRubro.DropDownStyle = ComboBoxStyle.DropDownList;
                 CbSubrubro.DropDownStyle = ComboBoxStyle.DropDownList;
 
-                CbTipoAnimal.DataSource = abmAnimalBLL.CargarCombo("Tipo_animal");
+                CbTipoAnimal.DataSource = abmAnimalBLL.CargarTipoAnimal();
                 CbTipoAnimal.DisplayMember = "Nombre";
-                CbTipoAnimal.ValueMember = "Id_tipo_animal";
+                CbTipoAnimal.ValueMember = "Id_catalogo_item";
 
-                CbRubro.DataSource = abmAnimalBLL.CargarCombo("rubro");
+                CbRubro.DataSource = abmAnimalBLL.CargarCombo("rubros");
                 CbRubro.DisplayMember = "Nombre";
                 CbRubro.ValueMember = "Id_rubro";
 
-                CbSubrubro.DataSource = abmAnimalBLL.CargarCombo("subrubro");
+                CbSubrubro.DataSource = abmAnimalBLL.CargarCombo("subrubros");
                 CbSubrubro.DisplayMember = "Nombre";
                 CbSubrubro.ValueMember = "Id_subrubro";
             }

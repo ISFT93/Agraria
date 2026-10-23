@@ -29,10 +29,10 @@ namespace Agraria.Formularios
 
             // Configurar esquemas de color (Ejemplo: Azul / Indigo)
             materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.Green800,
-                Primary.Green900,
-                Primary.Green500,
-                Accent.Green200,
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
                 TextShade.WHITE
             );
         }

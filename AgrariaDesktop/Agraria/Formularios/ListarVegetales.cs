@@ -2,6 +2,8 @@
 using Agraria.Datos.DTO;
 using Agraria.Datos.Entidades;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System;
 using System.Collections.Generic;
@@ -15,7 +17,7 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class ListarVegetales : Form
+    public partial class ListarVegetales : MaterialForm
     {
 
 
@@ -28,6 +30,20 @@ namespace Agraria.Formularios
             InitializeComponent();
             _usuarioLogeado = usuarioLogeado;
             _esInvitado = esInvitado;
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
+
         }
 
 
@@ -117,16 +133,16 @@ namespace Agraria.Formularios
         {
             try
             {
-                DataTable dt = abmBll.CargarCombo("tipo_cultivo");
+                DataTable dt = abmBll.ObtenerTipoCultivo();
 
                 DataRow row = dt.NewRow();
-                row["id_tipo_cultivo"] = 0;
+                row["id_catalogo_item"] = 0;
                 row["nombre"] = "Todos";
                 dt.Rows.InsertAt(row, 0);
 
                 cmbFiltrarPor.DataSource = dt;
                 cmbFiltrarPor.DisplayMember = "nombre";
-                cmbFiltrarPor.ValueMember = "id_tipo_cultivo";
+                cmbFiltrarPor.ValueMember = "Id_catalogo_item";
                 cmbFiltrarPor.SelectedIndex = 0;
             }
             catch (Exception ex)

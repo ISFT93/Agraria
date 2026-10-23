@@ -13,8 +13,8 @@ namespace Agraria.Datos
             ConexionBD.ConectarBD();
             string query = "SELECT a.id_articulo, a.nombre, m.nombre AS marca, a.stock_minimo, c.nombre AS categoria " +
                "FROM articulos a " +
-               "LEFT JOIN marca m ON a.id_marca = m.id_marca " +
-               "LEFT JOIN categoria c ON a.id_categoria = c.id_categoria " +
+               "LEFT JOIN marcas m ON a.id_marca = m.id_marca " +
+               "LEFT JOIN catalogo_tipo_items c ON a.id_categoria = c.Id_catalogo_item " +
                "WHERE (@id_categoria IS NULL OR a.id_categoria = @id_categoria) " +
                "AND (@nombre IS NULL OR a.nombre LIKE '%' + @nombre + '%')";
             using (var cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
@@ -90,7 +90,7 @@ namespace Agraria.Datos
         public static DataTable ObtenerMarcas()
         {
             ConexionBD.ConectarBD();
-            using (SqlCommand cmd = new SqlCommand("SELECT id_marca, nombre FROM marca", ConexionBD.ConexionSQL))
+            using (SqlCommand cmd = new SqlCommand("SELECT id_marca, nombre FROM marcas", ConexionBD.ConexionSQL))
             {
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {
@@ -105,7 +105,7 @@ namespace Agraria.Datos
         public static DataTable ObtenerCategorias()
         {
             ConexionBD.ConectarBD();
-            using (SqlCommand cmd = new SqlCommand("SELECT id_categoria, nombre FROM categoria", ConexionBD.ConexionSQL))
+            using (SqlCommand cmd = new SqlCommand("SELECT Id_catalogo_item AS id_categoria,Nombre from catalogo_tipo_items where id_catalog=3", ConexionBD.ConexionSQL))
             {
                 using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                 {

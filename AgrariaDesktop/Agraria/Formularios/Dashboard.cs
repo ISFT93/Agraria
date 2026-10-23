@@ -1,5 +1,7 @@
 ﻿using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +15,25 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Agraria.Formularios
 {
-    public partial class Dashboard : Form
+    public partial class Dashboard : MaterialForm
     {
         public Dashboard()
         {
             InitializeComponent();
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
+
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

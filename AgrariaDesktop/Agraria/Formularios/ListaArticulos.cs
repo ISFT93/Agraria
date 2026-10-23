@@ -1,11 +1,13 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class ListaArticulos : Form
+    public partial class ListaArticulos : MaterialForm
     {
         // Instancia de la BLL para conectar con la lógica del negocio
         private Agraria.BLL.ArticulosBLL articulosBLL = new Agraria.BLL.ArticulosBLL();
@@ -19,6 +21,20 @@ namespace Agraria.Formularios
 
             // Forzamos la actualización automática de la grilla cada vez que la ventana recupera el foco
             this.Activated += new EventHandler(FormArticulosLista_Activated);
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
+
         }
 
         private void FormArticulosLista_Load(object sender, EventArgs e)

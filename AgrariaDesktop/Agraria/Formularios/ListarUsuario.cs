@@ -1,5 +1,7 @@
 ﻿using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.IO;
@@ -7,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class ListarUsuario : Form
+    public partial class ListarUsuario : MaterialForm
     {
         private readonly UsuarioLoginDTO _usuarioLogeado;
         private readonly bool _esInvitado;
@@ -18,6 +20,20 @@ namespace Agraria.Formularios
             InitializeComponent();
             _usuarioLogeado = usuarioLogeado;
             _esInvitado = esInvitado;
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
+
         }
 
         private void ListarUsuario_Load(object sender, EventArgs e)

@@ -65,8 +65,8 @@ namespace Agraria.Datos.DAL
 
                 string query = @"SELECT e.nombre, t.Nombre AS TipoEntorno, 
                                         e.Responsable, e.Observaciones
-                                 FROM Entorno e
-                                 INNER JOIN TipoEntorno t ON e.IdTipoEntorno = t.IdTipoEntorno";
+                                 FROM Entornos e
+                                 INNER JOIN TipoEntornos t ON e.IdTipoEntorno = t.IdTipoEntorno";
                                //   WHERE e.Fecha";
 
                 SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);

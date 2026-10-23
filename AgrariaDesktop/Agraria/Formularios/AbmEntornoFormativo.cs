@@ -2,13 +2,15 @@
 using Agraria.Datos.Entidades;
 using Agraria.Negocio;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmEntornoFormativo : Form
+    public partial class AbmEntornoFormativo : MaterialForm
     {
         private EntornoFormativoBLL entornoBLL = new EntornoFormativoBLL();
         private bool esInvitado = false;
@@ -26,6 +28,23 @@ namespace Agraria.Formularios
 
             if (esInvitado)
                 DeshabilitarControles();
+
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+                TextShade.WHITE
+            );
+
+
+
         }
 
         // Constructor para MODIFICAR

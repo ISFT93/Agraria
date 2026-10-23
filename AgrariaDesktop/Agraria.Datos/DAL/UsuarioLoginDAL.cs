@@ -28,7 +28,7 @@ namespace Agraria.Datos.DAL
                         p.PuedeProduccionAnimal,
                         p.PuedeProduccionVegetal,
                         p.PuedeAdministracion
-                    FROM AbmUsuario u
+                    FROM Usuarios u
                     LEFT JOIN PermisosUsuario p ON u.Id = p.IdUsuario
                     WHERE u.NombreUsuario = @usuario 
                     AND u.Contraseña = @pass 

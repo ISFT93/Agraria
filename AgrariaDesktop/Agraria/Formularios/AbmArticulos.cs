@@ -1,11 +1,13 @@
-﻿using System;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using System;
 using System.Data;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmArticulos : Form
+    public partial class AbmArticulos : MaterialForm
     {
         private Agraria.BLL.ArticulosBLL articulosBLL = new Agraria.BLL.ArticulosBLL();
         private object _usuarioActual;
@@ -17,6 +19,19 @@ namespace Agraria.Formularios
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
             idArticuloActual = null;
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+                TextShade.WHITE
+            );
         }
 
         // Constructor para MODIFICACIÓN

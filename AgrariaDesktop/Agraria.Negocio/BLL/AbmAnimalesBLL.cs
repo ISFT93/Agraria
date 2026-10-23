@@ -71,6 +71,11 @@ namespace Agraria.Negocio.BLL
             return dal.ObtenerCombo(nombreTabla);
         }
 
+        public DataTable CargarTipoAnimal()
+        {
+            return AbmAnimalDAL.ObtenerTipoAnimal();
+        }
+
         public DataTable MostrarAnimales()
         {
             return dal.ObtenerAnimales();

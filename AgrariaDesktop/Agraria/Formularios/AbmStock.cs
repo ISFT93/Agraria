@@ -1,13 +1,16 @@
 ﻿using Agraria.BLL;
 using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.Windows.Forms;
 
+
 namespace Agraria.Formularios
 {
-    public partial class AbmStock : Form
+    public partial class AbmStock : MaterialForm
     {
         private AbmStockBLL bll = new AbmStockBLL();
         private AbmAnimalesBLL animalBLL = new AbmAnimalesBLL();
@@ -22,6 +25,19 @@ namespace Agraria.Formularios
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
             ConfigurarFormulario();
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+                TextShade.WHITE
+            );
         }
 
         public AbmStock(long idStock, UsuarioLoginDTO usuarioLogeado) : this(usuarioLogeado)
