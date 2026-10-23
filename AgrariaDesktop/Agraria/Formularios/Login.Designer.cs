@@ -54,49 +54,49 @@
             panel1.BackColor = Color.White;
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(2, 3, 2, 3);
+            panel1.Margin = new Padding(2, 2, 2, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(545, 15);
+            panel1.Size = new Size(477, 11);
             panel1.TabIndex = 0;
             // 
             // panel2
             // 
             panel2.BackColor = Color.White;
             panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(0, 257);
-            panel2.Margin = new Padding(2, 3, 2, 3);
+            panel2.Location = new Point(0, 193);
+            panel2.Margin = new Padding(2, 2, 2, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(545, 15);
+            panel2.Size = new Size(477, 11);
             panel2.TabIndex = 1;
             // 
             // panel3
             // 
             panel3.BackColor = Color.White;
             panel3.Dock = DockStyle.Left;
-            panel3.Location = new Point(0, 15);
-            panel3.Margin = new Padding(2, 3, 2, 3);
+            panel3.Location = new Point(0, 11);
+            panel3.Margin = new Padding(2, 2, 2, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(14, 242);
+            panel3.Size = new Size(12, 182);
             panel3.TabIndex = 2;
             // 
             // panel4
             // 
             panel4.BackColor = Color.White;
             panel4.Dock = DockStyle.Right;
-            panel4.Location = new Point(531, 15);
-            panel4.Margin = new Padding(2, 3, 2, 3);
+            panel4.Location = new Point(465, 11);
+            panel4.Margin = new Padding(2, 2, 2, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(14, 242);
+            panel4.Size = new Size(12, 182);
             panel4.TabIndex = 3;
             // 
             // txtUsuario
             // 
             txtUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtUsuario.Location = new Point(363, 63);
-            txtUsuario.Margin = new Padding(2, 3, 2, 3);
+            txtUsuario.Location = new Point(318, 47);
+            txtUsuario.Margin = new Padding(2, 2, 2, 2);
             txtUsuario.MaxLength = 50;
             txtUsuario.Name = "txtUsuario";
-            txtUsuario.Size = new Size(130, 34);
+            txtUsuario.Size = new Size(114, 29);
             txtUsuario.TabIndex = 4;
             txtUsuario.KeyDown += CopiaryPegar_KeyDown;
             txtUsuario.KeyPress += SoloTextoNumeroEspacio_KeyPress;
@@ -104,12 +104,12 @@
             // txtContraseña
             // 
             txtContraseña.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtContraseña.Location = new Point(363, 133);
-            txtContraseña.Margin = new Padding(2, 3, 2, 3);
+            txtContraseña.Location = new Point(318, 100);
+            txtContraseña.Margin = new Padding(2, 2, 2, 2);
             txtContraseña.MaxLength = 6;
             txtContraseña.Name = "txtContraseña";
             txtContraseña.PasswordChar = '*';
-            txtContraseña.Size = new Size(130, 34);
+            txtContraseña.Size = new Size(114, 29);
             txtContraseña.TabIndex = 5;
             txtContraseña.KeyDown += CopiaryPegar_KeyDown;
             // 
@@ -119,10 +119,10 @@
             lblUsuario.BackColor = Color.Transparent;
             lblUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblUsuario.ForeColor = Color.Black;
-            lblUsuario.Location = new Point(251, 61);
+            lblUsuario.Location = new Point(220, 46);
             lblUsuario.Margin = new Padding(2, 0, 2, 0);
             lblUsuario.Name = "lblUsuario";
-            lblUsuario.Size = new Size(110, 29);
+            lblUsuario.Size = new Size(87, 24);
             lblUsuario.TabIndex = 6;
             lblUsuario.Text = "Usuario:";
             // 
@@ -132,10 +132,10 @@
             lblContraseña.BackColor = Color.Transparent;
             lblContraseña.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblContraseña.ForeColor = Color.Black;
-            lblContraseña.Location = new Point(208, 129);
+            lblContraseña.Location = new Point(182, 97);
             lblContraseña.Margin = new Padding(2, 0, 2, 0);
             lblContraseña.Name = "lblContraseña";
-            lblContraseña.Size = new Size(153, 29);
+            lblContraseña.Size = new Size(122, 24);
             lblContraseña.TabIndex = 7;
             lblContraseña.Text = "Contraseña:";
             // 
@@ -144,10 +144,10 @@
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.BackgroundImage = Properties.Resources.agr;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(31, 45);
+            pictureBox1.Location = new Point(27, 34);
             pictureBox1.Margin = new Padding(0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(162, 171);
+            pictureBox1.Size = new Size(142, 128);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 8;
             pictureBox1.TabStop = false;
@@ -156,10 +156,10 @@
             // 
             pbCerrar.BackgroundImage = Properties.Resources.x;
             pbCerrar.BackgroundImageLayout = ImageLayout.Stretch;
-            pbCerrar.Location = new Point(499, 21);
-            pbCerrar.Margin = new Padding(2, 3, 2, 3);
+            pbCerrar.Location = new Point(437, 16);
+            pbCerrar.Margin = new Padding(2, 2, 2, 2);
             pbCerrar.Name = "pbCerrar";
-            pbCerrar.Size = new Size(26, 28);
+            pbCerrar.Size = new Size(23, 21);
             pbCerrar.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCerrar.TabIndex = 9;
             pbCerrar.TabStop = false;
@@ -172,9 +172,9 @@
             lblOlvidarContraseña.Cursor = Cursors.Hand;
             lblOlvidarContraseña.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblOlvidarContraseña.ForeColor = Color.Black;
-            lblOlvidarContraseña.Location = new Point(315, 228);
+            lblOlvidarContraseña.Location = new Point(276, 171);
             lblOlvidarContraseña.Name = "lblOlvidarContraseña";
-            lblOlvidarContraseña.Size = new Size(228, 20);
+            lblOlvidarContraseña.Size = new Size(184, 16);
             lblOlvidarContraseña.TabIndex = 11;
             lblOlvidarContraseña.Text = "Olvidaste tu Contraseña ?";
             lblOlvidarContraseña.Click += lblOlvidarContraseña_Click;
@@ -186,9 +186,9 @@
             lblInvitado.Cursor = Cursors.Hand;
             lblInvitado.Font = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             lblInvitado.ForeColor = Color.Black;
-            lblInvitado.Location = new Point(19, 229);
+            lblInvitado.Location = new Point(17, 172);
             lblInvitado.Name = "lblInvitado";
-            lblInvitado.Size = new Size(241, 20);
+            lblInvitado.Size = new Size(196, 16);
             lblInvitado.TabIndex = 12;
             lblInvitado.Text = "INGRESAR CON INVITADO";
             lblInvitado.Click += lblInvitado_Click;
@@ -201,20 +201,21 @@
             // 
             btnIngresar.BackgroundImage = (Image)resources.GetObject("btnIngresar.BackgroundImage");
             btnIngresar.BackgroundImageLayout = ImageLayout.Stretch;
-            btnIngresar.Location = new Point(369, 173);
+            btnIngresar.Location = new Point(323, 130);
+            btnIngresar.Margin = new Padding(3, 2, 3, 2);
             btnIngresar.Name = "btnIngresar";
-            btnIngresar.Size = new Size(124, 43);
+            btnIngresar.Size = new Size(108, 32);
             btnIngresar.TabIndex = 13;
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnAceptarLogin_Click;
             // 
             // Login
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(56, 124, 31);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(545, 272);
+            ClientSize = new Size(477, 204);
             Controls.Add(btnIngresar);
             Controls.Add(lblInvitado);
             Controls.Add(lblOlvidarContraseña);
@@ -229,9 +230,9 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
-            Margin = new Padding(2, 3, 2, 3);
-            MaximumSize = new Size(545, 272);
-            MinimumSize = new Size(545, 272);
+            Margin = new Padding(2, 2, 2, 2);
+            MaximumSize = new Size(477, 204);
+            MinimumSize = new Size(477, 204);
             Name = "Login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";

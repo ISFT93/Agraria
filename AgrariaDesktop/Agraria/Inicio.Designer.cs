@@ -37,15 +37,11 @@
             administracionToolStripMenuItem = new ToolStripMenuItem();
             entornosFormativosToolStripMenuItem = new ToolStripMenuItem();
             verToolStripMenuItem = new ToolStripMenuItem();
-            pañolToolStripMenuItem = new ToolStripMenuItem();
-            entornoAnimalToolStripMenuItem = new ToolStripMenuItem();
-            produccionVegetalToolStripMenuItem = new ToolStripMenuItem();
-            produccionAnimalToolStripMenuItem = new ToolStripMenuItem();
-            industriaToolStripMenuItem = new ToolStripMenuItem();
-            stockToolStripMenuItem = new ToolStripMenuItem();
+            ArticulosToolStripMenuItem = new ToolStripMenuItem();
+            EntornoAnimalToolStripMenuItem = new ToolStripMenuItem();
+            EntornoVegetalToolStripMenuItem = new ToolStripMenuItem();
+            StockToolStripMenuItem = new ToolStripMenuItem();
             herramientasToolStripMenuItem = new ToolStripMenuItem();
-            inventarioToolStripMenuItem = new ToolStripMenuItem();
-            ventasToolStripMenuItem = new ToolStripMenuItem();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             manualDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
             ciclosToolStripMenuItem = new ToolStripMenuItem();
@@ -113,31 +109,31 @@
             // 
             // verToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pañolToolStripMenuItem, entornoAnimalToolStripMenuItem, produccionVegetalToolStripMenuItem, produccionAnimalToolStripMenuItem, industriaToolStripMenuItem, stockToolStripMenuItem, ciclosToolStripMenuItem });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ArticulosToolStripMenuItem, EntornoAnimalToolStripMenuItem, EntornoVegetalToolStripMenuItem, StockToolStripMenuItem });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(35, 20);
             verToolStripMenuItem.Text = "Ver";
             // 
-            // pañolToolStripMenuItem
+            // ArticulosToolStripMenuItem
             // 
-            pañolToolStripMenuItem.Name = "pañolToolStripMenuItem";
-            pañolToolStripMenuItem.Size = new Size(180, 22);
-            pañolToolStripMenuItem.Text = "Artículos";
-            pañolToolStripMenuItem.Click += btnPañol_Click;
+            ArticulosToolStripMenuItem.Name = "ArticulosToolStripMenuItem";
+            ArticulosToolStripMenuItem.Size = new Size(180, 22);
+            ArticulosToolStripMenuItem.Text = "Artículos";
+            ArticulosToolStripMenuItem.Click += btnArticulos_Click;
             // 
-            // entornoAnimalToolStripMenuItem
+            // EntornoAnimalToolStripMenuItem
             // 
-            entornoAnimalToolStripMenuItem.Name = "entornoAnimalToolStripMenuItem";
-            entornoAnimalToolStripMenuItem.Size = new Size(180, 22);
-            entornoAnimalToolStripMenuItem.Text = "Animales";
-            entornoAnimalToolStripMenuItem.Click += entornoAnimalToolStripMenuItem_Click;
+            EntornoAnimalToolStripMenuItem.Name = "EntornoAnimalToolStripMenuItem";
+            EntornoAnimalToolStripMenuItem.Size = new Size(180, 22);
+            EntornoAnimalToolStripMenuItem.Text = "Animales";
+            EntornoAnimalToolStripMenuItem.Click += btnEntornoAnimal_Click;
             // 
-            // produccionVegetalToolStripMenuItem
+            // EntornoVegetalToolStripMenuItem
             // 
-            produccionVegetalToolStripMenuItem.Name = "produccionVegetalToolStripMenuItem";
-            produccionVegetalToolStripMenuItem.Size = new Size(180, 22);
-            produccionVegetalToolStripMenuItem.Text = "Vegetales";
-            produccionVegetalToolStripMenuItem.Click += btnProduccionVegetal_Click;
+            EntornoVegetalToolStripMenuItem.Name = "EntornoVegetalToolStripMenuItem";
+            EntornoVegetalToolStripMenuItem.Size = new Size(180, 22);
+            EntornoVegetalToolStripMenuItem.Text = "Vegetales";
+            EntornoVegetalToolStripMenuItem.Click += btnEntornoVegetal_Click;
             // 
             // produccionAnimalToolStripMenuItem
             // 
@@ -157,14 +153,13 @@
             // 
             // stockToolStripMenuItem
             // 
-            stockToolStripMenuItem.Name = "stockToolStripMenuItem";
-            stockToolStripMenuItem.Size = new Size(180, 22);
-            stockToolStripMenuItem.Text = "Stock";
-            stockToolStripMenuItem.Click += stockToolStripMenuItem_Click;
+            StockToolStripMenuItem.Name = "StockToolStripMenuItem";
+            StockToolStripMenuItem.Size = new Size(180, 22);
+            StockToolStripMenuItem.Text = "Stock";
+            StockToolStripMenuItem.Click += btnStock_Click;
             // 
             // herramientasToolStripMenuItem
             // 
-            herramientasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { inventarioToolStripMenuItem, ventasToolStripMenuItem });
             herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
             herramientasToolStripMenuItem.Size = new Size(90, 20);
             herramientasToolStripMenuItem.Text = "Herramientas";
@@ -207,7 +202,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1104, 733);
+            ClientSize = new Size(1104, 562);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
             Name = "Inicio";
@@ -233,15 +228,11 @@
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private ToolStripMenuItem altaDeUsuarioToolStripMenuItem;
         private ToolStripMenuItem administracionToolStripMenuItem;
-        private ToolStripMenuItem produccionVegetalToolStripMenuItem;
-        private ToolStripMenuItem produccionAnimalToolStripMenuItem;
-        private ToolStripMenuItem industriaToolStripMenuItem;
-        private ToolStripMenuItem pañolToolStripMenuItem;
-        private ToolStripMenuItem inventarioToolStripMenuItem;
-        private ToolStripMenuItem ventasToolStripMenuItem;
+        private ToolStripMenuItem EntornoVegetalToolStripMenuItem;
+        private ToolStripMenuItem ArticulosToolStripMenuItem;
         private ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
         private ToolStripMenuItem entornosFormativosToolStripMenuItem;
-        private ToolStripMenuItem entornoAnimalToolStripMenuItem;
+        private ToolStripMenuItem EntornoAnimalToolStripMenuItem;
         private PictureBox pictureBox1;
         private ToolStripMenuItem stockToolStripMenuItem;
         private ToolStripMenuItem ciclosToolStripMenuItem;

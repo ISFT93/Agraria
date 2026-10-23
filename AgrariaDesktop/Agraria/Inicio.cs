@@ -60,7 +60,9 @@ namespace Agraria
             usuarioLogeado = null;
         }
 
-        // Se ejecuta cuando el form ya está mostrado; aquí abrimos el Login centrado sobre Inicio
+
+        /// Se ejecuta cuando el form ya está mostrado; aquí abrimos el Login centrado sobre Inicio
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -136,10 +138,7 @@ namespace Agraria
             formulariosAbiertos.Clear();
         }
 
-        private void pbCerrarAgraria_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
+
 
         private void btnEntornoFormativo_Click(object sender, EventArgs e)
         {
@@ -153,18 +152,7 @@ namespace Agraria
             activeForm = cargaForm;
         }
 
-        private void btnVenta_Click(object sender, EventArgs e)
-        {
-            CerrarTodosLosFormularios();
-
-            var cargaForm = new Formularios.RegistroVenta(esInvitado);
-            cargaForm.MdiParent = this;
-            cargaForm.Dock = DockStyle.Fill;
-            cargaForm.Show();
-
-            formulariosAbiertos.Add(cargaForm);
-            activeForm = cargaForm;
-        }
+    
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -173,19 +161,9 @@ namespace Agraria
             login.Show();
         }
 
-        private void btnProduccionAnimal_Click(object sender, EventArgs e)
-        {
-            CerrarTodosLosFormularios();
 
-            var cargaForm = new Formularios.ProduccionAnimal(usuarioLogeado, esInvitado);
-            cargaForm.MdiParent = this;
-            cargaForm.Show();
 
-            formulariosAbiertos.Add(cargaForm);
-            activeForm = cargaForm;
-        }
-
-        private void btnProduccionVegetal_Click(object sender, EventArgs e)
+        private void btnEntornoVegetal_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
 
@@ -218,30 +196,6 @@ namespace Agraria
 
 
 
-        private void btnIndustria_Click(object sender, EventArgs e)
-        {
-            CerrarTodosLosFormularios();
-
-            var cargaForm = new Formularios.Industria(esInvitado);
-            cargaForm.MdiParent = this;
-            cargaForm.Show();
-
-            formulariosAbiertos.Add(cargaForm);
-            activeForm = cargaForm;
-        }
-
-        private void btnInventario_Click(object sender, EventArgs e)
-        {
-            CerrarTodosLosFormularios();
-
-            var cargaForm = new Formularios.Inventario(esInvitado);
-            cargaForm.MdiParent = this;
-            cargaForm.Show();
-
-            formulariosAbiertos.Add(cargaForm);
-            activeForm = cargaForm;
-        }
-
         private void btnAdministracion_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
@@ -254,31 +208,12 @@ namespace Agraria
             activeForm = cargaForm;
         }
 
-        private void pbUrgencias_Click(object sender, EventArgs e)
-        {
-            UrgenciaBLL urgenciaBLL = new UrgenciaBLL();
-            var mensajes = urgenciaBLL.ObtenerMensajesDelDia();
-
-            if (mensajes.Count == 0)
-            {
-                MessageBox.Show("No hay mensajes de urgencia pendientes para hoy.",
-                    "Urgencias", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            string texto = string.Join("\n\n", mensajes);
-            MessageBox.Show(texto, "🚨 Urgencias del día 🚨", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
 
         private void AplicarPermisos()
         {
             entornosFormativosToolStripMenuItem.Enabled = usuarioLogeado.PuedeEntornoFormativo;
             altaDeUsuarioToolStripMenuItem.Enabled = usuarioLogeado.PuedeAltaUsuario;
-            ventasToolStripMenuItem.Enabled = usuarioLogeado.PuedeVenta;
-            inventarioToolStripMenuItem.Enabled = usuarioLogeado.PuedeInventario;
-            industriaToolStripMenuItem.Enabled = usuarioLogeado.PuedeIndustria;
-            produccionAnimalToolStripMenuItem.Enabled = usuarioLogeado.PuedeProduccionAnimal;
-            produccionVegetalToolStripMenuItem.Enabled = usuarioLogeado.PuedeProduccionVegetal;
+            EntornoVegetalToolStripMenuItem.Enabled = usuarioLogeado.PuedeProduccionVegetal;
             administracionToolStripMenuItem.Enabled = usuarioLogeado.PuedeAdministracion;
         }
 
@@ -286,24 +221,13 @@ namespace Agraria
         {
             entornosFormativosToolStripMenuItem.Enabled = true;
             altaDeUsuarioToolStripMenuItem.Enabled = true;
-            ventasToolStripMenuItem.Enabled = true;
-            inventarioToolStripMenuItem.Enabled = true;
-            industriaToolStripMenuItem.Enabled = true;
-            produccionAnimalToolStripMenuItem.Enabled = true;
-            produccionVegetalToolStripMenuItem.Enabled = true;
+            EntornoVegetalToolStripMenuItem.Enabled = true;
             administracionToolStripMenuItem.Enabled = true;
         }
 
-        private void panelSuperior_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
-            }
-        }
 
-        private void btnPañol_Click(object sender, EventArgs e)
+
+        private void btnArticulos_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
 
@@ -315,11 +239,8 @@ namespace Agraria
             activeForm = cargaForm;
         }
 
-        private void lblUsuario_Click(object sender, EventArgs e)
-        {
-        }
 
-        private void entornoAnimalToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnEntornoAnimal_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
 
@@ -332,7 +253,7 @@ namespace Agraria
             activeForm = cargaForm;
         }
 
-        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        private void btnStock_Click(object sender, EventArgs e)
         {
             CerrarTodosLosFormularios();
 
