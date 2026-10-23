@@ -291,6 +291,33 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
+GO
+
+CREATE TABLE [dbo].[Entorno](
+	[IdEntorno] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](150) NULL,
+	[IdTipoEntorno] [int] NULL,
+	[Responsable] [varchar](150) NULL,
+	[Año] [varchar](10) NULL,
+	[Division] [varchar](10) NULL,
+	[Grupo] [varchar](50) NULL,
+	[Fecha] [datetime] NULL,
+	[Observaciones] [varchar](max) NULL,
+ CONSTRAINT [PK_Entorno] PRIMARY KEY CLUSTERED 
+(
+	[IdEntorno] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Entorno]  WITH CHECK ADD FOREIGN KEY([IdTipoEntorno])
+REFERENCES [dbo].[TipoEntorno] ([IdTipoEntorno])
+GO
+
+
+
+
+
 -- ==========================================
 -- 4. STORED PROCEDURES: DETALLES ANIMALES
 -- ==========================================
