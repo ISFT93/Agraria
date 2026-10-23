@@ -16,7 +16,7 @@ namespace Agraria.Formularios
 {
     public partial class AbmUsuario : Form
     {
-        public AbmUsuarioBLL AbmUsuarioBLL = new AbmUsuarioBLL();
+        public AbmUsuariosBLL AbmUsuarioBLL = new AbmUsuariosBLL();
         private bool esInvitado = false;
         private int? idUsuarioEditar = null;
         private UsuarioLoginDTO _usuarioActual; // Recibimos la sesión real

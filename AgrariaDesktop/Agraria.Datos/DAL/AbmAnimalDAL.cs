@@ -18,16 +18,16 @@ namespace Agraria.Datos.DAL
             ConexionBD.ConectarBD();
             using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                using (SqlCommand cmd = new SqlCommand("sp_insertanimal", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_insertanimales", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_animal", idAnimal);
-                    cmd.Parameters.AddWithValue("@nombre_comun", nombreComun);
-                    cmd.Parameters.AddWithValue("@nombre_cientifico", string.IsNullOrEmpty(nombreCientifico) ? (object)DBNull.Value : nombreCientifico);
-                    cmd.Parameters.AddWithValue("@id_tipo", idTipo);
-                    cmd.Parameters.AddWithValue("@id_rubro", idRubro);
-                    cmd.Parameters.AddWithValue("@id_subrubro", idSubrubro);
-                    cmd.Parameters.AddWithValue("@stock_minimo", minimoStock);
+                    cmd.Parameters.AddWithValue("@Id_animal", idAnimal);
+                    cmd.Parameters.AddWithValue("@Nombre_comun", nombreComun);
+                    cmd.Parameters.AddWithValue("@Nombre_cientifico", string.IsNullOrEmpty(nombreCientifico) ? (object)DBNull.Value : nombreCientifico);
+                    cmd.Parameters.AddWithValue("@Id_tipo", idTipo);
+                    cmd.Parameters.AddWithValue("@Id_rubro", idRubro);
+                    cmd.Parameters.AddWithValue("@Id_subrubro", idSubrubro);
+                    cmd.Parameters.AddWithValue("@Stock_minimo", minimoStock);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -39,16 +39,16 @@ namespace Agraria.Datos.DAL
             ConexionBD.ConectarBD();
             using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                using (SqlCommand cmd = new SqlCommand("sp_updateanimal", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_updateanimales", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.AddWithValue("@id_animal", idAnimal);
-                    cmd.Parameters.AddWithValue("@nombre_comun", nombreComun);
-                    cmd.Parameters.AddWithValue("@nombre_cientifico", string.IsNullOrEmpty(nombreCientifico) ? (object)DBNull.Value : nombreCientifico);
-                    cmd.Parameters.AddWithValue("@id_tipo", idTipo);
-                    cmd.Parameters.AddWithValue("@id_rubro", idRubro);
-                    cmd.Parameters.AddWithValue("@id_subrubro", idSubrubro);
-                    cmd.Parameters.AddWithValue("@stock_minimo", minimoStock);
+                    cmd.Parameters.AddWithValue("@Id_animal", idAnimal);
+                    cmd.Parameters.AddWithValue("@Nombre_comun", nombreComun);
+                    cmd.Parameters.AddWithValue("@Nombre_cientifico", string.IsNullOrEmpty(nombreCientifico) ? (object)DBNull.Value : nombreCientifico);
+                    cmd.Parameters.AddWithValue("@Id_tipo", idTipo);
+                    cmd.Parameters.AddWithValue("@Id_rubro", idRubro);
+                    cmd.Parameters.AddWithValue("@Id_subrubro", idSubrubro);
+                    cmd.Parameters.AddWithValue("@Stock_minimo", minimoStock);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -61,7 +61,7 @@ namespace Agraria.Datos.DAL
             ConexionBD.ConectarBD();
             using (SqlConnection cn = ConexionBD.ConexionSQL)
             {
-                using (SqlCommand cmd = new SqlCommand("sp_selectanimal", cn))
+                using (SqlCommand cmd = new SqlCommand("sp_selectanimales", cn))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))

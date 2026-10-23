@@ -10,7 +10,7 @@ namespace Agraria.Formularios
     public partial class AbmStock : Form
     {
         private AbmStockBLL bll = new AbmStockBLL();
-        private AbmAnimalBLL animalBLL = new AbmAnimalBLL();
+        private AbmAnimalesBLL animalBLL = new AbmAnimalesBLL();
         private AbmVegetalesBLL vegetalBLL = new AbmVegetalesBLL();
         private ArticulosBLL articuloBLL = new ArticulosBLL();
         private long? idStockEditar = null;

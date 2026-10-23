@@ -11,7 +11,7 @@ namespace Agraria.Formularios
     public partial class AbmAnimales : Form
     {
         private AbmAnimalDAL AbmanimalDAL = new AbmAnimalDAL();
-        private AbmAnimalBLL abmAnimalBLL = new AbmAnimalBLL();
+        private AbmAnimalesBLL abmAnimalBLL = new AbmAnimalesBLL();
         private AnimalDTO animalEdicion = null;
         private UsuarioLoginDTO _usuarioActual;
 
@@ -97,7 +97,7 @@ namespace Agraria.Formularios
                 bool esModificacion = (animalEdicion != null);
                 long idAnimalFinal = esModificacion ? animalEdicion.IdAnimal : abmAnimalBLL.GenerarIdBloque(_usuarioActual.Id);
 
-                Animal animal = new Animal
+                Animales animal = new Animales
                 {
                     IdAnimal = idAnimalFinal,
                     NombreComun = txtNombreComun.Text.Trim(),
