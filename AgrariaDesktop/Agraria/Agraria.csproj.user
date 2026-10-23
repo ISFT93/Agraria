@@ -4,6 +4,12 @@
     <_LastSelectedProfileId>C:\Users\isaso\Desktop\Proyecto Agraria 16-10-25-1325pm\Proyecto Agraria 16-10-25-1325pm\Proyecto Agraria\Agraria\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Formularios\AbmActividadesCicloModelo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\AbmActividadesElementos.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Formularios\AbmAdministracion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -11,6 +17,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\AbmArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Formularios\AbmCiclos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\AbmEntornoFormativo.cs">
@@ -33,6 +42,9 @@
     </Compile>
     <Compile Update="Formularios\ItemAnimalControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="Formularios\ListarCiclos.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="Formularios\ListarEntornoFormativo.cs">
       <SubType>Form</SubType>
