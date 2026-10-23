@@ -1,12 +1,13 @@
-﻿using Agraria.Datos.DAL;
+﻿using Agraria.Datos;
+using Agraria.Datos.DAL;
 using Agraria.Datos.DTO;
 using Agraria.Datos.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Agraria.Datos;
 
 namespace Agraria.Negocio.BLL
 {
@@ -57,9 +58,9 @@ namespace Agraria.Negocio.BLL
             return _abmUsuarioDAL.CargarLocalidades();
         }
 
-        public List<PreguntaSeguridadDTO> CargarPreguntasSeguridad()
+        public DataTable CargarPreguntasSeguridad()
         {
-            return _abmUsuarioDAL.CargarPreguntasSeguridad();
+            return AbmUsuarioDAL.CargarPreguntasSeguridad();
         }
 
         public int InsertarUsuarioYObtenerId(AbmUsuario usuario)

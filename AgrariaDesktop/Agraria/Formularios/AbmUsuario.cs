@@ -1,4 +1,5 @@
-﻿using Agraria.Datos.DTO;
+﻿using Agraria.BLL;
+using Agraria.Datos.DTO;
 using Agraria.Datos.Entidades;
 using Agraria.Negocio;
 using Agraria.Negocio.BLL;
@@ -112,11 +113,24 @@ namespace Agraria.Formularios
             cmbLocalidad.DisplayMember = "NombreLocalidad";
             cmbLocalidad.ValueMember = "IdLocalidad";
             cmbLocalidad.SelectedIndex = -1;
+            try
+            {
+                if (cmbPreguntaSeguridad != null)
+                {
+                    DataTable dtCat = AbmUsuarioBLL.CargarPreguntasSeguridad();
+                    cmbPreguntaSeguridad.DataSource = dtCat;
+                    cmbPreguntaSeguridad.DisplayMember = "nombre";
+                    cmbPreguntaSeguridad.ValueMember = "id_categoria";
+                    cmbPreguntaSeguridad.SelectedIndex = -1; // Arranca sin seleccionar nada
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar categorías: " + ex.Message, "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
 
-            cmbPreguntaSeguridad.DataSource = AbmUsuarioBLL.CargarPreguntasSeguridad();
-            cmbPreguntaSeguridad.DisplayMember = "TextoPregunta";
-            cmbPreguntaSeguridad.ValueMember = "IdPregunta";
-            cmbPreguntaSeguridad.SelectedIndex = -1;
+
+
         }
 
         private void cmbPartido_SelectedIndexChanged(object sender, EventArgs e)

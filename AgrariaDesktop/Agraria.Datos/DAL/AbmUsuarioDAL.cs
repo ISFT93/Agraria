@@ -2,6 +2,7 @@
 using Agraria.Datos.DTO;
 using Agraria.Datos.Entidades;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 public class AbmUsuarioDAL
@@ -15,11 +16,11 @@ public class AbmUsuarioDAL
             SELECT u.Id, u.Nombre, u.Apellido, u.Documento, CAST(u.Telefono AS VARCHAR) AS Telefono, 
                    u.Direccion, l.NombreLocalidad, p.NombrePartido, l.CodigoPostal, 
                    u.Email, u.NombreUsuario, u.Contraseña, 
-                   qs.TextoPregunta, u.RespuestaSeguridad, u.Estado
-            FROM AbmUsuario u
-            INNER JOIN Localidad l ON u.IdLocalidad = l.IdLocalidad
-            INNER JOIN Partido p ON l.IdPartido = p.IdPartido
-            INNER JOIN PreguntaSeguridad qs ON u.IdPreguntaSeguridad = qs.IdPregunta";
+                   cat.Nombre AS TextoPregunta, u.RespuestaSeguridad, u.Estado
+            FROM usuarios u
+            INNER JOIN Localidades l ON u.IdLocalidad = l.IdLocalidad
+            INNER JOIN Partidos p ON l.IdPartido = p.IdPartido
+            LEFT JOIN catalogo_tipo_items cat ON u.IdPreguntaSeguridad = cat.Id_catalogo_item AND cat.id_catalog = 13";
 
         SqlCommand cmd = new SqlCommand(consulta, ConexionBD.ConexionSQL);
         SqlDataReader lector = cmd.ExecuteReader();
@@ -40,13 +41,14 @@ public class AbmUsuarioDAL
                 Email = lector.GetString(9),
                 NombreUsuario = lector.GetString(10),
                 Contraseña = lector.GetString(11),
-                PreguntaSeguridad = lector.GetString(12),
-                RespuestaSeguridad = lector.GetString(13),
+                PreguntaSeguridad = lector.IsDBNull(12) ? string.Empty : lector.GetString(12),
+                RespuestaSeguridad = lector.IsDBNull(13) ? string.Empty : lector.GetString(13),
                 Estado = lector.GetBoolean(14)
             });
         }
 
-         ;
+        lector.Close();
+        ConexionBD.CierraBD();
         return usuarios;
     }
 
@@ -56,7 +58,7 @@ public class AbmUsuarioDAL
         try
         {
             string query = @"
-            INSERT INTO AbmUsuario
+            INSERT INTO usuarios
             (Nombre, Apellido, Documento, Telefono, Direccion, 
              IdLocalidad, IdPartido, IdPreguntaSeguridad, 
              Email, NombreUsuario, Contraseña, RespuestaSeguridad, Estado)
@@ -93,7 +95,7 @@ public class AbmUsuarioDAL
         try
         {
             string query = @"
-            UPDATE AbmUsuario SET
+            UPDATE usuarios SET
                 Nombre = @Nombre, 
                 Apellido = @Apellido, 
                 Documento = @Documento, 
@@ -134,7 +136,7 @@ public class AbmUsuarioDAL
 
     private int ObtenerIdPartido(string nombrePartido)
     {
-        string query = "SELECT IdPartido FROM Partido WHERE NombrePartido = @NombrePartido";
+        string query = "SELECT IdPartido FROM Partidos WHERE NombrePartido = @NombrePartido";
         using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
         {
             cmd.Parameters.AddWithValue("@NombrePartido", nombrePartido);
@@ -144,7 +146,7 @@ public class AbmUsuarioDAL
 
     private int ObtenerIdLocalidad(string nombreLocalidad)
     {
-        string query = "SELECT IdLocalidad FROM Localidad WHERE NombreLocalidad = @NombreLocalidad";
+        string query = "SELECT IdLocalidad FROM Localidades WHERE NombreLocalidad = @NombreLocalidad";
         using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
         {
             cmd.Parameters.AddWithValue("@NombreLocalidad", nombreLocalidad);
@@ -154,18 +156,19 @@ public class AbmUsuarioDAL
 
     private int ObtenerIdPregunta(string textoPregunta)
     {
-        string query = "SELECT IdPregunta FROM PreguntaSeguridad WHERE TextoPregunta = @TextoPregunta";
+        // 🔹 Consulta actualizada apuntando a catalogo_tipo_items
+        string query = "SELECT Id_catalogo_item FROM catalogo_tipo_items WHERE Nombre = @TextoPregunta AND id_catalog = 13";
         using (SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL))
         {
             cmd.Parameters.AddWithValue("@TextoPregunta", textoPregunta);
-            return (int)cmd.ExecuteScalar();
+            object result = cmd.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : 0;
         }
     }
-
     public void CambiarEstadoUsuario(int id, bool estado)
     {
         ConexionBD.ConectarBD();
-        string query = "UPDATE AbmUsuario SET Estado = @Estado WHERE Id = @Id";
+        string query = "UPDATE usuarios SET Estado = @Estado WHERE Id = @Id";
         SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
         cmd.Parameters.AddWithValue("@Estado", estado);
         cmd.Parameters.AddWithValue("@Id", id);
@@ -178,16 +181,17 @@ public class AbmUsuarioDAL
         List<AbmUsuarioDTO> usuarios = new List<AbmUsuarioDTO>();
         ConexionBD.ConectarBD();
 
+        // 🔹 Consulta actualizada apuntando a catalogo_tipo_items
         string consulta = @"
-        SELECT u.Id, u.Nombre, u.Apellido, u.Documento, u.Telefono, 
-               u.Direccion, l.NombreLocalidad, p.NombrePartido, l.CodigoPostal, 
-               u.Email, u.NombreUsuario, u.Contraseña, 
-               qs.TextoPregunta, u.RespuestaSeguridad, u.Estado
-        FROM AbmUsuario u
-        INNER JOIN Localidad l ON u.IdLocalidad = l.IdLocalidad
-        INNER JOIN Partido p ON u.IdPartido = p.IdPartido
-        INNER JOIN PreguntaSeguridad qs ON u.IdPreguntaSeguridad = qs.IdPregunta
-        WHERE u.Apellido LIKE @Texto OR u.Documento LIKE @Texto";
+    SELECT u.Id, u.Nombre, u.Apellido, u.Documento, u.Telefono, 
+           u.Direccion, l.NombreLocalidad, p.NombrePartido, l.CodigoPostal, 
+           u.Email, u.NombreUsuario, u.Contraseña, 
+           cat.Nombre AS TextoPregunta, u.RespuestaSeguridad, u.Estado
+    FROM usuarios u
+    INNER JOIN Localidades l ON u.IdLocalidad = l.IdLocalidad
+    INNER JOIN Partidos p ON u.IdPartido = p.IdPartido
+    LEFT JOIN catalogo_tipo_items cat ON u.IdPreguntaSeguridad = cat.Id_catalogo_item AND cat.id_catalog = 13
+    WHERE u.Apellido LIKE @Texto OR u.Documento LIKE @Texto";
 
         SqlCommand cmd = new SqlCommand(consulta, ConexionBD.ConexionSQL);
         cmd.Parameters.AddWithValue("@Texto", $"%{textoBusqueda}%");
@@ -210,13 +214,16 @@ public class AbmUsuarioDAL
                 Email = lector.GetString(9),
                 NombreUsuario = lector.GetString(10),
                 Contraseña = lector.GetString(11),
-                PreguntaSeguridad = lector.GetString(12),
-                RespuestaSeguridad = lector.GetString(13),
+                // El índice 12 ahora trae el 'Nombre' del catálogo de la base de datos
+                PreguntaSeguridad = lector.IsDBNull(12) ? string.Empty : lector.GetString(12),
+                RespuestaSeguridad = lector.IsDBNull(13) ? string.Empty : lector.GetString(13),
                 Estado = lector.GetBoolean(14)
             });
         }
 
-         ;
+        lector.Close(); // Es importante cerrar el lector
+        ConexionBD.CierraBD(); // Asegúrate de cerrar la conexión si aplica en tu arquitectura
+
         return usuarios;
     }
 
@@ -224,7 +231,7 @@ public class AbmUsuarioDAL
     {
         List<PartidoDTO> lista = new List<PartidoDTO>();
         ConexionBD.ConectarBD();
-        string query = "SELECT IdPartido, NombrePartido FROM Partido ORDER BY NombrePartido";
+        string query = "SELECT IdPartido, NombrePartido FROM Partidos ORDER BY NombrePartido";
         SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
         SqlDataReader lector = cmd.ExecuteReader();
         while (lector.Read())
@@ -245,7 +252,7 @@ public class AbmUsuarioDAL
         ConexionBD.ConectarBD();
         string query = @"
             SELECT l.IdLocalidad, l.NombreLocalidad, l.CodigoPostal, l.IdPartido
-            FROM Localidad l
+            FROM Localidades l
             ORDER BY l.NombreLocalidad";
         SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
         SqlDataReader lector = cmd.ExecuteReader();
@@ -268,7 +275,7 @@ public class AbmUsuarioDAL
         ConexionBD.ConectarBD();
         string query = @"
         SELECT IdLocalidad, NombreLocalidad, CodigoPostal, IdPartido
-        FROM Localidad
+        FROM Localidades
         WHERE IdPartido = @IdPartido
         ORDER BY NombreLocalidad";
 
@@ -291,7 +298,7 @@ public class AbmUsuarioDAL
         return lista;
     }
 
-
+    /*
     public List<PreguntaSeguridadDTO> CargarPreguntasSeguridad()
     {
         List<PreguntaSeguridadDTO> lista = new List<PreguntaSeguridadDTO>();
@@ -310,7 +317,7 @@ public class AbmUsuarioDAL
          ;
         return lista;
     }
-
+    */
     public void InsertarPermisos(int idUsuario, bool entorno, bool altaUsuario, bool venta, bool inventario, bool industria, bool prodAnimal, bool prodVegetal, bool admin, bool pañol)
     {
         ConexionBD.ConectarBD();
@@ -345,7 +352,7 @@ public class AbmUsuarioDAL
         try
         {
             string query = @"
-        INSERT INTO AbmUsuario (
+        INSERT INTO usuarios (
             Nombre, Apellido, Documento, Telefono, Direccion,
             IdLocalidad, IdPartido, IdPreguntaSeguridad,
             Email, NombreUsuario, Contraseña,
@@ -419,7 +426,7 @@ public class AbmUsuarioDAL
     public bool HayUsuariosRegistrados()
     {
         ConexionBD.ConectarBD();
-        string query = "SELECT COUNT(*) FROM AbmUsuario";
+        string query = "SELECT COUNT(*) FROM usuarios";
         SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
         int cantidad = (int)cmd.ExecuteScalar();
          ;
@@ -434,7 +441,7 @@ public class AbmUsuarioDAL
         int idLocalidad = 1;
         int idPregunta = 1;
 
-        string verificarPartido = "SELECT TOP 1 IdPartido FROM Partido";
+        string verificarPartido = "SELECT TOP 1 IdPartido FROM Partidos";
         using (SqlCommand cmdCheck = new SqlCommand(verificarPartido, ConexionBD.ConexionSQL))
         {
             object result = cmdCheck.ExecuteScalar();
@@ -444,7 +451,7 @@ public class AbmUsuarioDAL
             }
             else
             {
-                string insertarPartido = "INSERT INTO Partido (NombrePartido) OUTPUT INSERTED.IdPartido VALUES ('General')";
+                string insertarPartido = "INSERT INTO Partidos (NombrePartido) OUTPUT INSERTED.IdPartido VALUES ('General')";
                 using (SqlCommand cmdInsert = new SqlCommand(insertarPartido, ConexionBD.ConexionSQL))
                 {
                     idPartido = (int)cmdInsert.ExecuteScalar();
@@ -452,7 +459,7 @@ public class AbmUsuarioDAL
             }
         }
 
-        string verificarLocalidad = "SELECT TOP 1 IdLocalidad FROM Localidad";
+        string verificarLocalidad = "SELECT TOP 1 IdLocalidad FROM Localidades";
         using (SqlCommand cmdCheck = new SqlCommand(verificarLocalidad, ConexionBD.ConexionSQL))
         {
             object result = cmdCheck.ExecuteScalar();
@@ -462,7 +469,7 @@ public class AbmUsuarioDAL
             }
             else
             {
-                string insertarLocalidad = @"INSERT INTO Localidad (NombreLocalidad, CodigoPostal, IdPartido)
+                string insertarLocalidad = @"INSERT INTO Localidades (NombreLocalidad, CodigoPostal, IdPartido)
                                          OUTPUT INSERTED.IdLocalidad 
                                          VALUES ('Centro', 1000, @IdPartido)";
                 using (SqlCommand cmdInsert = new SqlCommand(insertarLocalidad, ConexionBD.ConexionSQL))
@@ -492,7 +499,7 @@ public class AbmUsuarioDAL
         }
 
         string queryUsuario = @"
-        INSERT INTO AbmUsuario 
+        INSERT INTO usuarios 
         (Nombre, Apellido, Documento, Telefono, Direccion, 
          IdLocalidad, IdPartido, Email, NombreUsuario, Contraseña, 
          IdPreguntaSeguridad, RespuestaSeguridad, Estado)
@@ -572,9 +579,28 @@ END";
         }
         finally
         {
-             ;
+            ;
         }
     }
+
+     ////  CARGARCOMBOBOX PREGUNTA SEGURIDAD
+
+
+                public static DataTable CargarPreguntasSeguridad()
+    {
+        ConexionBD.ConectarBD();
+        using (SqlCommand cmd = new SqlCommand("SELECT Id_catalogo_item AS id_categoria,Nombre from catalogo_tipo_items where id_catalog=13", ConexionBD.ConexionSQL))
+        {
+            using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+            {
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+    }
+
+
 
 }
 
