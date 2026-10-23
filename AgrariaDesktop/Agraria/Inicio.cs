@@ -26,7 +26,7 @@ namespace Agraria
         private List<Form> formulariosAbiertos = new List<Form>();
         private System.Windows.Forms.Timer timer;
         private UsuarioLoginDTO usuarioLogeado;
-        UrgenciaBLL urgenciaBLL = new UrgenciaBLL();
+       // UrgenciaBLL urgenciaBLL = new UrgenciaBLL();
         private bool esInvitado = false;
 
         // Evita mostrar el login más de una vez
