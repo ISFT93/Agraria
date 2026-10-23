@@ -24,8 +24,8 @@ namespace Agraria.Datos.DAL
 
                 string query = @"SELECT e.IdEntorno, e.Nombre, t.Nombre AS TipoEntorno, 
                                         e.Responsable, e.Año, e.Division, e.Grupo, e.Fecha, e.Observaciones
-                                 FROM Entorno e
-                                 INNER JOIN TipoEntorno t ON e.IdTipoEntorno = t.IdTipoEntorno";
+                                 FROM Entornos e
+                                 INNER JOIN TipoEntornos t ON e.IdTipoEntorno = t.IdTipoEntorno";
 
                 SqlCommand cmd = new SqlCommand(query, ConexionBD.ConexionSQL);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -97,7 +97,7 @@ namespace Agraria.Datos.DAL
             {
                 ConexionBD.ConectarBD();
 
-                string query = @"INSERT INTO Entorno 
+                string query = @"INSERT INTO Entornos 
                                 (Nombre, IdTipoEntorno, Responsable, Año, Division, Grupo, Fecha, Observaciones)
                                 VALUES (@nombre, @idTipo, @responsable, @año, @division, @grupo, @fecha, @obs)";
 
@@ -125,7 +125,7 @@ namespace Agraria.Datos.DAL
                 {
                     ConexionBD.ConectarBD();
 
-                    string query = @"UPDATE Entorno 
+                    string query = @"UPDATE Entornos 
                                  SET Nombre = @Nombre, 
                                      IdTipoEntorno = @IdTipoEntorno, 
                                      Responsable = @Responsable, 
@@ -167,7 +167,7 @@ namespace Agraria.Datos.DAL
             {
                 ConexionBD.ConectarBD();
 
-                string query = "SELECT IdTipoEntorno, Nombre FROM TipoEntorno";
+                string query = "SELECT IdTipoEntorno, Nombre FROM TipoEntornos";
                 SqlDataAdapter da = new SqlDataAdapter(query, ConexionBD.ConexionSQL);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
