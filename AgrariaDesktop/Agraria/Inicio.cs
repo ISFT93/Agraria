@@ -26,7 +26,7 @@ namespace Agraria
         private List<Form> formulariosAbiertos = new List<Form>();
         private System.Windows.Forms.Timer timer;
         private UsuarioLoginDTO usuarioLogeado;
-       // UrgenciaBLL urgenciaBLL = new UrgenciaBLL();
+        // UrgenciaBLL urgenciaBLL = new UrgenciaBLL();
         private bool esInvitado = false;
 
         // Evita mostrar el login más de una vez
@@ -152,7 +152,7 @@ namespace Agraria
             activeForm = cargaForm;
         }
 
-    
+
 
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
@@ -253,18 +253,6 @@ namespace Agraria
             activeForm = cargaForm;
         }
 
-        private void btnStock_Click(object sender, EventArgs e)
-        {
-            CerrarTodosLosFormularios();
-
-            var cargaForm = new Formularios.ListarStock(usuarioLogeado, esInvitado);
-            cargaForm.MdiParent = this;
-            //cargaForm.Dock = DockStyle.Fill;
-            cargaForm.Show();
-
-            formulariosAbiertos.Add(cargaForm);
-            activeForm = cargaForm;
-        }
 
         private void ciclosToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -278,6 +266,19 @@ namespace Agraria
             formulariosAbiertos.Add(cargaForm);
             activeForm = cargaForm;
 
+        }
+
+        private void StocktoolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CerrarTodosLosFormularios();
+
+            var cargaForm = new Formularios.ListarStock(usuarioLogeado, esInvitado);
+            cargaForm.MdiParent = this;
+            //cargaForm.Dock = DockStyle.Fill;
+            cargaForm.Show();
+
+            formulariosAbiertos.Add(cargaForm);
+            activeForm = cargaForm;
         }
     }
 }
