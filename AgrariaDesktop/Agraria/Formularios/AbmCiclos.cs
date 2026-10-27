@@ -1,5 +1,7 @@
 ﻿using Agraria.Datos.DTO;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.ComponentModel;
 using System.Data;
@@ -8,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmCiclos : Form
+    public partial class AbmCiclos : MaterialForm
     {
         private AbmCiclosBLL bll = new AbmCiclosBLL();
         private UsuarioLoginDTO _usuarioActual;
         private long? _idCicloEditar = null;
         private long _idCicloGenerado = 0;
 
-        private BindingList<CicloActividadModeloDTO> listaActividades = new BindingList<CicloActividadModeloDTO>();
+        private BindingList<ActividadModeloDTO> listaActividades = new BindingList<ActividadModeloDTO>();
 
         public AbmCiclos(UsuarioLoginDTO usuarioLogeado)
         {
@@ -24,6 +26,21 @@ namespace Agraria.Formularios
             ConfigurarTabsIniciales();
 
             dtgvActividadesCicloModelo.DataSource = listaActividades;
+
+
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
         }
 
         public AbmCiclos(long idCiclo, UsuarioLoginDTO usuarioLogeado) : this(usuarioLogeado)
@@ -34,6 +51,11 @@ namespace Agraria.Formularios
         private void AbmCiclos_Load(object sender, EventArgs e)
         {
             CargarCombosCatalogos();
+
+            if (_idCicloEditar != null)
+            {
+                CargarDatosCiclo(_idCicloEditar.Value);
+            }
         }
 
         private void ConfigurarTabsIniciales()
@@ -195,11 +217,11 @@ namespace Agraria.Formularios
         // LÓGICA DE LA PESTAÑA ELEMENTOS (TAB 3)
         // ========================================================
 
-        private CicloActividadModeloDTO ObtenerActividadSeleccionada()
+        private ActividadModeloDTO ObtenerActividadSeleccionada()
         {
             if (dtgvActividadesCicloModelo.SelectedRows.Count > 0)
             {
-                return (CicloActividadModeloDTO)dtgvActividadesCicloModelo.SelectedRows[0].DataBoundItem;
+                return (ActividadModeloDTO)dtgvActividadesCicloModelo.SelectedRows[0].DataBoundItem;
             }
             return null;
         }
@@ -264,7 +286,7 @@ namespace Agraria.Formularios
             }
         }
 
-        private void ReordenarElementos(CicloActividadModeloDTO actividad)
+        private void ReordenarElementos(ActividadModeloDTO actividad)
         {
             for (int i = 0; i < actividad.ListaElementos.Count; i++)
             {
@@ -316,16 +338,11 @@ namespace Agraria.Formularios
 
                 bool esModificacion = (_idCicloEditar != null);
 
-                // OJO: Convertimos los strings a int si tu DTO estaba guardando textos. 
-                // Si tienes IdTipoMovimiento en tu DTO, usa ese en su lugar.
-                int idTipoMovimiento = 0;
-                int.TryParse(elem.TipoMovimiento, out idTipoMovimiento);
-
-                // Guardamos todo enviando las propiedades de los objetos act y elem
+                // Guardamos todo usando directamente elem.IdTipoMovimiento (Asegurate de que tu DTO tenga esta propiedad)
                 bll.GuardarCicloCompleto(
                     _idCicloEditar, nombreCiclo, descCiclo, duracionCiclo, modoInicio, activoCiclo, fechaCreacion, idCreador,
                     act.Nombre, act.Descripcion, act.Orden, act.IdTipoActividad, act.Duracion, act.Demora, act.Aprobacion, act.EjecucionParcial, act.CondicionAvance, act.Activa,
-                    elem.IdElemento, elem.IdTipoElemento, idTipoMovimiento, elem.CantidadPrevista, elem.IdUnidad, elem.Obligatorio, elem.Vendible, elem.PermiteSustitucion, "",
+                    elem.IdElemento, elem.IdTipoElemento, elem.IdTipoMovimiento, elem.CantidadPrevista, elem.IdUnidad, elem.Obligatorio, elem.Vendible, elem.PermiteSustitucion, "",
                     esModificacion
                 );
 
@@ -342,6 +359,64 @@ namespace Agraria.Formularios
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+
+        private void CargarDatosCiclo(long idCiclo)
+        {
+            // 1. Cargar Cabecera (Ciclo)
+            DataTable dtCiclo = bll.ObtenerCicloPorId(idCiclo);
+            if (dtCiclo.Rows.Count > 0)
+            {
+                DataRow row = dtCiclo.Rows[0];
+                txtNombreCicloModelo.Text = row["nombre"].ToString();
+                txtDescripcion.Text = row["descripcion"].ToString();
+                NumDuracionEstimada.Value = Convert.ToDecimal(row["duracion_estimada"] == DBNull.Value ? 0 : row["duracion_estimada"]);
+                cmbModoInicio.SelectedValue = row["modo_inicio"];
+                cmbActivo.SelectedValue = Convert.ToBoolean(row["activo"]);
+            }
+
+            // 2. Cargar Actividades y sus Elementos
+            DataTable dtActividades = bll.ObtenerActividadesPorCiclo(idCiclo);
+            listaActividades.Clear();
+
+            foreach (DataRow rowAct in dtActividades.Rows)
+            {
+                long idActividadModelo = Convert.ToInt64(rowAct["id_actividad_modelo"]);
+
+                ActividadModeloDTO nuevaActividad = new ActividadModeloDTO
+                {
+                    Orden = Convert.ToInt32(rowAct["orden"]),
+                    Nombre = rowAct["nombre"].ToString(),
+                    Descripcion = rowAct["descripcion"].ToString(),
+                    IdTipoActividad = Convert.ToInt32(rowAct["tipo_actividad"]),
+                    Duracion = Convert.ToDecimal(rowAct["duracion_estimada"] == DBNull.Value ? 0 : rowAct["duracion_estimada"]),
+                    Demora = rowAct["demora"] != DBNull.Value && Convert.ToBoolean(rowAct["demora"]),
+                    Aprobacion = Convert.ToBoolean(rowAct["requiere_aprobacion"]),
+                    EjecucionParcial = Convert.ToBoolean(rowAct["permite_ejecucion_parcial"]),
+                    CondicionAvance = rowAct["condicion_avance"].ToString(),
+                    Activa = Convert.ToBoolean(rowAct["activa"])
+                };
+
+                // Buscar elementos de esta actividad en específico
+                DataTable dtElementos = bll.ObtenerElementosPorActividad(idActividadModelo);
+                foreach (DataRow rowElem in dtElementos.Rows)
+                {
+                    nuevaActividad.ListaElementos.Add(new ActividadElementoModeloDTO
+                    {
+                        IdElemento = Convert.ToInt64(rowElem["id_elemento"]),
+                        IdTipoElemento = Convert.ToInt32(rowElem["tipo_elemento"]),
+                        IdTipoMovimiento = Convert.ToInt32(rowElem["tipo_movimiento"]),
+                        IdUnidad = Convert.ToInt32(rowElem["id_unidad"]),
+                        CantidadPrevista = Convert.ToDecimal(rowElem["cantidad_prevista"]),
+                        Obligatorio = Convert.ToBoolean(rowElem["obligatorio"]),
+                        PermiteSustitucion = rowElem["permite_sustitucion"] != DBNull.Value && Convert.ToBoolean(rowElem["permite_sustitucion"]),
+                        Vendible = rowElem["vendible_destino"] != DBNull.Value && Convert.ToBoolean(rowElem["vendible_destino"])
+                    });
+                }
+
+                listaActividades.Add(nuevaActividad);
+            }
         }
     }
 }

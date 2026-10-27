@@ -43,6 +43,9 @@ INSERT INTO Catalogos_tipo (Id_catalogo, Nombre, Activo) VALUES (14, 'Modo inici
 INSERT INTO Catalogos_tipo (Id_catalogo, Nombre, Activo) VALUES (15, 'Tipo Actividad', 1);
 INSERT INTO Catalogos_tipo (Id_catalogo, Nombre, Activo) VALUES (16, 'Tipo Movimiento', 1);
 INSERT INTO Catalogos_tipo (Id_catalogo, Nombre, Activo) VALUES (17, 'Tipo Unidad', 1);
+
+
+INSERT INTO Catalogos_tipo (Id_catalogo, Nombre, Activo) VALUES (18, 'Tipo  Entornos', 1);
 ----
 
 GO
@@ -159,6 +162,15 @@ INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (17, 'Litros
 INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (17, 'Unidades (u)', 1);
 INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (17, 'Hectáreas (ha)', 1);
 INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (17, 'Atados / Bultos', 1);
+GO
+
+-- 18: Tipo Entornos
+INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (18, 'Animal', 1);
+INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (18, 'Vegetal', 1);
+INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (18, 'Industria', 1);
+INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (18, 'Compras', 1);
+INSERT INTO Catalogo_tipo_items (Id_catalog, Nombre, Activo) VALUES (18, 'Pañol', 1);
+
 GO
 
 

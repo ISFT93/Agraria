@@ -268,8 +268,7 @@ END;
 GO
 
 
-
-CREATE OR ALTER PROCEDURE sp_select_elementos_por_tipo
+CREATE OR ALTER   PROCEDURE [dbo].[sp_select_elementos_por_tipo]
     @tipo VARCHAR(50)
 AS
 BEGIN
@@ -278,13 +277,13 @@ BEGIN
     IF @tipo = 'Animal'
     BEGIN
         SELECT id_animal AS id_elemento, nombre_comun AS nombre 
-        FROM animal 
+        FROM animales 
         ORDER BY nombre_comun ASC;
     END
     ELSE IF @tipo = 'Vegetal'
     BEGIN
         SELECT id_vegetal AS id_elemento, nombre_comun AS nombre 
-        FROM vegetal 
+        FROM vegetales 
         ORDER BY nombre_comun ASC;
     END
     ELSE IF @tipo = 'Articulo'
@@ -293,5 +292,33 @@ BEGIN
         FROM articulos 
         ORDER BY nombre ASC;
     END
+END;
+
+
+
+CREATE OR ALTER PROCEDURE sp_get_ciclo_por_id 
+    @id_ciclo BIGINT 
+AS
+BEGIN 
+    SET NOCOUNT ON;
+    SELECT * FROM ciclos_modelo WHERE id_ciclo = @id_ciclo; 
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_get_actividades_por_ciclo 
+    @id_ciclo BIGINT 
+AS
+BEGIN 
+    SET NOCOUNT ON;
+    SELECT * FROM actividades_ciclo_modelo WHERE id_ciclo = @id_ciclo ORDER BY orden ASC; 
+END;
+GO
+
+CREATE OR ALTER PROCEDURE sp_get_elementos_por_actividad 
+    @id_actividad_modelo BIGINT 
+AS
+BEGIN 
+    SET NOCOUNT ON;
+    SELECT * FROM actividad_elementos WHERE id_actividad_modelo = @id_actividad_modelo; 
 END;
 GO

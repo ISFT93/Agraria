@@ -210,7 +210,7 @@ go
 
 ---------------------------------Otras tablas restantes ---------------------------------------------------
 
-INSERT INTO TipoEntorno (Nombre)
+INSERT INTO TipoEntornos (Nombre)
 VALUES ('Animal'), ('Vegetal'), ('Industria'), ('Compras') , ('Pañol');
 GO
 

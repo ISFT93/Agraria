@@ -3,15 +3,17 @@ using Agraria.Negocio.BLL;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace Agraria.Formularios
 {
-    public partial class AbmActividadesCicloModelo : Form
+    public partial class AbmActividadesCicloModelo : MaterialForm
     {
         private AbmCiclosBLL bll = new AbmCiclosBLL();
 
         // Propiedad pública donde guardaremos la actividad para que AbmCiclos la lea
-        public CicloActividadModeloDTO NuevaActividad { get; private set; }
+        public ActividadModeloDTO NuevaActividad { get; private set; }
 
         // Pedimos el número de orden por parámetro al abrir el formulario
         public AbmActividadesCicloModelo(int ordenAsignado)
@@ -19,6 +21,20 @@ namespace Agraria.Formularios
             InitializeComponent();
             txtOrden.Text = ordenAsignado.ToString();
             txtOrden.Enabled = false; // Bloqueado para que mantenga el correlativo
+
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Cyan800,
+                Primary.Cyan900,
+                Primary.Cyan500,
+                Accent.Cyan200,
+          TextShade.WHITE
+            );
         }
 
         private void AbmActividadesCicloModelo_Load(object sender, EventArgs e)
@@ -61,7 +77,7 @@ namespace Agraria.Formularios
             }
 
             // Llenamos la propiedad pública con los datos ingresados
-            NuevaActividad = new CicloActividadModeloDTO
+            NuevaActividad = new ActividadModeloDTO
             {
                 Orden = Convert.ToInt32(txtOrden.Text),
                 Nombre = txtNombre.Text.Trim(),

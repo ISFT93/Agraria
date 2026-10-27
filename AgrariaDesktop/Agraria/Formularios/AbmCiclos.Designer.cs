@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle31 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle32 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle33 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle34 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle35 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle36 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
             btnCancelar = new Button();
             btnSiguente = new Button();
             label9 = new Label();
@@ -64,16 +64,16 @@
             btnAgregar = new Button();
             btnQuitar = new Button();
             tabPageActividadesElementos = new TabPage();
-            btnAnterior1 = new Button();
+            panel6 = new Panel();
+            dtgvActividadesElementos = new DataGridView();
+            panel5 = new Panel();
             btnGuardar = new Button();
-            btnBajarElemento = new Button();
+            btnAnterior1 = new Button();
+            panel4 = new Panel();
             btnSubirElemento = new Button();
+            btnBajarElemento = new Button();
             btnAgregarElemento = new Button();
             btnQuitarElemento = new Button();
-            dtgvActividadesElementos = new DataGridView();
-            panel4 = new Panel();
-            panel5 = new Panel();
-            panel6 = new Panel();
             tabControl.SuspendLayout();
             tabPageCicloModelo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumDuracionEstimada).BeginInit();
@@ -83,17 +83,18 @@
             panel3.SuspendLayout();
             panel1.SuspendLayout();
             tabPageActividadesElementos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dtgvActividadesElementos).BeginInit();
-            panel4.SuspendLayout();
-            panel5.SuspendLayout();
             panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dtgvActividadesElementos).BeginInit();
+            panel5.SuspendLayout();
+            panel4.SuspendLayout();
             SuspendLayout();
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(783, 379);
+            btnCancelar.Location = new Point(894, 549);
+            btnCancelar.Margin = new Padding(3, 4, 3, 4);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(75, 29);
+            btnCancelar.Size = new Size(86, 39);
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -101,9 +102,10 @@
             // 
             // btnSiguente
             // 
-            btnSiguente.Location = new Point(783, 344);
+            btnSiguente.Location = new Point(894, 503);
+            btnSiguente.Margin = new Padding(3, 4, 3, 4);
             btnSiguente.Name = "btnSiguente";
-            btnSiguente.Size = new Size(75, 29);
+            btnSiguente.Size = new Size(86, 39);
             btnSiguente.TabIndex = 8;
             btnSiguente.Text = "&Siguiente";
             btnSiguente.UseVisualStyleBackColor = true;
@@ -114,9 +116,9 @@
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(9, 349);
+            label9.Location = new Point(10, 465);
             label9.Name = "label9";
-            label9.Size = new Size(116, 24);
+            label9.Size = new Size(147, 29);
             label9.TabIndex = 23;
             label9.Text = "Creado Por";
             // 
@@ -125,9 +127,9 @@
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(9, 284);
+            label8.Location = new Point(10, 379);
             label8.Name = "label8";
-            label8.Size = new Size(189, 24);
+            label8.Size = new Size(234, 29);
             label8.TabIndex = 22;
             label8.Text = "Fecha de Creación";
             // 
@@ -136,9 +138,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(9, 211);
+            label7.Location = new Point(10, 281);
             label7.Name = "label7";
-            label7.Size = new Size(67, 24);
+            label7.Size = new Size(83, 29);
             label7.TabIndex = 21;
             label7.Text = "Activo";
             // 
@@ -147,9 +149,9 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(6, 142);
+            label6.Location = new Point(7, 189);
             label6.Name = "label6";
-            label6.Size = new Size(119, 24);
+            label6.Size = new Size(149, 29);
             label6.TabIndex = 20;
             label6.Text = "Modo Inicio";
             // 
@@ -158,9 +160,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(6, 70);
+            label4.Location = new Point(7, 93);
             label4.Name = "label4";
-            label4.Size = new Size(185, 24);
+            label4.Size = new Size(232, 29);
             label4.TabIndex = 18;
             label4.Text = "Duración Estimada";
             // 
@@ -169,9 +171,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(252, 11);
+            label3.Location = new Point(288, 15);
             label3.Name = "label3";
-            label3.Size = new Size(121, 24);
+            label3.Size = new Size(152, 29);
             label3.TabIndex = 17;
             label3.Text = "Descripción";
             // 
@@ -180,9 +182,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(6, 3);
+            label1.Location = new Point(7, 4);
             label1.Name = "label1";
-            label1.Size = new Size(85, 24);
+            label1.Size = new Size(107, 29);
             label1.TabIndex = 16;
             label1.Text = "Nombre";
             // 
@@ -191,10 +193,10 @@
             cmbActivo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbActivo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbActivo.FormattingEnabled = true;
-            cmbActivo.Location = new Point(9, 237);
-            cmbActivo.Margin = new Padding(2);
+            cmbActivo.Location = new Point(10, 316);
+            cmbActivo.Margin = new Padding(2, 3, 2, 3);
             cmbActivo.Name = "cmbActivo";
-            cmbActivo.Size = new Size(99, 32);
+            cmbActivo.Size = new Size(113, 37);
             cmbActivo.TabIndex = 4;
             // 
             // cmbModoInicio
@@ -202,41 +204,41 @@
             cmbModoInicio.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbModoInicio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbModoInicio.FormattingEnabled = true;
-            cmbModoInicio.Location = new Point(6, 168);
-            cmbModoInicio.Margin = new Padding(2);
+            cmbModoInicio.Location = new Point(7, 224);
+            cmbModoInicio.Margin = new Padding(2, 3, 2, 3);
             cmbModoInicio.Name = "cmbModoInicio";
-            cmbModoInicio.Size = new Size(148, 32);
+            cmbModoInicio.Size = new Size(169, 37);
             cmbModoInicio.TabIndex = 3;
             // 
             // txtCreadoPor
             // 
             txtCreadoPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCreadoPor.Location = new Point(9, 375);
-            txtCreadoPor.Margin = new Padding(2);
+            txtCreadoPor.Location = new Point(10, 500);
+            txtCreadoPor.Margin = new Padding(2, 3, 2, 3);
             txtCreadoPor.MaxLength = 40;
             txtCreadoPor.Name = "txtCreadoPor";
-            txtCreadoPor.Size = new Size(225, 29);
+            txtCreadoPor.Size = new Size(257, 34);
             txtCreadoPor.TabIndex = 6;
             // 
             // txtDescripcion
             // 
             txtDescripcion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtDescripcion.Location = new Point(252, 37);
-            txtDescripcion.Margin = new Padding(2);
+            txtDescripcion.Location = new Point(288, 49);
+            txtDescripcion.Margin = new Padding(2, 3, 2, 3);
             txtDescripcion.MaxLength = 40;
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(606, 287);
+            txtDescripcion.Size = new Size(692, 381);
             txtDescripcion.TabIndex = 7;
             // 
             // txtNombreCicloModelo
             // 
             txtNombreCicloModelo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreCicloModelo.Location = new Point(6, 27);
-            txtNombreCicloModelo.Margin = new Padding(2);
+            txtNombreCicloModelo.Location = new Point(7, 36);
+            txtNombreCicloModelo.Margin = new Padding(2, 3, 2, 3);
             txtNombreCicloModelo.MaxLength = 40;
             txtNombreCicloModelo.Name = "txtNombreCicloModelo";
-            txtNombreCicloModelo.Size = new Size(225, 29);
+            txtNombreCicloModelo.Size = new Size(257, 34);
             txtNombreCicloModelo.TabIndex = 1;
             // 
             // tabControl
@@ -245,10 +247,11 @@
             tabControl.Controls.Add(tabPageActividadesCicloModelo);
             tabControl.Controls.Add(tabPageActividadesElementos);
             tabControl.Font = new Font("Segoe UI", 9F);
-            tabControl.Location = new Point(-1, 5);
+            tabControl.Location = new Point(6, 66);
+            tabControl.Margin = new Padding(3, 4, 3, 4);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(884, 455);
+            tabControl.Size = new Size(1012, 630);
             tabControl.TabIndex = 29;
             // 
             // tabPageCicloModelo
@@ -270,10 +273,11 @@
             tabPageCicloModelo.Controls.Add(label6);
             tabPageCicloModelo.Controls.Add(cmbActivo);
             tabPageCicloModelo.Controls.Add(cmbModoInicio);
-            tabPageCicloModelo.Location = new Point(4, 24);
+            tabPageCicloModelo.Location = new Point(4, 29);
+            tabPageCicloModelo.Margin = new Padding(3, 4, 3, 4);
             tabPageCicloModelo.Name = "tabPageCicloModelo";
-            tabPageCicloModelo.Padding = new Padding(3);
-            tabPageCicloModelo.Size = new Size(876, 427);
+            tabPageCicloModelo.Padding = new Padding(3, 4, 3, 4);
+            tabPageCicloModelo.Size = new Size(1004, 597);
             tabPageCicloModelo.TabIndex = 0;
             tabPageCicloModelo.Text = "Ciclo Modelo";
             // 
@@ -281,10 +285,11 @@
             // 
             NumDuracionEstimada.DecimalPlaces = 2;
             NumDuracionEstimada.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            NumDuracionEstimada.Location = new Point(7, 103);
+            NumDuracionEstimada.Location = new Point(8, 137);
+            NumDuracionEstimada.Margin = new Padding(3, 4, 3, 4);
             NumDuracionEstimada.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             NumDuracionEstimada.Name = "NumDuracionEstimada";
-            NumDuracionEstimada.Size = new Size(140, 29);
+            NumDuracionEstimada.Size = new Size(160, 34);
             NumDuracionEstimada.TabIndex = 2;
             // 
             // dtpFechaCreacion
@@ -292,9 +297,10 @@
             dtpFechaCreacion.CustomFormat = "dd/MM/yyyy";
             dtpFechaCreacion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             dtpFechaCreacion.Format = DateTimePickerFormat.Short;
-            dtpFechaCreacion.Location = new Point(9, 311);
+            dtpFechaCreacion.Location = new Point(10, 415);
+            dtpFechaCreacion.Margin = new Padding(3, 4, 3, 4);
             dtpFechaCreacion.Name = "dtpFechaCreacion";
-            dtpFechaCreacion.Size = new Size(140, 29);
+            dtpFechaCreacion.Size = new Size(159, 34);
             dtpFechaCreacion.TabIndex = 5;
             // 
             // tabPageActividadesCicloModelo
@@ -303,10 +309,11 @@
             tabPageActividadesCicloModelo.Controls.Add(panel2);
             tabPageActividadesCicloModelo.Controls.Add(panel3);
             tabPageActividadesCicloModelo.Controls.Add(panel1);
-            tabPageActividadesCicloModelo.Location = new Point(4, 24);
+            tabPageActividadesCicloModelo.Location = new Point(4, 29);
+            tabPageActividadesCicloModelo.Margin = new Padding(3, 4, 3, 4);
             tabPageActividadesCicloModelo.Name = "tabPageActividadesCicloModelo";
-            tabPageActividadesCicloModelo.Padding = new Padding(3);
-            tabPageActividadesCicloModelo.Size = new Size(876, 427);
+            tabPageActividadesCicloModelo.Padding = new Padding(3, 4, 3, 4);
+            tabPageActividadesCicloModelo.Size = new Size(1004, 597);
             tabPageActividadesCicloModelo.TabIndex = 1;
             tabPageActividadesCicloModelo.Text = "Actividades Ciclo Modelo";
             // 
@@ -314,42 +321,50 @@
             // 
             panel2.Controls.Add(dtgvActividadesCicloModelo);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 67);
+            panel2.Location = new Point(3, 89);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(870, 271);
+            panel2.Size = new Size(998, 389);
             panel2.TabIndex = 58;
             // 
             // dtgvActividadesCicloModelo
             // 
-            dataGridViewCellStyle31.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = SystemColors.Control;
-            dataGridViewCellStyle31.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle31.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle31.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle31.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle31.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dtgvActividadesCicloModelo.AllowUserToAddRows = false;
+            dtgvActividadesCicloModelo.AllowUserToResizeColumns = false;
+            dtgvActividadesCicloModelo.AllowUserToResizeRows = false;
+            dtgvActividadesCicloModelo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = SystemColors.Control;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dtgvActividadesCicloModelo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle32.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = SystemColors.Window;
-            dataGridViewCellStyle32.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle32.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle32.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = DataGridViewTriState.False;
-            dtgvActividadesCicloModelo.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = SystemColors.Window;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle14.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dtgvActividadesCicloModelo.DefaultCellStyle = dataGridViewCellStyle14;
             dtgvActividadesCicloModelo.Dock = DockStyle.Fill;
             dtgvActividadesCicloModelo.Location = new Point(0, 0);
+            dtgvActividadesCicloModelo.Margin = new Padding(3, 4, 3, 4);
             dtgvActividadesCicloModelo.Name = "dtgvActividadesCicloModelo";
-            dataGridViewCellStyle33.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = SystemColors.Control;
-            dataGridViewCellStyle33.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle33.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle33.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesCicloModelo.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
-            dtgvActividadesCicloModelo.Size = new Size(870, 271);
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = SystemColors.Control;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesCicloModelo.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dtgvActividadesCicloModelo.RowHeadersWidth = 51;
+            dtgvActividadesCicloModelo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvActividadesCicloModelo.Size = new Size(998, 389);
             dtgvActividadesCicloModelo.TabIndex = 53;
             // 
             // panel3
@@ -357,16 +372,18 @@
             panel3.Controls.Add(btnSiguiente2);
             panel3.Controls.Add(btnAnterior);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(3, 338);
+            panel3.Location = new Point(3, 478);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(870, 86);
+            panel3.Size = new Size(998, 115);
             panel3.TabIndex = 59;
             // 
             // btnSiguiente2
             // 
-            btnSiguiente2.Location = new Point(791, 14);
+            btnSiguiente2.Location = new Point(885, 16);
+            btnSiguiente2.Margin = new Padding(3, 4, 3, 4);
             btnSiguiente2.Name = "btnSiguiente2";
-            btnSiguiente2.Size = new Size(75, 29);
+            btnSiguiente2.Size = new Size(86, 39);
             btnSiguiente2.TabIndex = 31;
             btnSiguiente2.Text = "&Siguiente";
             btnSiguiente2.UseVisualStyleBackColor = true;
@@ -374,9 +391,10 @@
             // 
             // btnAnterior
             // 
-            btnAnterior.Location = new Point(791, 49);
+            btnAnterior.Location = new Point(885, 62);
+            btnAnterior.Margin = new Padding(3, 4, 3, 4);
             btnAnterior.Name = "btnAnterior";
-            btnAnterior.Size = new Size(75, 29);
+            btnAnterior.Size = new Size(86, 39);
             btnAnterior.TabIndex = 32;
             btnAnterior.Text = "&Anterior";
             btnAnterior.UseVisualStyleBackColor = true;
@@ -389,16 +407,18 @@
             panel1.Controls.Add(btnAgregar);
             panel1.Controls.Add(btnQuitar);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 4);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(870, 64);
+            panel1.Size = new Size(998, 85);
             panel1.TabIndex = 57;
             // 
             // btnBajar
             // 
-            btnBajar.Location = new Point(6, 31);
+            btnBajar.Location = new Point(7, 41);
+            btnBajar.Margin = new Padding(3, 4, 3, 4);
             btnBajar.Name = "btnBajar";
-            btnBajar.Size = new Size(106, 23);
+            btnBajar.Size = new Size(121, 31);
             btnBajar.TabIndex = 58;
             btnBajar.Text = "Bajar Actividad";
             btnBajar.UseVisualStyleBackColor = true;
@@ -406,9 +426,10 @@
             // 
             // btnSubir
             // 
-            btnSubir.Location = new Point(6, 3);
+            btnSubir.Location = new Point(7, 4);
+            btnSubir.Margin = new Padding(3, 4, 3, 4);
             btnSubir.Name = "btnSubir";
-            btnSubir.Size = new Size(106, 23);
+            btnSubir.Size = new Size(121, 31);
             btnSubir.TabIndex = 57;
             btnSubir.Text = "Subir Actividad";
             btnSubir.UseVisualStyleBackColor = true;
@@ -416,9 +437,10 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(753, 3);
+            btnAgregar.Location = new Point(841, 7);
+            btnAgregar.Margin = new Padding(3, 4, 3, 4);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(114, 23);
+            btnAgregar.Size = new Size(130, 31);
             btnAgregar.TabIndex = 55;
             btnAgregar.Text = "Agregar Actividad";
             btnAgregar.UseVisualStyleBackColor = true;
@@ -426,9 +448,10 @@
             // 
             // btnQuitar
             // 
-            btnQuitar.Location = new Point(753, 32);
+            btnQuitar.Location = new Point(841, 46);
+            btnQuitar.Margin = new Padding(3, 4, 3, 4);
             btnQuitar.Name = "btnQuitar";
-            btnQuitar.Size = new Size(114, 23);
+            btnQuitar.Size = new Size(130, 31);
             btnQuitar.TabIndex = 56;
             btnQuitar.Text = "Quitar Actividad";
             btnQuitar.UseVisualStyleBackColor = true;
@@ -440,105 +463,96 @@
             tabPageActividadesElementos.Controls.Add(panel6);
             tabPageActividadesElementos.Controls.Add(panel5);
             tabPageActividadesElementos.Controls.Add(panel4);
-            tabPageActividadesElementos.Location = new Point(4, 24);
+            tabPageActividadesElementos.Location = new Point(4, 29);
+            tabPageActividadesElementos.Margin = new Padding(3, 4, 3, 4);
             tabPageActividadesElementos.Name = "tabPageActividadesElementos";
-            tabPageActividadesElementos.Padding = new Padding(3);
-            tabPageActividadesElementos.Size = new Size(876, 427);
+            tabPageActividadesElementos.Padding = new Padding(3, 4, 3, 4);
+            tabPageActividadesElementos.Size = new Size(1004, 597);
             tabPageActividadesElementos.TabIndex = 2;
             tabPageActividadesElementos.Text = "Actividades Elementos";
             // 
-            // btnAnterior1
+            // panel6
             // 
-            btnAnterior1.Location = new Point(791, 53);
-            btnAnterior1.Name = "btnAnterior1";
-            btnAnterior1.Size = new Size(75, 29);
-            btnAnterior1.TabIndex = 78;
-            btnAnterior1.Text = "&Anterior";
-            btnAnterior1.UseVisualStyleBackColor = true;
-            btnAnterior1.Click += btnAnterior1_Click;
+            panel6.Controls.Add(dtgvActividadesElementos);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(3, 89);
+            panel6.Margin = new Padding(3, 4, 3, 4);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(998, 389);
+            panel6.TabIndex = 86;
+            // 
+            // dtgvActividadesElementos
+            // 
+            dtgvActividadesElementos.AllowUserToAddRows = false;
+            dtgvActividadesElementos.AllowUserToResizeColumns = false;
+            dtgvActividadesElementos.AllowUserToResizeRows = false;
+            dtgvActividadesElementos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = SystemColors.Control;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle16.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dtgvActividadesElementos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = SystemColors.Window;
+            dataGridViewCellStyle17.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle17.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.False;
+            dtgvActividadesElementos.DefaultCellStyle = dataGridViewCellStyle17;
+            dtgvActividadesElementos.Dock = DockStyle.Fill;
+            dtgvActividadesElementos.Location = new Point(0, 0);
+            dtgvActividadesElementos.Margin = new Padding(3, 4, 3, 4);
+            dtgvActividadesElementos.Name = "dtgvActividadesElementos";
+            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = SystemColors.Control;
+            dataGridViewCellStyle18.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle18.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dtgvActividadesElementos.RowHeadersWidth = 51;
+            dtgvActividadesElementos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dtgvActividadesElementos.Size = new Size(998, 389);
+            dtgvActividadesElementos.TabIndex = 83;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(btnGuardar);
+            panel5.Controls.Add(btnAnterior1);
+            panel5.Dock = DockStyle.Bottom;
+            panel5.Location = new Point(3, 478);
+            panel5.Margin = new Padding(3, 4, 3, 4);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(998, 115);
+            panel5.TabIndex = 85;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(791, 18);
+            btnGuardar.Location = new Point(887, 12);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(75, 29);
+            btnGuardar.Size = new Size(86, 39);
             btnGuardar.TabIndex = 55;
             btnGuardar.Text = "&Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
             btnGuardar.Click += btnGuardar_Click;
             // 
-            // btnBajarElemento
+            // btnAnterior1
             // 
-            btnBajarElemento.Location = new Point(6, 31);
-            btnBajarElemento.Name = "btnBajarElemento";
-            btnBajarElemento.Size = new Size(106, 23);
-            btnBajarElemento.TabIndex = 82;
-            btnBajarElemento.Text = "Bajar Elemento";
-            btnBajarElemento.UseVisualStyleBackColor = true;
-            btnBajarElemento.Click += btnBajarElemento_Click;
-            // 
-            // btnSubirElemento
-            // 
-            btnSubirElemento.Location = new Point(6, 3);
-            btnSubirElemento.Name = "btnSubirElemento";
-            btnSubirElemento.Size = new Size(106, 23);
-            btnSubirElemento.TabIndex = 81;
-            btnSubirElemento.Text = "Subir Elemento";
-            btnSubirElemento.UseVisualStyleBackColor = true;
-            btnSubirElemento.Click += btnSubirElemento_Click;
-            // 
-            // btnAgregarElemento
-            // 
-            btnAgregarElemento.Location = new Point(753, 3);
-            btnAgregarElemento.Name = "btnAgregarElemento";
-            btnAgregarElemento.Size = new Size(114, 23);
-            btnAgregarElemento.TabIndex = 79;
-            btnAgregarElemento.Text = "Agregar Elemento";
-            btnAgregarElemento.UseVisualStyleBackColor = true;
-            btnAgregarElemento.Click += btnAgregarElemento_Click;
-            // 
-            // btnQuitarElemento
-            // 
-            btnQuitarElemento.Location = new Point(753, 32);
-            btnQuitarElemento.Name = "btnQuitarElemento";
-            btnQuitarElemento.Size = new Size(114, 23);
-            btnQuitarElemento.TabIndex = 80;
-            btnQuitarElemento.Text = "Quitar Elemento";
-            btnQuitarElemento.UseVisualStyleBackColor = true;
-            btnQuitarElemento.Click += btnQuitarElemento_Click;
-            // 
-            // dtgvActividadesElementos
-            // 
-            dataGridViewCellStyle34.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle34.BackColor = SystemColors.Control;
-            dataGridViewCellStyle34.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle34.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle34;
-            dtgvActividadesElementos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle35.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle35.BackColor = SystemColors.Window;
-            dataGridViewCellStyle35.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle35.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle35.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle35.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle35.WrapMode = DataGridViewTriState.False;
-            dtgvActividadesElementos.DefaultCellStyle = dataGridViewCellStyle35;
-            dtgvActividadesElementos.Dock = DockStyle.Fill;
-            dtgvActividadesElementos.Location = new Point(0, 0);
-            dtgvActividadesElementos.Name = "dtgvActividadesElementos";
-            dataGridViewCellStyle36.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle36.BackColor = SystemColors.Control;
-            dataGridViewCellStyle36.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle36.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle36.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle36.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle36.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
-            dtgvActividadesElementos.Size = new Size(870, 271);
-            dtgvActividadesElementos.TabIndex = 83;
+            btnAnterior1.Location = new Point(887, 59);
+            btnAnterior1.Margin = new Padding(3, 4, 3, 4);
+            btnAnterior1.Name = "btnAnterior1";
+            btnAnterior1.Size = new Size(86, 39);
+            btnAnterior1.TabIndex = 78;
+            btnAnterior1.Text = "&Anterior";
+            btnAnterior1.UseVisualStyleBackColor = true;
+            btnAnterior1.Click += btnAnterior1_Click;
             // 
             // panel4
             // 
@@ -547,42 +561,69 @@
             panel4.Controls.Add(btnAgregarElemento);
             panel4.Controls.Add(btnQuitarElemento);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(3, 3);
+            panel4.Location = new Point(3, 4);
+            panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(870, 64);
+            panel4.Size = new Size(998, 85);
             panel4.TabIndex = 84;
             // 
-            // panel5
+            // btnSubirElemento
             // 
-            panel5.Controls.Add(btnGuardar);
-            panel5.Controls.Add(btnAnterior1);
-            panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(3, 338);
-            panel5.Name = "panel5";
-            panel5.Size = new Size(870, 86);
-            panel5.TabIndex = 85;
+            btnSubirElemento.Location = new Point(7, 4);
+            btnSubirElemento.Margin = new Padding(3, 4, 3, 4);
+            btnSubirElemento.Name = "btnSubirElemento";
+            btnSubirElemento.Size = new Size(121, 31);
+            btnSubirElemento.TabIndex = 81;
+            btnSubirElemento.Text = "Subir Elemento";
+            btnSubirElemento.UseVisualStyleBackColor = true;
+            btnSubirElemento.Click += btnSubirElemento_Click;
             // 
-            // panel6
+            // btnBajarElemento
             // 
-            panel6.Controls.Add(dtgvActividadesElementos);
-            panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(3, 67);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(870, 271);
-            panel6.TabIndex = 86;
+            btnBajarElemento.Location = new Point(7, 41);
+            btnBajarElemento.Margin = new Padding(3, 4, 3, 4);
+            btnBajarElemento.Name = "btnBajarElemento";
+            btnBajarElemento.Size = new Size(121, 31);
+            btnBajarElemento.TabIndex = 82;
+            btnBajarElemento.Text = "Bajar Elemento";
+            btnBajarElemento.UseVisualStyleBackColor = true;
+            btnBajarElemento.Click += btnBajarElemento_Click;
+            // 
+            // btnAgregarElemento
+            // 
+            btnAgregarElemento.Location = new Point(843, 2);
+            btnAgregarElemento.Margin = new Padding(3, 4, 3, 4);
+            btnAgregarElemento.Name = "btnAgregarElemento";
+            btnAgregarElemento.Size = new Size(130, 31);
+            btnAgregarElemento.TabIndex = 79;
+            btnAgregarElemento.Text = "Agregar Elemento";
+            btnAgregarElemento.UseVisualStyleBackColor = true;
+            btnAgregarElemento.Click += btnAgregarElemento_Click;
+            // 
+            // btnQuitarElemento
+            // 
+            btnQuitarElemento.Location = new Point(843, 41);
+            btnQuitarElemento.Margin = new Padding(3, 4, 3, 4);
+            btnQuitarElemento.Name = "btnQuitarElemento";
+            btnQuitarElemento.Size = new Size(130, 31);
+            btnQuitarElemento.TabIndex = 80;
+            btnQuitarElemento.Text = "Quitar Elemento";
+            btnQuitarElemento.UseVisualStyleBackColor = true;
+            btnQuitarElemento.Click += btnQuitarElemento_Click;
             // 
             // AbmCiclos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(884, 461);
+            ClientSize = new Size(1015, 692);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AbmCiclos";
+            Padding = new Padding(3, 85, 3, 4);
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "AbmCiclos";
             Load += AbmCiclos_Load;
@@ -596,10 +637,10 @@
             panel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tabPageActividadesElementos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dtgvActividadesElementos).EndInit();
-            panel4.ResumeLayout(false);
-            panel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dtgvActividadesElementos).EndInit();
+            panel5.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             ResumeLayout(false);
         }
 

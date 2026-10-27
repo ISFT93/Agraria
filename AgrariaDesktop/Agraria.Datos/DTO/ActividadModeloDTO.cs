@@ -8,10 +8,9 @@ namespace Agraria.Datos.DTO
         public int IdTipoElemento { get; set; }
         public string TipoElemento { get; set; }
 
-        // 🔹 Propiedades faltantes agregadas para solucionar el error CS0117
         public long IdElemento { get; set; }
         public string NombreElemento { get; set; }
-        public string TipoMovimiento { get; set; }
+        public int IdTipoMovimiento { get; set; }
         public int IdUnidad { get; set; }
         public decimal CantidadPrevista { get; set; }
         public bool Obligatorio { get; set; }
@@ -19,7 +18,7 @@ namespace Agraria.Datos.DTO
         public bool Vendible { get; set; }
     }
 
-    public class CicloActividadModeloDTO
+    public class ActividadModeloDTO
     {
         public int Orden { get; set; }
         public string Nombre { get; set; }

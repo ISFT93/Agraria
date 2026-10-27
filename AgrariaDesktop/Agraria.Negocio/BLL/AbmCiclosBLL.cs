@@ -36,5 +36,20 @@ namespace Agraria.Negocio.BLL
                 idElementoCat, tipoElemento, tipoMovimiento, cantPrevista, idUnidad, obligatorio, vendible, sustitucion, observaciones,
                 esModificacion);
         }
+
+        public DataTable ObtenerCicloPorId(long idCiclo)
+        {
+            return dal.ObtenerCicloPorId(idCiclo);
+        }
+
+        public DataTable ObtenerActividadesPorCiclo(long idCiclo)
+        {
+            return dal.ObtenerActividadesPorCiclo(idCiclo);
+        }
+
+        public DataTable ObtenerElementosPorActividad(long idActividadModelo)
+        {
+            return dal.ObtenerElementosPorActividad(idActividadModelo);
+        }
     }
 }

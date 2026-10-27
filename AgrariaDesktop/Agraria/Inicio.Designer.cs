@@ -45,6 +45,7 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             manualDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
             ciclosToolStripMenuItem = new ToolStripMenuItem();
+            ciclosToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -110,7 +111,7 @@
             // 
             // verToolStripMenuItem
             // 
-            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ArticulosToolStripMenuItem, EntornoAnimalToolStripMenuItem, EntornoVegetalToolStripMenuItem, toolStripMenuItem2 });
+            verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ArticulosToolStripMenuItem, EntornoAnimalToolStripMenuItem, EntornoVegetalToolStripMenuItem, toolStripMenuItem2, ciclosToolStripMenuItem1 });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
             verToolStripMenuItem.Size = new Size(44, 24);
             verToolStripMenuItem.Text = "Ver";
@@ -169,6 +170,13 @@
             ciclosToolStripMenuItem.Text = "Ciclos";
             ciclosToolStripMenuItem.Click += ciclosToolStripMenuItem_Click;
             // 
+            // ciclosToolStripMenuItem1
+            // 
+            ciclosToolStripMenuItem1.Name = "ciclosToolStripMenuItem1";
+            ciclosToolStripMenuItem1.Size = new Size(224, 26);
+            ciclosToolStripMenuItem1.Text = "Ciclos";
+            ciclosToolStripMenuItem1.Click += ciclosToolStripMenuItem_Click;
+            // 
             // Inicio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -209,5 +217,6 @@
         private ToolStripMenuItem stockToolStripMenuItem;
         private ToolStripMenuItem ciclosToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem2;
+        private ToolStripMenuItem ciclosToolStripMenuItem1;
     }
 }

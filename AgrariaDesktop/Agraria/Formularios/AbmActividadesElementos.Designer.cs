@@ -58,10 +58,11 @@
             // 
             numActividadModelo.DecimalPlaces = 2;
             numActividadModelo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            numActividadModelo.Location = new Point(28, 49);
+            numActividadModelo.Location = new Point(21, 121);
+            numActividadModelo.Margin = new Padding(3, 4, 3, 4);
             numActividadModelo.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numActividadModelo.Name = "numActividadModelo";
-            numActividadModelo.Size = new Size(150, 29);
+            numActividadModelo.Size = new Size(171, 34);
             numActividadModelo.TabIndex = 96;
             // 
             // label28
@@ -69,9 +70,9 @@
             label28.AutoSize = true;
             label28.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label28.ForeColor = Color.White;
-            label28.Location = new Point(24, 19);
+            label28.Location = new Point(12, 77);
             label28.Name = "label28";
-            label28.Size = new Size(244, 24);
+            label28.Size = new Size(306, 29);
             label28.TabIndex = 97;
             label28.Text = "Código Actividad Modelo";
             // 
@@ -80,9 +81,9 @@
             label26.AutoSize = true;
             label26.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label26.ForeColor = Color.White;
-            label26.Location = new Point(409, 353);
+            label26.Location = new Point(456, 527);
             label26.Name = "label26";
-            label26.Size = new Size(94, 24);
+            label26.Size = new Size(117, 29);
             label26.TabIndex = 95;
             label26.Text = "Vendible";
             // 
@@ -91,20 +92,21 @@
             cmbVendible.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbVendible.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbVendible.FormattingEnabled = true;
-            cmbVendible.Location = new Point(409, 386);
-            cmbVendible.Margin = new Padding(2);
+            cmbVendible.Location = new Point(456, 571);
+            cmbVendible.Margin = new Padding(2, 3, 2, 3);
             cmbVendible.Name = "cmbVendible";
-            cmbVendible.Size = new Size(89, 32);
+            cmbVendible.Size = new Size(101, 37);
             cmbVendible.TabIndex = 94;
             // 
             // numCantPrevista
             // 
             numCantPrevista.DecimalPlaces = 2;
             numCantPrevista.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            numCantPrevista.Location = new Point(25, 309);
+            numCantPrevista.Location = new Point(18, 468);
+            numCantPrevista.Margin = new Padding(3, 4, 3, 4);
             numCantPrevista.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numCantPrevista.Name = "numCantPrevista";
-            numCantPrevista.Size = new Size(167, 29);
+            numCantPrevista.Size = new Size(191, 34);
             numCantPrevista.TabIndex = 92;
             // 
             // label19
@@ -112,9 +114,9 @@
             label19.AutoSize = true;
             label19.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label19.ForeColor = Color.White;
-            label19.Location = new Point(21, 279);
+            label19.Location = new Point(13, 428);
             label19.Name = "label19";
-            label19.Size = new Size(171, 24);
+            label19.Size = new Size(218, 29);
             label19.TabIndex = 93;
             label19.Text = "Cantidad Prevista";
             // 
@@ -123,10 +125,10 @@
             cmbTipoElemento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoElemento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoElemento.FormattingEnabled = true;
-            cmbTipoElemento.Location = new Point(24, 111);
-            cmbTipoElemento.Margin = new Padding(2);
+            cmbTipoElemento.Location = new Point(16, 204);
+            cmbTipoElemento.Margin = new Padding(2, 3, 2, 3);
             cmbTipoElemento.Name = "cmbTipoElemento";
-            cmbTipoElemento.Size = new Size(199, 32);
+            cmbTipoElemento.Size = new Size(227, 37);
             cmbTipoElemento.TabIndex = 91;
             cmbTipoElemento.SelectedIndexChanged += cmbTipoElemento_SelectedIndexChanged;
             // 
@@ -135,9 +137,9 @@
             label20.AutoSize = true;
             label20.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label20.ForeColor = Color.White;
-            label20.Location = new Point(527, 353);
+            label20.Location = new Point(591, 527);
             label20.Name = "label20";
-            label20.Size = new Size(189, 24);
+            label20.Size = new Size(239, 29);
             label20.TabIndex = 90;
             label20.Text = "Permite Sustitución";
             // 
@@ -146,10 +148,10 @@
             cmbPermiteSustitucion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPermiteSustitucion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbPermiteSustitucion.FormattingEnabled = true;
-            cmbPermiteSustitucion.Location = new Point(527, 386);
-            cmbPermiteSustitucion.Margin = new Padding(2);
+            cmbPermiteSustitucion.Location = new Point(591, 571);
+            cmbPermiteSustitucion.Margin = new Padding(2, 3, 2, 3);
             cmbPermiteSustitucion.Name = "cmbPermiteSustitucion";
-            cmbPermiteSustitucion.Size = new Size(89, 32);
+            cmbPermiteSustitucion.Size = new Size(101, 37);
             cmbPermiteSustitucion.TabIndex = 89;
             // 
             // label21
@@ -157,9 +159,9 @@
             label21.AutoSize = true;
             label21.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label21.ForeColor = Color.White;
-            label21.Location = new Point(275, 353);
+            label21.Location = new Point(303, 527);
             label21.Name = "label21";
-            label21.Size = new Size(112, 24);
+            label21.Size = new Size(144, 29);
             label21.TabIndex = 88;
             label21.Text = "Obligatorio";
             // 
@@ -168,10 +170,10 @@
             cmbObligatorio.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbObligatorio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbObligatorio.FormattingEnabled = true;
-            cmbObligatorio.Location = new Point(278, 385);
-            cmbObligatorio.Margin = new Padding(2);
+            cmbObligatorio.Location = new Point(307, 569);
+            cmbObligatorio.Margin = new Padding(2, 3, 2, 3);
             cmbObligatorio.Name = "cmbObligatorio";
-            cmbObligatorio.Size = new Size(83, 32);
+            cmbObligatorio.Size = new Size(94, 37);
             cmbObligatorio.TabIndex = 87;
             // 
             // label22
@@ -179,9 +181,9 @@
             label22.AutoSize = true;
             label22.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label22.ForeColor = Color.White;
-            label22.Location = new Point(24, 352);
+            label22.Location = new Point(16, 525);
             label22.Name = "label22";
-            label22.Size = new Size(154, 24);
+            label22.Size = new Size(194, 29);
             label22.TabIndex = 86;
             label22.Text = "Tipo de Unidad";
             // 
@@ -190,9 +192,9 @@
             label23.AutoSize = true;
             label23.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label23.ForeColor = Color.White;
-            label23.Location = new Point(21, 85);
+            label23.Location = new Point(13, 169);
             label23.Name = "label23";
-            label23.Size = new Size(147, 24);
+            label23.Size = new Size(185, 29);
             label23.TabIndex = 82;
             label23.Text = "Tipo Elemento";
             // 
@@ -201,9 +203,9 @@
             label24.AutoSize = true;
             label24.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label24.ForeColor = Color.White;
-            label24.Location = new Point(276, 4);
+            label24.Location = new Point(353, 77);
             label24.Name = "label24";
-            label24.Size = new Size(128, 24);
+            label24.Size = new Size(160, 29);
             label24.TabIndex = 83;
             label24.Text = "Observación";
             // 
@@ -212,21 +214,21 @@
             label25.AutoSize = true;
             label25.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label25.ForeColor = Color.White;
-            label25.Location = new Point(24, 149);
+            label25.Location = new Point(16, 255);
             label25.Name = "label25";
-            label25.Size = new Size(99, 24);
+            label25.Size = new Size(124, 29);
             label25.TabIndex = 84;
             label25.Text = "Elemento";
             // 
             // txtObservacion
             // 
             txtObservacion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtObservacion.Location = new Point(276, 35);
-            txtObservacion.Margin = new Padding(2);
+            txtObservacion.Location = new Point(353, 121);
+            txtObservacion.Margin = new Padding(2, 3, 2, 3);
             txtObservacion.MaxLength = 40;
             txtObservacion.Multiline = true;
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(600, 300);
+            txtObservacion.Size = new Size(636, 381);
             txtObservacion.TabIndex = 81;
             // 
             // label27
@@ -234,9 +236,9 @@
             label27.AutoSize = true;
             label27.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label27.ForeColor = Color.White;
-            label27.Location = new Point(21, 208);
+            label27.Location = new Point(13, 333);
             label27.Name = "label27";
-            label27.Size = new Size(195, 24);
+            label27.Size = new Size(245, 29);
             label27.TabIndex = 85;
             label27.Text = "Tipo de Movimiento";
             // 
@@ -245,10 +247,10 @@
             cmbTipoUnidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoUnidad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoUnidad.FormattingEnabled = true;
-            cmbTipoUnidad.Location = new Point(25, 378);
-            cmbTipoUnidad.Margin = new Padding(2);
+            cmbTipoUnidad.Location = new Point(18, 560);
+            cmbTipoUnidad.Margin = new Padding(2, 3, 2, 3);
             cmbTipoUnidad.Name = "cmbTipoUnidad";
-            cmbTipoUnidad.Size = new Size(147, 32);
+            cmbTipoUnidad.Size = new Size(167, 37);
             cmbTipoUnidad.TabIndex = 80;
             // 
             // cmbTipoMovimiento
@@ -256,17 +258,18 @@
             cmbTipoMovimiento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoMovimiento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoMovimiento.FormattingEnabled = true;
-            cmbTipoMovimiento.Location = new Point(25, 234);
-            cmbTipoMovimiento.Margin = new Padding(2);
+            cmbTipoMovimiento.Location = new Point(18, 368);
+            cmbTipoMovimiento.Margin = new Padding(2, 3, 2, 3);
             cmbTipoMovimiento.Name = "cmbTipoMovimiento";
-            cmbTipoMovimiento.Size = new Size(198, 32);
+            cmbTipoMovimiento.Size = new Size(226, 37);
             cmbTipoMovimiento.TabIndex = 79;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(810, 388);
+            btnAceptar.Location = new Point(933, 581);
+            btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(75, 23);
+            btnAceptar.Size = new Size(86, 31);
             btnAceptar.TabIndex = 98;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -275,29 +278,30 @@
             // txtOrdenElemento
             // 
             txtOrdenElemento.AutoSize = true;
-            txtOrdenElemento.Location = new Point(770, 354);
+            txtOrdenElemento.Location = new Point(869, 528);
             txtOrdenElemento.Name = "txtOrdenElemento";
-            txtOrdenElemento.Size = new Size(38, 15);
+            txtOrdenElemento.Size = new Size(50, 20);
             txtOrdenElemento.TabIndex = 99;
             txtOrdenElemento.Text = "label1";
+            txtOrdenElemento.Visible = false;
             // 
             // cmbElemento
             // 
             cmbElemento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbElemento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbElemento.FormattingEnabled = true;
-            cmbElemento.Location = new Point(21, 174);
-            cmbElemento.Margin = new Padding(2);
+            cmbElemento.Location = new Point(13, 288);
+            cmbElemento.Margin = new Padding(2, 3, 2, 3);
             cmbElemento.Name = "cmbElemento";
-            cmbElemento.Size = new Size(234, 32);
+            cmbElemento.Size = new Size(267, 37);
             cmbElemento.TabIndex = 100;
             // 
             // AbmActividadesElementos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(897, 423);
+            ClientSize = new Size(1025, 619);
             Controls.Add(cmbElemento);
             Controls.Add(txtOrdenElemento);
             Controls.Add(btnAceptar);
@@ -320,6 +324,7 @@
             Controls.Add(label27);
             Controls.Add(cmbTipoUnidad);
             Controls.Add(cmbTipoMovimiento);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AbmActividadesElementos";
             Text = "Actividades Elementos";
             Load += AbmActividadesElementos_Load;

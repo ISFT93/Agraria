@@ -143,5 +143,59 @@ namespace Agraria.Datos.DAL
                 }
             }
         }
+
+        public DataTable ObtenerCicloPorId(long idCiclo)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                ConexionBD.ConectarBD();
+                SqlCommand cmd = new SqlCommand("sp_get_ciclo_por_id", ConexionBD.ConexionSQL);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_ciclo", idCiclo);
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+            }
+            finally { ConexionBD.CierraBD(); }
+            return dt;
+        }
+
+        public DataTable ObtenerActividadesPorCiclo(long idCiclo)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                ConexionBD.ConectarBD();
+                SqlCommand cmd = new SqlCommand("sp_get_actividades_por_ciclo", ConexionBD.ConexionSQL);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_ciclo", idCiclo);
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+            }
+            finally { ConexionBD.CierraBD(); }
+            return dt;
+        }
+
+        public DataTable ObtenerElementosPorActividad(long idActividadModelo)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                ConexionBD.ConectarBD();
+                SqlCommand cmd = new SqlCommand("sp_get_elementos_por_actividad", ConexionBD.ConexionSQL);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@id_actividad_modelo", idActividadModelo);
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dt);
+                }
+            }
+            finally { ConexionBD.CierraBD(); }
+            return dt;
+        }
     }
 }
