@@ -60,6 +60,9 @@ namespace Agraria.Formularios
             {
                 DataTable dt = vegetalBLL.ObtenerVegetales(filtro);
 
+                // 1. AÑADE ESTA LÍNEA PARA FORZAR LA CREACIÓN DE COLUMNAS
+                dtgvListarVegetales.AutoGenerateColumns = true;
+
                 if (cmbFiltrarPor.SelectedIndex > 0)
                 {
                     string tipoSeleccionado = cmbFiltrarPor.Text;

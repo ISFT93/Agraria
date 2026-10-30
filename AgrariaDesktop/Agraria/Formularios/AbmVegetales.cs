@@ -165,11 +165,6 @@ namespace Agraria.Formularios
         }
 
 
-
-
-
-
-
         private void CargarDatos(long id)
         {
             DataTable dt = bll.BuscarPorId(id);
@@ -207,7 +202,7 @@ namespace Agraria.Formularios
                 // Como requerimiento_hidrico es texto directo de la columna, seleccionamos el valor por su texto:
                 if (dr["requerimiento_hidrico"] != DBNull.Value)
                 {
-                    cmbRequerimientosHidrico.SelectedValue = dr["requerimiento_hidrico"] != DBNull.Value ? dr["requerimiento_hidrico"].ToString() : null;
+                    cmbRequerimientosHidrico.SelectedText = dr["requerimiento_hidrico"] != DBNull.Value ?  dr["requerimiento_hidrico"].ToString() : null;
                 }
                 else
                 {
@@ -250,13 +245,12 @@ namespace Agraria.Formularios
                 int? cicloVida = cmbCicloVida.SelectedValue != null ? (int?)Convert.ToInt32(cmbCicloVida.SelectedValue) : null;
                 int? metodoSiembra = cmbMetodoSiembra.SelectedValue != null ? (int?)Convert.ToInt32(cmbMetodoSiembra.SelectedValue) : null;
                 int? estadoFenologico = cmbEstadoFenologico.SelectedValue != null ? (int?)Convert.ToInt32(cmbEstadoFenologico.SelectedValue) : null;
-                string reqHidrico = cmbRequerimientosHidrico.SelectedValue != null ? cmbRequerimientosHidrico.SelectedValue.ToString() : null;
-                bll.Guardar(idVegetalFinal, nombreComun, nombreCientifico, variedad, tipoCultivo, cicloVida, periodosiembra, metodoSiembra, estadoFenologico, reqHidrico, esModificacion);
-
+                string reqHidrico = string.IsNullOrWhiteSpace(cmbRequerimientosHidrico.Text) ? null : cmbRequerimientosHidrico.Text.Trim();
+                bll.Guardar(idVegetalFinal, nombreComun, nombreCientifico, variedad,tipoCultivo, cicloVida, periodosiembra, metodoSiembra, estadoFenologico, reqHidrico, esModificacion);
                 MessageBox.Show("Datos guardados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
-            }
+            } 
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
