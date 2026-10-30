@@ -292,6 +292,7 @@
             // 
             // txtVariedadHibrido
             // 
+            txtVariedadHibrido.BorderStyle = BorderStyle.FixedSingle;
             txtVariedadHibrido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtVariedadHibrido.Location = new Point(34, 376);
             txtVariedadHibrido.Margin = new Padding(2, 3, 2, 3);
@@ -302,6 +303,7 @@
             // 
             // txtNombreCientifico
             // 
+            txtNombreCientifico.BorderStyle = BorderStyle.FixedSingle;
             txtNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombreCientifico.Location = new Point(34, 289);
             txtNombreCientifico.Margin = new Padding(2, 3, 2, 3);
@@ -312,6 +314,7 @@
             // 
             // txtNombreComun
             // 
+            txtNombreComun.BorderStyle = BorderStyle.FixedSingle;
             txtNombreComun.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombreComun.Location = new Point(34, 202);
             txtNombreComun.Margin = new Padding(2, 3, 2, 3);
@@ -322,6 +325,7 @@
             // 
             // txtCodigoVegetal
             // 
+            txtCodigoVegetal.BorderStyle = BorderStyle.FixedSingle;
             txtCodigoVegetal.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtCodigoVegetal.Location = new Point(34, 101);
             txtCodigoVegetal.Margin = new Padding(2, 3, 2, 3);
@@ -334,7 +338,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(1026, 646);
+            ClientSize = new Size(1044, 693);
             Controls.Add(chkVerano);
             Controls.Add(btnCancelar);
             Controls.Add(chkPrimavera);

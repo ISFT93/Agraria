@@ -265,6 +265,7 @@
             // 
             // txtNombre
             // 
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
             txtNombre.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             txtNombre.Location = new Point(191, 332);
             txtNombre.Margin = new Padding(2, 3, 2, 3);
@@ -275,6 +276,7 @@
             // 
             // txtCodigoBloque
             // 
+            txtCodigoBloque.BorderStyle = BorderStyle.FixedSingle;
             txtCodigoBloque.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             txtCodigoBloque.Location = new Point(16, 332);
             txtCodigoBloque.Margin = new Padding(2, 3, 2, 3);
@@ -285,6 +287,7 @@
             // 
             // txtCodigoStock
             // 
+            txtCodigoStock.BorderStyle = BorderStyle.FixedSingle;
             txtCodigoStock.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             txtCodigoStock.Location = new Point(380, 113);
             txtCodigoStock.Margin = new Padding(2, 3, 2, 3);
@@ -374,6 +377,7 @@
             // 
             // numPrecio
             // 
+            numPrecio.BorderStyle = BorderStyle.FixedSingle;
             numPrecio.DecimalPlaces = 2;
             numPrecio.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold);
             numPrecio.Location = new Point(16, 260);
@@ -410,7 +414,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(555, 586);
+            ClientSize = new Size(573, 633);
             Controls.Add(cmbDatos);
             Controls.Add(btnSearch);
             Controls.Add(numPrecio);

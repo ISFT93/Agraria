@@ -103,6 +103,7 @@
             // 
             // txtNombreComun
             // 
+            txtNombreComun.BorderStyle = BorderStyle.FixedSingle;
             txtNombreComun.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombreComun.Location = new Point(24, 237);
             txtNombreComun.Margin = new Padding(3, 4, 3, 4);
@@ -112,6 +113,7 @@
             // 
             // txtNombreCientifico
             // 
+            txtNombreCientifico.BorderStyle = BorderStyle.FixedSingle;
             txtNombreCientifico.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombreCientifico.Location = new Point(24, 319);
             txtNombreCientifico.Margin = new Padding(3, 4, 3, 4);
@@ -155,6 +157,7 @@
             // 
             // TxtCodigo
             // 
+            TxtCodigo.BorderStyle = BorderStyle.FixedSingle;
             TxtCodigo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             TxtCodigo.Location = new Point(24, 121);
             TxtCodigo.Margin = new Padding(3, 4, 3, 4);
@@ -206,6 +209,7 @@
             // 
             // txtStock
             // 
+            txtStock.BorderStyle = BorderStyle.FixedSingle;
             txtStock.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtStock.Location = new Point(431, 401);
             txtStock.Margin = new Padding(3, 4, 3, 4);
@@ -218,7 +222,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(776, 547);
+            ClientSize = new Size(794, 594);
             Controls.Add(BtnCancelar);
             Controls.Add(BtnAceptar);
             Controls.Add(TxtCodigo);

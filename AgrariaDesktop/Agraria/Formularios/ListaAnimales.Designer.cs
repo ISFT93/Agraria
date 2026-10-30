@@ -64,17 +64,17 @@
             panel1.Controls.Add(LblBuscar);
             panel1.Controls.Add(label9);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
+            panel1.Location = new Point(3, 85);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(850, 114);
+            panel1.Size = new Size(965, 152);
             panel1.TabIndex = 22;
             // 
             // BtnBuscar
             // 
-            BtnBuscar.Location = new Point(750, 72);
-            BtnBuscar.Margin = new Padding(3, 2, 3, 2);
+            BtnBuscar.Location = new Point(857, 96);
             BtnBuscar.Name = "BtnBuscar";
-            BtnBuscar.Size = new Size(75, 23);
+            BtnBuscar.Size = new Size(86, 31);
             BtnBuscar.TabIndex = 37;
             BtnBuscar.Text = "&Buscar";
             BtnBuscar.UseVisualStyleBackColor = true;
@@ -84,9 +84,10 @@
             // 
             CbFiltrar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             CbFiltrar.FormattingEnabled = true;
-            CbFiltrar.Location = new Point(116, 25);
+            CbFiltrar.Location = new Point(133, 33);
+            CbFiltrar.Margin = new Padding(3, 4, 3, 4);
             CbFiltrar.Name = "CbFiltrar";
-            CbFiltrar.Size = new Size(187, 32);
+            CbFiltrar.Size = new Size(213, 37);
             CbFiltrar.TabIndex = 35;
             // 
             // label1
@@ -94,26 +95,28 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(4, 28);
+            label1.Location = new Point(5, 37);
             label1.Name = "label1";
-            label1.Size = new Size(100, 24);
+            label1.Size = new Size(128, 29);
             label1.TabIndex = 34;
             label1.Text = "Filtrar por";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(157, 11);
+            label2.Location = new Point(179, 15);
             label2.Name = "label2";
-            label2.Size = new Size(0, 15);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 33;
             // 
             // TxtNombre
             // 
+            TxtNombre.BorderStyle = BorderStyle.FixedSingle;
             TxtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            TxtNombre.Location = new Point(95, 64);
+            TxtNombre.Location = new Point(109, 85);
+            TxtNombre.Margin = new Padding(3, 4, 3, 4);
             TxtNombre.Name = "TxtNombre";
-            TxtNombre.Size = new Size(376, 29);
+            TxtNombre.Size = new Size(429, 34);
             TxtNombre.TabIndex = 32;
             // 
             // LblBuscar
@@ -121,28 +124,28 @@
             LblBuscar.AutoSize = true;
             LblBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             LblBuscar.ForeColor = Color.White;
-            LblBuscar.Location = new Point(4, 64);
+            LblBuscar.Location = new Point(5, 85);
             LblBuscar.Name = "LblBuscar";
-            LblBuscar.Size = new Size(85, 24);
+            LblBuscar.Size = new Size(107, 29);
             LblBuscar.TabIndex = 31;
             LblBuscar.Text = "Nombre";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(157, 46);
+            label9.Location = new Point(179, 61);
             label9.Name = "label9";
-            label9.Size = new Size(0, 15);
+            label9.Size = new Size(0, 20);
             label9.TabIndex = 29;
             // 
             // panel2
             // 
             panel2.Controls.Add(DtgAnimal);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 114);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(3, 237);
+            panel2.Margin = new Padding(3, 5, 3, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(719, 266);
+            panel2.Size = new Size(815, 266);
             panel2.TabIndex = 23;
             // 
             // DtgAnimal
@@ -171,6 +174,7 @@
             DtgAnimal.Dock = DockStyle.Fill;
             DtgAnimal.EnableHeadersVisualStyles = false;
             DtgAnimal.Location = new Point(0, 0);
+            DtgAnimal.Margin = new Padding(3, 4, 3, 4);
             DtgAnimal.Name = "DtgAnimal";
             DtgAnimal.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -183,7 +187,7 @@
             DtgAnimal.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             DtgAnimal.RowHeadersWidth = 51;
             DtgAnimal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DtgAnimal.Size = new Size(719, 266);
+            DtgAnimal.Size = new Size(815, 266);
             DtgAnimal.TabIndex = 26;
             // 
             // panel3
@@ -193,17 +197,17 @@
             panel3.Controls.Add(BtnSalir);
             panel3.Controls.Add(BtnNuevo);
             panel3.Dock = DockStyle.Right;
-            panel3.Location = new Point(719, 114);
+            panel3.Location = new Point(818, 237);
+            panel3.Margin = new Padding(3, 4, 3, 4);
             panel3.Name = "panel3";
-            panel3.Size = new Size(131, 266);
+            panel3.Size = new Size(150, 266);
             panel3.TabIndex = 24;
             // 
             // BtnImprimir
             // 
-            BtnImprimir.Location = new Point(31, 71);
-            BtnImprimir.Margin = new Padding(3, 2, 3, 2);
+            BtnImprimir.Location = new Point(35, 95);
             BtnImprimir.Name = "BtnImprimir";
-            BtnImprimir.Size = new Size(75, 23);
+            BtnImprimir.Size = new Size(86, 31);
             BtnImprimir.TabIndex = 46;
             BtnImprimir.Text = "Im&primir";
             BtnImprimir.UseVisualStyleBackColor = true;
@@ -211,10 +215,9 @@
             // 
             // BtnModificar
             // 
-            BtnModificar.Location = new Point(31, 43);
-            BtnModificar.Margin = new Padding(3, 2, 3, 2);
+            BtnModificar.Location = new Point(35, 57);
             BtnModificar.Name = "BtnModificar";
-            BtnModificar.Size = new Size(75, 23);
+            BtnModificar.Size = new Size(86, 31);
             BtnModificar.TabIndex = 46;
             BtnModificar.Text = "&Modificar";
             BtnModificar.UseVisualStyleBackColor = true;
@@ -222,10 +225,9 @@
             // 
             // BtnSalir
             // 
-            BtnSalir.Location = new Point(31, 232);
-            BtnSalir.Margin = new Padding(3, 2, 3, 2);
+            BtnSalir.Location = new Point(35, 309);
             BtnSalir.Name = "BtnSalir";
-            BtnSalir.Size = new Size(75, 23);
+            BtnSalir.Size = new Size(86, 31);
             BtnSalir.TabIndex = 46;
             BtnSalir.Text = "&Salir";
             BtnSalir.UseVisualStyleBackColor = true;
@@ -233,10 +235,9 @@
             // 
             // BtnNuevo
             // 
-            BtnNuevo.Location = new Point(31, 15);
-            BtnNuevo.Margin = new Padding(3, 2, 3, 2);
+            BtnNuevo.Location = new Point(35, 20);
             BtnNuevo.Name = "BtnNuevo";
-            BtnNuevo.Size = new Size(75, 23);
+            BtnNuevo.Size = new Size(86, 31);
             BtnNuevo.TabIndex = 46;
             BtnNuevo.Text = "&Nuevo";
             BtnNuevo.UseVisualStyleBackColor = true;
@@ -244,14 +245,16 @@
             // 
             // ListaAnimales
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(850, 380);
+            ClientSize = new Size(971, 507);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "ListaAnimales";
+            Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Reino Animal";
             Load += FormAnimal_Load;

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             panel1 = new Panel();
             btnNuevo = new Button();
             btnModificar = new Button();
@@ -57,17 +57,18 @@
             panel1.Controls.Add(btnImprimir);
             panel1.Controls.Add(btnSalir);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(719, 114);
-            panel1.Margin = new Padding(2);
+            panel1.Location = new Point(818, 237);
+            panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(131, 263);
+            panel1.Size = new Size(150, 262);
             panel1.TabIndex = 0;
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(37, 14);
+            btnNuevo.Location = new Point(42, 19);
+            btnNuevo.Margin = new Padding(3, 4, 3, 4);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(75, 23);
+            btnNuevo.Size = new Size(86, 31);
             btnNuevo.TabIndex = 4;
             btnNuevo.Text = "&Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
@@ -75,9 +76,10 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(37, 44);
+            btnModificar.Location = new Point(42, 59);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(75, 23);
+            btnModificar.Size = new Size(86, 31);
             btnModificar.TabIndex = 5;
             btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -85,9 +87,10 @@
             // 
             // btnImprimir
             // 
-            btnImprimir.Location = new Point(37, 73);
+            btnImprimir.Location = new Point(42, 97);
+            btnImprimir.Margin = new Padding(3, 4, 3, 4);
             btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new Size(75, 23);
+            btnImprimir.Size = new Size(86, 31);
             btnImprimir.TabIndex = 6;
             btnImprimir.Text = "Im&primir";
             btnImprimir.UseVisualStyleBackColor = true;
@@ -95,9 +98,10 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(37, 230);
+            btnSalir.Location = new Point(42, 307);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(86, 31);
             btnSalir.TabIndex = 7;
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -111,18 +115,19 @@
             panel2.Controls.Add(laaa);
             panel2.Controls.Add(txtBuscar);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(2);
+            panel2.Location = new Point(3, 85);
+            panel2.Margin = new Padding(2, 3, 2, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(850, 114);
+            panel2.Size = new Size(965, 152);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(756, 76);
+            btnBuscar.Location = new Point(864, 101);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.Size = new Size(86, 31);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "&Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -133,10 +138,9 @@
             cmbFiltrarPor.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbFiltrarPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbFiltrarPor.FormattingEnabled = true;
-            cmbFiltrarPor.Location = new Point(162, 23);
-            cmbFiltrarPor.Margin = new Padding(3, 2, 3, 2);
+            cmbFiltrarPor.Location = new Point(203, 27);
             cmbFiltrarPor.Name = "cmbFiltrarPor";
-            cmbFiltrarPor.Size = new Size(177, 32);
+            cmbFiltrarPor.Size = new Size(202, 37);
             cmbFiltrarPor.TabIndex = 1;
             cmbFiltrarPor.SelectedIndexChanged += cmbFiltrarPor_SelectedIndexChanged;
             // 
@@ -145,9 +149,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(5, 26);
+            label1.Location = new Point(6, 35);
             label1.Name = "label1";
-            label1.Size = new Size(151, 24);
+            label1.Size = new Size(191, 29);
             label1.TabIndex = 17;
             label1.Text = "Tipo de Cultivo";
             // 
@@ -156,30 +160,31 @@
             laaa.AutoSize = true;
             laaa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             laaa.ForeColor = Color.White;
-            laaa.Location = new Point(5, 67);
+            laaa.Location = new Point(6, 89);
             laaa.Name = "laaa";
-            laaa.Size = new Size(85, 24);
+            laaa.Size = new Size(107, 29);
             laaa.TabIndex = 16;
             laaa.Text = "Nombre";
             // 
             // txtBuscar
             // 
+            txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(109, 62);
-            txtBuscar.Margin = new Padding(2);
+            txtBuscar.Location = new Point(125, 83);
+            txtBuscar.Margin = new Padding(2, 3, 2, 3);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(399, 29);
+            txtBuscar.Size = new Size(455, 34);
             txtBuscar.TabIndex = 2;
             // 
             // panel3
             // 
             panel3.Controls.Add(dtgvListarVegetales);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 114);
-            panel3.Margin = new Padding(2);
+            panel3.Location = new Point(3, 237);
+            panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(719, 263);
+            panel3.Size = new Size(815, 262);
             panel3.TabIndex = 2;
             // 
             // dtgvListarVegetales
@@ -188,54 +193,55 @@
             dtgvListarVegetales.AllowUserToResizeColumns = false;
             dtgvListarVegetales.AllowUserToResizeRows = false;
             dtgvListarVegetales.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.MediumSeaGreen;
-            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dtgvListarVegetales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.MediumSeaGreen;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dtgvListarVegetales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dtgvListarVegetales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgvListarVegetales.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dtgvListarVegetales.DefaultCellStyle = dataGridViewCellStyle5;
             dtgvListarVegetales.Dock = DockStyle.Fill;
             dtgvListarVegetales.EnableHeadersVisualStyles = false;
             dtgvListarVegetales.Location = new Point(0, 0);
-            dtgvListarVegetales.Margin = new Padding(2);
+            dtgvListarVegetales.Margin = new Padding(2, 3, 2, 3);
             dtgvListarVegetales.Name = "dtgvListarVegetales";
             dtgvListarVegetales.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvListarVegetales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = SystemColors.Control;
+            dataGridViewCellStyle6.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
+            dtgvListarVegetales.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgvListarVegetales.RowHeadersWidth = 62;
             dtgvListarVegetales.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvListarVegetales.Size = new Size(719, 263);
+            dtgvListarVegetales.Size = new Size(815, 262);
             dtgvListarVegetales.TabIndex = 0;
             dtgvListarVegetales.CellFormatting += dtgvListarVegetales_CellFormatting;
             // 
             // ListarVegetales
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(850, 377);
+            ClientSize = new Size(971, 503);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "ListarVegetales";
+            Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ListarVegetales";
             Load += ListarVegetales_Load;

@@ -55,17 +55,18 @@
             panel1.Controls.Add(btnImprimir);
             panel1.Controls.Add(btnSalir);
             panel1.Dock = DockStyle.Right;
-            panel1.Location = new Point(719, 114);
-            panel1.Margin = new Padding(2);
+            panel1.Location = new Point(818, 237);
+            panel1.Margin = new Padding(2, 3, 2, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(131, 263);
+            panel1.Size = new Size(150, 262);
             panel1.TabIndex = 0;
             // 
             // btnNuevo
             // 
-            btnNuevo.Location = new Point(37, 14);
+            btnNuevo.Location = new Point(42, 19);
+            btnNuevo.Margin = new Padding(3, 4, 3, 4);
             btnNuevo.Name = "btnNuevo";
-            btnNuevo.Size = new Size(75, 23);
+            btnNuevo.Size = new Size(86, 31);
             btnNuevo.TabIndex = 4;
             btnNuevo.Text = "&Nuevo";
             btnNuevo.UseVisualStyleBackColor = true;
@@ -73,9 +74,10 @@
             // 
             // btnModificar
             // 
-            btnModificar.Location = new Point(37, 44);
+            btnModificar.Location = new Point(42, 59);
+            btnModificar.Margin = new Padding(3, 4, 3, 4);
             btnModificar.Name = "btnModificar";
-            btnModificar.Size = new Size(75, 23);
+            btnModificar.Size = new Size(86, 31);
             btnModificar.TabIndex = 5;
             btnModificar.Text = "&Modificar";
             btnModificar.UseVisualStyleBackColor = true;
@@ -83,9 +85,10 @@
             // 
             // btnImprimir
             // 
-            btnImprimir.Location = new Point(37, 73);
+            btnImprimir.Location = new Point(42, 97);
+            btnImprimir.Margin = new Padding(3, 4, 3, 4);
             btnImprimir.Name = "btnImprimir";
-            btnImprimir.Size = new Size(75, 23);
+            btnImprimir.Size = new Size(86, 31);
             btnImprimir.TabIndex = 6;
             btnImprimir.Text = "Im&primir";
             btnImprimir.UseVisualStyleBackColor = true;
@@ -93,9 +96,10 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(37, 230);
+            btnSalir.Location = new Point(42, 307);
+            btnSalir.Margin = new Padding(3, 4, 3, 4);
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(75, 23);
+            btnSalir.Size = new Size(86, 31);
             btnSalir.TabIndex = 7;
             btnSalir.Text = "&Salir";
             btnSalir.UseVisualStyleBackColor = true;
@@ -107,18 +111,19 @@
             panel2.Controls.Add(laaa);
             panel2.Controls.Add(txtBuscar);
             panel2.Dock = DockStyle.Top;
-            panel2.Location = new Point(0, 0);
-            panel2.Margin = new Padding(2);
+            panel2.Location = new Point(3, 85);
+            panel2.Margin = new Padding(2, 3, 2, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(850, 114);
+            panel2.Size = new Size(965, 152);
             panel2.TabIndex = 1;
             panel2.Paint += panel2_Paint;
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(756, 76);
+            btnBuscar.Location = new Point(864, 101);
+            btnBuscar.Margin = new Padding(3, 4, 3, 4);
             btnBuscar.Name = "btnBuscar";
-            btnBuscar.Size = new Size(75, 23);
+            btnBuscar.Size = new Size(86, 31);
             btnBuscar.TabIndex = 3;
             btnBuscar.Text = "&Buscar";
             btnBuscar.UseVisualStyleBackColor = true;
@@ -129,30 +134,31 @@
             laaa.AutoSize = true;
             laaa.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             laaa.ForeColor = Color.White;
-            laaa.Location = new Point(4, 75);
+            laaa.Location = new Point(5, 100);
             laaa.Name = "laaa";
-            laaa.Size = new Size(85, 24);
+            laaa.Size = new Size(107, 29);
             laaa.TabIndex = 16;
             laaa.Text = "Nombre";
             // 
             // txtBuscar
             // 
+            txtBuscar.BorderStyle = BorderStyle.FixedSingle;
             txtBuscar.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtBuscar.Location = new Point(94, 70);
-            txtBuscar.Margin = new Padding(2);
+            txtBuscar.Location = new Point(117, 95);
+            txtBuscar.Margin = new Padding(2, 3, 2, 3);
             txtBuscar.MaxLength = 40;
             txtBuscar.Name = "txtBuscar";
-            txtBuscar.Size = new Size(399, 29);
+            txtBuscar.Size = new Size(455, 34);
             txtBuscar.TabIndex = 2;
             // 
             // panel3
             // 
             panel3.Controls.Add(dtgvListarCiclos);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 114);
-            panel3.Margin = new Padding(2);
+            panel3.Location = new Point(3, 237);
+            panel3.Margin = new Padding(2, 3, 2, 3);
             panel3.Name = "panel3";
-            panel3.Size = new Size(719, 263);
+            panel3.Size = new Size(815, 262);
             panel3.TabIndex = 2;
             // 
             // dtgvListarCiclos
@@ -181,7 +187,7 @@
             dtgvListarCiclos.Dock = DockStyle.Fill;
             dtgvListarCiclos.EnableHeadersVisualStyles = false;
             dtgvListarCiclos.Location = new Point(0, 0);
-            dtgvListarCiclos.Margin = new Padding(2);
+            dtgvListarCiclos.Margin = new Padding(2, 3, 2, 3);
             dtgvListarCiclos.Name = "dtgvListarCiclos";
             dtgvListarCiclos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -194,21 +200,22 @@
             dtgvListarCiclos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvListarCiclos.RowHeadersWidth = 62;
             dtgvListarCiclos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvListarCiclos.Size = new Size(719, 263);
+            dtgvListarCiclos.Size = new Size(815, 262);
             dtgvListarCiclos.TabIndex = 0;
             dtgvListarCiclos.CellFormatting += dtgvListarVegetales_CellFormatting;
             // 
             // ListarCiclos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(850, 377);
+            ClientSize = new Size(971, 503);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "ListarCiclos";
+            Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ListarCiclos";
             Load += ListarCiclos_Load;

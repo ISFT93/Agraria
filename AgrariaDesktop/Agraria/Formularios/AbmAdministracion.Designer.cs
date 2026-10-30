@@ -109,21 +109,19 @@
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(3, 2, 3, 2);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(984, 661);
+            tabControl1.Size = new Size(1125, 881);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
             tabPage1.BackColor = Color.FromArgb(141, 181, 146);
             tabPage1.Controls.Add(groupBox1);
-            tabPage1.Location = new Point(4, 33);
-            tabPage1.Margin = new Padding(3, 2, 3, 2);
+            tabPage1.Location = new Point(4, 38);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 2, 3, 2);
-            tabPage1.Size = new Size(976, 624);
+            tabPage1.Padding = new Padding(3, 3, 3, 3);
+            tabPage1.Size = new Size(1117, 839);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Alta de Usuario";
             // 
@@ -141,11 +139,9 @@
             groupBox1.Controls.Add(cmbPartido);
             groupBox1.Controls.Add(label2);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(5, 4);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(6, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(814, 150);
+            groupBox1.Size = new Size(930, 200);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Localidad y Partido:";
@@ -153,19 +149,19 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(443, 38);
+            label12.Location = new Point(506, 51);
             label12.Name = "label12";
-            label12.Size = new Size(145, 24);
+            label12.Size = new Size(185, 29);
             label12.TabIndex = 0;
             label12.Text = "Codigo Postal:";
             // 
             // txtCodigoPostal
             // 
-            txtCodigoPostal.Location = new Point(594, 38);
-            txtCodigoPostal.Margin = new Padding(3, 2, 3, 2);
+            txtCodigoPostal.BorderStyle = BorderStyle.FixedSingle;
+            txtCodigoPostal.Location = new Point(697, 51);
             txtCodigoPostal.MaxLength = 10;
             txtCodigoPostal.Name = "txtCodigoPostal";
-            txtCodigoPostal.Size = new Size(142, 29);
+            txtCodigoPostal.Size = new Size(162, 34);
             txtCodigoPostal.TabIndex = 1;
             // 
             // btnLimpiarLocalidadPartido
@@ -173,30 +169,29 @@
             btnLimpiarLocalidadPartido.BackColor = Color.White;
             btnLimpiarLocalidadPartido.FlatStyle = FlatStyle.Flat;
             btnLimpiarLocalidadPartido.ForeColor = Color.Green;
-            btnLimpiarLocalidadPartido.Location = new Point(381, 107);
-            btnLimpiarLocalidadPartido.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiarLocalidadPartido.Location = new Point(435, 143);
             btnLimpiarLocalidadPartido.Name = "btnLimpiarLocalidadPartido";
-            btnLimpiarLocalidadPartido.Size = new Size(168, 29);
+            btnLimpiarLocalidadPartido.Size = new Size(192, 39);
             btnLimpiarLocalidadPartido.TabIndex = 2;
             btnLimpiarLocalidadPartido.Text = "Limpiar";
             btnLimpiarLocalidadPartido.UseVisualStyleBackColor = false;
             // 
             // txtLocalidad
             // 
-            txtLocalidad.Location = new Point(266, 33);
-            txtLocalidad.Margin = new Padding(3, 2, 3, 2);
+            txtLocalidad.BorderStyle = BorderStyle.FixedSingle;
+            txtLocalidad.Location = new Point(304, 44);
             txtLocalidad.MaxLength = 40;
             txtLocalidad.Name = "txtLocalidad";
-            txtLocalidad.Size = new Size(142, 29);
+            txtLocalidad.Size = new Size(162, 34);
             txtLocalidad.TabIndex = 3;
             // 
             // txtPartido
             // 
-            txtPartido.Location = new Point(266, 76);
-            txtPartido.Margin = new Padding(3, 2, 3, 2);
+            txtPartido.BorderStyle = BorderStyle.FixedSingle;
+            txtPartido.Location = new Point(304, 101);
             txtPartido.MaxLength = 40;
             txtPartido.Name = "txtPartido";
-            txtPartido.Size = new Size(142, 29);
+            txtPartido.Size = new Size(162, 34);
             txtPartido.TabIndex = 4;
             // 
             // btnGuardarUsuario
@@ -204,10 +199,9 @@
             btnGuardarUsuario.BackColor = Color.White;
             btnGuardarUsuario.FlatStyle = FlatStyle.Flat;
             btnGuardarUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnGuardarUsuario.Location = new Point(691, 107);
-            btnGuardarUsuario.Margin = new Padding(3, 2, 3, 2);
+            btnGuardarUsuario.Location = new Point(790, 143);
             btnGuardarUsuario.Name = "btnGuardarUsuario";
-            btnGuardarUsuario.Size = new Size(110, 31);
+            btnGuardarUsuario.Size = new Size(126, 41);
             btnGuardarUsuario.TabIndex = 5;
             btnGuardarUsuario.Text = "Guardar";
             btnGuardarUsuario.UseVisualStyleBackColor = false;
@@ -217,10 +211,9 @@
             btnModificarUsuario.BackColor = Color.White;
             btnModificarUsuario.FlatStyle = FlatStyle.Flat;
             btnModificarUsuario.ForeColor = Color.FromArgb(56, 124, 31);
-            btnModificarUsuario.Location = new Point(555, 107);
-            btnModificarUsuario.Margin = new Padding(3, 2, 3, 2);
+            btnModificarUsuario.Location = new Point(634, 143);
             btnModificarUsuario.Name = "btnModificarUsuario";
-            btnModificarUsuario.Size = new Size(131, 30);
+            btnModificarUsuario.Size = new Size(150, 40);
             btnModificarUsuario.TabIndex = 6;
             btnModificarUsuario.Text = "Modificar";
             btnModificarUsuario.UseVisualStyleBackColor = false;
@@ -229,18 +222,17 @@
             // 
             cmbLocalidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbLocalidad.FormattingEnabled = true;
-            cmbLocalidad.Location = new Point(110, 31);
-            cmbLocalidad.Margin = new Padding(3, 2, 3, 2);
+            cmbLocalidad.Location = new Point(126, 41);
             cmbLocalidad.Name = "cmbLocalidad";
-            cmbLocalidad.Size = new Size(142, 32);
+            cmbLocalidad.Size = new Size(162, 37);
             cmbLocalidad.TabIndex = 7;
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(9, 33);
+            lblApellido.Location = new Point(10, 44);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(106, 24);
+            lblApellido.Size = new Size(134, 29);
             lblApellido.TabIndex = 8;
             lblApellido.Text = "Localidad:";
             // 
@@ -248,18 +240,17 @@
             // 
             cmbPartido.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPartido.FormattingEnabled = true;
-            cmbPartido.Location = new Point(110, 73);
-            cmbPartido.Margin = new Padding(3, 2, 3, 2);
+            cmbPartido.Location = new Point(126, 97);
             cmbPartido.Name = "cmbPartido";
-            cmbPartido.Size = new Size(142, 32);
+            cmbPartido.Size = new Size(162, 37);
             cmbPartido.TabIndex = 9;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(31, 76);
+            label2.Location = new Point(35, 101);
             label2.Name = "label2";
-            label2.Size = new Size(81, 24);
+            label2.Size = new Size(104, 29);
             label2.TabIndex = 10;
             label2.Text = "Partido:";
             // 
@@ -267,11 +258,10 @@
             // 
             tabPage2.BackColor = Color.FromArgb(141, 181, 146);
             tabPage2.Controls.Add(groupBox3);
-            tabPage2.Location = new Point(4, 33);
-            tabPage2.Margin = new Padding(3, 2, 3, 2);
+            tabPage2.Location = new Point(4, 38);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 2, 3, 2);
-            tabPage2.Size = new Size(976, 624);
+            tabPage2.Padding = new Padding(3, 3, 3, 3);
+            tabPage2.Size = new Size(1117, 839);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Entorno Formativo";
             // 
@@ -284,11 +274,9 @@
             groupBox3.Controls.Add(btnGuardarEntorno);
             groupBox3.Controls.Add(btnModificarEntorno);
             groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(5, 4);
-            groupBox3.Margin = new Padding(3, 2, 3, 2);
+            groupBox3.Location = new Point(6, 5);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(3, 2, 3, 2);
-            groupBox3.Size = new Size(814, 120);
+            groupBox3.Size = new Size(930, 160);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Entornos:";
@@ -298,39 +286,37 @@
             btnLimpiarEntornos.BackColor = Color.White;
             btnLimpiarEntornos.FlatStyle = FlatStyle.Flat;
             btnLimpiarEntornos.ForeColor = Color.Green;
-            btnLimpiarEntornos.Location = new Point(402, 85);
-            btnLimpiarEntornos.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiarEntornos.Location = new Point(459, 113);
             btnLimpiarEntornos.Name = "btnLimpiarEntornos";
-            btnLimpiarEntornos.Size = new Size(168, 29);
+            btnLimpiarEntornos.Size = new Size(192, 39);
             btnLimpiarEntornos.TabIndex = 0;
             btnLimpiarEntornos.Text = "Limpiar";
             btnLimpiarEntornos.UseVisualStyleBackColor = false;
             // 
             // txtTipoEntorno
             // 
-            txtTipoEntorno.Location = new Point(348, 37);
-            txtTipoEntorno.Margin = new Padding(3, 2, 3, 2);
+            txtTipoEntorno.BorderStyle = BorderStyle.FixedSingle;
+            txtTipoEntorno.Location = new Point(398, 49);
             txtTipoEntorno.MaxLength = 30;
             txtTipoEntorno.Name = "txtTipoEntorno";
-            txtTipoEntorno.Size = new Size(142, 29);
+            txtTipoEntorno.Size = new Size(162, 34);
             txtTipoEntorno.TabIndex = 1;
             // 
             // cmbTipoEntorno
             // 
             cmbTipoEntorno.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoEntorno.FormattingEnabled = true;
-            cmbTipoEntorno.Location = new Point(193, 35);
-            cmbTipoEntorno.Margin = new Padding(3, 2, 3, 2);
+            cmbTipoEntorno.Location = new Point(221, 47);
             cmbTipoEntorno.Name = "cmbTipoEntorno";
-            cmbTipoEntorno.Size = new Size(142, 32);
+            cmbTipoEntorno.Size = new Size(162, 37);
             cmbTipoEntorno.TabIndex = 2;
             // 
             // lblTipoEntorno
             // 
             lblTipoEntorno.AutoSize = true;
-            lblTipoEntorno.Location = new Point(18, 40);
+            lblTipoEntorno.Location = new Point(21, 53);
             lblTipoEntorno.Name = "lblTipoEntorno";
-            lblTipoEntorno.Size = new Size(168, 24);
+            lblTipoEntorno.Size = new Size(209, 29);
             lblTipoEntorno.TabIndex = 3;
             lblTipoEntorno.Text = "Tipo de Entorno:";
             // 
@@ -339,10 +325,9 @@
             btnGuardarEntorno.BackColor = Color.White;
             btnGuardarEntorno.FlatStyle = FlatStyle.Flat;
             btnGuardarEntorno.ForeColor = Color.FromArgb(56, 124, 31);
-            btnGuardarEntorno.Location = new Point(700, 85);
-            btnGuardarEntorno.Margin = new Padding(3, 2, 3, 2);
+            btnGuardarEntorno.Location = new Point(800, 113);
             btnGuardarEntorno.Name = "btnGuardarEntorno";
-            btnGuardarEntorno.Size = new Size(110, 31);
+            btnGuardarEntorno.Size = new Size(126, 41);
             btnGuardarEntorno.TabIndex = 4;
             btnGuardarEntorno.Text = "Guardar";
             btnGuardarEntorno.UseVisualStyleBackColor = false;
@@ -352,10 +337,9 @@
             btnModificarEntorno.BackColor = Color.White;
             btnModificarEntorno.FlatStyle = FlatStyle.Flat;
             btnModificarEntorno.ForeColor = Color.FromArgb(56, 124, 31);
-            btnModificarEntorno.Location = new Point(564, 85);
-            btnModificarEntorno.Margin = new Padding(3, 2, 3, 2);
+            btnModificarEntorno.Location = new Point(645, 113);
             btnModificarEntorno.Name = "btnModificarEntorno";
-            btnModificarEntorno.Size = new Size(131, 30);
+            btnModificarEntorno.Size = new Size(150, 40);
             btnModificarEntorno.TabIndex = 5;
             btnModificarEntorno.Text = "Modificar";
             btnModificarEntorno.UseVisualStyleBackColor = false;
@@ -364,11 +348,10 @@
             // 
             tabPage3.BackColor = Color.FromArgb(141, 181, 146);
             tabPage3.Controls.Add(groupBox4);
-            tabPage3.Location = new Point(4, 33);
-            tabPage3.Margin = new Padding(3, 2, 3, 2);
+            tabPage3.Location = new Point(4, 38);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 2, 3, 2);
-            tabPage3.Size = new Size(976, 624);
+            tabPage3.Padding = new Padding(3, 3, 3, 3);
+            tabPage3.Size = new Size(1117, 839);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Industria";
             // 
@@ -386,11 +369,9 @@
             groupBox4.Controls.Add(btnGuardarProducto);
             groupBox4.Controls.Add(btnModificarProducto);
             groupBox4.ForeColor = Color.White;
-            groupBox4.Location = new Point(5, 4);
-            groupBox4.Margin = new Padding(3, 2, 3, 2);
+            groupBox4.Location = new Point(6, 5);
             groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(3, 2, 3, 2);
-            groupBox4.Size = new Size(943, 365);
+            groupBox4.Size = new Size(1078, 487);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Industria:";
@@ -400,10 +381,9 @@
             btnLimpiarIndustria.BackColor = Color.White;
             btnLimpiarIndustria.FlatStyle = FlatStyle.Flat;
             btnLimpiarIndustria.ForeColor = Color.Green;
-            btnLimpiarIndustria.Location = new Point(540, 318);
-            btnLimpiarIndustria.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiarIndustria.Location = new Point(617, 424);
             btnLimpiarIndustria.Name = "btnLimpiarIndustria";
-            btnLimpiarIndustria.Size = new Size(131, 29);
+            btnLimpiarIndustria.Size = new Size(150, 39);
             btnLimpiarIndustria.TabIndex = 0;
             btnLimpiarIndustria.Text = "Limpiar";
             btnLimpiarIndustria.UseVisualStyleBackColor = false;
@@ -412,9 +392,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label5.Location = new Point(6, 75);
+            label5.Location = new Point(7, 100);
             label5.Name = "label5";
-            label5.Size = new Size(216, 24);
+            label5.Size = new Size(270, 29);
             label5.TabIndex = 1;
             label5.Text = "Nombre del Producto:";
             // 
@@ -422,64 +402,63 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            label4.Location = new Point(19, 121);
+            label4.Location = new Point(22, 161);
             label4.Name = "label4";
-            label4.Size = new Size(201, 24);
+            label4.Size = new Size(252, 29);
             label4.TabIndex = 2;
             label4.Text = "Precio del Producto:";
             // 
             // txtPrecioProducto
             // 
-            txtPrecioProducto.Location = new Point(226, 121);
-            txtPrecioProducto.Margin = new Padding(3, 2, 3, 2);
+            txtPrecioProducto.BorderStyle = BorderStyle.FixedSingle;
+            txtPrecioProducto.Location = new Point(283, 161);
             txtPrecioProducto.MaxLength = 10;
             txtPrecioProducto.Name = "txtPrecioProducto";
-            txtPrecioProducto.Size = new Size(142, 29);
+            txtPrecioProducto.Size = new Size(162, 34);
             txtPrecioProducto.TabIndex = 3;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(424, 29);
+            label3.Location = new Point(485, 39);
             label3.Name = "label3";
-            label3.Size = new Size(81, 24);
+            label3.Size = new Size(102, 29);
             label3.TabIndex = 4;
             label3.Text = "Receta:";
             // 
             // txtReceta
             // 
-            txtReceta.Location = new Point(511, 26);
-            txtReceta.Margin = new Padding(3, 2, 3, 2);
+            txtReceta.BorderStyle = BorderStyle.FixedSingle;
+            txtReceta.Location = new Point(584, 35);
             txtReceta.Multiline = true;
             txtReceta.Name = "txtReceta";
-            txtReceta.Size = new Size(412, 226);
+            txtReceta.Size = new Size(470, 300);
             txtReceta.TabIndex = 5;
             // 
             // txtProducto
             // 
-            txtProducto.Location = new Point(226, 75);
-            txtProducto.Margin = new Padding(3, 2, 3, 2);
+            txtProducto.BorderStyle = BorderStyle.FixedSingle;
+            txtProducto.Location = new Point(283, 100);
             txtProducto.MaxLength = 30;
             txtProducto.Name = "txtProducto";
-            txtProducto.Size = new Size(142, 29);
+            txtProducto.Size = new Size(162, 34);
             txtProducto.TabIndex = 6;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(21, 29);
+            label1.Location = new Point(24, 39);
             label1.Name = "label1";
-            label1.Size = new Size(201, 24);
+            label1.Size = new Size(250, 29);
             label1.TabIndex = 7;
             label1.Text = "Producto a producir:";
             // 
             // cmbProducto
             // 
             cmbProducto.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbProducto.Location = new Point(228, 26);
-            cmbProducto.Margin = new Padding(3, 2, 3, 2);
+            cmbProducto.Location = new Point(283, 39);
             cmbProducto.Name = "cmbProducto";
-            cmbProducto.Size = new Size(142, 32);
+            cmbProducto.Size = new Size(162, 37);
             cmbProducto.TabIndex = 8;
             // 
             // btnGuardarProducto
@@ -487,10 +466,9 @@
             btnGuardarProducto.BackColor = Color.White;
             btnGuardarProducto.FlatStyle = FlatStyle.Flat;
             btnGuardarProducto.ForeColor = Color.FromArgb(56, 124, 31);
-            btnGuardarProducto.Location = new Point(813, 318);
-            btnGuardarProducto.Margin = new Padding(3, 2, 3, 2);
+            btnGuardarProducto.Location = new Point(929, 424);
             btnGuardarProducto.Name = "btnGuardarProducto";
-            btnGuardarProducto.Size = new Size(110, 31);
+            btnGuardarProducto.Size = new Size(126, 41);
             btnGuardarProducto.TabIndex = 9;
             btnGuardarProducto.Text = "Guardar";
             btnGuardarProducto.UseVisualStyleBackColor = false;
@@ -500,10 +478,9 @@
             btnModificarProducto.BackColor = Color.White;
             btnModificarProducto.FlatStyle = FlatStyle.Flat;
             btnModificarProducto.ForeColor = Color.FromArgb(56, 124, 31);
-            btnModificarProducto.Location = new Point(677, 318);
-            btnModificarProducto.Margin = new Padding(3, 2, 3, 2);
+            btnModificarProducto.Location = new Point(774, 424);
             btnModificarProducto.Name = "btnModificarProducto";
-            btnModificarProducto.Size = new Size(131, 30);
+            btnModificarProducto.Size = new Size(150, 40);
             btnModificarProducto.TabIndex = 10;
             btnModificarProducto.Text = "Modificar";
             btnModificarProducto.UseVisualStyleBackColor = false;
@@ -514,11 +491,10 @@
             tabPage4.Controls.Add(btnImprimirProveedores);
             tabPage4.Controls.Add(groupBox5);
             tabPage4.Controls.Add(groupBox6);
-            tabPage4.Location = new Point(4, 33);
-            tabPage4.Margin = new Padding(3, 2, 3, 2);
+            tabPage4.Location = new Point(4, 38);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 2, 3, 2);
-            tabPage4.Size = new Size(976, 624);
+            tabPage4.Padding = new Padding(3, 3, 3, 3);
+            tabPage4.Size = new Size(1117, 839);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Inventario";
             // 
@@ -527,10 +503,9 @@
             btnImprimirProveedores.BackColor = Color.AliceBlue;
             btnImprimirProveedores.FlatStyle = FlatStyle.Flat;
             btnImprimirProveedores.ForeColor = Color.FromArgb(56, 124, 31);
-            btnImprimirProveedores.Location = new Point(817, 570);
-            btnImprimirProveedores.Margin = new Padding(3, 2, 3, 2);
+            btnImprimirProveedores.Location = new Point(934, 760);
             btnImprimirProveedores.Name = "btnImprimirProveedores";
-            btnImprimirProveedores.Size = new Size(131, 30);
+            btnImprimirProveedores.Size = new Size(150, 40);
             btnImprimirProveedores.TabIndex = 0;
             btnImprimirProveedores.Text = "Imprimir";
             btnImprimirProveedores.UseVisualStyleBackColor = false;
@@ -544,11 +519,9 @@
             groupBox5.Controls.Add(label10);
             groupBox5.Controls.Add(txtEmail);
             groupBox5.ForeColor = Color.White;
-            groupBox5.Location = new Point(3, 4);
-            groupBox5.Margin = new Padding(3, 2, 3, 2);
+            groupBox5.Location = new Point(3, 5);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(3, 2, 3, 2);
-            groupBox5.Size = new Size(945, 562);
+            groupBox5.Size = new Size(1080, 749);
             groupBox5.TabIndex = 3;
             groupBox5.TabStop = false;
             groupBox5.Text = "Proveedores:";
@@ -558,10 +531,9 @@
             btnLimpiarProveedores.BackColor = Color.White;
             btnLimpiarProveedores.FlatStyle = FlatStyle.Flat;
             btnLimpiarProveedores.ForeColor = Color.Green;
-            btnLimpiarProveedores.Location = new Point(407, 112);
-            btnLimpiarProveedores.Margin = new Padding(3, 2, 3, 2);
+            btnLimpiarProveedores.Location = new Point(465, 149);
             btnLimpiarProveedores.Name = "btnLimpiarProveedores";
-            btnLimpiarProveedores.Size = new Size(169, 29);
+            btnLimpiarProveedores.Size = new Size(193, 39);
             btnLimpiarProveedores.TabIndex = 0;
             btnLimpiarProveedores.Text = "Limpiar";
             btnLimpiarProveedores.UseVisualStyleBackColor = false;
@@ -571,53 +543,49 @@
             dtgProveedores.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgProveedores.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgProveedores.Dock = DockStyle.Bottom;
-            dtgProveedores.Location = new Point(3, 226);
-            dtgProveedores.Margin = new Padding(3, 2, 3, 2);
+            dtgProveedores.Location = new Point(3, 301);
             dtgProveedores.Name = "dtgProveedores";
-            dtgProveedores.Size = new Size(939, 334);
+            dtgProveedores.RowHeadersWidth = 51;
+            dtgProveedores.Size = new Size(1074, 445);
             dtgProveedores.TabIndex = 65;
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(61, 68);
+            label11.Location = new Point(70, 91);
             label11.Name = "label11";
-            label11.Size = new Size(105, 24);
+            label11.Size = new Size(131, 29);
             label11.TabIndex = 66;
             label11.Text = "Direccion:";
             // 
             // txtDireccion
             // 
-            txtDireccion.Location = new Point(178, 64);
-            txtDireccion.Margin = new Padding(3, 2, 3, 2);
+            txtDireccion.Location = new Point(203, 85);
             txtDireccion.Name = "txtDireccion";
-            txtDireccion.Size = new Size(244, 29);
+            txtDireccion.Size = new Size(278, 34);
             txtDireccion.TabIndex = 67;
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(94, 34);
+            label10.Location = new Point(107, 45);
             label10.Name = "label10";
-            label10.Size = new Size(68, 24);
+            label10.Size = new Size(86, 29);
             label10.TabIndex = 68;
             label10.Text = "Email:";
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(178, 31);
-            txtEmail.Margin = new Padding(3, 2, 3, 2);
+            txtEmail.Location = new Point(203, 41);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(244, 29);
+            txtEmail.Size = new Size(278, 34);
             txtEmail.TabIndex = 69;
             // 
             // groupBox6
             // 
             groupBox6.Location = new Point(0, 0);
-            groupBox6.Margin = new Padding(3, 2, 3, 2);
             groupBox6.Name = "groupBox6";
-            groupBox6.Padding = new Padding(3, 2, 3, 2);
-            groupBox6.Size = new Size(175, 75);
+            groupBox6.Size = new Size(200, 100);
             groupBox6.TabIndex = 4;
             groupBox6.TabStop = false;
             // 
@@ -632,7 +600,7 @@
             // 
             txtTelefono.Location = new Point(0, 0);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(100, 23);
+            txtTelefono.Size = new Size(100, 27);
             txtTelefono.TabIndex = 0;
             // 
             // label7
@@ -646,7 +614,7 @@
             // 
             txtRazonSocial.Location = new Point(0, 0);
             txtRazonSocial.Name = "txtRazonSocial";
-            txtRazonSocial.Size = new Size(100, 23);
+            txtRazonSocial.Size = new Size(100, 27);
             txtRazonSocial.TabIndex = 0;
             // 
             // btnGuardarProveedor
@@ -693,14 +661,14 @@
             // 
             txtKgUnidad.Location = new Point(0, 0);
             txtKgUnidad.Name = "txtKgUnidad";
-            txtKgUnidad.Size = new Size(100, 23);
+            txtKgUnidad.Size = new Size(100, 27);
             txtKgUnidad.TabIndex = 0;
             // 
             // cmbKgUnidad
             // 
             cmbKgUnidad.Location = new Point(0, 0);
             cmbKgUnidad.Name = "cmbKgUnidad";
-            cmbKgUnidad.Size = new Size(121, 23);
+            cmbKgUnidad.Size = new Size(121, 28);
             cmbKgUnidad.TabIndex = 0;
             // 
             // btnGuardarUnidad
@@ -731,12 +699,11 @@
             // 
             // AbmAdministracion
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(984, 661);
+            ClientSize = new Size(1125, 881);
             Controls.Add(tabControl1);
-            Margin = new Padding(3, 2, 3, 2);
             Name = "AbmAdministracion";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Módulo de Administración";

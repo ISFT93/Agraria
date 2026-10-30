@@ -90,6 +90,7 @@
             // 
             // txtOrden
             // 
+            txtOrden.BorderStyle = BorderStyle.FixedSingle;
             txtOrden.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtOrden.Location = new Point(926, 100);
             txtOrden.Margin = new Padding(2, 3, 2, 3);
@@ -111,6 +112,7 @@
             // 
             // txtCondicionAvance
             // 
+            txtCondicionAvance.BorderStyle = BorderStyle.FixedSingle;
             txtCondicionAvance.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtCondicionAvance.Location = new Point(29, 329);
             txtCondicionAvance.Margin = new Padding(2, 3, 2, 3);
@@ -221,6 +223,7 @@
             // 
             // txtNombre
             // 
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
             txtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombre.Location = new Point(29, 103);
             txtNombre.Margin = new Padding(2, 3, 2, 3);
@@ -275,6 +278,7 @@
             // 
             // txtDescripcionActividad
             // 
+            txtDescripcionActividad.BorderStyle = BorderStyle.FixedSingle;
             txtDescripcionActividad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtDescripcionActividad.Location = new Point(29, 185);
             txtDescripcionActividad.Margin = new Padding(2, 3, 2, 3);

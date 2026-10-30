@@ -25,10 +25,9 @@
             // btnAceptar
             // 
             btnAceptar.Font = new Font("Segoe UI", 9F);
-            btnAceptar.Location = new Point(391, 319);
-            btnAceptar.Margin = new Padding(3, 2, 3, 2);
+            btnAceptar.Location = new Point(447, 425);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(79, 26);
+            btnAceptar.Size = new Size(90, 35);
             btnAceptar.TabIndex = 1;
             btnAceptar.Text = "&Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -37,10 +36,9 @@
             // btnCancelar
             // 
             btnCancelar.Font = new Font("Segoe UI", 9F);
-            btnCancelar.Location = new Point(483, 319);
-            btnCancelar.Margin = new Padding(3, 2, 3, 2);
+            btnCancelar.Location = new Point(552, 425);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(79, 26);
+            btnCancelar.Size = new Size(90, 35);
             btnCancelar.TabIndex = 2;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -50,26 +48,26 @@
             // 
             panelContenedor.AutoScroll = true;
             panelContenedor.BackColor = Color.FromArgb(141, 181, 146);
-            panelContenedor.Location = new Point(10, 9);
-            panelContenedor.Margin = new Padding(3, 2, 3, 2);
+            panelContenedor.Dock = DockStyle.Fill;
+            panelContenedor.Location = new Point(3, 85);
             panelContenedor.Name = "panelContenedor";
-            panelContenedor.Size = new Size(552, 306);
+            panelContenedor.Size = new Size(654, 417);
             panelContenedor.TabIndex = 3;
             // 
             // DetallesAnimal
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(564, 356);
+            ClientSize = new Size(660, 506);
             Controls.Add(panelContenedor);
             Controls.Add(btnCancelar);
             Controls.Add(btnAceptar);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "DetallesAnimal";
+            Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterParent;
             Text = "Detalle de Animales";
             ResumeLayout(false);

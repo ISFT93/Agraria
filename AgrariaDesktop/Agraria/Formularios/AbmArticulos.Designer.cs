@@ -56,6 +56,7 @@
             // txtNombre
             // 
             txtNombre.BackColor = SystemColors.Window;
+            txtNombre.BorderStyle = BorderStyle.FixedSingle;
             txtNombre.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombre.ForeColor = SystemColors.WindowText;
             txtNombre.Location = new Point(28, 210);
@@ -132,6 +133,7 @@
             // txtcodigoArticulo
             // 
             txtcodigoArticulo.BackColor = SystemColors.Window;
+            txtcodigoArticulo.BorderStyle = BorderStyle.FixedSingle;
             txtcodigoArticulo.Enabled = false;
             txtcodigoArticulo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtcodigoArticulo.ForeColor = SystemColors.WindowText;
@@ -178,7 +180,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(655, 586);
+            ClientSize = new Size(673, 633);
             Controls.Add(rjBCancelar);
             Controls.Add(rjBAceptar);
             Controls.Add(txtcodigoArticulo);

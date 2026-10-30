@@ -222,6 +222,7 @@
             // 
             // txtObservacion
             // 
+            txtObservacion.BorderStyle = BorderStyle.FixedSingle;
             txtObservacion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtObservacion.Location = new Point(353, 121);
             txtObservacion.Margin = new Padding(2, 3, 2, 3);

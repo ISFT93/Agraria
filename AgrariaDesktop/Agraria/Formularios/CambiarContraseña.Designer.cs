@@ -52,11 +52,13 @@
             // 
             // txtRespuestaSeguridad
             // 
+            txtRespuestaSeguridad.BorderStyle = BorderStyle.FixedSingle;
             txtRespuestaSeguridad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtRespuestaSeguridad.Location = new Point(528, 115);
+            txtRespuestaSeguridad.Location = new Point(603, 153);
+            txtRespuestaSeguridad.Margin = new Padding(3, 4, 3, 4);
             txtRespuestaSeguridad.MaxLength = 15;
             txtRespuestaSeguridad.Name = "txtRespuestaSeguridad";
-            txtRespuestaSeguridad.Size = new Size(326, 29);
+            txtRespuestaSeguridad.Size = new Size(372, 34);
             txtRespuestaSeguridad.TabIndex = 41;
             txtRespuestaSeguridad.KeyDown += CopiaryPegar_KeyDown;
             // 
@@ -66,9 +68,9 @@
             label14.BackColor = Color.Transparent;
             label14.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label14.ForeColor = Color.Black;
-            label14.Location = new Point(279, 114);
+            label14.Location = new Point(272, 153);
             label14.Name = "label14";
-            label14.Size = new Size(243, 24);
+            label14.Size = new Size(305, 29);
             label14.TabIndex = 42;
             label14.Text = "Respuesta de seguridad:";
             // 
@@ -78,9 +80,9 @@
             label13.BackColor = Color.Transparent;
             label13.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label13.ForeColor = Color.Black;
-            label13.Location = new Point(290, 76);
+            label13.Location = new Point(284, 102);
             label13.Name = "label13";
-            label13.Size = new Size(232, 24);
+            label13.Size = new Size(290, 29);
             label13.TabIndex = 40;
             label13.Text = "Pregunta de Seguridad:";
             // 
@@ -89,9 +91,10 @@
             cmbPreguntaSeguridad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbPreguntaSeguridad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbPreguntaSeguridad.FormattingEnabled = true;
-            cmbPreguntaSeguridad.Location = new Point(528, 76);
+            cmbPreguntaSeguridad.Location = new Point(603, 101);
+            cmbPreguntaSeguridad.Margin = new Padding(3, 4, 3, 4);
             cmbPreguntaSeguridad.Name = "cmbPreguntaSeguridad";
-            cmbPreguntaSeguridad.Size = new Size(326, 32);
+            cmbPreguntaSeguridad.Size = new Size(372, 37);
             cmbPreguntaSeguridad.TabIndex = 39;
             // 
             // label9
@@ -100,20 +103,22 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(334, 154);
+            label9.Location = new Point(335, 206);
             label9.Name = "label9";
-            label9.Size = new Size(188, 24);
+            label9.Size = new Size(234, 29);
             label9.TabIndex = 37;
             label9.Text = "Nueva Contraseña:";
             // 
             // txtNombreUsuario
             // 
+            txtNombreUsuario.BorderStyle = BorderStyle.FixedSingle;
             txtNombreUsuario.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             txtNombreUsuario.ForeColor = Color.Black;
-            txtNombreUsuario.Location = new Point(528, 37);
+            txtNombreUsuario.Location = new Point(603, 49);
+            txtNombreUsuario.Margin = new Padding(3, 4, 3, 4);
             txtNombreUsuario.MaxLength = 15;
             txtNombreUsuario.Name = "txtNombreUsuario";
-            txtNombreUsuario.Size = new Size(146, 29);
+            txtNombreUsuario.Size = new Size(166, 34);
             txtNombreUsuario.TabIndex = 33;
             txtNombreUsuario.KeyDown += CopiaryPegar_KeyDown;
             txtNombreUsuario.KeyPress += SoloTextoNumeroEspacio_KeyPress;
@@ -124,9 +129,9 @@
             label11.BackColor = Color.Transparent;
             label11.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label11.ForeColor = Color.Black;
-            label11.Location = new Point(326, 37);
+            label11.Location = new Point(326, 50);
             label11.Name = "label11";
-            label11.Size = new Size(196, 24);
+            label11.Size = new Size(244, 29);
             label11.TabIndex = 35;
             label11.Text = "Nombre de usuario:";
             // 
@@ -136,9 +141,9 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(238, 193);
+            label1.Location = new Point(225, 258);
             label1.Name = "label1";
-            label1.Size = new Size(284, 24);
+            label1.Size = new Size(355, 29);
             label1.TabIndex = 43;
             label1.Text = "Confirmar Nueva Contraseña:";
             // 
@@ -151,9 +156,10 @@
             btnGuardar.ForeColor = Color.FromArgb(56, 124, 31);
             btnGuardar.Image = (Image)resources.GetObject("btnGuardar.Image");
             btnGuardar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnGuardar.Location = new Point(726, 192);
+            btnGuardar.Location = new Point(830, 256);
+            btnGuardar.Margin = new Padding(3, 4, 3, 4);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(166, 40);
+            btnGuardar.Size = new Size(190, 53);
             btnGuardar.TabIndex = 45;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = false;
@@ -162,22 +168,26 @@
             // 
             // txtConfirmarNuevaContraseña
             // 
+            txtConfirmarNuevaContraseña.BorderStyle = BorderStyle.FixedSingle;
             txtConfirmarNuevaContraseña.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtConfirmarNuevaContraseña.Location = new Point(528, 193);
+            txtConfirmarNuevaContraseña.Location = new Point(603, 257);
+            txtConfirmarNuevaContraseña.Margin = new Padding(3, 4, 3, 4);
             txtConfirmarNuevaContraseña.MaxLength = 15;
             txtConfirmarNuevaContraseña.Name = "txtConfirmarNuevaContraseña";
-            txtConfirmarNuevaContraseña.Size = new Size(146, 29);
+            txtConfirmarNuevaContraseña.Size = new Size(166, 34);
             txtConfirmarNuevaContraseña.TabIndex = 46;
             txtConfirmarNuevaContraseña.Visible = false;
             txtConfirmarNuevaContraseña.KeyDown += CopiaryPegar_KeyDown;
             // 
             // txtNuevaContraseña
             // 
+            txtNuevaContraseña.BorderStyle = BorderStyle.FixedSingle;
             txtNuevaContraseña.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNuevaContraseña.Location = new Point(528, 154);
+            txtNuevaContraseña.Location = new Point(603, 205);
+            txtNuevaContraseña.Margin = new Padding(3, 4, 3, 4);
             txtNuevaContraseña.MaxLength = 15;
             txtNuevaContraseña.Name = "txtNuevaContraseña";
-            txtNuevaContraseña.Size = new Size(146, 29);
+            txtNuevaContraseña.Size = new Size(166, 34);
             txtNuevaContraseña.TabIndex = 47;
             txtNuevaContraseña.Visible = false;
             txtNuevaContraseña.KeyDown += CopiaryPegar_KeyDown;
@@ -186,9 +196,10 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = Properties.Resources.agr;
-            pictureBox1.Location = new Point(12, 37);
+            pictureBox1.Location = new Point(14, 49);
+            pictureBox1.Margin = new Padding(3, 4, 3, 4);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(193, 166);
+            pictureBox1.Size = new Size(221, 221);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 48;
             pictureBox1.TabStop = false;
@@ -197,10 +208,10 @@
             // 
             pbCerrar.BackgroundImage = Properties.Resources.x;
             pbCerrar.BackgroundImageLayout = ImageLayout.Stretch;
-            pbCerrar.Location = new Point(855, 7);
-            pbCerrar.Margin = new Padding(2);
+            pbCerrar.Location = new Point(977, 9);
+            pbCerrar.Margin = new Padding(2, 3, 2, 3);
             pbCerrar.Name = "pbCerrar";
-            pbCerrar.Size = new Size(32, 26);
+            pbCerrar.Size = new Size(37, 35);
             pbCerrar.SizeMode = PictureBoxSizeMode.StretchImage;
             pbCerrar.TabIndex = 49;
             pbCerrar.TabStop = false;
@@ -215,9 +226,10 @@
             btnConfirmar.ForeColor = Color.FromArgb(56, 124, 31);
             btnConfirmar.Image = (Image)resources.GetObject("btnConfirmar.Image");
             btnConfirmar.ImageAlign = ContentAlignment.MiddleLeft;
-            btnConfirmar.Location = new Point(726, 146);
+            btnConfirmar.Location = new Point(830, 195);
+            btnConfirmar.Margin = new Padding(3, 4, 3, 4);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(166, 40);
+            btnConfirmar.Size = new Size(190, 53);
             btnConfirmar.TabIndex = 50;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = false;
@@ -229,11 +241,11 @@
             // 
             // CambiarContraseña
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(56, 124, 31);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new Size(904, 246);
+            ClientSize = new Size(1033, 328);
             Controls.Add(btnConfirmar);
             Controls.Add(pbCerrar);
             Controls.Add(pictureBox1);
@@ -249,6 +261,7 @@
             Controls.Add(txtNombreUsuario);
             Controls.Add(label11);
             FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CambiarContraseña";
             StartPosition = FormStartPosition.CenterParent;
             Text = "CambiarContraseña";
