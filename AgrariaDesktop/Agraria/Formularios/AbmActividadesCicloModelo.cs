@@ -61,25 +61,31 @@ namespace Agraria.Formularios
         {
             CargarCombos();
 
-            // Si "NuevaActividad" tiene datos (Modo Edición), los volcamos a los TextBox y Combos
             if (NuevaActividad != null)
             {
                 txtOrden.Text = NuevaActividad.Orden.ToString();
                 txtNombre.Text = NuevaActividad.Nombre;
                 txtDescripcionActividad.Text = NuevaActividad.Descripcion;
                 txtCondicionAvance.Text = NuevaActividad.CondicionAvance;
-                numDuracion.Value = NuevaActividad.Duracion;
+
+                // Cargamos la duración en el MaskedTextBox
+                mskDuracionEstimada.Text = NuevaActividad.Duracion.ToString();
 
                 cmbTipoActividad.SelectedValue = NuevaActividad.IdTipoActividad;
 
-                // Llamamos a un método de apoyo para seleccionar el booleano correcto
-                SetearComboBooleano(cmbDemora, NuevaActividad.Demora);
-                SetearComboBooleano(cmbAprobacion1, NuevaActividad.Aprobacion);
-                SetearComboBooleano(cmbEjecucion, NuevaActividad.EjecucionParcial);
-                SetearComboBooleano(cmbActiva, NuevaActividad.Activa);
+                chkDemora.Checked = NuevaActividad.Demora;
+                chkRequiereAprobacion.Checked = NuevaActividad.Aprobacion;
+                chkPermiteEjecucionParcial.Checked = NuevaActividad.EjecucionParcial;
+                chkActivo.Checked = NuevaActividad.Activa;
+            }
+            else
+            {
+                chkDemora.Checked = false;
+                chkRequiereAprobacion.Checked = false;
+                chkPermiteEjecucionParcial.Checked = false;
+                chkActivo.Checked = true;
             }
         }
-
         // Método de apoyo para leer el "Value" de tus objetos anónimos en los combos Sí/No
         private void SetearComboBooleano(ComboBox combo, bool valorBuscado)
         {
@@ -103,10 +109,7 @@ namespace Agraria.Formularios
             cmbTipoActividad.SelectedIndex = -1;
 
             // Cargar los combos de opciones fijas (Sí/No)
-            CargarComboBooleano(cmbDemora);
-            CargarComboBooleano(cmbAprobacion1);
-            CargarComboBooleano(cmbEjecucion);
-            CargarComboBooleano(cmbActiva);
+            
         }
 
         private void CargarComboBooleano(ComboBox combo)
@@ -127,7 +130,6 @@ namespace Agraria.Formularios
                 return;
             }
 
-            // Si es Nuevo, lo creamos. Si es Modificar, usamos el que ya trajimos para actualizar sus propiedades.
             if (NuevaActividad == null)
             {
                 NuevaActividad = new ActividadModeloDTO();
@@ -138,14 +140,24 @@ namespace Agraria.Formularios
             NuevaActividad.Descripcion = txtDescripcionActividad.Text.Trim();
             NuevaActividad.IdTipoActividad = Convert.ToInt32(cmbTipoActividad.SelectedValue);
             NuevaActividad.TipoActividad = cmbTipoActividad.Text;
-            NuevaActividad.Duracion = numDuracion.Value;
-            NuevaActividad.Demora = cmbDemora.SelectedIndex != -1 && (bool)((dynamic)cmbDemora.SelectedItem).Value;
-            NuevaActividad.Aprobacion = cmbAprobacion1.SelectedIndex != -1 && (bool)((dynamic)cmbAprobacion1.SelectedItem).Value;
-            NuevaActividad.EjecucionParcial = cmbEjecucion.SelectedIndex != -1 && (bool)((dynamic)cmbEjecucion.SelectedItem).Value;
-            NuevaActividad.CondicionAvance = txtCondicionAvance.Text.Trim();
-            NuevaActividad.Activa = cmbActiva.SelectedIndex == -1 || (bool)((dynamic)cmbActiva.SelectedItem).Value;
 
-            this.DialogResult = DialogResult.OK; // Le avisamos al form principal que todo salió bien
+            // Leemos la duración desde el MaskedTextBox de forma segura
+            decimal duracionActividad = 0;
+            string textoDuracion = mskDuracionEstimada.Text.Replace(":", "").Trim();
+            if (!string.IsNullOrEmpty(textoDuracion))
+            {
+                decimal.TryParse(textoDuracion, out duracionActividad);
+            }
+            NuevaActividad.Duracion = duracionActividad;
+
+            NuevaActividad.Demora = chkDemora.Checked;
+            NuevaActividad.Aprobacion = chkRequiereAprobacion.Checked;
+            NuevaActividad.EjecucionParcial = chkPermiteEjecucionParcial.Checked;
+            NuevaActividad.Activa = chkActivo.Checked;
+
+            NuevaActividad.CondicionAvance = txtCondicionAvance.Text.Trim();
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

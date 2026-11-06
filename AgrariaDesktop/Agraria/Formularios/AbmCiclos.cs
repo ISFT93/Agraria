@@ -75,7 +75,7 @@ namespace Agraria.Formularios
         {
             LlenarCombo(cmbModoInicio, 14);
 
-            CargarComboBooleano(cmbActivo);
+
 
 
             txtCreadoPor.Text = _usuarioActual.NombreUsuario;
@@ -84,11 +84,10 @@ namespace Agraria.Formularios
 
         private void LlenarCombo(ComboBox combo, int idCatalogo)
         {
-           
-            if (combo == null)
+
+            if (_idCicloEditar == null)
             {
-                MessageBox.Show($"El ComboBox asignado para cargar el catálogo {idCatalogo} no existe o tiene otro nombre en el diseño visual.", "Falta Control", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                chkActivo.Checked = true;
             }
 
             DataTable dt = bll.ObtenerItemsCatalogo(idCatalogo);
@@ -309,9 +308,9 @@ namespace Agraria.Formularios
             try
             {
                 // 1. Validar Cabecera
-                if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1 || cmbActivo.SelectedIndex == -1)
+                if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Complete los campos obligatorios del ciclo (Nombre, Modo de Inicio y Estado Activo).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Complete los campos obligatorios del ciclo (Nombre y Modo de Inicio).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -319,6 +318,7 @@ namespace Agraria.Formularios
                 if (listaActividades == null || listaActividades.Count == 0)
                 {
                     MessageBox.Show("Debe agregar al menos una actividad al ciclo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                     return;
                 }
 
@@ -336,15 +336,24 @@ namespace Agraria.Formularios
                 // Datos del Ciclo
                 string nombreCiclo = txtNombreCicloModelo.Text.Trim();
                 string descCiclo = txtDescripcion.Text.Trim();
-                decimal duracionCiclo = NumDuracionEstimada.Value;
+
+                // Lectura del MaskedTextBox de Duración Estimada (adaptado a decimal o string según tu DTO)
+                // Si la BD espera decimal, puedes parsear el texto limpio:
+                decimal duracionCiclo = 0;
+                string textoDuracion = mskDuracionEstimada.Text.Replace(":", "").Trim();
+                if (!string.IsNullOrEmpty(textoDuracion))
+                {
+                    decimal.TryParse(textoDuracion, out duracionCiclo);
+                }
+
                 int modoInicio = Convert.ToInt32(cmbModoInicio.SelectedValue);
-                bool activoCiclo = (bool)((dynamic)cmbActivo.SelectedItem).Value;
-                DateTime fechaCreacion = dtpFechaCreacion.Value;
+                bool activoCiclo = chkActivo.Checked;
+                decimal horasCiclo = numHorasCiclo.Value;
                 int idCreador = _usuarioActual.Id;
+                DateTime fechaCreacion = DateTime.Now;
 
                 bool esModificacion = (_idCicloEditar != null);
 
-                // Guardamos todo usando directamente elem.IdTipoMovimiento (Asegurate de que tu DTO tenga esta propiedad)
                 bll.GuardarCicloCompleto(
                     _idCicloEditar, nombreCiclo, descCiclo, duracionCiclo, modoInicio, activoCiclo, fechaCreacion, idCreador,
                     act.Nombre, act.Descripcion, act.Orden, act.IdTipoActividad, act.Duracion, act.Demora, act.Aprobacion, act.EjecucionParcial, act.CondicionAvance, act.Activa,
@@ -361,13 +370,6 @@ namespace Agraria.Formularios
                 MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-
         private void CargarDatosCiclo(long idCiclo)
         {
             // 1. Cargar Cabecera (Ciclo)
@@ -377,9 +379,12 @@ namespace Agraria.Formularios
                 DataRow row = dtCiclo.Rows[0];
                 txtNombreCicloModelo.Text = row["nombre"].ToString();
                 txtDescripcion.Text = row["descripcion"].ToString();
-                NumDuracionEstimada.Value = Convert.ToDecimal(row["duracion_estimada"] == DBNull.Value ? 0 : row["duracion_estimada"]);
+
+                // Cargar el valor en el MaskedTextBox
+                mskDuracionEstimada.Text = row["duracion_estimada"] == DBNull.Value ? "0000000" : row["duracion_estimada"].ToString();
+
                 cmbModoInicio.SelectedValue = row["modo_inicio"];
-                cmbActivo.SelectedValue = Convert.ToBoolean(row["activo"]);
+                chkActivo.Checked = Convert.ToBoolean(row["activo"]);
             }
 
             // 2. Cargar Actividades y sus Elementos
@@ -649,7 +654,12 @@ namespace Agraria.Formularios
             }
         }
 
-
-
+       
+            private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
+    
 }

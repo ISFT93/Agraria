@@ -31,14 +31,11 @@
             numActividadModelo = new NumericUpDown();
             label28 = new Label();
             label26 = new Label();
-            cmbVendible = new ComboBox();
             numCantPrevista = new NumericUpDown();
             label19 = new Label();
             cmbTipoElemento = new ComboBox();
             label20 = new Label();
-            cmbPermiteSustitucion = new ComboBox();
             label21 = new Label();
-            cmbObligatorio = new ComboBox();
             label22 = new Label();
             label23 = new Label();
             label24 = new Label();
@@ -50,6 +47,9 @@
             btnAceptar = new Button();
             txtOrdenElemento = new Label();
             cmbElemento = new ComboBox();
+            chkObligatorio = new CheckBox();
+            chkVendible = new CheckBox();
+            chkPermiteSustitucion = new CheckBox();
             ((System.ComponentModel.ISupportInitialize)numActividadModelo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCantPrevista).BeginInit();
             SuspendLayout();
@@ -58,10 +58,11 @@
             // 
             numActividadModelo.DecimalPlaces = 2;
             numActividadModelo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            numActividadModelo.Location = new Point(24, 106);
+            numActividadModelo.Location = new Point(27, 141);
+            numActividadModelo.Margin = new Padding(3, 4, 3, 4);
             numActividadModelo.Maximum = new decimal(new int[] { 9999999, 0, 0, 0 });
             numActividadModelo.Name = "numActividadModelo";
-            numActividadModelo.Size = new Size(150, 29);
+            numActividadModelo.Size = new Size(171, 34);
             numActividadModelo.TabIndex = 96;
             // 
             // label28
@@ -69,9 +70,9 @@
             label28.AutoSize = true;
             label28.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label28.ForeColor = Color.White;
-            label28.Location = new Point(24, 73);
+            label28.Location = new Point(27, 97);
             label28.Name = "label28";
-            label28.Size = new Size(244, 24);
+            label28.Size = new Size(306, 29);
             label28.TabIndex = 97;
             label28.Text = "Código Actividad Modelo";
             // 
@@ -80,31 +81,21 @@
             label26.AutoSize = true;
             label26.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label26.ForeColor = Color.White;
-            label26.Location = new Point(412, 410);
+            label26.Location = new Point(471, 547);
             label26.Name = "label26";
-            label26.Size = new Size(94, 24);
+            label26.Size = new Size(117, 29);
             label26.TabIndex = 95;
             label26.Text = "Vendible";
-            // 
-            // cmbVendible
-            // 
-            cmbVendible.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbVendible.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbVendible.FormattingEnabled = true;
-            cmbVendible.Location = new Point(412, 443);
-            cmbVendible.Margin = new Padding(1, 2, 1, 2);
-            cmbVendible.Name = "cmbVendible";
-            cmbVendible.Size = new Size(89, 32);
-            cmbVendible.TabIndex = 94;
             // 
             // numCantPrevista
             // 
             numCantPrevista.DecimalPlaces = 2;
             numCantPrevista.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            numCantPrevista.Location = new Point(28, 366);
+            numCantPrevista.Location = new Point(32, 488);
+            numCantPrevista.Margin = new Padding(3, 4, 3, 4);
             numCantPrevista.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             numCantPrevista.Name = "numCantPrevista";
-            numCantPrevista.Size = new Size(167, 29);
+            numCantPrevista.Size = new Size(191, 34);
             numCantPrevista.TabIndex = 92;
             // 
             // label19
@@ -112,9 +103,9 @@
             label19.AutoSize = true;
             label19.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label19.ForeColor = Color.White;
-            label19.Location = new Point(24, 336);
+            label19.Location = new Point(27, 448);
             label19.Name = "label19";
-            label19.Size = new Size(171, 24);
+            label19.Size = new Size(218, 29);
             label19.TabIndex = 93;
             label19.Text = "Cantidad Prevista";
             // 
@@ -123,10 +114,10 @@
             cmbTipoElemento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoElemento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoElemento.FormattingEnabled = true;
-            cmbTipoElemento.Location = new Point(27, 168);
-            cmbTipoElemento.Margin = new Padding(1, 2, 1, 2);
+            cmbTipoElemento.Location = new Point(31, 224);
+            cmbTipoElemento.Margin = new Padding(1, 3, 1, 3);
             cmbTipoElemento.Name = "cmbTipoElemento";
-            cmbTipoElemento.Size = new Size(199, 32);
+            cmbTipoElemento.Size = new Size(227, 37);
             cmbTipoElemento.TabIndex = 91;
             cmbTipoElemento.SelectedIndexChanged += cmbTipoElemento_SelectedIndexChanged;
             // 
@@ -135,53 +126,31 @@
             label20.AutoSize = true;
             label20.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label20.ForeColor = Color.White;
-            label20.Location = new Point(530, 410);
+            label20.Location = new Point(606, 547);
             label20.Name = "label20";
-            label20.Size = new Size(189, 24);
+            label20.Size = new Size(239, 29);
             label20.TabIndex = 90;
             label20.Text = "Permite Sustitución";
-            // 
-            // cmbPermiteSustitucion
-            // 
-            cmbPermiteSustitucion.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPermiteSustitucion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbPermiteSustitucion.FormattingEnabled = true;
-            cmbPermiteSustitucion.Location = new Point(530, 443);
-            cmbPermiteSustitucion.Margin = new Padding(1, 2, 1, 2);
-            cmbPermiteSustitucion.Name = "cmbPermiteSustitucion";
-            cmbPermiteSustitucion.Size = new Size(89, 32);
-            cmbPermiteSustitucion.TabIndex = 89;
             // 
             // label21
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label21.ForeColor = Color.White;
-            label21.Location = new Point(278, 410);
+            label21.Location = new Point(318, 547);
             label21.Name = "label21";
-            label21.Size = new Size(112, 24);
+            label21.Size = new Size(144, 29);
             label21.TabIndex = 88;
             label21.Text = "Obligatorio";
-            // 
-            // cmbObligatorio
-            // 
-            cmbObligatorio.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbObligatorio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            cmbObligatorio.FormattingEnabled = true;
-            cmbObligatorio.Location = new Point(282, 442);
-            cmbObligatorio.Margin = new Padding(1, 2, 1, 2);
-            cmbObligatorio.Name = "cmbObligatorio";
-            cmbObligatorio.Size = new Size(82, 32);
-            cmbObligatorio.TabIndex = 87;
             // 
             // label22
             // 
             label22.AutoSize = true;
             label22.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label22.ForeColor = Color.White;
-            label22.Location = new Point(27, 409);
+            label22.Location = new Point(31, 545);
             label22.Name = "label22";
-            label22.Size = new Size(154, 24);
+            label22.Size = new Size(194, 29);
             label22.TabIndex = 86;
             label22.Text = "Tipo de Unidad";
             // 
@@ -190,9 +159,9 @@
             label23.AutoSize = true;
             label23.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label23.ForeColor = Color.White;
-            label23.Location = new Point(24, 142);
+            label23.Location = new Point(27, 189);
             label23.Name = "label23";
-            label23.Size = new Size(147, 24);
+            label23.Size = new Size(185, 29);
             label23.TabIndex = 82;
             label23.Text = "Tipo Elemento";
             // 
@@ -201,9 +170,9 @@
             label24.AutoSize = true;
             label24.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label24.ForeColor = Color.White;
-            label24.Location = new Point(322, 73);
+            label24.Location = new Point(368, 97);
             label24.Name = "label24";
-            label24.Size = new Size(128, 24);
+            label24.Size = new Size(160, 29);
             label24.TabIndex = 83;
             label24.Text = "Observación";
             // 
@@ -212,9 +181,9 @@
             label25.AutoSize = true;
             label25.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label25.ForeColor = Color.White;
-            label25.Location = new Point(27, 206);
+            label25.Location = new Point(31, 275);
             label25.Name = "label25";
-            label25.Size = new Size(99, 24);
+            label25.Size = new Size(124, 29);
             label25.TabIndex = 84;
             label25.Text = "Elemento";
             // 
@@ -222,12 +191,12 @@
             // 
             txtObservacion.BorderStyle = BorderStyle.FixedSingle;
             txtObservacion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtObservacion.Location = new Point(322, 106);
-            txtObservacion.Margin = new Padding(1, 2, 1, 2);
+            txtObservacion.Location = new Point(368, 141);
+            txtObservacion.Margin = new Padding(1, 3, 1, 3);
             txtObservacion.MaxLength = 40;
             txtObservacion.Multiline = true;
             txtObservacion.Name = "txtObservacion";
-            txtObservacion.Size = new Size(556, 286);
+            txtObservacion.Size = new Size(635, 381);
             txtObservacion.TabIndex = 81;
             // 
             // label27
@@ -235,9 +204,9 @@
             label27.AutoSize = true;
             label27.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label27.ForeColor = Color.White;
-            label27.Location = new Point(24, 265);
+            label27.Location = new Point(27, 353);
             label27.Name = "label27";
-            label27.Size = new Size(195, 24);
+            label27.Size = new Size(245, 29);
             label27.TabIndex = 85;
             label27.Text = "Tipo de Movimiento";
             // 
@@ -246,10 +215,10 @@
             cmbTipoUnidad.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoUnidad.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoUnidad.FormattingEnabled = true;
-            cmbTipoUnidad.Location = new Point(28, 435);
-            cmbTipoUnidad.Margin = new Padding(1, 2, 1, 2);
+            cmbTipoUnidad.Location = new Point(32, 580);
+            cmbTipoUnidad.Margin = new Padding(1, 3, 1, 3);
             cmbTipoUnidad.Name = "cmbTipoUnidad";
-            cmbTipoUnidad.Size = new Size(147, 32);
+            cmbTipoUnidad.Size = new Size(167, 37);
             cmbTipoUnidad.TabIndex = 80;
             // 
             // cmbTipoMovimiento
@@ -257,17 +226,18 @@
             cmbTipoMovimiento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoMovimiento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbTipoMovimiento.FormattingEnabled = true;
-            cmbTipoMovimiento.Location = new Point(28, 291);
-            cmbTipoMovimiento.Margin = new Padding(1, 2, 1, 2);
+            cmbTipoMovimiento.Location = new Point(32, 388);
+            cmbTipoMovimiento.Margin = new Padding(1, 3, 1, 3);
             cmbTipoMovimiento.Name = "cmbTipoMovimiento";
-            cmbTipoMovimiento.Size = new Size(199, 32);
+            cmbTipoMovimiento.Size = new Size(227, 37);
             cmbTipoMovimiento.TabIndex = 79;
             // 
             // btnAceptar
             // 
-            btnAceptar.Location = new Point(829, 451);
+            btnAceptar.Location = new Point(947, 601);
+            btnAceptar.Margin = new Padding(3, 4, 3, 4);
             btnAceptar.Name = "btnAceptar";
-            btnAceptar.Size = new Size(76, 23);
+            btnAceptar.Size = new Size(87, 31);
             btnAceptar.TabIndex = 98;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
@@ -276,9 +246,9 @@
             // txtOrdenElemento
             // 
             txtOrdenElemento.AutoSize = true;
-            txtOrdenElemento.Location = new Point(773, 411);
+            txtOrdenElemento.Location = new Point(883, 548);
             txtOrdenElemento.Name = "txtOrdenElemento";
-            txtOrdenElemento.Size = new Size(38, 15);
+            txtOrdenElemento.Size = new Size(50, 20);
             txtOrdenElemento.TabIndex = 99;
             txtOrdenElemento.Text = "label1";
             txtOrdenElemento.Visible = false;
@@ -288,32 +258,62 @@
             cmbElemento.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbElemento.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbElemento.FormattingEnabled = true;
-            cmbElemento.Location = new Point(24, 231);
-            cmbElemento.Margin = new Padding(1, 2, 1, 2);
+            cmbElemento.Location = new Point(27, 308);
+            cmbElemento.Margin = new Padding(1, 3, 1, 3);
             cmbElemento.Name = "cmbElemento";
-            cmbElemento.Size = new Size(234, 32);
+            cmbElemento.Size = new Size(267, 37);
             cmbElemento.TabIndex = 100;
+            // 
+            // chkObligatorio
+            // 
+            chkObligatorio.AutoSize = true;
+            chkObligatorio.Location = new Point(318, 593);
+            chkObligatorio.Name = "chkObligatorio";
+            chkObligatorio.Size = new Size(108, 24);
+            chkObligatorio.TabIndex = 101;
+            chkObligatorio.Text = "Obligatorio";
+            chkObligatorio.UseVisualStyleBackColor = true;
+            // 
+            // chkVendible
+            // 
+            chkVendible.AutoSize = true;
+            chkVendible.Location = new Point(471, 593);
+            chkVendible.Name = "chkVendible";
+            chkVendible.Size = new Size(89, 24);
+            chkVendible.TabIndex = 102;
+            chkVendible.Text = "Vendible";
+            chkVendible.UseVisualStyleBackColor = true;
+            // 
+            // chkPermiteSustitucion
+            // 
+            chkPermiteSustitucion.AutoSize = true;
+            chkPermiteSustitucion.Location = new Point(606, 593);
+            chkPermiteSustitucion.Name = "chkPermiteSustitucion";
+            chkPermiteSustitucion.Size = new Size(157, 24);
+            chkPermiteSustitucion.TabIndex = 103;
+            chkPermiteSustitucion.Text = "Permite Sustitución";
+            chkPermiteSustitucion.UseVisualStyleBackColor = true;
             // 
             // AbmActividadesElementos
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(911, 479);
+            ClientSize = new Size(1041, 639);
+            Controls.Add(chkPermiteSustitucion);
+            Controls.Add(chkVendible);
+            Controls.Add(chkObligatorio);
             Controls.Add(cmbElemento);
             Controls.Add(txtOrdenElemento);
             Controls.Add(btnAceptar);
             Controls.Add(numActividadModelo);
             Controls.Add(label28);
             Controls.Add(label26);
-            Controls.Add(cmbVendible);
             Controls.Add(numCantPrevista);
             Controls.Add(label19);
             Controls.Add(cmbTipoElemento);
             Controls.Add(label20);
-            Controls.Add(cmbPermiteSustitucion);
             Controls.Add(label21);
-            Controls.Add(cmbObligatorio);
             Controls.Add(label22);
             Controls.Add(label23);
             Controls.Add(label24);
@@ -322,8 +322,8 @@
             Controls.Add(label27);
             Controls.Add(cmbTipoUnidad);
             Controls.Add(cmbTipoMovimiento);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "AbmActividadesElementos";
-            Padding = new Padding(3, 48, 3, 2);
             Text = "Actividades Elementos";
             Load += AbmActividadesElementos_Load;
             ((System.ComponentModel.ISupportInitialize)numActividadModelo).EndInit();
@@ -337,14 +337,11 @@
         private NumericUpDown numActividadModelo;
         private Label label28;
         private Label label26;
-        private ComboBox cmbVendible;
         private NumericUpDown numCantPrevista;
         private Label label19;
         private ComboBox cmbTipoElemento;
         private Label label20;
-        private ComboBox cmbPermiteSustitucion;
         private Label label21;
-        private ComboBox cmbObligatorio;
         private Label label22;
         private Label label23;
         private Label label24;
@@ -356,5 +353,8 @@
         private Button btnAceptar;
         private Label txtOrdenElemento;
         private ComboBox cmbElemento;
+        private CheckBox chkObligatorio;
+        private CheckBox chkVendible;
+        private CheckBox chkPermiteSustitucion;
     }
 }

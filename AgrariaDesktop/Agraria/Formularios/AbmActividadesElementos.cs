@@ -60,22 +60,21 @@ namespace Agraria.Formularios
 
                 // Seleccionamos los combos de catálogos
                 cmbTipoElemento.SelectedValue = NuevoElemento.IdTipoElemento;
-
-                // Asignar el TipoElemento dispara el SelectedIndexChanged, lo que carga cmbElemento. 
-                // Luego seleccionamos el elemento específico:
                 cmbElemento.SelectedValue = NuevoElemento.IdElemento;
-
-                // Si guardaste el ID del tipo movimiento en tu DTO (Recomendado):
-                // cmbTipoMovimiento.SelectedValue = NuevoElemento.IdTipoMovimiento;
-                // Si solo guardaste el texto (como está en tu código actual):
                 cmbTipoMovimiento.Text = NuevoElemento.TipoMovimiento;
-
                 cmbTipoUnidad.SelectedValue = NuevoElemento.IdUnidad;
 
-                // Setear los combos booleanos leyendo nuestra propiedad personalizada 'Value'
-                SetearComboBooleano(cmbObligatorio, NuevoElemento.Obligatorio);
-                SetearComboBooleano(cmbVendible, NuevoElemento.Vendible);
-                SetearComboBooleano(cmbPermiteSustitucion, NuevoElemento.PermiteSustitucion);
+                // Asignamos el estado guardado a los CheckBox
+                chkObligatorio.Checked = NuevoElemento.Obligatorio;
+                chkVendible.Checked = NuevoElemento.Vendible;
+                chkPermiteSustitucion.Checked = NuevoElemento.PermiteSustitucion;
+            }
+            else
+            {
+                // Valores por defecto para un nuevo elemento
+                chkObligatorio.Checked = true;    // Por defecto Sí
+                chkVendible.Checked = false;      // Por defecto No
+                chkPermiteSustitucion.Checked = false; // Por defecto No
             }
         }
 
@@ -112,15 +111,7 @@ namespace Agraria.Formularios
             LlenarCombo(cmbTipoMovimiento, 16);
             LlenarCombo(cmbTipoUnidad, 17);
 
-            // 2. Cargar Combos Booleanos mediante el método seguro
-            CargarComboBooleano(cmbPermiteSustitucion);
-            CargarComboBooleano(cmbVendible);
-            CargarComboBooleano(cmbObligatorio);
-
-            // Valores por defecto
-            cmbPermiteSustitucion.SelectedIndex = 1; // No
-            cmbVendible.SelectedIndex = 1;           // No
-            cmbObligatorio.SelectedIndex = 0;        // Sí
+         
         }
 
         private void CargarComboBooleano(ComboBox combo)
@@ -153,15 +144,16 @@ namespace Agraria.Formularios
             NuevoElemento.TipoElemento = cmbTipoElemento.Text;
 
             NuevoElemento.IdElemento = Convert.ToInt64(cmbElemento.SelectedValue);
-            NuevoElemento.NombreElemento = cmbElemento.Text; // Guardamos el nombre para verlo en la grilla
+            NuevoElemento.NombreElemento = cmbElemento.Text;
 
             NuevoElemento.IdTipoMovimiento = Convert.ToInt32(cmbTipoMovimiento.SelectedValue);
             NuevoElemento.IdUnidad = Convert.ToInt32(cmbTipoUnidad.SelectedValue);
             NuevoElemento.CantidadPrevista = numCantPrevista.Value;
 
-            NuevoElemento.Obligatorio = (cmbObligatorio.Text == "Sí");
-            NuevoElemento.Vendible = (cmbVendible.Text == "Sí");
-            NuevoElemento.PermiteSustitucion = (cmbPermiteSustitucion.Text == "Sí");
+            // Leemos directamente el estado de los CheckBox
+            NuevoElemento.Obligatorio = chkObligatorio.Checked;
+            NuevoElemento.Vendible = chkVendible.Checked;
+            NuevoElemento.PermiteSustitucion = chkPermiteSustitucion.Checked;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -189,8 +181,7 @@ namespace Agraria.Formularios
             }
             else
             {
-                cmbElemento.DataSource = null;
-            }
+                cmbElemento.DataSource = null;            }
         }
     }
 }
