@@ -180,7 +180,37 @@ namespace Agraria.Formularios
             return true;
         }
 
-        private void btnAceptar_Click(object sender, EventArgs e)
+
+
+
+
+        // --- VALIDACIONES DE CAMPOS (Mantenemos tus configuraciones de teclado) ---
+        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.SoloNumeros(e);
+        }
+
+        private void Solotexto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.SoloTexto(e);
+        }
+
+        private void TextoyNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.TextoYNumero(e);
+        }
+
+        private void CopiaryPegar_KeyDown(object sender, KeyEventArgs e)
+        {
+            Validaciones.DeshabilitarCopiarPegar(e);
+        }
+
+        private void SoloTextoNumeroEspacio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Validaciones.SoloTextoNumeroEspacio(e);
+        }
+
+        private void btnAceptar_Click_1(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
 
@@ -262,32 +292,6 @@ namespace Agraria.Formularios
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        // --- VALIDACIONES DE CAMPOS (Mantenemos tus configuraciones de teclado) ---
-        private void SoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validaciones.SoloNumeros(e);
-        }
-
-        private void Solotexto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validaciones.SoloTexto(e);
-        }
-
-        private void TextoyNumero_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validaciones.TextoYNumero(e);
-        }
-
-        private void CopiaryPegar_KeyDown(object sender, KeyEventArgs e)
-        {
-            Validaciones.DeshabilitarCopiarPegar(e);
-        }
-
-        private void SoloTextoNumeroEspacio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Validaciones.SoloTextoNumeroEspacio(e);
         }
     }
 }

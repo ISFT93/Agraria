@@ -214,7 +214,6 @@ namespace Agraria
             entornosFormativosToolStripMenuItem.Enabled = usuarioLogeado.PuedeEntornoFormativo;
             altaDeUsuarioToolStripMenuItem.Enabled = usuarioLogeado.PuedeAltaUsuario;
             EntornoVegetalToolStripMenuItem.Enabled = usuarioLogeado.PuedeProduccionVegetal;
-            administracionToolStripMenuItem.Enabled = usuarioLogeado.PuedeAdministracion;
         }
 
         private void ActivarModoInvitado()
@@ -222,7 +221,6 @@ namespace Agraria
             entornosFormativosToolStripMenuItem.Enabled = true;
             altaDeUsuarioToolStripMenuItem.Enabled = true;
             EntornoVegetalToolStripMenuItem.Enabled = true;
-            administracionToolStripMenuItem.Enabled = true;
         }
 
 

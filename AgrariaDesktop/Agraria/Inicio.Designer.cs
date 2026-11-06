@@ -34,18 +34,17 @@
             cerrarSesionToolStripMenuItem = new ToolStripMenuItem();
             editarToolStripMenuItem = new ToolStripMenuItem();
             altaDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
-            administracionToolStripMenuItem = new ToolStripMenuItem();
             entornosFormativosToolStripMenuItem = new ToolStripMenuItem();
             verToolStripMenuItem = new ToolStripMenuItem();
             ArticulosToolStripMenuItem = new ToolStripMenuItem();
             EntornoAnimalToolStripMenuItem = new ToolStripMenuItem();
             EntornoVegetalToolStripMenuItem = new ToolStripMenuItem();
             toolStripMenuItem2 = new ToolStripMenuItem();
+            ciclosToolStripMenuItem1 = new ToolStripMenuItem();
             herramientasToolStripMenuItem = new ToolStripMenuItem();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             manualDeUsuarioToolStripMenuItem = new ToolStripMenuItem();
             ciclosToolStripMenuItem = new ToolStripMenuItem();
-            ciclosToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -55,8 +54,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, editarToolStripMenuItem, verToolStripMenuItem, herramientasToolStripMenuItem, ayudaToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(1262, 30);
+            menuStrip1.Size = new Size(1104, 24);
             menuStrip1.TabIndex = 9;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -64,48 +62,41 @@
             // 
             archivoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { iniciarSesionToolStripMenuItem, cerrarSesionToolStripMenuItem });
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(73, 24);
+            archivoToolStripMenuItem.Size = new Size(60, 20);
             archivoToolStripMenuItem.Text = "Archivo";
             // 
             // iniciarSesionToolStripMenuItem
             // 
             iniciarSesionToolStripMenuItem.Name = "iniciarSesionToolStripMenuItem";
-            iniciarSesionToolStripMenuItem.Size = new Size(179, 26);
+            iniciarSesionToolStripMenuItem.Size = new Size(143, 22);
             iniciarSesionToolStripMenuItem.Text = "Iniciar Sesion";
             iniciarSesionToolStripMenuItem.Click += btnIniciar_Click;
             // 
             // cerrarSesionToolStripMenuItem
             // 
             cerrarSesionToolStripMenuItem.Name = "cerrarSesionToolStripMenuItem";
-            cerrarSesionToolStripMenuItem.Size = new Size(179, 26);
+            cerrarSesionToolStripMenuItem.Size = new Size(143, 22);
             cerrarSesionToolStripMenuItem.Text = "Cerrar Sesion";
             cerrarSesionToolStripMenuItem.Click += btnCerrarSesion_Click;
             // 
             // editarToolStripMenuItem
             // 
-            editarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { altaDeUsuarioToolStripMenuItem, administracionToolStripMenuItem, entornosFormativosToolStripMenuItem });
+            editarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { altaDeUsuarioToolStripMenuItem, entornosFormativosToolStripMenuItem });
             editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            editarToolStripMenuItem.Size = new Size(62, 24);
+            editarToolStripMenuItem.Size = new Size(49, 20);
             editarToolStripMenuItem.Text = "Editar";
             // 
             // altaDeUsuarioToolStripMenuItem
             // 
             altaDeUsuarioToolStripMenuItem.Name = "altaDeUsuarioToolStripMenuItem";
-            altaDeUsuarioToolStripMenuItem.Size = new Size(227, 26);
+            altaDeUsuarioToolStripMenuItem.Size = new Size(183, 22);
             altaDeUsuarioToolStripMenuItem.Text = "Alta de Usuario";
             altaDeUsuarioToolStripMenuItem.Click += btnUsuarioAlta_Click;
-            // 
-            // administracionToolStripMenuItem
-            // 
-            administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
-            administracionToolStripMenuItem.Size = new Size(227, 26);
-            administracionToolStripMenuItem.Text = "Administracion";
-            administracionToolStripMenuItem.Click += btnAdministracion_Click;
             // 
             // entornosFormativosToolStripMenuItem
             // 
             entornosFormativosToolStripMenuItem.Name = "entornosFormativosToolStripMenuItem";
-            entornosFormativosToolStripMenuItem.Size = new Size(227, 26);
+            entornosFormativosToolStripMenuItem.Size = new Size(183, 22);
             entornosFormativosToolStripMenuItem.Text = "Entornos Formativos";
             entornosFormativosToolStripMenuItem.Click += btnEntornoFormativo_Click;
             // 
@@ -113,54 +104,61 @@
             // 
             verToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ArticulosToolStripMenuItem, EntornoAnimalToolStripMenuItem, EntornoVegetalToolStripMenuItem, toolStripMenuItem2, ciclosToolStripMenuItem1 });
             verToolStripMenuItem.Name = "verToolStripMenuItem";
-            verToolStripMenuItem.Size = new Size(44, 24);
+            verToolStripMenuItem.Size = new Size(35, 20);
             verToolStripMenuItem.Text = "Ver";
             // 
             // ArticulosToolStripMenuItem
             // 
             ArticulosToolStripMenuItem.Name = "ArticulosToolStripMenuItem";
-            ArticulosToolStripMenuItem.Size = new Size(224, 26);
+            ArticulosToolStripMenuItem.Size = new Size(180, 22);
             ArticulosToolStripMenuItem.Text = "Artículos";
             ArticulosToolStripMenuItem.Click += btnArticulos_Click;
             // 
             // EntornoAnimalToolStripMenuItem
             // 
             EntornoAnimalToolStripMenuItem.Name = "EntornoAnimalToolStripMenuItem";
-            EntornoAnimalToolStripMenuItem.Size = new Size(224, 26);
+            EntornoAnimalToolStripMenuItem.Size = new Size(180, 22);
             EntornoAnimalToolStripMenuItem.Text = "Animales";
             EntornoAnimalToolStripMenuItem.Click += btnEntornoAnimal_Click;
             // 
             // EntornoVegetalToolStripMenuItem
             // 
             EntornoVegetalToolStripMenuItem.Name = "EntornoVegetalToolStripMenuItem";
-            EntornoVegetalToolStripMenuItem.Size = new Size(224, 26);
+            EntornoVegetalToolStripMenuItem.Size = new Size(180, 22);
             EntornoVegetalToolStripMenuItem.Text = "Vegetales";
             EntornoVegetalToolStripMenuItem.Click += btnEntornoVegetal_Click;
             // 
             // toolStripMenuItem2
             // 
             toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(224, 26);
+            toolStripMenuItem2.Size = new Size(180, 22);
             toolStripMenuItem2.Text = "Stock";
             toolStripMenuItem2.Click += StocktoolStripMenuItem_Click;
+            // 
+            // ciclosToolStripMenuItem1
+            // 
+            ciclosToolStripMenuItem1.Name = "ciclosToolStripMenuItem1";
+            ciclosToolStripMenuItem1.Size = new Size(180, 22);
+            ciclosToolStripMenuItem1.Text = "Ciclos";
+            ciclosToolStripMenuItem1.Click += ciclosToolStripMenuItem_Click;
             // 
             // herramientasToolStripMenuItem
             // 
             herramientasToolStripMenuItem.Name = "herramientasToolStripMenuItem";
-            herramientasToolStripMenuItem.Size = new Size(112, 24);
+            herramientasToolStripMenuItem.Size = new Size(90, 20);
             herramientasToolStripMenuItem.Text = "Herramientas";
             // 
             // ayudaToolStripMenuItem
             // 
             ayudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { manualDeUsuarioToolStripMenuItem });
             ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            ayudaToolStripMenuItem.Size = new Size(65, 24);
+            ayudaToolStripMenuItem.Size = new Size(53, 20);
             ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // manualDeUsuarioToolStripMenuItem
             // 
             manualDeUsuarioToolStripMenuItem.Name = "manualDeUsuarioToolStripMenuItem";
-            manualDeUsuarioToolStripMenuItem.Size = new Size(216, 26);
+            manualDeUsuarioToolStripMenuItem.Size = new Size(173, 22);
             manualDeUsuarioToolStripMenuItem.Text = "Manual de Usuario";
             // 
             // ciclosToolStripMenuItem
@@ -170,21 +168,13 @@
             ciclosToolStripMenuItem.Text = "Ciclos";
             ciclosToolStripMenuItem.Click += ciclosToolStripMenuItem_Click;
             // 
-            // ciclosToolStripMenuItem1
-            // 
-            ciclosToolStripMenuItem1.Name = "ciclosToolStripMenuItem1";
-            ciclosToolStripMenuItem1.Size = new Size(224, 26);
-            ciclosToolStripMenuItem1.Text = "Ciclos";
-            ciclosToolStripMenuItem1.Click += ciclosToolStripMenuItem_Click;
-            // 
             // Inicio
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1262, 749);
+            ClientSize = new Size(1104, 562);
             Controls.Add(menuStrip1);
             IsMdiContainer = true;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Inicio";
             ShowIcon = false;
             StartPosition = FormStartPosition.CenterParent;
@@ -207,7 +197,6 @@
         private ToolStripMenuItem iniciarSesionToolStripMenuItem;
         private ToolStripMenuItem cerrarSesionToolStripMenuItem;
         private ToolStripMenuItem altaDeUsuarioToolStripMenuItem;
-        private ToolStripMenuItem administracionToolStripMenuItem;
         private ToolStripMenuItem EntornoVegetalToolStripMenuItem;
         private ToolStripMenuItem ArticulosToolStripMenuItem;
         private ToolStripMenuItem manualDeUsuarioToolStripMenuItem;
