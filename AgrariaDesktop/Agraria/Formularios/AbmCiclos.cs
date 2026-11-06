@@ -348,9 +348,9 @@ namespace Agraria.Formularios
 
                 int modoInicio = Convert.ToInt32(cmbModoInicio.SelectedValue);
                 bool activoCiclo = chkActivo.Checked;
-                decimal horasCiclo = numHorasCiclo.Value;
+                
                 int idCreador = _usuarioActual.Id;
-                DateTime fechaCreacion = DateTime.Now;
+                DateTime fechaCreacion = dtpFechaCreacion.Value;
 
                 bool esModificacion = (_idCicloEditar != null);
 
@@ -654,12 +654,17 @@ namespace Agraria.Formularios
             }
         }
 
-       
-            private void btnCancelar_Click(object sender, EventArgs e)
+
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
-    
+
 }

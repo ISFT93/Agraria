@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             btnCancelar = new Button();
             btnSiguente = new Button();
             label9 = new Label();
@@ -50,7 +50,6 @@
             tabControl = new TabControl();
             tabPageCicloModelo = new TabPage();
             mskDuracionEstimada = new MaskedTextBox();
-            numHorasCiclo = new NumericUpDown();
             chkActivo = new CheckBox();
             tabPageActividadesCicloModelo = new TabPage();
             panel2 = new Panel();
@@ -67,9 +66,9 @@
             btnAnterior1 = new Button();
             panel4 = new Panel();
             btnAgregarElemento = new Button();
+            dtpFechaCreacion = new DateTimePicker();
             tabControl.SuspendLayout();
             tabPageCicloModelo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numHorasCiclo).BeginInit();
             tabPageActividadesCicloModelo.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvActividadesCicloModelo).BeginInit();
@@ -120,11 +119,12 @@
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(9, 387);
+            label8.Location = new Point(0, 387);
             label8.Name = "label8";
-            label8.Size = new Size(193, 29);
+            label8.Size = new Size(234, 29);
             label8.TabIndex = 22;
-            label8.Text = "Horas del Ciclo";
+            label8.Text = "Fecha de Creacion";
+            label8.Click += label8_Click;
             // 
             // label7
             // 
@@ -153,11 +153,11 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(213, 387);
+            label4.Location = new Point(232, 387);
             label4.Name = "label4";
-            label4.Size = new Size(232, 29);
+            label4.Size = new Size(211, 29);
             label4.TabIndex = 18;
-            label4.Text = "Duración Estimada";
+            label4.Text = "Duración (Horas)";
             // 
             // label3
             // 
@@ -242,8 +242,8 @@
             // tabPageCicloModelo
             // 
             tabPageCicloModelo.BackColor = Color.FromArgb(141, 181, 146);
+            tabPageCicloModelo.Controls.Add(dtpFechaCreacion);
             tabPageCicloModelo.Controls.Add(mskDuracionEstimada);
-            tabPageCicloModelo.Controls.Add(numHorasCiclo);
             tabPageCicloModelo.Controls.Add(chkActivo);
             tabPageCicloModelo.Controls.Add(txtNombreCicloModelo);
             tabPageCicloModelo.Controls.Add(btnCancelar);
@@ -268,20 +268,12 @@
             // 
             // mskDuracionEstimada
             // 
-            mskDuracionEstimada.Location = new Point(213, 429);
+            mskDuracionEstimada.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            mskDuracionEstimada.Location = new Point(232, 431);
             mskDuracionEstimada.Mask = "00000";
             mskDuracionEstimada.Name = "mskDuracionEstimada";
-            mskDuracionEstimada.Size = new Size(125, 27);
+            mskDuracionEstimada.Size = new Size(82, 34);
             mskDuracionEstimada.TabIndex = 26;
-            // 
-            // numHorasCiclo
-            // 
-            numHorasCiclo.DecimalPlaces = 2;
-            numHorasCiclo.Location = new Point(20, 427);
-            numHorasCiclo.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
-            numHorasCiclo.Name = "numHorasCiclo";
-            numHorasCiclo.Size = new Size(150, 27);
-            numHorasCiclo.TabIndex = 25;
             // 
             // chkActivo
             // 
@@ -325,35 +317,35 @@
             dtgvActividadesCicloModelo.AllowUserToResizeColumns = false;
             dtgvActividadesCicloModelo.AllowUserToResizeRows = false;
             dtgvActividadesCicloModelo.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dtgvActividadesCicloModelo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = SystemColors.Window;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dtgvActividadesCicloModelo.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = SystemColors.Window;
+            dataGridViewCellStyle8.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle8.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            dtgvActividadesCicloModelo.DefaultCellStyle = dataGridViewCellStyle8;
             dtgvActividadesCicloModelo.Dock = DockStyle.Fill;
             dtgvActividadesCicloModelo.Location = new Point(0, 0);
             dtgvActividadesCicloModelo.Margin = new Padding(3, 4, 3, 4);
             dtgvActividadesCicloModelo.Name = "dtgvActividadesCicloModelo";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = SystemColors.Control;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesCicloModelo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = SystemColors.Control;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesCicloModelo.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dtgvActividadesCicloModelo.RowHeadersWidth = 51;
             dtgvActividadesCicloModelo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvActividadesCicloModelo.Size = new Size(999, 431);
@@ -432,35 +424,35 @@
             dtgvActividadesElementos.AllowUserToResizeColumns = false;
             dtgvActividadesElementos.AllowUserToResizeRows = false;
             dtgvActividadesElementos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dtgvActividadesElementos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = SystemColors.Window;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dtgvActividadesElementos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = SystemColors.Window;
+            dataGridViewCellStyle11.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            dtgvActividadesElementos.DefaultCellStyle = dataGridViewCellStyle11;
             dtgvActividadesElementos.Dock = DockStyle.Fill;
             dtgvActividadesElementos.Location = new Point(0, 0);
             dtgvActividadesElementos.Margin = new Padding(3, 4, 3, 4);
             dtgvActividadesElementos.Name = "dtgvActividadesElementos";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = SystemColors.Control;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.True;
-            dtgvActividadesElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = SystemColors.Control;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.True;
+            dtgvActividadesElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dtgvActividadesElementos.RowHeadersWidth = 51;
             dtgvActividadesElementos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvActividadesElementos.Size = new Size(999, 430);
@@ -521,12 +513,22 @@
             btnAgregarElemento.UseVisualStyleBackColor = true;
             btnAgregarElemento.Click += btnAgregarElemento_Click;
             // 
+            // dtpFechaCreacion
+            // 
+            dtpFechaCreacion.CalendarFont = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dtpFechaCreacion.CustomFormat = "dd/MM/yyyy";
+            dtpFechaCreacion.Format = DateTimePickerFormat.Short;
+            dtpFechaCreacion.Location = new Point(3, 431);
+            dtpFechaCreacion.Name = "dtpFechaCreacion";
+            dtpFechaCreacion.Size = new Size(219, 27);
+            dtpFechaCreacion.TabIndex = 27;
+            // 
             // AbmCiclos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(1177, 1102);
+            ClientSize = new Size(1195, 1102);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(1, 3, 1, 3);
@@ -540,7 +542,6 @@
             tabControl.ResumeLayout(false);
             tabPageCicloModelo.ResumeLayout(false);
             tabPageCicloModelo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numHorasCiclo).EndInit();
             tabPageActividadesCicloModelo.ResumeLayout(false);
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgvActividadesCicloModelo).EndInit();
@@ -606,7 +607,7 @@
         private Panel panel5;
         private Panel panel6;
         private CheckBox chkActivo;
-        private NumericUpDown numHorasCiclo;
         private MaskedTextBox mskDuracionEstimada;
+        private DateTimePicker dtpFechaCreacion;
     }
 }
