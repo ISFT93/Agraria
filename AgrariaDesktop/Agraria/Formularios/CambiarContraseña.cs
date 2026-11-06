@@ -2,6 +2,8 @@
 using Agraria.Entidades;
 using Agraria.Negocio;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +16,7 @@ using System.Windows.Forms;
 
 namespace Agraria.Formularios
 {
-    public partial class CambiarContraseña : Form
+    public partial class CambiarContraseña : MaterialForm
     {
         private readonly UsuarioLoginBLL usuarioLoginBLL;
 
@@ -22,6 +24,19 @@ namespace Agraria.Formularios
         {
             InitializeComponent();
             usuarioLoginBLL = new UsuarioLoginBLL();
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Green800,
+                Primary.Green900,
+                Primary.Green500,
+                Accent.Green200,
+          TextShade.WHITE
+            );
         }
 
         private void pbCerrar_Click(object sender, EventArgs e)
@@ -44,8 +59,8 @@ namespace Agraria.Formularios
             {
                 txtNuevaContraseña.Visible = true;
                 txtConfirmarNuevaContraseña.Visible = true;
-                btnGuardar.Visible = true;
-                btnConfirmar.Visible = false;
+                rjBCancelar.Visible = true;
+                rjBAceptar.Visible = false;
                 txtNombreUsuario.Enabled = false;
                 txtRespuestaSeguridad.Enabled = false;
                 cmbPreguntaSeguridad.Enabled = false;
@@ -125,6 +140,7 @@ namespace Agraria.Formularios
             Validaciones.SoloTextoNumeroEspacio(e);
         }
 
-
+        
+        
     }
 }
