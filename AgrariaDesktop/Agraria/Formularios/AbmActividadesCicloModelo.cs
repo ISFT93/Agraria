@@ -46,8 +46,14 @@ namespace Agraria.Formularios
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
             materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.Cyan200, TextShade.WHITE
+                Primary.Green800,
+                Primary.Green900,
+                Primary.Green500,
+                Accent.Green200,
+          TextShade.WHITE
             );
         }
 
