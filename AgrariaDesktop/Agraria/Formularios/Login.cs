@@ -2,22 +2,24 @@
 using Agraria.Datos.DTO;
 using Agraria.Negocio;
 using Agraria.Negocio.BLL;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+//using static System.Windows.Forms.VisualStyleElement.Window;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static System.Windows.Forms.VisualStyleElement.Window;
-using System.Runtime.InteropServices;
 
 
 namespace Agraria.Formularios
 {
-    public partial class Login : Form
+    public partial class Login : MaterialForm
     {
         private readonly UsuarioLoginBLL usuarioLoginBLL;
 
@@ -46,6 +48,19 @@ namespace Agraria.Formularios
         {
             InitializeComponent();
             usuarioLoginBLL = new UsuarioLoginBLL();
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Green800,
+                Primary.Green900,
+                Primary.Green500,
+                Accent.Green200,
+          TextShade.WHITE
+            );
         }
 
         private void Login_Load(object sender, EventArgs e)
