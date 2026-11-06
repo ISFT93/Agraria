@@ -40,9 +40,56 @@ namespace Agraria.Formularios
             );
         }
 
+        public AbmActividadesElementos(ActividadElementoModeloDTO elementoExistente)
+        {
+            InitializeComponent();
+
+            // Guardamos la referencia para editar sobre el mismo objeto
+            NuevoElemento = elementoExistente;
+            txtOrdenElemento.Enabled = false;
+        }
         private void AbmActividadesElementos_Load(object sender, EventArgs e)
         {
             CargarCombos();
+
+            // Si NuevoElemento no es nulo, significa que venimos desde el botón Modificar
+            if (NuevoElemento != null)
+            {
+                txtOrdenElemento.Text = NuevoElemento.Orden.ToString();
+                numCantPrevista.Value = NuevoElemento.CantidadPrevista;
+
+                // Seleccionamos los combos de catálogos
+                cmbTipoElemento.SelectedValue = NuevoElemento.IdTipoElemento;
+
+                // Asignar el TipoElemento dispara el SelectedIndexChanged, lo que carga cmbElemento. 
+                // Luego seleccionamos el elemento específico:
+                cmbElemento.SelectedValue = NuevoElemento.IdElemento;
+
+                // Si guardaste el ID del tipo movimiento en tu DTO (Recomendado):
+                // cmbTipoMovimiento.SelectedValue = NuevoElemento.IdTipoMovimiento;
+                // Si solo guardaste el texto (como está en tu código actual):
+                cmbTipoMovimiento.Text = NuevoElemento.TipoMovimiento;
+
+                cmbTipoUnidad.SelectedValue = NuevoElemento.IdUnidad;
+
+                // Setear los combos booleanos leyendo nuestra propiedad personalizada 'Value'
+                SetearComboBooleano(cmbObligatorio, NuevoElemento.Obligatorio);
+                SetearComboBooleano(cmbVendible, NuevoElemento.Vendible);
+                SetearComboBooleano(cmbPermiteSustitucion, NuevoElemento.PermiteSustitucion);
+            }
+        }
+
+        // Método de apoyo para seleccionar el ítem correcto en los combos de Sí/No
+        private void SetearComboBooleano(ComboBox combo, bool valorBuscado)
+        {
+            for (int i = 0; i < combo.Items.Count; i++)
+            {
+                if (((dynamic)combo.Items[i]).Value == valorBuscado)
+                {
+                    combo.SelectedIndex = i;
+                    break;
+                }
+            }
         }
 
         // =========================================================
@@ -89,25 +136,32 @@ namespace Agraria.Formularios
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            if (cmbTipoElemento.SelectedIndex == -1)
+            if (cmbTipoElemento.SelectedIndex == -1 || cmbElemento.SelectedIndex == -1 || cmbTipoMovimiento.SelectedIndex == -1)
             {
-                MessageBox.Show("Complete los campos obligatorios.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Complete los campos obligatorios, incluyendo el Tipo de Movimiento.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Construimos el DTO con los datos del form (asegurate de leer el .Value en los booleanos)
-            NuevoElemento = new ActividadElementoModeloDTO
+            // Si es nuevo, lo creamos. Si es edición, actualizamos sus propiedades.
+            if (NuevoElemento == null)
             {
-                IdTipoMovimiento = Convert.ToInt32(cmbTipoMovimiento.SelectedValue),
-                IdUnidad = Convert.ToInt32(cmbTipoUnidad.SelectedValue),
-                IdElemento = Convert.ToInt64(cmbElemento.SelectedValue),
-                Orden = Convert.ToInt32(txtOrdenElemento.Text),
-                IdTipoElemento = Convert.ToInt32(cmbTipoElemento.SelectedValue),
-                TipoElemento = cmbTipoElemento.Text,
-                CantidadPrevista = numCantPrevista.Value,
-                Obligatorio = cmbObligatorio.SelectedIndex != -1 && (bool)((dynamic)cmbObligatorio.SelectedItem).Value
-                // (Si tu DTO tiene IdElemento, TipoMovimiento, etc., agregalos acá)
-            };
+                NuevoElemento = new ActividadElementoModeloDTO();
+            }
+
+            NuevoElemento.Orden = Convert.ToInt32(txtOrdenElemento.Text);
+            NuevoElemento.IdTipoElemento = Convert.ToInt32(cmbTipoElemento.SelectedValue);
+            NuevoElemento.TipoElemento = cmbTipoElemento.Text;
+
+            NuevoElemento.IdElemento = Convert.ToInt64(cmbElemento.SelectedValue);
+            NuevoElemento.NombreElemento = cmbElemento.Text; // Guardamos el nombre para verlo en la grilla
+
+            NuevoElemento.IdTipoMovimiento = Convert.ToInt32(cmbTipoMovimiento.SelectedValue);
+            NuevoElemento.IdUnidad = Convert.ToInt32(cmbTipoUnidad.SelectedValue);
+            NuevoElemento.CantidadPrevista = numCantPrevista.Value;
+
+            NuevoElemento.Obligatorio = (cmbObligatorio.Text == "Sí");
+            NuevoElemento.Vendible = (cmbVendible.Text == "Sí");
+            NuevoElemento.PermiteSustitucion = (cmbPermiteSustitucion.Text == "Sí");
 
             this.DialogResult = DialogResult.OK;
             this.Close();

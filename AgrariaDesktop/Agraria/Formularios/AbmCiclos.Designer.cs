@@ -56,13 +56,9 @@
             panel2 = new Panel();
             dtgvActividadesCicloModelo = new DataGridView();
             panel3 = new Panel();
-            btnSiguiente2 = new Button();
             btnAnterior = new Button();
             panel1 = new Panel();
-            btnBajar = new Button();
-            btnSubir = new Button();
             btnAgregar = new Button();
-            btnQuitar = new Button();
             tabPageActividadesElementos = new TabPage();
             panel6 = new Panel();
             dtgvActividadesElementos = new DataGridView();
@@ -70,10 +66,7 @@
             btnGuardar = new Button();
             btnAnterior1 = new Button();
             panel4 = new Panel();
-            btnSubirElemento = new Button();
-            btnBajarElemento = new Button();
             btnAgregarElemento = new Button();
-            btnQuitarElemento = new Button();
             tabControl.SuspendLayout();
             tabPageCicloModelo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)NumDuracionEstimada).BeginInit();
@@ -91,10 +84,9 @@
             // 
             // btnCancelar
             // 
-            btnCancelar.Location = new Point(886, 545);
-            btnCancelar.Margin = new Padding(3, 4, 3, 4);
+            btnCancelar.Location = new Point(776, 409);
             btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(86, 39);
+            btnCancelar.Size = new Size(76, 29);
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "&Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
@@ -102,10 +94,9 @@
             // 
             // btnSiguente
             // 
-            btnSiguente.Location = new Point(886, 499);
-            btnSiguente.Margin = new Padding(3, 4, 3, 4);
+            btnSiguente.Location = new Point(776, 374);
             btnSiguente.Name = "btnSiguente";
-            btnSiguente.Size = new Size(86, 39);
+            btnSiguente.Size = new Size(76, 29);
             btnSiguente.TabIndex = 8;
             btnSiguente.Text = "&Siguiente";
             btnSiguente.UseVisualStyleBackColor = true;
@@ -116,9 +107,9 @@
             label9.AutoSize = true;
             label9.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(759, 389);
+            label9.Location = new Point(664, 292);
             label9.Name = "label9";
-            label9.Size = new Size(147, 29);
+            label9.Size = new Size(116, 24);
             label9.TabIndex = 23;
             label9.Text = "Creado Por";
             // 
@@ -127,9 +118,9 @@
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(9, 387);
+            label8.Location = new Point(8, 290);
             label8.Name = "label8";
-            label8.Size = new Size(234, 29);
+            label8.Size = new Size(189, 24);
             label8.TabIndex = 22;
             label8.Text = "Fecha de Creación";
             // 
@@ -138,9 +129,9 @@
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(625, 384);
+            label7.Location = new Point(547, 288);
             label7.Name = "label7";
-            label7.Size = new Size(83, 29);
+            label7.Size = new Size(67, 24);
             label7.TabIndex = 21;
             label7.Text = "Activo";
             // 
@@ -149,9 +140,9 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(450, 384);
+            label6.Location = new Point(393, 288);
             label6.Name = "label6";
-            label6.Size = new Size(149, 29);
+            label6.Size = new Size(119, 24);
             label6.TabIndex = 20;
             label6.Text = "Modo Inicio";
             // 
@@ -160,9 +151,9 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(212, 387);
+            label4.Location = new Point(186, 290);
             label4.Name = "label4";
-            label4.Size = new Size(232, 29);
+            label4.Size = new Size(185, 24);
             label4.TabIndex = 18;
             label4.Text = "Duración Estimada";
             // 
@@ -171,9 +162,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(7, 91);
+            label3.Location = new Point(6, 68);
             label3.Name = "label3";
-            label3.Size = new Size(152, 29);
+            label3.Size = new Size(121, 24);
             label3.TabIndex = 17;
             label3.Text = "Descripción";
             // 
@@ -182,9 +173,9 @@
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(10, 10);
+            label1.Location = new Point(8, 7);
             label1.Name = "label1";
-            label1.Size = new Size(107, 29);
+            label1.Size = new Size(85, 24);
             label1.TabIndex = 16;
             label1.Text = "Nombre";
             // 
@@ -193,10 +184,10 @@
             cmbActivo.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbActivo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbActivo.FormattingEnabled = true;
-            cmbActivo.Location = new Point(625, 419);
-            cmbActivo.Margin = new Padding(2, 3, 2, 3);
+            cmbActivo.Location = new Point(547, 314);
+            cmbActivo.Margin = new Padding(1, 2, 1, 2);
             cmbActivo.Name = "cmbActivo";
-            cmbActivo.Size = new Size(113, 37);
+            cmbActivo.Size = new Size(99, 32);
             cmbActivo.TabIndex = 4;
             // 
             // cmbModoInicio
@@ -204,44 +195,44 @@
             cmbModoInicio.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbModoInicio.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             cmbModoInicio.FormattingEnabled = true;
-            cmbModoInicio.Location = new Point(450, 419);
-            cmbModoInicio.Margin = new Padding(2, 3, 2, 3);
+            cmbModoInicio.Location = new Point(393, 314);
+            cmbModoInicio.Margin = new Padding(1, 2, 1, 2);
             cmbModoInicio.Name = "cmbModoInicio";
-            cmbModoInicio.Size = new Size(149, 37);
+            cmbModoInicio.Size = new Size(131, 32);
             cmbModoInicio.TabIndex = 3;
             // 
             // txtCreadoPor
             // 
             txtCreadoPor.BorderStyle = BorderStyle.FixedSingle;
             txtCreadoPor.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtCreadoPor.Location = new Point(759, 424);
-            txtCreadoPor.Margin = new Padding(2, 3, 2, 3);
+            txtCreadoPor.Location = new Point(664, 318);
+            txtCreadoPor.Margin = new Padding(1, 2, 1, 2);
             txtCreadoPor.MaxLength = 40;
             txtCreadoPor.Name = "txtCreadoPor";
-            txtCreadoPor.Size = new Size(212, 34);
+            txtCreadoPor.Size = new Size(185, 29);
             txtCreadoPor.TabIndex = 6;
             // 
             // txtDescripcion
             // 
             txtDescripcion.BorderStyle = BorderStyle.FixedSingle;
             txtDescripcion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtDescripcion.Location = new Point(10, 123);
-            txtDescripcion.Margin = new Padding(2, 3, 2, 3);
+            txtDescripcion.Location = new Point(8, 92);
+            txtDescripcion.Margin = new Padding(1, 2, 1, 2);
             txtDescripcion.MaxLength = 0;
             txtDescripcion.Multiline = true;
             txtDescripcion.Name = "txtDescripcion";
-            txtDescripcion.Size = new Size(962, 248);
+            txtDescripcion.Size = new Size(842, 187);
             txtDescripcion.TabIndex = 7;
             // 
             // txtNombreCicloModelo
             // 
             txtNombreCicloModelo.BorderStyle = BorderStyle.FixedSingle;
             txtNombreCicloModelo.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            txtNombreCicloModelo.Location = new Point(10, 42);
-            txtNombreCicloModelo.Margin = new Padding(2, 3, 2, 3);
+            txtNombreCicloModelo.Location = new Point(8, 31);
+            txtNombreCicloModelo.Margin = new Padding(1, 2, 1, 2);
             txtNombreCicloModelo.MaxLength = 40;
             txtNombreCicloModelo.Name = "txtNombreCicloModelo";
-            txtNombreCicloModelo.Size = new Size(962, 34);
+            txtNombreCicloModelo.Size = new Size(842, 29);
             txtNombreCicloModelo.TabIndex = 1;
             // 
             // tabControl
@@ -250,11 +241,10 @@
             tabControl.Controls.Add(tabPageActividadesCicloModelo);
             tabControl.Controls.Add(tabPageActividadesElementos);
             tabControl.Font = new Font("Segoe UI", 9F);
-            tabControl.Location = new Point(6, 66);
-            tabControl.Margin = new Padding(3, 4, 3, 4);
+            tabControl.Location = new Point(6, 67);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1012, 630);
+            tabControl.Size = new Size(886, 473);
             tabControl.TabIndex = 29;
             // 
             // tabPageCicloModelo
@@ -276,11 +266,10 @@
             tabPageCicloModelo.Controls.Add(label6);
             tabPageCicloModelo.Controls.Add(cmbActivo);
             tabPageCicloModelo.Controls.Add(cmbModoInicio);
-            tabPageCicloModelo.Location = new Point(4, 29);
-            tabPageCicloModelo.Margin = new Padding(3, 4, 3, 4);
+            tabPageCicloModelo.Location = new Point(4, 24);
             tabPageCicloModelo.Name = "tabPageCicloModelo";
-            tabPageCicloModelo.Padding = new Padding(3, 4, 3, 4);
-            tabPageCicloModelo.Size = new Size(1004, 597);
+            tabPageCicloModelo.Padding = new Padding(3);
+            tabPageCicloModelo.Size = new Size(878, 445);
             tabPageCicloModelo.TabIndex = 0;
             tabPageCicloModelo.Text = "Ciclo Modelo";
             // 
@@ -288,11 +277,10 @@
             // 
             NumDuracionEstimada.DecimalPlaces = 2;
             NumDuracionEstimada.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            NumDuracionEstimada.Location = new Point(212, 422);
-            NumDuracionEstimada.Margin = new Padding(3, 4, 3, 4);
+            NumDuracionEstimada.Location = new Point(186, 317);
             NumDuracionEstimada.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
             NumDuracionEstimada.Name = "NumDuracionEstimada";
-            NumDuracionEstimada.Size = new Size(160, 34);
+            NumDuracionEstimada.Size = new Size(140, 29);
             NumDuracionEstimada.TabIndex = 2;
             // 
             // dtpFechaCreacion
@@ -300,10 +288,9 @@
             dtpFechaCreacion.CustomFormat = "dd/MM/yyyy";
             dtpFechaCreacion.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             dtpFechaCreacion.Format = DateTimePickerFormat.Short;
-            dtpFechaCreacion.Location = new Point(13, 422);
-            dtpFechaCreacion.Margin = new Padding(3, 4, 3, 4);
+            dtpFechaCreacion.Location = new Point(11, 317);
             dtpFechaCreacion.Name = "dtpFechaCreacion";
-            dtpFechaCreacion.Size = new Size(159, 34);
+            dtpFechaCreacion.Size = new Size(140, 29);
             dtpFechaCreacion.TabIndex = 5;
             // 
             // tabPageActividadesCicloModelo
@@ -312,11 +299,10 @@
             tabPageActividadesCicloModelo.Controls.Add(panel2);
             tabPageActividadesCicloModelo.Controls.Add(panel3);
             tabPageActividadesCicloModelo.Controls.Add(panel1);
-            tabPageActividadesCicloModelo.Location = new Point(4, 29);
-            tabPageActividadesCicloModelo.Margin = new Padding(3, 4, 3, 4);
+            tabPageActividadesCicloModelo.Location = new Point(4, 24);
             tabPageActividadesCicloModelo.Name = "tabPageActividadesCicloModelo";
-            tabPageActividadesCicloModelo.Padding = new Padding(3, 4, 3, 4);
-            tabPageActividadesCicloModelo.Size = new Size(1004, 597);
+            tabPageActividadesCicloModelo.Padding = new Padding(3);
+            tabPageActividadesCicloModelo.Size = new Size(878, 445);
             tabPageActividadesCicloModelo.TabIndex = 1;
             tabPageActividadesCicloModelo.Text = "Actividades Ciclo Modelo";
             // 
@@ -324,10 +310,9 @@
             // 
             panel2.Controls.Add(dtgvActividadesCicloModelo);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 89);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(3, 36);
             panel2.Name = "panel2";
-            panel2.Size = new Size(998, 389);
+            panel2.Size = new Size(872, 320);
             panel2.TabIndex = 58;
             // 
             // dtgvActividadesCicloModelo
@@ -355,7 +340,6 @@
             dtgvActividadesCicloModelo.DefaultCellStyle = dataGridViewCellStyle2;
             dtgvActividadesCicloModelo.Dock = DockStyle.Fill;
             dtgvActividadesCicloModelo.Location = new Point(0, 0);
-            dtgvActividadesCicloModelo.Margin = new Padding(3, 4, 3, 4);
             dtgvActividadesCicloModelo.Name = "dtgvActividadesCicloModelo";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -367,37 +351,24 @@
             dtgvActividadesCicloModelo.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dtgvActividadesCicloModelo.RowHeadersWidth = 51;
             dtgvActividadesCicloModelo.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvActividadesCicloModelo.Size = new Size(998, 389);
+            dtgvActividadesCicloModelo.Size = new Size(872, 320);
             dtgvActividadesCicloModelo.TabIndex = 53;
+            dtgvActividadesCicloModelo.CellContentClick += dtgvActividadesCicloModelo_CellContentClick;
             // 
             // panel3
             // 
-            panel3.Controls.Add(btnSiguiente2);
             panel3.Controls.Add(btnAnterior);
             panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(3, 478);
-            panel3.Margin = new Padding(3, 4, 3, 4);
+            panel3.Location = new Point(3, 356);
             panel3.Name = "panel3";
-            panel3.Size = new Size(998, 115);
+            panel3.Size = new Size(872, 86);
             panel3.TabIndex = 59;
-            // 
-            // btnSiguiente2
-            // 
-            btnSiguiente2.Location = new Point(885, 16);
-            btnSiguiente2.Margin = new Padding(3, 4, 3, 4);
-            btnSiguiente2.Name = "btnSiguiente2";
-            btnSiguiente2.Size = new Size(86, 39);
-            btnSiguiente2.TabIndex = 31;
-            btnSiguiente2.Text = "&Siguiente";
-            btnSiguiente2.UseVisualStyleBackColor = true;
-            btnSiguiente2.Click += btnSiguiente2_Click;
             // 
             // btnAnterior
             // 
-            btnAnterior.Location = new Point(885, 62);
-            btnAnterior.Margin = new Padding(3, 4, 3, 4);
+            btnAnterior.Location = new Point(774, 47);
             btnAnterior.Name = "btnAnterior";
-            btnAnterior.Size = new Size(86, 39);
+            btnAnterior.Size = new Size(76, 29);
             btnAnterior.TabIndex = 32;
             btnAnterior.Text = "&Anterior";
             btnAnterior.UseVisualStyleBackColor = true;
@@ -405,60 +376,22 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(btnBajar);
-            panel1.Controls.Add(btnSubir);
             panel1.Controls.Add(btnAgregar);
-            panel1.Controls.Add(btnQuitar);
             panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(3, 4);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(998, 85);
+            panel1.Size = new Size(872, 33);
             panel1.TabIndex = 57;
-            // 
-            // btnBajar
-            // 
-            btnBajar.Location = new Point(7, 41);
-            btnBajar.Margin = new Padding(3, 4, 3, 4);
-            btnBajar.Name = "btnBajar";
-            btnBajar.Size = new Size(121, 31);
-            btnBajar.TabIndex = 58;
-            btnBajar.Text = "Bajar Actividad";
-            btnBajar.UseVisualStyleBackColor = true;
-            btnBajar.Click += btnBajar_Click;
-            // 
-            // btnSubir
-            // 
-            btnSubir.Location = new Point(7, 4);
-            btnSubir.Margin = new Padding(3, 4, 3, 4);
-            btnSubir.Name = "btnSubir";
-            btnSubir.Size = new Size(121, 31);
-            btnSubir.TabIndex = 57;
-            btnSubir.Text = "Subir Actividad";
-            btnSubir.UseVisualStyleBackColor = true;
-            btnSubir.Click += btnSubir_Click;
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(841, 7);
-            btnAgregar.Margin = new Padding(3, 4, 3, 4);
+            btnAgregar.Location = new Point(693, 3);
             btnAgregar.Name = "btnAgregar";
-            btnAgregar.Size = new Size(130, 31);
+            btnAgregar.Size = new Size(176, 23);
             btnAgregar.TabIndex = 55;
             btnAgregar.Text = "Agregar Actividad";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnQuitar
-            // 
-            btnQuitar.Location = new Point(841, 46);
-            btnQuitar.Margin = new Padding(3, 4, 3, 4);
-            btnQuitar.Name = "btnQuitar";
-            btnQuitar.Size = new Size(130, 31);
-            btnQuitar.TabIndex = 56;
-            btnQuitar.Text = "Quitar Actividad";
-            btnQuitar.UseVisualStyleBackColor = true;
-            btnQuitar.Click += btnQuitar_Click;
             // 
             // tabPageActividadesElementos
             // 
@@ -466,11 +399,10 @@
             tabPageActividadesElementos.Controls.Add(panel6);
             tabPageActividadesElementos.Controls.Add(panel5);
             tabPageActividadesElementos.Controls.Add(panel4);
-            tabPageActividadesElementos.Location = new Point(4, 29);
-            tabPageActividadesElementos.Margin = new Padding(3, 4, 3, 4);
+            tabPageActividadesElementos.Location = new Point(4, 24);
             tabPageActividadesElementos.Name = "tabPageActividadesElementos";
-            tabPageActividadesElementos.Padding = new Padding(3, 4, 3, 4);
-            tabPageActividadesElementos.Size = new Size(1004, 597);
+            tabPageActividadesElementos.Padding = new Padding(3);
+            tabPageActividadesElementos.Size = new Size(878, 445);
             tabPageActividadesElementos.TabIndex = 2;
             tabPageActividadesElementos.Text = "Actividades Elementos";
             // 
@@ -478,10 +410,9 @@
             // 
             panel6.Controls.Add(dtgvActividadesElementos);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(3, 89);
-            panel6.Margin = new Padding(3, 4, 3, 4);
+            panel6.Location = new Point(3, 37);
             panel6.Name = "panel6";
-            panel6.Size = new Size(998, 389);
+            panel6.Size = new Size(872, 319);
             panel6.TabIndex = 86;
             // 
             // dtgvActividadesElementos
@@ -509,7 +440,6 @@
             dtgvActividadesElementos.DefaultCellStyle = dataGridViewCellStyle5;
             dtgvActividadesElementos.Dock = DockStyle.Fill;
             dtgvActividadesElementos.Location = new Point(0, 0);
-            dtgvActividadesElementos.Margin = new Padding(3, 4, 3, 4);
             dtgvActividadesElementos.Name = "dtgvActividadesElementos";
             dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = SystemColors.Control;
@@ -521,26 +451,25 @@
             dtgvActividadesElementos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             dtgvActividadesElementos.RowHeadersWidth = 51;
             dtgvActividadesElementos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvActividadesElementos.Size = new Size(998, 389);
+            dtgvActividadesElementos.Size = new Size(872, 319);
             dtgvActividadesElementos.TabIndex = 83;
+            dtgvActividadesElementos.CellContentClick += dtgvActividadesElementos_CellContentClick;
             // 
             // panel5
             // 
             panel5.Controls.Add(btnGuardar);
             panel5.Controls.Add(btnAnterior1);
             panel5.Dock = DockStyle.Bottom;
-            panel5.Location = new Point(3, 478);
-            panel5.Margin = new Padding(3, 4, 3, 4);
+            panel5.Location = new Point(3, 356);
             panel5.Name = "panel5";
-            panel5.Size = new Size(998, 115);
+            panel5.Size = new Size(872, 86);
             panel5.TabIndex = 85;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(887, 12);
-            btnGuardar.Margin = new Padding(3, 4, 3, 4);
+            btnGuardar.Location = new Point(776, 9);
             btnGuardar.Name = "btnGuardar";
-            btnGuardar.Size = new Size(86, 39);
+            btnGuardar.Size = new Size(76, 29);
             btnGuardar.TabIndex = 55;
             btnGuardar.Text = "&Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
@@ -548,10 +477,9 @@
             // 
             // btnAnterior1
             // 
-            btnAnterior1.Location = new Point(887, 59);
-            btnAnterior1.Margin = new Padding(3, 4, 3, 4);
+            btnAnterior1.Location = new Point(776, 44);
             btnAnterior1.Name = "btnAnterior1";
-            btnAnterior1.Size = new Size(86, 39);
+            btnAnterior1.Size = new Size(76, 29);
             btnAnterior1.TabIndex = 78;
             btnAnterior1.Text = "&Anterior";
             btnAnterior1.UseVisualStyleBackColor = true;
@@ -559,74 +487,35 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(btnSubirElemento);
-            panel4.Controls.Add(btnBajarElemento);
             panel4.Controls.Add(btnAgregarElemento);
-            panel4.Controls.Add(btnQuitarElemento);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(3, 4);
-            panel4.Margin = new Padding(3, 4, 3, 4);
+            panel4.Location = new Point(3, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(998, 85);
+            panel4.Size = new Size(872, 34);
             panel4.TabIndex = 84;
-            // 
-            // btnSubirElemento
-            // 
-            btnSubirElemento.Location = new Point(7, 4);
-            btnSubirElemento.Margin = new Padding(3, 4, 3, 4);
-            btnSubirElemento.Name = "btnSubirElemento";
-            btnSubirElemento.Size = new Size(121, 31);
-            btnSubirElemento.TabIndex = 81;
-            btnSubirElemento.Text = "Subir Elemento";
-            btnSubirElemento.UseVisualStyleBackColor = true;
-            btnSubirElemento.Click += btnSubirElemento_Click;
-            // 
-            // btnBajarElemento
-            // 
-            btnBajarElemento.Location = new Point(7, 41);
-            btnBajarElemento.Margin = new Padding(3, 4, 3, 4);
-            btnBajarElemento.Name = "btnBajarElemento";
-            btnBajarElemento.Size = new Size(121, 31);
-            btnBajarElemento.TabIndex = 82;
-            btnBajarElemento.Text = "Bajar Elemento";
-            btnBajarElemento.UseVisualStyleBackColor = true;
-            btnBajarElemento.Click += btnBajarElemento_Click;
             // 
             // btnAgregarElemento
             // 
-            btnAgregarElemento.Location = new Point(843, 2);
-            btnAgregarElemento.Margin = new Padding(3, 4, 3, 4);
+            btnAgregarElemento.Location = new Point(693, 5);
             btnAgregarElemento.Name = "btnAgregarElemento";
-            btnAgregarElemento.Size = new Size(130, 31);
+            btnAgregarElemento.Size = new Size(176, 23);
             btnAgregarElemento.TabIndex = 79;
             btnAgregarElemento.Text = "Agregar Elemento";
             btnAgregarElemento.UseVisualStyleBackColor = true;
             btnAgregarElemento.Click += btnAgregarElemento_Click;
             // 
-            // btnQuitarElemento
-            // 
-            btnQuitarElemento.Location = new Point(843, 41);
-            btnQuitarElemento.Margin = new Padding(3, 4, 3, 4);
-            btnQuitarElemento.Name = "btnQuitarElemento";
-            btnQuitarElemento.Size = new Size(130, 31);
-            btnQuitarElemento.TabIndex = 80;
-            btnQuitarElemento.Text = "Quitar Elemento";
-            btnQuitarElemento.UseVisualStyleBackColor = true;
-            btnQuitarElemento.Click += btnQuitarElemento_Click;
-            // 
             // AbmCiclos
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(1087, 880);
+            ClientSize = new Size(922, 614);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(2, 3, 2, 3);
+            Margin = new Padding(1, 2, 1, 2);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "AbmCiclos";
-            Padding = new Padding(3, 85, 3, 4);
             SizeGripStyle = SizeGripStyle.Hide;
             Text = "AbmCiclos";
             Load += AbmCiclos_Load;
@@ -669,7 +558,6 @@
         private DateTimePicker dtpFechaCreacion;
         private TabPage tabPageActividadesElementos;
         private Button btnAnterior;
-        private Button btnSiguiente2;
         private ComboBox cmbTipoElemento;
         private Label label20;
         private ComboBox cmbPermiteSustitucion;
@@ -692,19 +580,13 @@
         private NumericUpDown numActividadModelo;
         private Label label28;
         private Button btnAnterior1;
-        private Button btnQuitar;
         private Button btnAgregar;
         private DataGridView dtgvActividadesCicloModelo;
         private Panel panel2;
         private Panel panel3;
         private Panel panel1;
-        private Button btnBajar;
-        private Button btnSubir;
         private DataGridView dtgvActividadesElementos;
-        private Button btnBajarElemento;
-        private Button btnSubirElemento;
         private Button btnAgregarElemento;
-        private Button btnQuitarElemento;
         private Panel panel4;
         private Panel panel5;
         private Panel panel6;

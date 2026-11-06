@@ -25,7 +25,13 @@ namespace Agraria.Formularios
             _usuarioActual = usuarioLogeado;
             ConfigurarTabsIniciales();
 
+            // 1ro: Configurar la estructura de la grilla
+            ConfigurarGrillaActividades();
+
+            // 2do: Asignar los datos
             dtgvActividadesCicloModelo.DataSource = listaActividades;
+
+            ConfigurarGrillaElementos();
 
 
             // Configurar el MaterialSkinManager
@@ -303,9 +309,9 @@ namespace Agraria.Formularios
             try
             {
                 // 1. Validar Cabecera
-                if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1)
+                if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1 || cmbActivo.SelectedIndex == -1)
                 {
-                    MessageBox.Show("Complete los campos obligatorios del ciclo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Complete los campos obligatorios del ciclo (Nombre, Modo de Inicio y Estado Activo).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -418,5 +424,232 @@ namespace Agraria.Formularios
                 listaActividades.Add(nuevaActividad);
             }
         }
+
+        private void ConfigurarGrillaActividades()
+        {
+            dtgvActividadesCicloModelo.AutoGenerateColumns = false;
+            dtgvActividadesCicloModelo.Columns.Clear();
+
+            // 1. Columnas de Datos 
+            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Orden", HeaderText = "Orden", Name = "colOrden", Width = 50 });
+            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nombre", HeaderText = "Nombre", Name = "colNombre", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "IdTipoActividad", HeaderText = "IdTipo", Name = "colIdTipoActividad", Visible = false });
+            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TipoActividad", HeaderText = "Tipo Actividad", Name = "colTipoActividad", Width = 120 });
+            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Duracion", HeaderText = "Duración", Name = "colDuracion", Width = 70 });
+
+            // 2. Columna Botón: Modificar
+            DataGridViewButtonColumn btnModificarGrid = new DataGridViewButtonColumn();
+            btnModificarGrid.Name = "colBtnModificar";
+            btnModificarGrid.HeaderText = "";
+            btnModificarGrid.Text = "Modificar";
+            btnModificarGrid.UseColumnTextForButtonValue = true;
+            btnModificarGrid.Width = 80;
+            dtgvActividadesCicloModelo.Columns.Add(btnModificarGrid);
+
+            // 3. Columna Botón: Subir
+            DataGridViewButtonColumn btnSubirGrid = new DataGridViewButtonColumn();
+            btnSubirGrid.Name = "colBtnSubir";
+            btnSubirGrid.HeaderText = "";
+            btnSubirGrid.Text = "Subir ▲";
+            btnSubirGrid.UseColumnTextForButtonValue = true;
+            btnSubirGrid.Width = 70;
+            dtgvActividadesCicloModelo.Columns.Add(btnSubirGrid);
+
+            // 4. Columna Botón: Bajar
+            DataGridViewButtonColumn btnBajarGrid = new DataGridViewButtonColumn();
+            btnBajarGrid.Name = "colBtnBajar";
+            btnBajarGrid.HeaderText = "";
+            btnBajarGrid.Text = "Bajar ▼";
+            btnBajarGrid.UseColumnTextForButtonValue = true;
+            btnBajarGrid.Width = 70;
+            dtgvActividadesCicloModelo.Columns.Add(btnBajarGrid);
+
+            // 5. Columna Botón: Agregar Elementos
+            DataGridViewButtonColumn btnAgregarElemGrid = new DataGridViewButtonColumn();
+            btnAgregarElemGrid.Name = "colBtnAgregarElementos";
+            btnAgregarElemGrid.HeaderText = "";
+            btnAgregarElemGrid.Text = "Elementos";
+            btnAgregarElemGrid.UseColumnTextForButtonValue = true;
+            btnAgregarElemGrid.Width = 85;
+            dtgvActividadesCicloModelo.Columns.Add(btnAgregarElemGrid);
+
+            // 6. Columna Botón: Quitar Actividad
+            DataGridViewButtonColumn btnQuitarGrid = new DataGridViewButtonColumn();
+            btnQuitarGrid.Name = "colBtnQuitarActividad";
+            btnQuitarGrid.HeaderText = "";
+            btnQuitarGrid.Text = "Quitar";
+            btnQuitarGrid.UseColumnTextForButtonValue = true;
+            btnQuitarGrid.Width = 70;
+            dtgvActividadesCicloModelo.Columns.Add(btnQuitarGrid);
+
+            // Estilos visuales de cabecera[cite: 6]
+            dtgvActividadesCicloModelo.EnableHeadersVisualStyles = false;
+            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(dtgvActividadesCicloModelo.Font, System.Drawing.FontStyle.Bold);
+        }
+
+        private void dtgvActividadesCicloModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Ignorar clics en los encabezados
+            if (e.RowIndex < 0) return;
+
+            string nombreColumna = dtgvActividadesCicloModelo.Columns[e.ColumnIndex].Name;
+            var actividadSeleccionada = listaActividades[e.RowIndex];
+            int index = e.RowIndex;
+
+            // ACCIÓN: MODIFICAR
+            if (nombreColumna == "colBtnModificar")
+            {
+                // Pasamos el objeto DTO seleccionado directamente al formulario
+                AbmActividadesCicloModelo frmEdicion = new AbmActividadesCicloModelo(actividadSeleccionada);
+
+                if (frmEdicion.ShowDialog() == DialogResult.OK)
+                {
+                    // Como la actividad se edita en memoria, solo refrescamos la grilla
+                    dtgvActividadesCicloModelo.Refresh();
+                }
+            }
+
+            // ACCIÓN: SUBIR[cite: 5]
+            if (nombreColumna == "colBtnSubir" && index > 0)
+            {
+                var item = listaActividades[index];
+                listaActividades.RemoveAt(index);
+                listaActividades.Insert(index - 1, item);
+                ReordenarActividades();
+            }
+
+            // ACCIÓN: BAJAR[cite: 5]
+            if (nombreColumna == "colBtnBajar" && index < listaActividades.Count - 1)
+            {
+                var item = listaActividades[index];
+                listaActividades.RemoveAt(index);
+                listaActividades.Insert(index + 1, item);
+                ReordenarActividades();
+            }
+
+            // ACCIÓN: AGREGAR ELEMENTOS[cite: 4, 7]
+            if (nombreColumna == "colBtnAgregarElementos")
+            {
+                dtgvActividadesElementos.DataSource = actividadSeleccionada.ListaElementos;
+                tabControl.SelectedTab = tabPageActividadesElementos;
+            }
+
+            // ACCIÓN: QUITAR
+            if (nombreColumna == "colBtnQuitarActividad")
+            {
+                listaActividades.RemoveAt(index);
+                ReordenarActividades();
+            }
+        }
+
+        private void ConfigurarGrillaElementos()
+        {
+            dtgvActividadesElementos.AutoGenerateColumns = false;
+            dtgvActividadesElementos.Columns.Clear();
+
+            // 1. Columnas de Datos 
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Orden", HeaderText = "Orden", Name = "colOrdenElem", Width = 50 });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TipoElemento", HeaderText = "Tipo", Name = "colTipoElem", Width = 100 });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NombreElemento", HeaderText = "Elemento", Name = "colNombreElem", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "CantidadPrevista", HeaderText = "Cant. Prevista", Name = "colCantElem", Width = 90 });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewCheckBoxColumn { DataPropertyName = "Obligatorio", HeaderText = "Obligatorio", Name = "colObligatorioElem", Width = 75 });
+
+            // 2. Columna Botón: Modificar
+            DataGridViewButtonColumn btnModificarGrid = new DataGridViewButtonColumn();
+            btnModificarGrid.Name = "colBtnModificarElem";
+            btnModificarGrid.HeaderText = "";
+            btnModificarGrid.Text = "Modificar";
+            btnModificarGrid.UseColumnTextForButtonValue = true;
+            btnModificarGrid.Width = 80;
+            dtgvActividadesElementos.Columns.Add(btnModificarGrid);
+
+            // 3. Columna Botón: Subir
+            DataGridViewButtonColumn btnSubirGrid = new DataGridViewButtonColumn();
+            btnSubirGrid.Name = "colBtnSubirElem";
+            btnSubirGrid.HeaderText = "";
+            btnSubirGrid.Text = "Subir ▲";
+            btnSubirGrid.UseColumnTextForButtonValue = true;
+            btnSubirGrid.Width = 70;
+            dtgvActividadesElementos.Columns.Add(btnSubirGrid);
+
+            // 4. Columna Botón: Bajar
+            DataGridViewButtonColumn btnBajarGrid = new DataGridViewButtonColumn();
+            btnBajarGrid.Name = "colBtnBajarElem";
+            btnBajarGrid.HeaderText = "";
+            btnBajarGrid.Text = "Bajar ▼";
+            btnBajarGrid.UseColumnTextForButtonValue = true;
+            btnBajarGrid.Width = 70;
+            dtgvActividadesElementos.Columns.Add(btnBajarGrid);
+
+            // 5. Columna Botón: Quitar Elemento
+            DataGridViewButtonColumn btnQuitarGrid = new DataGridViewButtonColumn();
+            btnQuitarGrid.Name = "colBtnQuitarElem";
+            btnQuitarGrid.HeaderText = "";
+            btnQuitarGrid.Text = "Quitar";
+            btnQuitarGrid.UseColumnTextForButtonValue = true;
+            btnQuitarGrid.Width = 70;
+            dtgvActividadesElementos.Columns.Add(btnQuitarGrid);
+
+            // Estilos visuales de cabecera
+            dtgvActividadesElementos.EnableHeadersVisualStyles = false;
+            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
+            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(dtgvActividadesElementos.Font, System.Drawing.FontStyle.Bold);
+        }
+
+        private void dtgvActividadesElementos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var actividadActual = ObtenerActividadSeleccionada();
+            if (actividadActual == null) return;
+
+            string nombreColumna = dtgvActividadesElementos.Columns[e.ColumnIndex].Name;
+            int index = e.RowIndex;
+            var elementoSeleccionado = actividadActual.ListaElementos[index];
+
+            // ACCIÓN: MODIFICAR
+            if (nombreColumna == "colBtnModificarElem")
+            {
+                // Abrimos el formulario de elementos pasándole el DTO actual para edición
+                AbmActividadesElementos frmEdicion = new AbmActividadesElementos(elementoSeleccionado);
+
+                if (frmEdicion.ShowDialog() == DialogResult.OK)
+                {
+                    // El formulario edita las propiedades en memoria, solo refrescamos
+                    dtgvActividadesElementos.Refresh();
+                }
+            }
+
+            // ACCIÓN: SUBIR
+            if (nombreColumna == "colBtnSubirElem" && index > 0)
+            {
+                var item = actividadActual.ListaElementos[index];
+                actividadActual.ListaElementos.RemoveAt(index);
+                actividadActual.ListaElementos.Insert(index - 1, item);
+                ReordenarElementos(actividadActual);
+            }
+
+            // ACCIÓN: BAJAR
+            if (nombreColumna == "colBtnBajarElem" && index < actividadActual.ListaElementos.Count - 1)
+            {
+                var item = actividadActual.ListaElementos[index];
+                actividadActual.ListaElementos.RemoveAt(index);
+                actividadActual.ListaElementos.Insert(index + 1, item);
+                ReordenarElementos(actividadActual);
+            }
+
+            // ACCIÓN: QUITAR
+            if (nombreColumna == "colBtnQuitarElem")
+            {
+                actividadActual.ListaElementos.RemoveAt(index);
+                ReordenarElementos(actividadActual);
+            }
+        }
+
+
+
     }
 }

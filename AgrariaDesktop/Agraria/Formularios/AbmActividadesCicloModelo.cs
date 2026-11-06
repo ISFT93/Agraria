@@ -15,31 +15,76 @@ namespace Agraria.Formularios
         // Propiedad pública donde guardaremos la actividad para que AbmCiclos la lea
         public ActividadModeloDTO NuevaActividad { get; private set; }
 
-        // Pedimos el número de orden por parámetro al abrir el formulario
+        // ========================================================
+        // 1. CONSTRUCTOR PARA NUEVO
+        // ========================================================
         public AbmActividadesCicloModelo(int ordenAsignado)
         {
             InitializeComponent();
+            ConfigurarSkin();
+
             txtOrden.Text = ordenAsignado.ToString();
             txtOrden.Enabled = false; // Bloqueado para que mantenga el correlativo
+        }
 
-            // Configurar el MaterialSkinManager
+        // ========================================================
+        // 2. CONSTRUCTOR PARA MODIFICAR (El que llama la grilla)
+        // ========================================================
+        public AbmActividadesCicloModelo(ActividadModeloDTO actividadExistente)
+        {
+            InitializeComponent();
+            ConfigurarSkin();
+
+            // Guardamos la actividad seleccionada en la variable global
+            NuevaActividad = actividadExistente;
+            txtOrden.Enabled = false;
+        }
+
+        // Centralizamos el diseño para no repetir código en los dos constructores
+        private void ConfigurarSkin()
+        {
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
-
-            // Configurar esquemas de color (Ejemplo: Azul / Indigo)
             materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.Cyan800,
-                Primary.Cyan900,
-                Primary.Cyan500,
-                Accent.Cyan200,
-          TextShade.WHITE
+                Primary.Cyan800, Primary.Cyan900, Primary.Cyan500, Accent.Cyan200, TextShade.WHITE
             );
         }
 
         private void AbmActividadesCicloModelo_Load(object sender, EventArgs e)
         {
             CargarCombos();
+
+            // Si "NuevaActividad" tiene datos (Modo Edición), los volcamos a los TextBox y Combos
+            if (NuevaActividad != null)
+            {
+                txtOrden.Text = NuevaActividad.Orden.ToString();
+                txtNombre.Text = NuevaActividad.Nombre;
+                txtDescripcionActividad.Text = NuevaActividad.Descripcion;
+                txtCondicionAvance.Text = NuevaActividad.CondicionAvance;
+                numDuracion.Value = NuevaActividad.Duracion;
+
+                cmbTipoActividad.SelectedValue = NuevaActividad.IdTipoActividad;
+
+                // Llamamos a un método de apoyo para seleccionar el booleano correcto
+                SetearComboBooleano(cmbDemora, NuevaActividad.Demora);
+                SetearComboBooleano(cmbAprobacion1, NuevaActividad.Aprobacion);
+                SetearComboBooleano(cmbEjecucion, NuevaActividad.EjecucionParcial);
+                SetearComboBooleano(cmbActiva, NuevaActividad.Activa);
+            }
+        }
+
+        // Método de apoyo para leer el "Value" de tus objetos anónimos en los combos Sí/No
+        private void SetearComboBooleano(ComboBox combo, bool valorBuscado)
+        {
+            for (int i = 0; i < combo.Items.Count; i++)
+            {
+                if (((dynamic)combo.Items[i]).Value == valorBuscado)
+                {
+                    combo.SelectedIndex = i;
+                    break;
+                }
+            }
         }
 
         private void CargarCombos()
@@ -76,21 +121,23 @@ namespace Agraria.Formularios
                 return;
             }
 
-            // Llenamos la propiedad pública con los datos ingresados
-            NuevaActividad = new ActividadModeloDTO
+            // Si es Nuevo, lo creamos. Si es Modificar, usamos el que ya trajimos para actualizar sus propiedades.
+            if (NuevaActividad == null)
             {
-                Orden = Convert.ToInt32(txtOrden.Text),
-                Nombre = txtNombre.Text.Trim(),
-                Descripcion = txtDescripcionActividad.Text.Trim(),
-                IdTipoActividad = Convert.ToInt32(cmbTipoActividad.SelectedValue),
-                TipoActividad = cmbTipoActividad.Text,
-                Duracion = numDuracion.Value,
-                Demora = cmbDemora.SelectedIndex != -1 && (bool)((dynamic)cmbDemora.SelectedItem).Value,
-                Aprobacion = cmbAprobacion1.SelectedIndex != -1 && (bool)((dynamic)cmbAprobacion1.SelectedItem).Value,
-                EjecucionParcial = cmbEjecucion.SelectedIndex != -1 && (bool)((dynamic)cmbEjecucion.SelectedItem).Value,
-                CondicionAvance = txtCondicionAvance.Text.Trim(),
-                Activa = cmbActiva.SelectedIndex == -1 || (bool)((dynamic)cmbActiva.SelectedItem).Value
-            };
+                NuevaActividad = new ActividadModeloDTO();
+            }
+
+            NuevaActividad.Orden = Convert.ToInt32(txtOrden.Text);
+            NuevaActividad.Nombre = txtNombre.Text.Trim();
+            NuevaActividad.Descripcion = txtDescripcionActividad.Text.Trim();
+            NuevaActividad.IdTipoActividad = Convert.ToInt32(cmbTipoActividad.SelectedValue);
+            NuevaActividad.TipoActividad = cmbTipoActividad.Text;
+            NuevaActividad.Duracion = numDuracion.Value;
+            NuevaActividad.Demora = cmbDemora.SelectedIndex != -1 && (bool)((dynamic)cmbDemora.SelectedItem).Value;
+            NuevaActividad.Aprobacion = cmbAprobacion1.SelectedIndex != -1 && (bool)((dynamic)cmbAprobacion1.SelectedItem).Value;
+            NuevaActividad.EjecucionParcial = cmbEjecucion.SelectedIndex != -1 && (bool)((dynamic)cmbEjecucion.SelectedItem).Value;
+            NuevaActividad.CondicionAvance = txtCondicionAvance.Text.Trim();
+            NuevaActividad.Activa = cmbActiva.SelectedIndex == -1 || (bool)((dynamic)cmbActiva.SelectedItem).Value;
 
             this.DialogResult = DialogResult.OK; // Le avisamos al form principal que todo salió bien
             this.Close();

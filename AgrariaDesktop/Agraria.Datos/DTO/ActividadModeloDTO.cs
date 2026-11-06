@@ -5,19 +5,26 @@ namespace Agraria.Datos.DTO
     public class ActividadElementoModeloDTO
     {
         public int Orden { get; set; }
+
+        // --- TIPO DE ELEMENTO ---
         public int IdTipoElemento { get; set; }
         public string TipoElemento { get; set; }
 
+        // --- ELEMENTO ESPECÍFICO ---
         public long IdElemento { get; set; }
         public string NombreElemento { get; set; }
+
+        // --- MOVIMIENTO ---
         public int IdTipoMovimiento { get; set; }
+        public string TipoMovimiento { get; set; } // Agregada para solucionar CS1061
+
+        // --- OTROS DATOS ---
         public int IdUnidad { get; set; }
         public decimal CantidadPrevista { get; set; }
         public bool Obligatorio { get; set; }
         public bool PermiteSustitucion { get; set; }
         public bool Vendible { get; set; }
     }
-
     public class ActividadModeloDTO
     {
         public int Orden { get; set; }
