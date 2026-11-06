@@ -94,13 +94,14 @@
             btnCancelar.TabIndex = 25;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label14.ForeColor = Color.White;
-            label14.Location = new Point(22, 541);
+            label14.Location = new Point(33, 541);
             label14.Name = "label14";
             label14.Size = new Size(237, 24);
             label14.TabIndex = 118;
@@ -115,6 +116,7 @@
             btnAceptar.TabIndex = 24;
             btnAceptar.Text = "Aceptar";
             btnAceptar.UseVisualStyleBackColor = true;
+            btnAceptar.Click += btnAceptar_Click_1;
             // 
             // cmbPreguntaSeguridad
             // 
@@ -152,7 +154,7 @@
             lblID.AutoSize = true;
             lblID.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblID.ForeColor = Color.White;
-            lblID.Location = new Point(135, 470);
+            lblID.Location = new Point(33, 464);
             lblID.Name = "lblID";
             lblID.Size = new Size(29, 24);
             lblID.TabIndex = 120;
@@ -185,7 +187,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(79, 84);
+            label8.Location = new Point(33, 78);
             label8.Name = "label8";
             label8.Size = new Size(85, 24);
             label8.TabIndex = 113;
@@ -280,7 +282,7 @@
             lblApellido.AutoSize = true;
             lblApellido.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             lblApellido.ForeColor = Color.White;
-            lblApellido.Location = new Point(66, 194);
+            lblApellido.Location = new Point(33, 188);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(100, 24);
             lblApellido.TabIndex = 92;
@@ -324,7 +326,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(91, 156);
+            label2.Location = new Point(33, 150);
             label2.Name = "label2";
             label2.Size = new Size(75, 24);
             label2.TabIndex = 93;
@@ -335,7 +337,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(79, 118);
+            label6.Location = new Point(33, 112);
             label6.Name = "label6";
             label6.Size = new Size(87, 24);
             label6.TabIndex = 97;
@@ -346,7 +348,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(65, 301);
+            label3.Location = new Point(33, 295);
             label3.Name = "label3";
             label3.Size = new Size(99, 24);
             label3.TabIndex = 94;
@@ -369,7 +371,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(83, 404);
+            label11.Location = new Point(33, 398);
             label11.Name = "label11";
             label11.Size = new Size(81, 24);
             label11.TabIndex = 102;
@@ -401,7 +403,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(27, 334);
+            label4.Location = new Point(33, 328);
             label4.Name = "label4";
             label4.Size = new Size(139, 24);
             label4.TabIndex = 95;
@@ -421,7 +423,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(48, 439);
+            label10.Location = new Point(33, 433);
             label10.Name = "label10";
             label10.Size = new Size(116, 24);
             label10.TabIndex = 103;
@@ -432,7 +434,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(102, 369);
+            label12.Location = new Point(33, 363);
             label12.Name = "label12";
             label12.Size = new Size(62, 24);
             label12.TabIndex = 101;
@@ -443,7 +445,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(49, 264);
+            label7.Location = new Point(33, 258);
             label7.Name = "label7";
             label7.Size = new Size(117, 24);
             label7.TabIndex = 98;
@@ -485,7 +487,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(73, 229);
+            label5.Location = new Point(33, 223);
             label5.Name = "label5";
             label5.Size = new Size(93, 24);
             label5.TabIndex = 96;
