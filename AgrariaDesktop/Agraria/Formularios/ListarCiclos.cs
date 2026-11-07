@@ -105,7 +105,7 @@ namespace Agraria.Formularios
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             AbmCiclos frm = new AbmCiclos(_usuarioLogeado); // <--- Le pasamos el usuario real
-            frm.Text = "Nuevo Ciclo Modelo";
+            frm.Text = "Nuevo Ciclo";
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 CargarCiclosModelo();

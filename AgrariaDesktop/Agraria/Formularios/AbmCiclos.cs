@@ -113,6 +113,7 @@ namespace Agraria.Formularios
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
+            
             if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1)
             {
                 MessageBox.Show("Complete los campos obligatorios: Nombre y Modo de Inicio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -159,6 +160,7 @@ namespace Agraria.Formularios
         {
             int nuevoOrden = listaActividades.Count + 1;
             AbmActividadesCicloModelo frmActividad = new AbmActividadesCicloModelo(nuevoOrden);
+            frmActividad.Text = "Nueva Actividad";
 
             if (frmActividad.ShowDialog() == DialogResult.OK)
             {
@@ -238,6 +240,7 @@ namespace Agraria.Formularios
 
             int nuevoOrden = actividadActual.ListaElementos.Count + 1;
             AbmActividadesElementos frmElemento = new AbmActividadesElementos(nuevoOrden);
+            frmElemento.Text = "Nuevo Elemento";
 
             if (frmElemento.ShowDialog() == DialogResult.OK)
             {
