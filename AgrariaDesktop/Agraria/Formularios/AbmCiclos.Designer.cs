@@ -49,6 +49,7 @@
             txtNombreCicloModelo = new TextBox();
             tabControl = new TabControl();
             tabPageCicloModelo = new TabPage();
+            dtpFechaCreacion = new DateTimePicker();
             mskDuracionEstimada = new MaskedTextBox();
             chkActivo = new CheckBox();
             tabPageActividadesCicloModelo = new TabPage();
@@ -66,7 +67,6 @@
             btnAnterior1 = new Button();
             panel4 = new Panel();
             btnAgregarElemento = new Button();
-            dtpFechaCreacion = new DateTimePicker();
             tabControl.SuspendLayout();
             tabPageCicloModelo.SuspendLayout();
             tabPageActividadesCicloModelo.SuspendLayout();
@@ -265,6 +265,16 @@
             tabPageCicloModelo.Size = new Size(1005, 598);
             tabPageCicloModelo.TabIndex = 0;
             tabPageCicloModelo.Text = "Ciclo Modelo";
+            // 
+            // dtpFechaCreacion
+            // 
+            dtpFechaCreacion.CalendarFont = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
+            dtpFechaCreacion.CustomFormat = "dd/MM/yyyy";
+            dtpFechaCreacion.Format = DateTimePickerFormat.Short;
+            dtpFechaCreacion.Location = new Point(3, 431);
+            dtpFechaCreacion.Name = "dtpFechaCreacion";
+            dtpFechaCreacion.Size = new Size(219, 27);
+            dtpFechaCreacion.TabIndex = 27;
             // 
             // mskDuracionEstimada
             // 
@@ -513,22 +523,12 @@
             btnAgregarElemento.UseVisualStyleBackColor = true;
             btnAgregarElemento.Click += btnAgregarElemento_Click;
             // 
-            // dtpFechaCreacion
-            // 
-            dtpFechaCreacion.CalendarFont = new Font("Microsoft Sans Serif", 14.25F, FontStyle.Bold);
-            dtpFechaCreacion.CustomFormat = "dd/MM/yyyy";
-            dtpFechaCreacion.Format = DateTimePickerFormat.Short;
-            dtpFechaCreacion.Location = new Point(3, 431);
-            dtpFechaCreacion.Name = "dtpFechaCreacion";
-            dtpFechaCreacion.Size = new Size(219, 27);
-            dtpFechaCreacion.TabIndex = 27;
-            // 
             // AbmCiclos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(141, 181, 146);
-            ClientSize = new Size(1195, 1102);
+            ClientSize = new Size(1023, 720);
             Controls.Add(tabControl);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Margin = new Padding(1, 3, 1, 3);
