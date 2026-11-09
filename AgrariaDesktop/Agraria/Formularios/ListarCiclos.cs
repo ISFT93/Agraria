@@ -5,7 +5,6 @@ using Agraria.Negocio.BLL;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,39 +57,30 @@ namespace Agraria.Formularios
             try
             {
                 DataTable dt = CiclosModeloBLL.ObtenerCiclos(filtro);
-
-                // Se asigna la fuente de datos directamente.
-                // (El filtro local por 'tipo_cultivo' fue removido ya que la columna no existe en el nuevo esquema)
                 dtgvListarCiclos.DataSource = dt;
 
-                // Configuración de las nuevas columnas de ciclos_modelo
-                if (dtgvListarCiclos.Columns["id_ciclo"] != null)
-                {
-                    dtgvListarCiclos.Columns["id_ciclo"].Visible = true;
-                    dtgvListarCiclos.Columns["id_ciclo"].HeaderText = "Código";
-                    dtgvListarCiclos.Columns["id_ciclo"].DisplayIndex = 0;
-                }
+                ConfigurarColumna("id_ciclo", "Código", visible: true, displayIndex: 0);
+                ConfigurarColumna("nombre", "Nombre del Ciclo");
+                ConfigurarColumna("descripcion", "Descripción");
+                ConfigurarColumna("duracion_estimada", "Duración (Días)");
 
-                if (dtgvListarCiclos.Columns["nombre"] != null)
-                    dtgvListarCiclos.Columns["nombre"].HeaderText = "Nombre del Ciclo";
-
-                if (dtgvListarCiclos.Columns["descripcion"] != null)
-                    dtgvListarCiclos.Columns["descripcion"].HeaderText = "Descripción";
-
+                // Mostrar la duración como número entero (48 en vez de 48,00)
                 if (dtgvListarCiclos.Columns["duracion_estimada"] != null)
-                    dtgvListarCiclos.Columns["duracion_estimada"].HeaderText = "Duración (Días)";
+                {
+                    dtgvListarCiclos.Columns["duracion_estimada"].DefaultCellStyle.Format = "0";
+                    dtgvListarCiclos.Columns["duracion_estimada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+                ConfigurarColumna("activo", "Activo");
+                ConfigurarColumna("fecha_creacion", "Fecha de Creación");
 
-                if (dtgvListarCiclos.Columns["modo_inicio"] != null)
-                    dtgvListarCiclos.Columns["modo_inicio"].HeaderText = "Modo de Inicio";
+                // El SP ahora devuelve también los NOMBRES; los IDs se ocultan
+                bool hayNombreModo = dt.Columns.Contains("modo_inicio_nombre");
+                ConfigurarColumna("modo_inicio", "Modo de Inicio", visible: !hayNombreModo);
+                ConfigurarColumna("modo_inicio_nombre", "Modo de Inicio");
 
-                if (dtgvListarCiclos.Columns["activo"] != null)
-                    dtgvListarCiclos.Columns["activo"].HeaderText = "Activo"; // Se mostrará como CheckBox si el DataGridView lo autogenera
-
-                if (dtgvListarCiclos.Columns["fecha_creacion"] != null)
-                    dtgvListarCiclos.Columns["fecha_creacion"].HeaderText = "Fecha de Creación";
-
-                if (dtgvListarCiclos.Columns["creado_por"] != null)
-                    dtgvListarCiclos.Columns["creado_por"].HeaderText = "Creado Por";
+                bool hayNombreCreador = dt.Columns.Contains("creado_por_nombre");
+                ConfigurarColumna("creado_por", "Creado Por", visible: !hayNombreCreador);
+                ConfigurarColumna("creado_por_nombre", "Creado Por");
             }
             catch (Exception ex)
             {
@@ -98,43 +88,59 @@ namespace Agraria.Formularios
             }
         }
 
+        private void ConfigurarColumna(string nombre, string encabezado, bool visible = true, int displayIndex = -1)
+        {
+            var col = dtgvListarCiclos.Columns[nombre];
+            if (col == null) return;
+            col.HeaderText = encabezado;
+            col.Visible = visible;
+            if (displayIndex >= 0) col.DisplayIndex = displayIndex;
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             CargarCiclosModelo(txtBuscar.Text.Trim());
         }
+
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            AbmCiclos frm = new AbmCiclos(_usuarioLogeado); // <--- Le pasamos el usuario real
-            frm.Text = "Nuevo Ciclo";
+            AbmCiclos frm = new AbmCiclos(_usuarioLogeado);
+            frm.Text = "Nuevo Ciclo Modelo";
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                CargarCiclosModelo();
+                CargarCiclosModelo(txtBuscar.Text.Trim());
             }
         }
+
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (dtgvListarCiclos.SelectedRows.Count > 0)
-            {
-                long idCiclo = Convert.ToInt64(dtgvListarCiclos.SelectedRows[0].Cells["id_ciclo"].Value);
+            // CurrentRow cubre el caso en que se hizo clic en una celda sin seleccionar la fila completa
+            DataGridViewRow fila = dtgvListarCiclos.SelectedRows.Count > 0
+                ? dtgvListarCiclos.SelectedRows[0]
+                : dtgvListarCiclos.CurrentRow;
 
-                AbmCiclos frm = new AbmCiclos(idCiclo, _usuarioLogeado);
-                frm.Text = "Modificar Ciclo Modelo";
-
-                if (frm.ShowDialog() == DialogResult.OK)
-                {
-                    CargarCiclosModelo(txtBuscar.Text.Trim());
-                }
-            }
-            else
+            if (fila == null || fila.Cells["id_ciclo"].Value == null || fila.Cells["id_ciclo"].Value == DBNull.Value)
             {
                 MessageBox.Show("Seleccione un ciclo de la lista para modificar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            long idCiclo = Convert.ToInt64(fila.Cells["id_ciclo"].Value);
+
+            AbmCiclos frm = new AbmCiclos(idCiclo, _usuarioLogeado);
+            frm.Text = "Modificar Ciclo Modelo";
+
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                CargarCiclosModelo(txtBuscar.Text.Trim());
             }
         }
+
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-       
+
 
         private void cmbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -143,7 +149,7 @@ namespace Agraria.Formularios
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Agraria.Datos.DTO;
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 
@@ -29,169 +31,189 @@ namespace Agraria.Datos.DAL
             return dt;
         }
 
-        // Método maestro transaccional
-        public void GuardarCicloCompleto(
-            long? idCicloEditar, string nombreCiclo, string descCiclo, decimal duracionCiclo, int modoInicio, bool activoCiclo, DateTime fechaCreacion, int idCreador,
-            string nombreActividad, string descActividad, int orden, int tipoActividad, decimal duracionAct, bool demora, bool aprobacion, bool ejecucionParcial, string condicionAvance, bool activaAct,
-            long idElementoCat, int tipoElemento, int tipoMovimiento, decimal cantPrevista, int idUnidad, bool obligatorio, bool vendible, bool sustitucion, string observaciones,
-            bool esModificacion)
+        // Convierte null en DBNull para que SQL no tire "parámetro no suministrado"
+        private static object ValorODbNull(object valor)
         {
+            if (valor == null) return DBNull.Value;
+            if (valor is string s && s.Length == 0) return DBNull.Value;
+            return valor;
+        }
+
+        // =====================================================================
+        // MÉTODO MAESTRO TRANSACCIONAL
+        // Guarda la cabecera + TODAS las actividades + TODOS sus elementos.
+        // En modificación: actualiza la cabecera, borra las actividades/elementos
+        // anteriores del ciclo y los vuelve a insertar con lo que hay en pantalla.
+        // =====================================================================
+        public long GuardarCicloCompleto(
+            long? idCicloEditar, string nombreCiclo, string descCiclo, decimal duracionCiclo, int modoInicio,
+            bool activoCiclo, DateTime fechaCreacion, int idCreador,
+            IList<ActividadModeloDTO> actividades)
+        {
+            bool esModificacion = idCicloEditar.HasValue;
+
             ConexionBD.ConectarBD();
+            // Guardamos la referencia local: ConectarBD() reemplaza la conexión estática en cada llamada
+            SqlConnection cn = ConexionBD.ConexionSQL;
 
-            // Iniciamos la transacción para asegurar que se guardan las 3 tablas juntas o no se guarda ninguna
-            using (SqlTransaction transaction = ConexionBD.ConexionSQL.BeginTransaction())
+            try
             {
-                try
+                using (SqlTransaction transaction = cn.BeginTransaction())
                 {
-                    long idCicloFinal = 0;
-                    long idActividadFinal = 0;
-
-                    // ==============================================
-                    // 1. GUARDAR CICLO MODELO (Tabla Cabecera)
-                    // ==============================================
-                    SqlCommand cmdCiclo = new SqlCommand();
-                    cmdCiclo.Connection = ConexionBD.ConexionSQL;
-                    cmdCiclo.Transaction = transaction;
-                    cmdCiclo.CommandType = CommandType.StoredProcedure;
-
-                    if (!esModificacion)
+                    try
                     {
-                        cmdCiclo.CommandText = "sp_insert_ciclo_modelo";
-                        cmdCiclo.Parameters.AddWithValue("@nombre", nombreCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@descripcion", descCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@duracion_estimada", duracionCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@modo_inicio", modoInicio);
-                        cmdCiclo.Parameters.AddWithValue("@activo", activoCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@fecha_creacion", fechaCreacion);
-                        cmdCiclo.Parameters.AddWithValue("@creado_por", idCreador);
+                        long idCicloFinal;
 
-                        // Capturamos el ID autonumérico que nos devuelve el SP
-                        SqlParameter pOutCiclo = new SqlParameter("@id_ciclo_generado", SqlDbType.BigInt);
-                        pOutCiclo.Direction = ParameterDirection.Output;
-                        cmdCiclo.Parameters.Add(pOutCiclo);
+                        // ==============================================
+                        // 1. CICLO MODELO (Cabecera)
+                        // ==============================================
+                        using (SqlCommand cmdCiclo = new SqlCommand())
+                        {
+                            cmdCiclo.Connection = cn;
+                            cmdCiclo.Transaction = transaction;
+                            cmdCiclo.CommandType = CommandType.StoredProcedure;
 
-                        cmdCiclo.ExecuteNonQuery();
-                        idCicloFinal = Convert.ToInt64(pOutCiclo.Value);
+                            if (!esModificacion)
+                            {
+                                cmdCiclo.CommandText = "sp_insert_ciclo_modelo";
+                                cmdCiclo.Parameters.AddWithValue("@nombre", nombreCiclo);
+                                cmdCiclo.Parameters.AddWithValue("@descripcion", ValorODbNull(descCiclo));
+                                cmdCiclo.Parameters.AddWithValue("@duracion_estimada", duracionCiclo);
+                                cmdCiclo.Parameters.AddWithValue("@modo_inicio", modoInicio);
+                                cmdCiclo.Parameters.AddWithValue("@activo", activoCiclo);
+                                cmdCiclo.Parameters.AddWithValue("@fecha_creacion", fechaCreacion);
+                                cmdCiclo.Parameters.AddWithValue("@creado_por", idCreador);
+
+                                SqlParameter pOutCiclo = new SqlParameter("@id_ciclo_generado", SqlDbType.BigInt);
+                                pOutCiclo.Direction = ParameterDirection.Output;
+                                cmdCiclo.Parameters.Add(pOutCiclo);
+
+                                cmdCiclo.ExecuteNonQuery();
+                                idCicloFinal = Convert.ToInt64(pOutCiclo.Value);
+                            }
+                            else
+                            {
+                                cmdCiclo.CommandText = "sp_update_ciclo_modelo";
+                                cmdCiclo.Parameters.AddWithValue("@id_ciclo", idCicloEditar.Value);
+                                cmdCiclo.Parameters.AddWithValue("@nombre", nombreCiclo);
+                                cmdCiclo.Parameters.AddWithValue("@descripcion", ValorODbNull(descCiclo));
+                                cmdCiclo.Parameters.AddWithValue("@duracion_estimada", duracionCiclo);
+                                cmdCiclo.Parameters.AddWithValue("@modo_inicio", modoInicio);
+                                cmdCiclo.Parameters.AddWithValue("@activo", activoCiclo);
+                                cmdCiclo.ExecuteNonQuery();
+                                idCicloFinal = idCicloEditar.Value;
+                            }
+                        }
+
+                        // ==============================================
+                        // 2. EN MODIFICACIÓN: limpiar actividades/elementos viejos
+                        // ==============================================
+                        if (esModificacion)
+                        {
+                            using (SqlCommand cmdDel = new SqlCommand("sp_delete_actividades_por_ciclo", cn, transaction))
+                            {
+                                cmdDel.CommandType = CommandType.StoredProcedure;
+                                cmdDel.Parameters.AddWithValue("@id_ciclo", idCicloFinal);
+                                cmdDel.ExecuteNonQuery();
+                            }
+                        }
+
+                        // ==============================================
+                        // 3. ACTIVIDADES + ELEMENTOS (todas, no solo la primera)
+                        // ==============================================
+                        foreach (ActividadModeloDTO act in actividades)
+                        {
+                            long idActividadFinal;
+
+                            using (SqlCommand cmdAct = new SqlCommand("sp_insert_actividad_ciclo", cn, transaction))
+                            {
+                                cmdAct.CommandType = CommandType.StoredProcedure;
+                                cmdAct.Parameters.AddWithValue("@id_ciclo", idCicloFinal);
+                                cmdAct.Parameters.AddWithValue("@nombre", act.Nombre);
+                                cmdAct.Parameters.AddWithValue("@descripcion", ValorODbNull(act.Descripcion));
+                                cmdAct.Parameters.AddWithValue("@orden", act.Orden);
+                                cmdAct.Parameters.AddWithValue("@tipo_actividad", act.IdTipoActividad);
+                                cmdAct.Parameters.AddWithValue("@duracion_estimada", act.Duracion);
+                                cmdAct.Parameters.AddWithValue("@demora", act.Demora);
+                                cmdAct.Parameters.AddWithValue("@requiere_aprobacion", act.Aprobacion);
+                                cmdAct.Parameters.AddWithValue("@permite_ejecucion_parcial", act.EjecucionParcial);
+                                cmdAct.Parameters.AddWithValue("@condicion_avance", ValorODbNull(act.CondicionAvance));
+                                cmdAct.Parameters.AddWithValue("@activa", act.Activa);
+
+                                SqlParameter pOutAct = new SqlParameter("@id_actividad_generada", SqlDbType.BigInt);
+                                pOutAct.Direction = ParameterDirection.Output;
+                                cmdAct.Parameters.Add(pOutAct);
+
+                                cmdAct.ExecuteNonQuery();
+                                idActividadFinal = Convert.ToInt64(pOutAct.Value);
+                            }
+
+                            foreach (ActividadElementoModeloDTO elem in act.ListaElementos)
+                            {
+                                using (SqlCommand cmdElem = new SqlCommand("sp_insert_actividad_elemento", cn, transaction))
+                                {
+                                    cmdElem.CommandType = CommandType.StoredProcedure;
+                                    cmdElem.Parameters.AddWithValue("@id_actividad_modelo", idActividadFinal);
+                                    cmdElem.Parameters.AddWithValue("@id_elemento", elem.IdElemento);
+                                    cmdElem.Parameters.AddWithValue("@tipo_elemento", elem.IdTipoElemento);
+                                    cmdElem.Parameters.AddWithValue("@tipo_movimiento", elem.IdTipoMovimiento);
+                                    cmdElem.Parameters.AddWithValue("@cantidad_prevista", elem.CantidadPrevista);
+                                    cmdElem.Parameters.AddWithValue("@id_unidad", elem.IdUnidad);
+                                    cmdElem.Parameters.AddWithValue("@obligatorio", elem.Obligatorio);
+                                    cmdElem.Parameters.AddWithValue("@vendible_destino", elem.Vendible);
+                                    cmdElem.Parameters.AddWithValue("@permite_sustitucion", elem.PermiteSustitucion);
+                                    cmdElem.Parameters.AddWithValue("@observaciones", ValorODbNull(elem.Observaciones));
+                                    cmdElem.Parameters.AddWithValue("@orden", elem.Orden);
+                                    cmdElem.ExecuteNonQuery();
+                                }
+                            }
+                        }
+
+                        transaction.Commit();
+                        return idCicloFinal;
                     }
-                    else
+                    catch
                     {
-                        cmdCiclo.CommandText = "sp_update_ciclo_modelo";
-                        cmdCiclo.Parameters.AddWithValue("@id_ciclo", idCicloEditar.Value);
-                        cmdCiclo.Parameters.AddWithValue("@nombre", nombreCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@descripcion", descCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@duracion_estimada", duracionCiclo);
-                        cmdCiclo.Parameters.AddWithValue("@modo_inicio", modoInicio);
-                        cmdCiclo.Parameters.AddWithValue("@activo", activoCiclo);
-                        cmdCiclo.ExecuteNonQuery();
-                        idCicloFinal = idCicloEditar.Value;
+                        transaction.Rollback();
+                        throw;
                     }
-
-                    // ==============================================
-                    // 2. GUARDAR ACTIVIDAD DEL CICLO
-                    // ==============================================
-                    SqlCommand cmdAct = new SqlCommand();
-                    cmdAct.Connection = ConexionBD.ConexionSQL;
-                    cmdAct.Transaction = transaction;
-                    cmdAct.CommandType = CommandType.StoredProcedure;
-
-                    cmdAct.CommandText = "sp_insert_actividad_ciclo";
-                    cmdAct.Parameters.AddWithValue("@id_ciclo", idCicloFinal); // <-- Usamos el ID del paso anterior
-                    cmdAct.Parameters.AddWithValue("@nombre", nombreActividad);
-                    cmdAct.Parameters.AddWithValue("@descripcion", descActividad);
-                    cmdAct.Parameters.AddWithValue("@orden", orden);
-                    cmdAct.Parameters.AddWithValue("@tipo_actividad", tipoActividad);
-                    cmdAct.Parameters.AddWithValue("@duracion_estimada", duracionAct);
-                    cmdAct.Parameters.AddWithValue("@demora", demora);
-                    cmdAct.Parameters.AddWithValue("@requiere_aprobacion", aprobacion);
-                    cmdAct.Parameters.AddWithValue("@permite_ejecucion_parcial", ejecucionParcial);
-                    cmdAct.Parameters.AddWithValue("@condicion_avance", condicionAvance);
-                    cmdAct.Parameters.AddWithValue("@activa", activaAct);
-
-                    SqlParameter pOutAct = new SqlParameter("@id_actividad_generada", SqlDbType.BigInt);
-                    pOutAct.Direction = ParameterDirection.Output;
-                    cmdAct.Parameters.Add(pOutAct);
-
-                    cmdAct.ExecuteNonQuery();
-                    idActividadFinal = Convert.ToInt64(pOutAct.Value);
-
-                    // ==============================================
-                    // 3. GUARDAR ELEMENTO DE LA ACTIVIDAD
-                    // ==============================================
-                    SqlCommand cmdElem = new SqlCommand("sp_insert_actividad_elemento", ConexionBD.ConexionSQL, transaction);
-                    cmdElem.CommandType = CommandType.StoredProcedure;
-                    cmdElem.Parameters.AddWithValue("@id_actividad_modelo", idActividadFinal); // <-- Usamos el ID de la actividad
-                    cmdElem.Parameters.AddWithValue("@id_elemento", idElementoCat);
-                    cmdElem.Parameters.AddWithValue("@tipo_elemento", tipoElemento);
-                    cmdElem.Parameters.AddWithValue("@tipo_movimiento", tipoMovimiento);
-                    cmdElem.Parameters.AddWithValue("@cantidad_prevista", cantPrevista);
-                    cmdElem.Parameters.AddWithValue("@id_unidad", idUnidad);
-                    cmdElem.Parameters.AddWithValue("@obligatorio", obligatorio);
-                    cmdElem.Parameters.AddWithValue("@vendible_destino", vendible);
-                    cmdElem.Parameters.AddWithValue("@permite_sustitucion", sustitucion);
-                    cmdElem.Parameters.AddWithValue("@observaciones", observaciones);
-
-                    cmdElem.ExecuteNonQuery();
-
-                    // Si todo salió perfecto, confirmamos y grabamos todo junto en SQL
-                    transaction.Commit();
                 }
-                catch (Exception)
-                {
-                    // Si alguna de las inserciones falla, cancelamos todo para no dejar registros huérfanos
-                    transaction.Rollback();
-                    throw;
-                }
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open) cn.Close();
             }
         }
 
         public DataTable ObtenerCicloPorId(long idCiclo)
         {
-            DataTable dt = new DataTable();
-            try
-            {
-                ConexionBD.ConectarBD();
-                SqlCommand cmd = new SqlCommand("sp_get_ciclo_por_id", ConexionBD.ConexionSQL);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_ciclo", idCiclo);
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                {
-                    da.Fill(dt);
-                }
-            }
-            finally { ConexionBD.CierraBD(); }
-            return dt;
+            return EjecutarConsulta("sp_get_ciclo_por_id", "@id_ciclo", idCiclo);
         }
 
         public DataTable ObtenerActividadesPorCiclo(long idCiclo)
         {
-            DataTable dt = new DataTable();
-            try
-            {
-                ConexionBD.ConectarBD();
-                SqlCommand cmd = new SqlCommand("sp_get_actividades_por_ciclo", ConexionBD.ConexionSQL);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_ciclo", idCiclo);
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                {
-                    da.Fill(dt);
-                }
-            }
-            finally { ConexionBD.CierraBD(); }
-            return dt;
+            return EjecutarConsulta("sp_get_actividades_por_ciclo", "@id_ciclo", idCiclo);
         }
 
         public DataTable ObtenerElementosPorActividad(long idActividadModelo)
+        {
+            return EjecutarConsulta("sp_get_elementos_por_actividad", "@id_actividad_modelo", idActividadModelo);
+        }
+
+        private DataTable EjecutarConsulta(string sp, string nombreParam, long valor)
         {
             DataTable dt = new DataTable();
             try
             {
                 ConexionBD.ConectarBD();
-                SqlCommand cmd = new SqlCommand("sp_get_elementos_por_actividad", ConexionBD.ConexionSQL);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_actividad_modelo", idActividadModelo);
-                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                using (SqlCommand cmd = new SqlCommand(sp, ConexionBD.ConexionSQL))
                 {
-                    da.Fill(dt);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue(nombreParam, valor);
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dt);
+                    }
                 }
             }
             finally { ConexionBD.CierraBD(); }

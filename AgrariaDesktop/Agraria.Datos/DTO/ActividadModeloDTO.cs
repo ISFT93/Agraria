@@ -6,24 +6,24 @@ namespace Agraria.Datos.DTO
     {
         public int Orden { get; set; }
 
-        // --- TIPO DE ELEMENTO ---
         public int IdTipoElemento { get; set; }
         public string TipoElemento { get; set; }
 
-        // --- ELEMENTO ESPECÍFICO ---
         public long IdElemento { get; set; }
         public string NombreElemento { get; set; }
 
-        // --- MOVIMIENTO ---
         public int IdTipoMovimiento { get; set; }
-        public string TipoMovimiento { get; set; } // Agregada para solucionar CS1061
+        public string TipoMovimiento { get; set; }
 
-        // --- OTROS DATOS ---
+        // --- NUEVO ---
         public int IdUnidad { get; set; }
+        public string Unidad { get; set; }                 // <-- agregar
+
         public decimal CantidadPrevista { get; set; }
         public bool Obligatorio { get; set; }
         public bool PermiteSustitucion { get; set; }
         public bool Vendible { get; set; }
+        public string Observaciones { get; set; } = "";    // <-- agregar
     }
     public class ActividadModeloDTO
     {

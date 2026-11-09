@@ -12,11 +12,12 @@ namespace Agraria.Formularios
     {
         private AbmCiclosBLL bll = new AbmCiclosBLL();
 
-        // Propiedad pública donde guardaremos la actividad para que AbmCiclos la lea
+        // AbmCiclos lee esta propiedad al cerrar con OK.
+        // En modificación apunta al MISMO objeto de la lista, así que se edita en memoria.
         public ActividadModeloDTO NuevaActividad { get; private set; }
 
         // ========================================================
-        // 1. CONSTRUCTOR PARA NUEVO
+        // CONSTRUCTOR PARA NUEVO
         // ========================================================
         public AbmActividadesCicloModelo(int ordenAsignado)
         {
@@ -24,54 +25,61 @@ namespace Agraria.Formularios
             ConfigurarSkin();
 
             txtOrden.Text = ordenAsignado.ToString();
-            txtOrden.Enabled = false; // Bloqueado para que mantenga el correlativo
+            txtOrden.Enabled = false;
         }
 
         // ========================================================
-        // 2. CONSTRUCTOR PARA MODIFICAR (El que llama la grilla)
+        // CONSTRUCTOR PARA MODIFICAR
         // ========================================================
         public AbmActividadesCicloModelo(ActividadModeloDTO actividadExistente)
         {
             InitializeComponent();
             ConfigurarSkin();
 
-            // Guardamos la actividad seleccionada en la variable global
             NuevaActividad = actividadExistente;
             txtOrden.Enabled = false;
         }
 
-        // Centralizamos el diseño para no repetir código en los dos constructores
         private void ConfigurarSkin()
         {
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
-
-            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Green800,
                 Primary.Green900,
                 Primary.Green500,
                 Accent.Green200,
-          TextShade.WHITE
+                TextShade.WHITE
             );
         }
 
         private void AbmActividadesCicloModelo_Load(object sender, EventArgs e)
         {
-            CargarCombos();
+            try
+            {
+                CargarCombos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los tipos de actividad: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
             if (NuevaActividad != null)
             {
+                // ---- MODIFICAR: volcar el DTO en los controles ----
                 txtOrden.Text = NuevaActividad.Orden.ToString();
                 txtNombre.Text = NuevaActividad.Nombre;
                 txtDescripcionActividad.Text = NuevaActividad.Descripcion;
                 txtCondicionAvance.Text = NuevaActividad.CondicionAvance;
 
-                // Cargamos la duración en el MaskedTextBox
-                mskDuracionEstimada.Text = NuevaActividad.Duracion.ToString();
+                // Sin decimales: la máscara es "00000" (antes "30.00" quedaba como "3000")
+                AbmCiclos.EscribirDuracion(mskDuracionEstimada, NuevaActividad.Duracion);
 
-                cmbTipoActividad.SelectedValue = NuevaActividad.IdTipoActividad;
+                if (NuevaActividad.IdTipoActividad > 0)
+                    cmbTipoActividad.SelectedValue = NuevaActividad.IdTipoActividad;
+                else
+                    cmbTipoActividad.SelectedIndex = -1;
 
                 chkDemora.Checked = NuevaActividad.Demora;
                 chkRequiereAprobacion.Checked = NuevaActividad.Aprobacion;
@@ -80,46 +88,22 @@ namespace Agraria.Formularios
             }
             else
             {
+                // ---- NUEVO: valores por defecto ----
                 chkDemora.Checked = false;
                 chkRequiereAprobacion.Checked = false;
                 chkPermiteEjecucionParcial.Checked = false;
                 chkActivo.Checked = true;
             }
         }
-        // Método de apoyo para leer el "Value" de tus objetos anónimos en los combos Sí/No
-        private void SetearComboBooleano(ComboBox combo, bool valorBuscado)
-        {
-            for (int i = 0; i < combo.Items.Count; i++)
-            {
-                if (((dynamic)combo.Items[i]).Value == valorBuscado)
-                {
-                    combo.SelectedIndex = i;
-                    break;
-                }
-            }
-        }
 
         private void CargarCombos()
         {
-            // Cargar combo desde BD (Catálogo 15 = Tipo de Actividad)
+            // Catálogo 15 = Tipo de Actividad
             DataTable dtTipos = bll.ObtenerItemsCatalogo(15);
             cmbTipoActividad.DataSource = dtTipos;
             cmbTipoActividad.DisplayMember = "Nombre";
             cmbTipoActividad.ValueMember = "Id_catalogo_item";
             cmbTipoActividad.SelectedIndex = -1;
-
-            // Cargar los combos de opciones fijas (Sí/No)
-            
-        }
-
-        private void CargarComboBooleano(ComboBox combo)
-        {
-            combo.Items.Clear();
-            combo.Items.Add(new { Text = "Sí", Value = true });
-            combo.Items.Add(new { Text = "No", Value = false });
-            combo.DisplayMember = "Text";
-            combo.ValueMember = "Value";
-            combo.SelectedIndex = -1; // Deja el combo en blanco por defecto
         }
 
         private void btnAceptarActividad_Click(object sender, EventArgs e)
@@ -135,27 +119,21 @@ namespace Agraria.Formularios
                 NuevaActividad = new ActividadModeloDTO();
             }
 
-            NuevaActividad.Orden = Convert.ToInt32(txtOrden.Text);
+            int.TryParse(txtOrden.Text, out int orden);
+            NuevaActividad.Orden = orden;
             NuevaActividad.Nombre = txtNombre.Text.Trim();
             NuevaActividad.Descripcion = txtDescripcionActividad.Text.Trim();
             NuevaActividad.IdTipoActividad = Convert.ToInt32(cmbTipoActividad.SelectedValue);
             NuevaActividad.TipoActividad = cmbTipoActividad.Text;
-
-            // Leemos la duración desde el MaskedTextBox de forma segura
-            decimal duracionActividad = 0;
-            string textoDuracion = mskDuracionEstimada.Text.Replace(":", "").Trim();
-            if (!string.IsNullOrEmpty(textoDuracion))
-            {
-                decimal.TryParse(textoDuracion, out duracionActividad);
-            }
-            NuevaActividad.Duracion = duracionActividad;
+            NuevaActividad.Duracion = AbmCiclos.LeerDuracion(mskDuracionEstimada);
 
             NuevaActividad.Demora = chkDemora.Checked;
             NuevaActividad.Aprobacion = chkRequiereAprobacion.Checked;
             NuevaActividad.EjecucionParcial = chkPermiteEjecucionParcial.Checked;
             NuevaActividad.Activa = chkActivo.Checked;
-
             NuevaActividad.CondicionAvance = txtCondicionAvance.Text.Trim();
+
+            // ListaElementos NO se toca: en modificación conserva los elementos ya cargados
 
             this.DialogResult = DialogResult.OK;
             this.Close();

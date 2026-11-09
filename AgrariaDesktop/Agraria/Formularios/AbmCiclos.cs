@@ -15,9 +15,13 @@ namespace Agraria.Formularios
         private AbmCiclosBLL bll = new AbmCiclosBLL();
         private UsuarioLoginDTO _usuarioActual;
         private long? _idCicloEditar = null;
-        private long _idCicloGenerado = 0;
 
         private BindingList<ActividadModeloDTO> listaActividades = new BindingList<ActividadModeloDTO>();
+
+        // Actividad cuyos elementos se están viendo/editando en el Tab 3.
+        // Antes se dependía de la fila seleccionada en la grilla del Tab 2, que se pierde
+        // al reordenar/quitar y hacía que los elementos se cargaran en la actividad equivocada.
+        private ActividadModeloDTO _actividadEnEdicion = null;
 
         public AbmCiclos(UsuarioLoginDTO usuarioLogeado)
         {
@@ -25,27 +29,20 @@ namespace Agraria.Formularios
             _usuarioActual = usuarioLogeado;
             ConfigurarTabsIniciales();
 
-            // 1ro: Configurar la estructura de la grilla
             ConfigurarGrillaActividades();
-
-            // 2do: Asignar los datos
             dtgvActividadesCicloModelo.DataSource = listaActividades;
 
             ConfigurarGrillaElementos();
 
-
-            // Configurar el MaterialSkinManager
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
-
-            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
                 Primary.Green800,
                 Primary.Green900,
                 Primary.Green500,
                 Accent.Green200,
-          TextShade.WHITE
+                TextShade.WHITE
             );
         }
 
@@ -56,11 +53,28 @@ namespace Agraria.Formularios
 
         private void AbmCiclos_Load(object sender, EventArgs e)
         {
-            CargarCombosCatalogos();
-
-            if (_idCicloEditar != null)
+            try
             {
-                CargarDatosCiclo(_idCicloEditar.Value);
+                CargarCombosCatalogos();
+
+                if (_idCicloEditar != null)
+                {
+                    CargarDatosCiclo(_idCicloEditar.Value);
+                }
+                else
+                {
+                    // Valores por defecto para un ciclo NUEVO
+                    chkActivo.Checked = true;
+                    dtpFechaCreacion.Value = DateTime.Now;
+                    txtCreadoPor.Text = _usuarioActual?.NombreUsuario;
+                }
+
+                txtCreadoPor.Enabled = false;
+                dtpFechaCreacion.Enabled = false; // la fecha de creación no se edita
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el ciclo: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -74,36 +88,14 @@ namespace Agraria.Formularios
         private void CargarCombosCatalogos()
         {
             LlenarCombo(cmbModoInicio, 14);
-
-
-
-
-            txtCreadoPor.Text = _usuarioActual.NombreUsuario;
-            txtCreadoPor.Enabled = false;
         }
 
         private void LlenarCombo(ComboBox combo, int idCatalogo)
         {
-
-            if (_idCicloEditar == null)
-            {
-                chkActivo.Checked = true;
-            }
-
             DataTable dt = bll.ObtenerItemsCatalogo(idCatalogo);
             combo.DataSource = dt;
             combo.DisplayMember = "Nombre";
             combo.ValueMember = "Id_catalogo_item";
-            combo.SelectedIndex = -1;
-        }
-
-        private void CargarComboBooleano(ComboBox combo)
-        {
-            combo.Items.Clear();
-            combo.Items.Add(new { Text = "Sí", Value = true });
-            combo.Items.Add(new { Text = "No", Value = false });
-            combo.DisplayMember = "Text";
-            combo.ValueMember = "Value";
             combo.SelectedIndex = -1;
         }
 
@@ -113,15 +105,11 @@ namespace Agraria.Formularios
 
         private void btnSiguiente_Click(object sender, EventArgs e)
         {
-            
             if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1)
             {
                 MessageBox.Show("Complete los campos obligatorios: Nombre y Modo de Inicio.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (_idCicloEditar == null && _idCicloGenerado == 0)
-                _idCicloGenerado = DateTime.Now.Ticks % 100000;
 
             tabControl.SelectedTab = tabPageActividadesCicloModelo;
         }
@@ -133,23 +121,26 @@ namespace Agraria.Formularios
 
         private void btnSiguiente2_Click(object sender, EventArgs e)
         {
-            if (listaActividades.Count == 0 || dtgvActividadesCicloModelo.SelectedRows.Count == 0)
+            var actividadActual = ObtenerActividadSeleccionada();
+            if (actividadActual == null)
             {
                 MessageBox.Show("Debe agregar y seleccionar al menos una Actividad para cargarle elementos.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            // Atamos la grilla del Tab 3 a la sub-lista de la Actividad seleccionada
-            var actividadActual = ObtenerActividadSeleccionada();
-            dtgvActividadesElementos.DataSource = actividadActual.ListaElementos;
-
-
-            tabControl.SelectedTab = tabPageActividadesElementos;
+            AbrirElementosDe(actividadActual);
         }
 
         private void btnAnterior1_Click(object sender, EventArgs e)
         {
             tabControl.SelectedTab = tabPageActividadesCicloModelo;
+        }
+
+        private void AbrirElementosDe(ActividadModeloDTO actividad)
+        {
+            _actividadEnEdicion = actividad;
+            dtgvActividadesElementos.DataSource = null;
+            dtgvActividadesElementos.DataSource = actividad.ListaElementos;
+            tabControl.SelectedTab = tabPageActividadesElementos;
         }
 
         // ========================================================
@@ -159,9 +150,8 @@ namespace Agraria.Formularios
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             int nuevoOrden = listaActividades.Count + 1;
+            // Sin "using": MaterialSkinManager guarda referencia a los forms que maneja
             AbmActividadesCicloModelo frmActividad = new AbmActividadesCicloModelo(nuevoOrden);
-            frmActividad.Text = "Nueva Actividad";
-
             if (frmActividad.ShowDialog() == DialogResult.OK)
             {
                 listaActividades.Add(frmActividad.NuevaActividad);
@@ -173,42 +163,54 @@ namespace Agraria.Formularios
         {
             if (dtgvActividadesCicloModelo.SelectedRows.Count > 0)
             {
-                int index = dtgvActividadesCicloModelo.SelectedRows[0].Index;
-                listaActividades.RemoveAt(index);
-                ReordenarActividades();
+                QuitarActividad(dtgvActividadesCicloModelo.SelectedRows[0].Index);
             }
+        }
+
+        private void QuitarActividad(int index)
+        {
+            if (index < 0 || index >= listaActividades.Count) return;
+
+            var act = listaActividades[index];
+            if (act.ListaElementos.Count > 0 &&
+                MessageBox.Show($"La actividad '{act.Nombre}' tiene {act.ListaElementos.Count} elemento(s). ¿Quitarla igual?",
+                                "Confirmar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+                return;
+
+            if (ReferenceEquals(act, _actividadEnEdicion))
+            {
+                _actividadEnEdicion = null;
+                dtgvActividadesElementos.DataSource = null;
+            }
+
+            listaActividades.RemoveAt(index);
+            ReordenarActividades();
         }
 
         private void btnSubir_Click(object sender, EventArgs e)
         {
             if (dtgvActividadesCicloModelo.SelectedRows.Count > 0)
-            {
-                int index = dtgvActividadesCicloModelo.SelectedRows[0].Index;
-                if (index > 0)
-                {
-                    var item = listaActividades[index];
-                    listaActividades.RemoveAt(index);
-                    listaActividades.Insert(index - 1, item);
-                    ReordenarActividades();
-                    dtgvActividadesCicloModelo.Rows[index - 1].Selected = true;
-                }
-            }
+                MoverActividad(dtgvActividadesCicloModelo.SelectedRows[0].Index, -1);
         }
 
         private void btnBajar_Click(object sender, EventArgs e)
         {
             if (dtgvActividadesCicloModelo.SelectedRows.Count > 0)
-            {
-                int index = dtgvActividadesCicloModelo.SelectedRows[0].Index;
-                if (index < listaActividades.Count - 1)
-                {
-                    var item = listaActividades[index];
-                    listaActividades.RemoveAt(index);
-                    listaActividades.Insert(index + 1, item);
-                    ReordenarActividades();
-                    dtgvActividadesCicloModelo.Rows[index + 1].Selected = true;
-                }
-            }
+                MoverActividad(dtgvActividadesCicloModelo.SelectedRows[0].Index, +1);
+        }
+
+        private void MoverActividad(int index, int delta)
+        {
+            int destino = index + delta;
+            if (index < 0 || destino < 0 || destino >= listaActividades.Count) return;
+
+            var item = listaActividades[index];
+            listaActividades.RemoveAt(index);
+            listaActividades.Insert(destino, item);
+            ReordenarActividades();
+
+            dtgvActividadesCicloModelo.ClearSelection();
+            dtgvActividadesCicloModelo.Rows[destino].Selected = true;
         }
 
         private void ReordenarActividades()
@@ -217,7 +219,8 @@ namespace Agraria.Formularios
             {
                 listaActividades[i].Orden = i + 1;
             }
-            dtgvActividadesCicloModelo.Refresh();
+            // El DTO no implementa INotifyPropertyChanged: hay que avisarle a la grilla
+            listaActividades.ResetBindings();
         }
 
         // ========================================================
@@ -228,30 +231,24 @@ namespace Agraria.Formularios
         {
             if (dtgvActividadesCicloModelo.SelectedRows.Count > 0)
             {
-                return (ActividadModeloDTO)dtgvActividadesCicloModelo.SelectedRows[0].DataBoundItem;
+                return dtgvActividadesCicloModelo.SelectedRows[0].DataBoundItem as ActividadModeloDTO;
             }
             return null;
         }
 
         private void btnAgregarElemento_Click(object sender, EventArgs e)
         {
-            var actividadActual = ObtenerActividadSeleccionada();
-            if (actividadActual == null) return;
-
-            int nuevoOrden = actividadActual.ListaElementos.Count + 1;
-            AbmActividadesElementos frmElemento = new AbmActividadesElementos(nuevoOrden);
-            frmElemento.Text = "Nuevo Elemento";
-
-            if (frmElemento.ShowDialog() == DialogResult.OK)
+            if (_actividadEnEdicion == null)
             {
-                actividadActual.ListaElementos.Add(frmElemento.NuevoElemento);
-                ReordenarElementos(actividadActual);
+                MessageBox.Show("Primero elija una actividad (botón 'Elementos' en la grilla de actividades).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+            AgregarElementoA(_actividadEnEdicion);
         }
 
         private void btnQuitarElemento_Click(object sender, EventArgs e)
         {
-            var actividadActual = ObtenerActividadSeleccionada();
+            var actividadActual = _actividadEnEdicion;
             if (actividadActual != null && dtgvActividadesElementos.SelectedRows.Count > 0)
             {
                 int index = dtgvActividadesElementos.SelectedRows[0].Index;
@@ -262,36 +259,31 @@ namespace Agraria.Formularios
 
         private void btnSubirElemento_Click(object sender, EventArgs e)
         {
-            var actividadActual = ObtenerActividadSeleccionada();
-            if (actividadActual != null && dtgvActividadesElementos.SelectedRows.Count > 0)
-            {
-                int index = dtgvActividadesElementos.SelectedRows[0].Index;
-                if (index > 0)
-                {
-                    var item = actividadActual.ListaElementos[index];
-                    actividadActual.ListaElementos.RemoveAt(index);
-                    actividadActual.ListaElementos.Insert(index - 1, item);
-                    ReordenarElementos(actividadActual);
-                    dtgvActividadesElementos.Rows[index - 1].Selected = true;
-                }
-            }
+            if (dtgvActividadesElementos.SelectedRows.Count > 0)
+                MoverElemento(dtgvActividadesElementos.SelectedRows[0].Index, -1);
         }
 
         private void btnBajarElemento_Click(object sender, EventArgs e)
         {
-            var actividadActual = ObtenerActividadSeleccionada();
-            if (actividadActual != null && dtgvActividadesElementos.SelectedRows.Count > 0)
-            {
-                int index = dtgvActividadesElementos.SelectedRows[0].Index;
-                if (index < actividadActual.ListaElementos.Count - 1)
-                {
-                    var item = actividadActual.ListaElementos[index];
-                    actividadActual.ListaElementos.RemoveAt(index);
-                    actividadActual.ListaElementos.Insert(index + 1, item);
-                    ReordenarElementos(actividadActual);
-                    dtgvActividadesElementos.Rows[index + 1].Selected = true;
-                }
-            }
+            if (dtgvActividadesElementos.SelectedRows.Count > 0)
+                MoverElemento(dtgvActividadesElementos.SelectedRows[0].Index, +1);
+        }
+
+        private void MoverElemento(int index, int delta)
+        {
+            var actividadActual = _actividadEnEdicion;
+            if (actividadActual == null) return;
+
+            int destino = index + delta;
+            if (index < 0 || destino < 0 || destino >= actividadActual.ListaElementos.Count) return;
+
+            var item = actividadActual.ListaElementos[index];
+            actividadActual.ListaElementos.RemoveAt(index);
+            actividadActual.ListaElementos.Insert(destino, item);
+            ReordenarElementos(actividadActual);
+
+            dtgvActividadesElementos.ClearSelection();
+            dtgvActividadesElementos.Rows[destino].Selected = true;
         }
 
         private void ReordenarElementos(ActividadModeloDTO actividad)
@@ -300,256 +292,202 @@ namespace Agraria.Formularios
             {
                 actividad.ListaElementos[i].Orden = i + 1;
             }
-            dtgvActividadesElementos.Refresh();
+            actividad.ListaElementos.ResetBindings();
         }
 
         // ========================================================
-        // GUARDADO FINAL CONSOLIDADO (TAB 3)
+        // GUARDADO FINAL CONSOLIDADO
         // ========================================================
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                // 1. Validar Cabecera
                 if (string.IsNullOrWhiteSpace(txtNombreCicloModelo.Text) || cmbModoInicio.SelectedIndex == -1)
                 {
                     MessageBox.Show("Complete los campos obligatorios del ciclo (Nombre y Modo de Inicio).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    tabControl.SelectedTab = tabPageCicloModelo;
                     return;
                 }
 
-                // 2. Validar que exista al menos una Actividad
-                if (listaActividades == null || listaActividades.Count == 0)
+                if (listaActividades.Count == 0)
                 {
                     MessageBox.Show("Debe agregar al menos una actividad al ciclo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    tabControl.SelectedTab = tabPageActividadesCicloModelo;
                     return;
                 }
 
-                var act = listaActividades[0]; // Tomamos la primera actividad temporalmente para compatibilidad
-
-                // 3. Validar que esa actividad tenga al menos un Elemento
-                if (act.ListaElementos == null || act.ListaElementos.Count == 0)
+                var sinElementos = listaActividades.FirstOrDefault(a => a.ListaElementos == null || a.ListaElementos.Count == 0);
+                if (sinElementos != null)
                 {
-                    MessageBox.Show("Debe agregar al menos un elemento a la actividad seleccionada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"La actividad '{sinElementos.Nombre}' no tiene elementos cargados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                var elem = act.ListaElementos[0]; // Extraemos el elemento desde la lista en memoria, no desde la UI
-
-                // Datos del Ciclo
                 string nombreCiclo = txtNombreCicloModelo.Text.Trim();
                 string descCiclo = txtDescripcion.Text.Trim();
-
-                // Lectura del MaskedTextBox de Duración Estimada (adaptado a decimal o string según tu DTO)
-                // Si la BD espera decimal, puedes parsear el texto limpio:
-                decimal duracionCiclo = 0;
-                string textoDuracion = mskDuracionEstimada.Text.Replace(":", "").Trim();
-                if (!string.IsNullOrEmpty(textoDuracion))
-                {
-                    decimal.TryParse(textoDuracion, out duracionCiclo);
-                }
-
+                decimal duracionCiclo = LeerDuracion(mskDuracionEstimada);
                 int modoInicio = Convert.ToInt32(cmbModoInicio.SelectedValue);
                 bool activoCiclo = chkActivo.Checked;
-                
                 int idCreador = _usuarioActual.Id;
                 DateTime fechaCreacion = dtpFechaCreacion.Value;
 
-                bool esModificacion = (_idCicloEditar != null);
-
                 bll.GuardarCicloCompleto(
                     _idCicloEditar, nombreCiclo, descCiclo, duracionCiclo, modoInicio, activoCiclo, fechaCreacion, idCreador,
-                    act.Nombre, act.Descripcion, act.Orden, act.IdTipoActividad, act.Duracion, act.Demora, act.Aprobacion, act.EjecucionParcial, act.CondicionAvance, act.Activa,
-                    elem.IdElemento, elem.IdTipoElemento, elem.IdTipoMovimiento, elem.CantidadPrevista, elem.IdUnidad, elem.Obligatorio, elem.Vendible, elem.PermiteSustitucion, "",
-                    esModificacion
-                );
+                    listaActividades.ToList());
 
-                MessageBox.Show("El Modelo del Ciclo se ha guardado y configurado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El Modelo del Ciclo se ha guardado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error al guardar: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // Lee el MaskedTextBox "00000" como número entero de días
+        internal static decimal LeerDuracion(MaskedTextBox msk)
+        {
+            string texto = new string(msk.Text.Where(char.IsDigit).ToArray());
+            return decimal.TryParse(texto, out decimal valor) ? valor : 0;
+        }
+
+        // Escribe la duración SIN decimales: si se asigna "30.00" a la máscara "00000"
+        // quedaba "3000" y al volver a guardar se multiplicaba la duración por 100.
+        internal static void EscribirDuracion(MaskedTextBox msk, decimal valor)
+        {
+            msk.Text = valor <= 0 ? "" : decimal.ToInt64(Math.Round(valor, 0)).ToString();
+        }
+
+        // ========================================================
+        // CARGA PARA MODIFICAR
+        // ========================================================
         private void CargarDatosCiclo(long idCiclo)
         {
-            // 1. Cargar Cabecera (Ciclo)
+            // 1. Cabecera
             DataTable dtCiclo = bll.ObtenerCicloPorId(idCiclo);
-            if (dtCiclo.Rows.Count > 0)
+            if (dtCiclo.Rows.Count == 0)
             {
-                DataRow row = dtCiclo.Rows[0];
-                txtNombreCicloModelo.Text = row["nombre"].ToString();
-                txtDescripcion.Text = row["descripcion"].ToString();
-
-                // Cargar el valor en el MaskedTextBox
-                mskDuracionEstimada.Text = row["duracion_estimada"] == DBNull.Value ? "0000000" : row["duracion_estimada"].ToString();
-
-                cmbModoInicio.SelectedValue = row["modo_inicio"];
-                chkActivo.Checked = Convert.ToBoolean(row["activo"]);
+                MessageBox.Show("No se encontró el ciclo seleccionado.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            // 2. Cargar Actividades y sus Elementos
-            DataTable dtActividades = bll.ObtenerActividadesPorCiclo(idCiclo);
+            DataRow row = dtCiclo.Rows[0];
+            txtNombreCicloModelo.Text = Str(row, "nombre");
+            txtDescripcion.Text = Str(row, "descripcion");
+            EscribirDuracion(mskDuracionEstimada, Dec(row, "duracion_estimada"));
+
+            int modo = Int(row, "modo_inicio");
+            if (modo > 0) cmbModoInicio.SelectedValue = modo; else cmbModoInicio.SelectedIndex = -1;
+
+            chkActivo.Checked = Bool(row, "activo");
+
+            if (row.Table.Columns.Contains("fecha_creacion") && row["fecha_creacion"] != DBNull.Value)
+                dtpFechaCreacion.Value = Convert.ToDateTime(row["fecha_creacion"]);
+
+            // Mostrar quién lo creó (no el usuario logueado)
+            string creador = Str(row, "creado_por_nombre");
+            txtCreadoPor.Text = string.IsNullOrEmpty(creador) ? Str(row, "creado_por") : creador;
+
+            // 2. Actividades y sus elementos
+            listaActividades.RaiseListChangedEvents = false;
             listaActividades.Clear();
 
+            DataTable dtActividades = bll.ObtenerActividadesPorCiclo(idCiclo);
             foreach (DataRow rowAct in dtActividades.Rows)
             {
                 long idActividadModelo = Convert.ToInt64(rowAct["id_actividad_modelo"]);
 
-                ActividadModeloDTO nuevaActividad = new ActividadModeloDTO
+                ActividadModeloDTO act = new ActividadModeloDTO
                 {
-                    Orden = Convert.ToInt32(rowAct["orden"]),
-                    Nombre = rowAct["nombre"].ToString(),
-                    Descripcion = rowAct["descripcion"].ToString(),
-                    IdTipoActividad = Convert.ToInt32(rowAct["tipo_actividad"]),
-                    Duracion = Convert.ToDecimal(rowAct["duracion_estimada"] == DBNull.Value ? 0 : rowAct["duracion_estimada"]),
-                    Demora = rowAct["demora"] != DBNull.Value && Convert.ToBoolean(rowAct["demora"]),
-                    Aprobacion = Convert.ToBoolean(rowAct["requiere_aprobacion"]),
-                    EjecucionParcial = Convert.ToBoolean(rowAct["permite_ejecucion_parcial"]),
-                    CondicionAvance = rowAct["condicion_avance"].ToString(),
-                    Activa = Convert.ToBoolean(rowAct["activa"])
+                    Orden = Int(rowAct, "orden"),
+                    Nombre = Str(rowAct, "nombre"),
+                    Descripcion = Str(rowAct, "descripcion"),
+                    IdTipoActividad = Int(rowAct, "tipo_actividad"),
+                    TipoActividad = Str(rowAct, "tipo_actividad_nombre"),
+                    Duracion = Dec(rowAct, "duracion_estimada"),
+                    Demora = Bool(rowAct, "demora"),
+                    Aprobacion = Bool(rowAct, "requiere_aprobacion"),
+                    EjecucionParcial = Bool(rowAct, "permite_ejecucion_parcial"),
+                    CondicionAvance = Str(rowAct, "condicion_avance"),
+                    Activa = Bool(rowAct, "activa")
                 };
 
-                // Buscar elementos de esta actividad en específico
                 DataTable dtElementos = bll.ObtenerElementosPorActividad(idActividadModelo);
+                int ordenElem = 1;
                 foreach (DataRow rowElem in dtElementos.Rows)
                 {
-                    nuevaActividad.ListaElementos.Add(new ActividadElementoModeloDTO
+                    int ordenBD = Int(rowElem, "orden");
+                    act.ListaElementos.Add(new ActividadElementoModeloDTO
                     {
+                        Orden = ordenBD > 0 ? ordenBD : ordenElem,
                         IdElemento = Convert.ToInt64(rowElem["id_elemento"]),
-                        IdTipoElemento = Convert.ToInt32(rowElem["tipo_elemento"]),
-                        IdTipoMovimiento = Convert.ToInt32(rowElem["tipo_movimiento"]),
-                        IdUnidad = Convert.ToInt32(rowElem["id_unidad"]),
-                        CantidadPrevista = Convert.ToDecimal(rowElem["cantidad_prevista"]),
-                        Obligatorio = Convert.ToBoolean(rowElem["obligatorio"]),
-                        PermiteSustitucion = rowElem["permite_sustitucion"] != DBNull.Value && Convert.ToBoolean(rowElem["permite_sustitucion"]),
-                        Vendible = rowElem["vendible_destino"] != DBNull.Value && Convert.ToBoolean(rowElem["vendible_destino"])
+                        NombreElemento = Str(rowElem, "nombre_elemento"),
+                        IdTipoElemento = Int(rowElem, "tipo_elemento"),
+                        TipoElemento = Str(rowElem, "tipo_elemento_nombre"),
+                        IdTipoMovimiento = Int(rowElem, "tipo_movimiento"),
+                        TipoMovimiento = Str(rowElem, "tipo_movimiento_nombre"),
+                        IdUnidad = Int(rowElem, "id_unidad"),
+                        Unidad = Str(rowElem, "unidad_nombre"),
+                        CantidadPrevista = Dec(rowElem, "cantidad_prevista"),
+                        Obligatorio = Bool(rowElem, "obligatorio"),
+                        PermiteSustitucion = Bool(rowElem, "permite_sustitucion"),
+                        Vendible = Bool(rowElem, "vendible_destino"),
+                        Observaciones = Str(rowElem, "observaciones")
                     });
+                    ordenElem++;
                 }
 
-                listaActividades.Add(nuevaActividad);
+                listaActividades.Add(act);
             }
+
+            listaActividades.RaiseListChangedEvents = true;
+            ReordenarActividades(); // también refresca la grilla
         }
 
+        // ---------- Helpers de lectura segura de DataRow ----------
+        private static bool Existe(DataRow r, string col) => r.Table.Columns.Contains(col) && r[col] != DBNull.Value;
+        private static string Str(DataRow r, string col) => Existe(r, col) ? r[col].ToString() : "";
+        private static int Int(DataRow r, string col) => Existe(r, col) ? Convert.ToInt32(r[col]) : 0;
+        private static decimal Dec(DataRow r, string col) => Existe(r, col) ? Convert.ToDecimal(r[col]) : 0m;
+        private static bool Bool(DataRow r, string col) => Existe(r, col) && Convert.ToBoolean(r[col]);
+
+        // ========================================================
+        // GRILLAS
+        // ========================================================
         private void ConfigurarGrillaActividades()
         {
             dtgvActividadesCicloModelo.AutoGenerateColumns = false;
             dtgvActividadesCicloModelo.Columns.Clear();
 
-            // 1. Columnas de Datos 
             dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Orden", HeaderText = "Orden", Name = "colOrden", Width = 50 });
             dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Nombre", HeaderText = "Nombre", Name = "colNombre", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
             dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "IdTipoActividad", HeaderText = "IdTipo", Name = "colIdTipoActividad", Visible = false });
             dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TipoActividad", HeaderText = "Tipo Actividad", Name = "colTipoActividad", Width = 120 });
-            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Duracion", HeaderText = "Duración", Name = "colDuracion", Width = 70 });
-
-            // 2. Columna Botón: Modificar
-            DataGridViewButtonColumn btnModificarGrid = new DataGridViewButtonColumn();
-            btnModificarGrid.Name = "colBtnModificar";
-            btnModificarGrid.HeaderText = "";
-            btnModificarGrid.Text = "Modificar";
-            btnModificarGrid.UseColumnTextForButtonValue = true;
-            btnModificarGrid.Width = 80;
-            dtgvActividadesCicloModelo.Columns.Add(btnModificarGrid);
-
-            // 3. Columna Botón: Subir
-            DataGridViewButtonColumn btnSubirGrid = new DataGridViewButtonColumn();
-            btnSubirGrid.Name = "colBtnSubir";
-            btnSubirGrid.HeaderText = "";
-            btnSubirGrid.Text = "Subir ▲";
-            btnSubirGrid.UseColumnTextForButtonValue = true;
-            btnSubirGrid.Width = 70;
-            dtgvActividadesCicloModelo.Columns.Add(btnSubirGrid);
-
-            // 4. Columna Botón: Bajar
-            DataGridViewButtonColumn btnBajarGrid = new DataGridViewButtonColumn();
-            btnBajarGrid.Name = "colBtnBajar";
-            btnBajarGrid.HeaderText = "";
-            btnBajarGrid.Text = "Bajar ▼";
-            btnBajarGrid.UseColumnTextForButtonValue = true;
-            btnBajarGrid.Width = 70;
-            dtgvActividadesCicloModelo.Columns.Add(btnBajarGrid);
-
-            // 5. Columna Botón: Agregar Elementos
-            DataGridViewButtonColumn btnAgregarElemGrid = new DataGridViewButtonColumn();
-            btnAgregarElemGrid.Name = "colBtnAgregarElementos";
-            btnAgregarElemGrid.HeaderText = "";
-            btnAgregarElemGrid.Text = "Elementos";
-            btnAgregarElemGrid.UseColumnTextForButtonValue = true;
-            btnAgregarElemGrid.Width = 85;
-            dtgvActividadesCicloModelo.Columns.Add(btnAgregarElemGrid);
-
-            // 6. Columna Botón: Quitar Actividad
-            DataGridViewButtonColumn btnQuitarGrid = new DataGridViewButtonColumn();
-            btnQuitarGrid.Name = "colBtnQuitarActividad";
-            btnQuitarGrid.HeaderText = "";
-            btnQuitarGrid.Text = "Quitar";
-            btnQuitarGrid.UseColumnTextForButtonValue = true;
-            btnQuitarGrid.Width = 70;
-            dtgvActividadesCicloModelo.Columns.Add(btnQuitarGrid);
-
-            // Estilos visuales de cabecera[cite: 6]
-            dtgvActividadesCicloModelo.EnableHeadersVisualStyles = false;
-            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
-            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dtgvActividadesCicloModelo.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(dtgvActividadesCicloModelo.Font, System.Drawing.FontStyle.Bold);
-        }
-
-        private void dtgvActividadesCicloModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Ignorar clics en los encabezados
-            if (e.RowIndex < 0) return;
-
-            string nombreColumna = dtgvActividadesCicloModelo.Columns[e.ColumnIndex].Name;
-            var actividadSeleccionada = listaActividades[e.RowIndex];
-            int index = e.RowIndex;
-
-            // ACCIÓN: MODIFICAR
-            if (nombreColumna == "colBtnModificar")
+            dtgvActividadesCicloModelo.Columns.Add(new DataGridViewTextBoxColumn
             {
-                // Pasamos el objeto DTO seleccionado directamente al formulario
-                AbmActividadesCicloModelo frmEdicion = new AbmActividadesCicloModelo(actividadSeleccionada);
-
-                if (frmEdicion.ShowDialog() == DialogResult.OK)
+                DataPropertyName = "Duracion",
+                HeaderText = "Duración",
+                Name = "colDuracion",
+                Width = 70,
+                DefaultCellStyle = new DataGridViewCellStyle
                 {
-                    // Como la actividad se edita en memoria, solo refrescamos la grilla
-                    dtgvActividadesCicloModelo.Refresh();
+                    Format = "0",                                         // 6 en vez de 6,00
+                    Alignment = DataGridViewContentAlignment.MiddleRight
                 }
-            }
+            });
 
-            // ACCIÓN: SUBIR[cite: 5]
-            if (nombreColumna == "colBtnSubir" && index > 0)
-            {
-                var item = listaActividades[index];
-                listaActividades.RemoveAt(index);
-                listaActividades.Insert(index - 1, item);
-                ReordenarActividades();
-            }
+            AgregarBoton(dtgvActividadesCicloModelo, "colBtnModificar", "Modificar", 80);
+            AgregarBoton(dtgvActividadesCicloModelo, "colBtnSubir", "Subir ▲", 70);
+            AgregarBoton(dtgvActividadesCicloModelo, "colBtnBajar", "Bajar ▼", 70);
+            AgregarBoton(dtgvActividadesCicloModelo, "colBtnAgregarElementos", "Elementos", 85);
+            AgregarBoton(dtgvActividadesCicloModelo, "colBtnQuitarActividad", "Quitar", 70);
 
-            // ACCIÓN: BAJAR[cite: 5]
-            if (nombreColumna == "colBtnBajar" && index < listaActividades.Count - 1)
-            {
-                var item = listaActividades[index];
-                listaActividades.RemoveAt(index);
-                listaActividades.Insert(index + 1, item);
-                ReordenarActividades();
-            }
-
-            // ACCIÓN: AGREGAR ELEMENTOS[cite: 4, 7]
-            if (nombreColumna == "colBtnAgregarElementos")
-            {
-                dtgvActividadesElementos.DataSource = actividadSeleccionada.ListaElementos;
-                tabControl.SelectedTab = tabPageActividadesElementos;
-            }
-
-            // ACCIÓN: QUITAR
-            if (nombreColumna == "colBtnQuitarActividad")
-            {
-                listaActividades.RemoveAt(index);
-                ReordenarActividades();
-            }
+            EstiloCabecera(dtgvActividadesCicloModelo);
         }
 
         private void ConfigurarGrillaElementos()
@@ -557,106 +495,125 @@ namespace Agraria.Formularios
             dtgvActividadesElementos.AutoGenerateColumns = false;
             dtgvActividadesElementos.Columns.Clear();
 
-            // 1. Columnas de Datos 
+            // 1. Columnas de Datos
             dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Orden", HeaderText = "Orden", Name = "colOrdenElem", Width = 50 });
-            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TipoElemento", HeaderText = "Tipo", Name = "colTipoElem", Width = 100 });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TipoElemento", HeaderText = "Tipo", Name = "colTipoElem", Width = 90 });
             dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "NombreElemento", HeaderText = "Elemento", Name = "colNombreElem", AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill });
-            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "CantidadPrevista", HeaderText = "Cant. Prevista", Name = "colCantElem", Width = 90 });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "TipoMovimiento", HeaderText = "Movimiento", Name = "colMovElem", Width = 80 });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "CantidadPrevista",
+                HeaderText = "Cant. Prevista",
+                Name = "colCantElem",
+                Width = 90,
+                DefaultCellStyle = new DataGridViewCellStyle
+                {
+                    Format = "0.##",                                      // 666 en vez de 666,0000
+                    Alignment = DataGridViewContentAlignment.MiddleRight
+                }
+            });
+            dtgvActividadesElementos.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "Unidad", HeaderText = "Unidad", Name = "colUnidadElem", Width = 90 });
             dtgvActividadesElementos.Columns.Add(new DataGridViewCheckBoxColumn { DataPropertyName = "Obligatorio", HeaderText = "Obligatorio", Name = "colObligatorioElem", Width = 75 });
 
-            // 2. Columna Botón: Modificar
-            DataGridViewButtonColumn btnModificarGrid = new DataGridViewButtonColumn();
-            btnModificarGrid.Name = "colBtnModificarElem";
-            btnModificarGrid.HeaderText = "";
-            btnModificarGrid.Text = "Modificar";
-            btnModificarGrid.UseColumnTextForButtonValue = true;
-            btnModificarGrid.Width = 80;
-            dtgvActividadesElementos.Columns.Add(btnModificarGrid);
+            // 2. Botones (dejá esto como ya lo tenés)
+            AgregarBoton(dtgvActividadesElementos, "colBtnModificarElem", "Modificar", 80);
+            AgregarBoton(dtgvActividadesElementos, "colBtnSubirElem", "Subir ▲", 70);
+            AgregarBoton(dtgvActividadesElementos, "colBtnBajarElem", "Bajar ▼", 70);
+            AgregarBoton(dtgvActividadesElementos, "colBtnQuitarElem", "Quitar", 70);
 
-            // 3. Columna Botón: Subir
-            DataGridViewButtonColumn btnSubirGrid = new DataGridViewButtonColumn();
-            btnSubirGrid.Name = "colBtnSubirElem";
-            btnSubirGrid.HeaderText = "";
-            btnSubirGrid.Text = "Subir ▲";
-            btnSubirGrid.UseColumnTextForButtonValue = true;
-            btnSubirGrid.Width = 70;
-            dtgvActividadesElementos.Columns.Add(btnSubirGrid);
+            EstiloCabecera(dtgvActividadesElementos);
+        }
 
-            // 4. Columna Botón: Bajar
-            DataGridViewButtonColumn btnBajarGrid = new DataGridViewButtonColumn();
-            btnBajarGrid.Name = "colBtnBajarElem";
-            btnBajarGrid.HeaderText = "";
-            btnBajarGrid.Text = "Bajar ▼";
-            btnBajarGrid.UseColumnTextForButtonValue = true;
-            btnBajarGrid.Width = 70;
-            dtgvActividadesElementos.Columns.Add(btnBajarGrid);
+        private static void AgregarBoton(DataGridView grilla, string nombre, string texto, int ancho)
+        {
+            grilla.Columns.Add(new DataGridViewButtonColumn
+            {
+                Name = nombre,
+                HeaderText = "",
+                Text = texto,
+                UseColumnTextForButtonValue = true,
+                Width = ancho
+            });
+        }
 
-            // 5. Columna Botón: Quitar Elemento
-            DataGridViewButtonColumn btnQuitarGrid = new DataGridViewButtonColumn();
-            btnQuitarGrid.Name = "colBtnQuitarElem";
-            btnQuitarGrid.HeaderText = "";
-            btnQuitarGrid.Text = "Quitar";
-            btnQuitarGrid.UseColumnTextForButtonValue = true;
-            btnQuitarGrid.Width = 70;
-            dtgvActividadesElementos.Columns.Add(btnQuitarGrid);
+        private static void EstiloCabecera(DataGridView grilla)
+        {
+            grilla.EnableHeadersVisualStyles = false;
+            grilla.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
+            grilla.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            grilla.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(grilla.Font, System.Drawing.FontStyle.Bold);
+        }
 
-            // Estilos visuales de cabecera
-            dtgvActividadesElementos.EnableHeadersVisualStyles = false;
-            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.MediumSeaGreen;
-            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
-            dtgvActividadesElementos.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(dtgvActividadesElementos.Font, System.Drawing.FontStyle.Bold);
+        private void dtgvActividadesCicloModelo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0 || e.RowIndex >= listaActividades.Count) return;
+
+            string nombreColumna = dtgvActividadesCicloModelo.Columns[e.ColumnIndex].Name;
+            int index = e.RowIndex;
+            var actividadSeleccionada = listaActividades[index];
+
+            switch (nombreColumna)
+            {
+                case "colBtnModificar":
+                    {
+                        AbmActividadesCicloModelo frmEdicion = new AbmActividadesCicloModelo(actividadSeleccionada);
+                        if (frmEdicion.ShowDialog() == DialogResult.OK)
+                            listaActividades.ResetItem(index);
+                    }
+                    break;
+
+                case "colBtnSubir":
+                    MoverActividad(index, -1);
+                    break;
+
+                case "colBtnBajar":
+                    MoverActividad(index, +1);
+                    break;
+
+                case "colBtnAgregarElementos":
+                    AbrirElementosDe(actividadSeleccionada);   // muestra la pestaña con sus elementos
+                    AgregarElementoA(actividadSeleccionada);   // pregunta Entrada/Salida y abre el form
+                    break;
+
+                case "colBtnQuitarActividad":
+                    QuitarActividad(index);
+                    break;
+            }
         }
 
         private void dtgvActividadesElementos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
-
-            var actividadActual = ObtenerActividadSeleccionada();
-            if (actividadActual == null) return;
+            var actividadActual = _actividadEnEdicion;
+            if (actividadActual == null || e.RowIndex < 0 || e.RowIndex >= actividadActual.ListaElementos.Count) return;
 
             string nombreColumna = dtgvActividadesElementos.Columns[e.ColumnIndex].Name;
             int index = e.RowIndex;
             var elementoSeleccionado = actividadActual.ListaElementos[index];
 
-            // ACCIÓN: MODIFICAR
-            if (nombreColumna == "colBtnModificarElem")
+            switch (nombreColumna)
             {
-                // Abrimos el formulario de elementos pasándole el DTO actual para edición
-                AbmActividadesElementos frmEdicion = new AbmActividadesElementos(elementoSeleccionado);
+                case "colBtnModificarElem":
+                    {
+                        AbmActividadesElementos frmEdicion = new AbmActividadesElementos(elementoSeleccionado);
+                        if (frmEdicion.ShowDialog() == DialogResult.OK)
+                            actividadActual.ListaElementos.ResetItem(index);
+                    }
+                    break;
 
-                if (frmEdicion.ShowDialog() == DialogResult.OK)
-                {
-                    // El formulario edita las propiedades en memoria, solo refrescamos
-                    dtgvActividadesElementos.Refresh();
-                }
-            }
+                case "colBtnSubirElem":
+                    MoverElemento(index, -1);
+                    break;
 
-            // ACCIÓN: SUBIR
-            if (nombreColumna == "colBtnSubirElem" && index > 0)
-            {
-                var item = actividadActual.ListaElementos[index];
-                actividadActual.ListaElementos.RemoveAt(index);
-                actividadActual.ListaElementos.Insert(index - 1, item);
-                ReordenarElementos(actividadActual);
-            }
+                case "colBtnBajarElem":
+                    MoverElemento(index, +1);
+                    break;
 
-            // ACCIÓN: BAJAR
-            if (nombreColumna == "colBtnBajarElem" && index < actividadActual.ListaElementos.Count - 1)
-            {
-                var item = actividadActual.ListaElementos[index];
-                actividadActual.ListaElementos.RemoveAt(index);
-                actividadActual.ListaElementos.Insert(index + 1, item);
-                ReordenarElementos(actividadActual);
-            }
-
-            // ACCIÓN: QUITAR
-            if (nombreColumna == "colBtnQuitarElem")
-            {
-                actividadActual.ListaElementos.RemoveAt(index);
-                ReordenarElementos(actividadActual);
+                case "colBtnQuitarElem":
+                    actividadActual.ListaElementos.RemoveAt(index);
+                    ReordenarElementos(actividadActual);
+                    break;
             }
         }
-
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -666,8 +623,60 @@ namespace Agraria.Formularios
 
         private void label8_Click(object sender, EventArgs e)
         {
-
         }
-    }
 
+        // Pregunta Entrada / Salida y devuelve el Id del catálogo 16. Null si cancela.
+        private (int Id, string Nombre)? PedirTipoMovimiento()
+        {
+            var btnEntrada = new TaskDialogButton("Entrada");
+            var btnSalida = new TaskDialogButton("Salida");
+
+            var pagina = new TaskDialogPage
+            {
+                Caption = "Agregar Elemento",
+                Heading = "¿El elemento es de Entrada o de Salida?",
+                Icon = TaskDialogIcon.Information,
+                AllowCancel = true,
+                Buttons = { btnEntrada, btnSalida, TaskDialogButton.Cancel }
+            };
+
+            TaskDialogButton resultado = TaskDialog.ShowDialog(this, pagina);
+
+            string nombre = resultado == btnEntrada ? "Entrada"
+                          : resultado == btnSalida ? "Salida"
+                          : null;
+            if (nombre == null) return null;
+
+            DataTable dt = bll.ObtenerItemsCatalogo(16);
+            foreach (DataRow fila in dt.Rows)
+            {
+                if (string.Equals(fila["Nombre"].ToString().Trim(), nombre, StringComparison.OrdinalIgnoreCase))
+                    return (Convert.ToInt32(fila["Id_catalogo_item"]), nombre);
+            }
+
+            MessageBox.Show($"No se encontró '{nombre}' en el catálogo Tipo Movimiento (16).", "Aviso",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return null;
+        }
+        // Pregunta Entrada / Salida y abre AbmActividadesElementos para la actividad indicada
+        private void AgregarElementoA(ActividadModeloDTO actividad)
+        {
+            if (actividad == null) return;
+
+            var movimiento = PedirTipoMovimiento();
+            if (movimiento == null) return;   // canceló
+
+            int nuevoOrden = actividad.ListaElementos.Count + 1;
+            AbmActividadesElementos frmElemento = new AbmActividadesElementos(
+                nuevoOrden, movimiento.Value.Id, movimiento.Value.Nombre);
+
+            if (frmElemento.ShowDialog() == DialogResult.OK)
+            {
+                actividad.ListaElementos.Add(frmElemento.NuevoElemento);
+                ReordenarElementos(actividad);
+            }
+        }
+
+
+    }
 }
