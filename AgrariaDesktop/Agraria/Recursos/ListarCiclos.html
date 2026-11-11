@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Reporte de Ciclos Modelo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #2E7D32;
+            margin-top: 18px;
+            margin-bottom: 4px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: center;
+            font-size: 9px;
+        }
+
+        th {
+            background-color: #3CB371; /* Verde acorde al diseño de la grilla */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h2>@TITULO - @FECHA</h2>
+
+    <h3>Ciclos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Duración (días)</th>
+                <th>Modo de inicio</th>
+                <th>Activo</th>
+                <th>Fecha de creación</th>
+                <th>Creado por</th>
+            </tr>
+        </thead>
+        <tbody>
+            @FILAS_CICLOS
+        </tbody>
+    </table>
+
+    <h3>Actividades</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Ciclo</th>
+                <th>Orden</th>
+                <th>Actividad</th>
+                <th>Tipo</th>
+                <th>Duración (días)</th>
+                <th>Demora</th>
+                <th>Req. aprobación</th>
+                <th>Ejec. parcial</th>
+                <th>Condición de avance</th>
+            </tr>
+        </thead>
+        <tbody>
+            @FILAS_ACTIVIDADES
+        </tbody>
+    </table>
+
+    <h3>Elementos</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Ciclo</th>
+                <th>Actividad</th>
+                <th>Orden</th>
+                <th>Tipo</th>
+                <th>Elemento</th>
+                <th>Movimiento</th>
+                <th>Cant. prevista</th>
+                <th>Unidad</th>
+                <th>Obligatorio</th>
+                <th>Vendible</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @FILAS_ELEMENTOS
+        </tbody>
+    </table>
+</body>
+</html>
