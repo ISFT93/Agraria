@@ -19,19 +19,7 @@ namespace Agraria.Formularios
             InitializeComponent();
             _usuarioActual = usuarioLogeado;
             idArticuloActual = null;
-            // Configurar el MaterialSkinManager
-            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
 
-            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
-            materialSkinManager.ColorScheme = new ColorScheme(
-                Primary.Green800,
-                Primary.Green900,
-                Primary.Green500,
-                Accent.Green200,
-          TextShade.WHITE
-            );
         }
 
         // Constructor para MODIFICACIÓN
@@ -46,6 +34,20 @@ namespace Agraria.Formularios
             numStockMinimo.Value = (decimal)stockMinimo;
 
             this.Tag = new { nombreMarca, nombreCategoria };
+
+            // Configurar el MaterialSkinManager
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT; // O DARK
+
+            // Configurar esquemas de color (Ejemplo:  Green , LightGreen  y Teal )
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Green800,
+                Primary.Green900,
+                Primary.Green500,
+                Accent.Green200,
+          TextShade.WHITE
+            );
         }
 
         private void rjBAceptar_Click(object sender, EventArgs e)

@@ -266,7 +266,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "AbmActividadesCicloModelo";
             Padding = new Padding(4, 106, 4, 5);
-            Text = "AbmActividadesCicloModelo";
+            Text = "Actividad";
             Load += AbmActividadesCicloModelo_Load;
             ResumeLayout(false);
             PerformLayout();

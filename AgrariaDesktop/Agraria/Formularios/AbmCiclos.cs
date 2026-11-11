@@ -33,6 +33,7 @@ namespace Agraria.Formularios
             dtgvActividadesCicloModelo.DataSource = listaActividades;
 
             ConfigurarGrillaElementos();
+            tabControl.SelectedIndexChanged += (s, e) => ActualizarTitulo();
 
             MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -63,14 +64,15 @@ namespace Agraria.Formularios
                 }
                 else
                 {
-                    // Valores por defecto para un ciclo NUEVO
                     chkActivo.Checked = true;
                     dtpFechaCreacion.Value = DateTime.Now;
                     txtCreadoPor.Text = _usuarioActual?.NombreUsuario;
                 }
 
                 txtCreadoPor.Enabled = false;
-                dtpFechaCreacion.Enabled = false; // la fecha de creación no se edita
+                dtpFechaCreacion.Enabled = false;
+
+                ActualizarTitulo();   // <-- agregar
             }
             catch (Exception ex)
             {
@@ -83,6 +85,25 @@ namespace Agraria.Formularios
             tabControl.Appearance = TabAppearance.FlatButtons;
             tabControl.ItemSize = new System.Drawing.Size(0, 1);
             tabControl.SizeMode = TabSizeMode.Fixed;
+        }
+
+        // Cambia el título del formulario según la pestaña y el modo (Nuevo / Modificar)
+        private void ActualizarTitulo()
+        {
+            string accion = _idCicloEditar == null ? "Cargar" : "Modificar";
+            string seccion;
+
+            if (tabControl.SelectedTab == tabPageCicloModelo)
+                seccion = "Ciclo";
+            else if (tabControl.SelectedTab == tabPageActividadesCicloModelo)
+                seccion = "Actividad";
+            else if (tabControl.SelectedTab == tabPageActividadesElementos)
+                seccion = "Elemento";
+            else
+                seccion = "Ciclo";
+
+            this.Text = $"{accion} {seccion}";
+            this.Invalidate(); // MaterialForm dibuja el título: fuerza el repintado
         }
 
         private void CargarCombosCatalogos()

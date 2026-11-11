@@ -242,7 +242,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "AbmActividadesElementos";
             Padding = new Padding(4, 80, 4, 4);
-            Text = "Actividades Elementos";
+            Text = "Elementos";
             Load += AbmActividadesElementos_Load;
             ((System.ComponentModel.ISupportInitialize)numCantPrevista).EndInit();
             ResumeLayout(false);

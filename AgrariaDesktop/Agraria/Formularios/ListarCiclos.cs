@@ -105,7 +105,6 @@ namespace Agraria.Formularios
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             AbmCiclos frm = new AbmCiclos(_usuarioLogeado);
-            frm.Text = "Nuevo Ciclo Modelo";
             if (frm.ShowDialog() == DialogResult.OK)
             {
                 CargarCiclosModelo(txtBuscar.Text.Trim());
@@ -128,7 +127,6 @@ namespace Agraria.Formularios
             long idCiclo = Convert.ToInt64(fila.Cells["id_ciclo"].Value);
 
             AbmCiclos frm = new AbmCiclos(idCiclo, _usuarioLogeado);
-            frm.Text = "Modificar Ciclo Modelo";
 
             if (frm.ShowDialog() == DialogResult.OK)
             {
